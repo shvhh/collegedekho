@@ -172,22 +172,22 @@ app.use("/", routes);
 // app.use(genericErrorHandler);
 // app.use(notFound);
 
-mongoose
-  .connect("mongodb://localhost:27017/college", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("connected to db");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+// mongoose
+//   .connect("mongodb://localhost:27017/college", {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   })
+//   .then(() => {
+//     console.log("connected to db");
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
-// mongoose.connect('mongodb+srv://admin:Webadmin1@cluster0.ul9cde6.mongodb.net/agargami').then(()=>{
-//   console.log("db connected")
-// }).
-//   catch(error => (error));
+mongoose.connect('mongodb+srv://admin:Webadmin1@cluster0.ul9cde6.mongodb.net/collegedekho').then(()=>{
+  console.log("db connected")
+}).
+  catch(error => (error));
 
 const port = process.env.PORT || 5000;
 
