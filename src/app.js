@@ -184,6 +184,8 @@ app.use("/", routes);
 //     console.log(err);
 //   });
 
+
+
 mongoose.connect('mongodb+srv://admin:Webadmin1@cluster0.ul9cde6.mongodb.net/collegedekho').then(()=>{
   console.log("db connected")
 }).
