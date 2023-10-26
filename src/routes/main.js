@@ -59,7 +59,7 @@ routes.get("/", async (req, res) => {
     const state =await State.find().limit(9).lean();
     const courseCategoryData = await courseCategory.find().lean();
 
-    const id = courseCategoryData[0]._id;
+    const id = courseCategoryData[0]?._id;
     const courseCategoryId = new mongoose.Types.ObjectId(id);
 
  const collegeData = await courseCategory.aggregate([
