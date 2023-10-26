@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel-Dashboard</title>
+
+    <!-- <link
+    rel="shortcut icon"
+    href="/public/images/logo/dental site favi.png"
+    type="image/x-icon"
+  />  -->
+
+  <%- include('../partials/favicon')%>
+
+
+    <link rel="stylesheet" href="/public/assets/compiled/css/app.css" />
+    <link rel="stylesheet" href="/public/assets/compiled/css/app-dark.css" />
+  </head>
+
+  <body>
+    <script src="assets/static/js/initTheme.js"></script>
+
+
+
+
+    <script src="assets/static/js/initTheme.js"></script>
+    <div id="auth">
+      <div class="row h-100">
+        <div class="col-lg-4 col-12">
+          <div id="auth-left">
+        
+            <h1 class="auth-title"id="adminRegistration"></h1>
+            <p class="auth-subtitle mb-5">
+              <!-- Input your data to register to our website. -->
+            </p>
+
+
+           
+
+         
+          </div>
+        </div>
+
+       
+
+        <div class="col-lg-4 col-12">
+          <div id="auth-left">
+            <div class="auth-logo">
+               <a href="/admin/"
+                ><img src="/public//images/logo.png" class="loginLogo" alt="Logo"
+              /></a> 
+            </div>
+            <h1 class="auth-title" id="adminLogin">Log in.</h1>
+            <p class="auth-subtitle mb-5">
+              Log in with your data that you entered during registration.
+            </p>
+
+            <form action="/admin/adminLogin" method="post"  onsubmit="return phoneValidation()" >
+              <div class="form-group position-relative has-icon-left mb-4">
+                <input
+                  type="text"
+                  class="form-control form-control-xl"
+                  name="email"
+                  id="loginemail"
+                  placeholder="Email"
+                />
+                <p class="alltypeError" id="loginemailerror"></p>
+
+                <div class="form-control-icon">
+                  <i class="bi bi-person"></i>
+                </div>
+              </div>
+              <div class="form-group position-relative has-icon-left mb-4">
+                <input
+                  type="password"
+                  class="form-control form-control-xl"
+                  name="password"
+                  id="loginpassword"
+                  placeholder="Password"
+                />
+                <p class="alltypeError" id="loginerror"></p>
+
+                <div class="form-control-icon">
+                  <i class="bi bi-shield-lock"></i>
+                </div>
+              </div>
+           
+
+              
+              <% if(message){ %>
+                <div>
+                    <span style="color:red">
+                        <%= message %>
+                    </span>
+                </div>
+                <% } %>
+              <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">
+                Log in
+              </button>
+            </form>
+            <div class="text-center mt-5 text-lg fs-4">
+              <!-- <p class="text-gray-600">
+                Already have an account?
+                <a href="admin/login" class="font-bold">Log in</a>.
+              </p> -->
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col-lg-7 d-none d-lg-block">
+          <div id="auth-right"></div>
+        </div> -->
+      </div>
+    </div>
+
+    <script src="/public/assets/static/js/components/dark.js"></script>
+    <script src="/public/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+    <script src="/public/assets/compiled/js/app.js"></script>
+
+    <script src="/public/assets/extensions/jquery/jquery.min.js"></script>
+    <script src="/public/assets/extensions/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/public/assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="/public/assets/static/js/pages/datatables.js"></script>
+<script>
+
+
+  function  phoneValidation(){
+
+    var email = document.getElementById("loginemail").value;
+    var password = document.getElementById("loginpassword").value;
+
+    if(email == ""){
+     document.getElementById("loginerror").innerHTML = "";
+      document.getElementById("loginemailerror").innerHTML = "Please enter email";
+      return false;
+    }
+    if(email.indexOf("@", 0) < 0){
+
+      document.getElementById("loginerror").innerHTML = "";
+      document.getElementById("loginemailerror").innerHTML = "Please enter valid email";
+      return false;
+    }
+
+    if(email.indexOf(".", 0) < 0){
+      
+
+document.getElementById("loginerror").innerHTML = "";
+      document.getElementById("loginemailerror").innerHTML = "Please enter valid email";
+      return false;
+    }
+
+    if(password == ""){
+document.getElementById("loginemailerror").innerHTML = "";
+      document.getElementById("loginerror").innerHTML = "Please enter password";
+      return false;
+    }
+    return true;
+
+
+  }
+</script>
+
+  </body>
+</html>

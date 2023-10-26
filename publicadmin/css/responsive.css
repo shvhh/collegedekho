@@ -1,0 +1,198 @@
+@media screen and (max-width: 767px) {
+    h3 {
+        font-size: 16px !important;
+        line-height: 1.3 !important;
+    }
+
+    h4 {
+        font-size: 14px !important;
+        line-height: 1.3 !important;
+    }
+
+    .manePageBanner h2 {
+        font-size: 18px;
+        padding: 10px 0;
+        margin: 0px !important;
+    }
+
+    #header20 {
+        position: static;
+        width: 100%;
+        border-radius: 0px;
+    }
+
+    #header20 .menu20.is-active {
+        margin: 10px 0 0 0;
+    }
+
+    .consultationBtn {
+        padding: 7px;
+        font-size: 14px;
+    }
+
+    .collegesPage .mx-2 {
+        margin-right: 0rem !important;
+        margin-left: 0rem !important;
+    }
+
+    .collegeCard .quesBtn {
+        margin: 10px 0;
+    }
+
+    .collLogo {
+        width: 80px;
+    }
+
+    .collTit {
+        padding: 10px 0 0 0;
+    }
+
+    .collTit .mx-2 {
+        margin-right: 0.5rem !important;
+        margin-left: 0.5rem !important;
+    }
+
+    .bannerOverlay,
+    section,
+    .footer {
+        padding: 20px 0 !important;
+    }
+
+    .menu_item_one {
+        overflow: scroll;
+    }
+
+    .headerLogo {
+        display: flex;
+        align-items: center;
+        padding: 0px !important;
+        margin: 3px 0 0 0;
+        justify-content: space-between;
+    }
+
+    .side-hover {
+        padding: 0px;
+    }
+
+    #header20 .my-3 {
+        margin-top: 0rem !important;
+        margin-bottom: 0rem !important;
+    }
+
+    .registrationBtn {
+        color: #00185E !important;
+        padding: 0 0 0 15px;
+    }
+
+    .slider-container {
+        height: 300px;
+    }
+
+    .mainContent {
+        flex-wrap: wrap;
+        top: 5%;
+    }
+
+    .searchState {
+        margin: 22px 14px 0 7px;
+    }
+
+    .mainContent .w-50 {
+        width: 100% !important;
+    }
+
+    .PartnersSlider .slick-track {
+        padding: 0 20px !important;
+    }
+
+    .d-flex {
+        flex-wrap: wrap;
+    }
+
+    .collections div {
+        margin: 20px 0 0 7px;
+    }
+
+    .subscribe h3::before {
+        left: 18%;
+    }
+
+    .collegeTable {
+        width: 100%;
+        overflow: scroll;
+        margin: 0;
+    }
+
+    .form-card {
+        width: 100%;
+    }
+
+    .subscribe input {
+        margin: 10px 0px;
+    }
+
+    .subscribe select {
+        margin: 10px 0 20px 0;
+    }
+
+    .subscribe .text-center {
+        width: 100%;
+    }
+
+    .copyRight p {
+        text-align: center;
+    }
+
+    .copyRight p a {
+        font-size: 14px;
+    }
+
+    .copyRight .px-5 {
+        padding-right: 1rem !important;
+        padding-left: 0rem !important;
+    }
+
+    .copyRight div {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .bannerDetailTitle .consultationBtn {
+        margin: 0 0 0 10px;
+        width: 50%;
+    }
+
+    .bannerTitle2 img {
+        top: 10px;
+    }
+
+    .bannerTitle2 {
+        padding: 0 0 0 40px;
+    }
+
+    .studyGoalTitle h3::before {
+        left: 31%;
+    }
+
+    .collegefilter2 .quesBtn {
+        margin: 10px 0px 0 0 !important;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    #newSite {
+        margin-top: -7px !important;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #header20 .s-show {
+        display: block;
+    }
+
+    #header20 .col-s-center {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        float: none;
+    }
+}

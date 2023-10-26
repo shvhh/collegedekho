@@ -1,0 +1,270 @@
+
+
+
+<div class="sidebar-menu">
+    <ul class="menu">
+      <li class="sidebar-title">Menu</li>
+
+      <li class="sidebar-item active">
+        <a href="/admin/" class="sidebar-link">
+          <i class="bi bi-grid-fill"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+
+      <!-- <li class="sidebar-item">
+        <a href="/admin/leadByMonth" class="sidebar-link">
+          <i class="bi bi-journal-check"></i>
+          <span>hit api</span>
+        </a>
+
+      
+      </li> -->
+           
+
+
+
+      <li class="sidebar-item has-sub">
+        <a href="#" class="sidebar-link">
+          <i class="bi bi-journal-check"></i>
+          <span> Course Category</span>
+        </a>
+
+        <ul class="submenu">
+      
+
+          <li class="submenu-item">
+            <a href="/admin/courseCategoryList" class="submenu-link"
+              >Course Category list</a
+            >
+          </li>
+        </ul>
+      </li>
+
+  
+      <li class="sidebar-item has-sub">
+        <a href="#" class="sidebar-link">
+          <i class="bi bi-journal-check"></i>
+          <span> Course </span>
+        </a>
+
+        <ul class="submenu">
+      
+
+          <li class="submenu-item">
+            <a href="/admin/courseList" class="submenu-link"
+              > Course list</a
+            >
+          </li>
+        </ul>
+      </li>
+  
+
+      <li class="sidebar-item has-sub">
+        <a href="#" class="sidebar-link">
+          <i class="bi bi-journal-check"></i>
+          <span> Sub Course </span>
+        </a>
+
+        <ul class="submenu">
+      
+
+          <li class="submenu-item">
+            <a href="/admin/subCourseList" class="submenu-link"
+              > Sub Course list</a
+            >
+          </li>
+        </ul>
+      </li>
+  
+  
+
+      <li class="sidebar-item has-sub">
+        <a href="#" class="sidebar-link">
+          <i class="bi bi-journal-check"></i>
+          <span>Exam Category </span>
+        </a>
+
+        <ul class="submenu">
+      
+
+          <li class="submenu-item">
+            <a href="/admin/examCategoryList" class="submenu-link"
+              > Exam Category list</a
+            >
+          </li>
+        </ul>
+      </li>
+ 
+
+      <li class="sidebar-item has-sub">
+        <a href="#" class="sidebar-link">
+          <i class="bi bi-journal-check"></i>
+          <span>Exam</span>
+        </a>
+
+        <ul class="submenu">
+      
+
+          <li class="submenu-item">
+            <a href="/admin/examList" class="submenu-link"
+              > Exam list</a
+            >
+          </li>
+        </ul>
+      </li>
+ 
+
+      <li class="sidebar-item has-sub">
+        <a href="#" class="sidebar-link">
+          <i class="bi bi-journal-check"></i>
+          <span>College</span>
+        </a>
+
+        <ul class="submenu">
+      
+
+          <li class="submenu-item">
+            <a href="/admin/collegeList" class="submenu-link"
+              > College list</a
+            >
+          </li>
+        </ul>
+      </li>
+
+      <li class="sidebar-item has-sub">
+        <a href="#" class="sidebar-link">
+          <i class="bi bi-journal-check"></i>
+          <span>FAQ</span>
+        </a>
+
+        <ul class="submenu">
+      
+
+          <li class="submenu-item">
+            <a href="/admin/faqList" class="submenu-link"
+              >FAQ </a
+            >
+          </li>
+        </ul>
+      </li>
+
+
+
+      <li class="sidebar-item has-sub">
+        <a href="#" class="sidebar-link">
+          <i class="bi bi-journal-check"></i>
+          <span>Careers Category</span>
+        </a>
+
+        <ul class="submenu">
+      
+
+          <li class="submenu-item">
+            <a href="/admin/careerCategoryList" class="submenu-link"
+              >Careers Category list </a
+            >
+          </li>
+        </ul>
+      </li>
+
+      <li class="sidebar-item has-sub">
+        <a href="#" class="sidebar-link">
+          <i class="bi bi-journal-check"></i>
+          <span>Careers </span>
+        </a>
+
+        <ul class="submenu">
+      
+
+          <li class="submenu-item">
+            <a href="/admin/careerList" class="submenu-link"
+              >Careers  list </a
+            >
+          </li>
+        </ul>
+      </li>
+
+
+      <li class="sidebar-item has-sub">
+        <a href="#" class="sidebar-link">
+          <i class="bi bi-journal-check"></i>
+          <span>Slider </span>
+        </a>
+
+        <ul class="submenu">
+      
+
+          <li class="submenu-item">
+            <a href="/admin/sliderList" class="submenu-link"
+              >Slider  list </a
+            >
+          </li>
+        </ul>
+      </li>
+
+        </ul>
+      </li> 
+
+      </li>
+    </ul>
+  </div>
+  <script src="/public/assets/extensions/jquery/jquery.min.js"></script>
+  <script>
+
+$('.sidebar-item').click(function(){
+    $('.sidebar-item').removeClass('active');
+
+     $('.sidebar-item').removeClass('active');
+
+
+     $(this).addClass('active');
+    //  console.log('clicked')
+  })
+
+
+
+
+
+
+  $('.submenu-item a').each(function(){
+    if($(this).attr('href') == window.location.pathname){
+
+      console.log($(this).attr('href'))
+      console.log(window.location.pathname)
+     $('.sidebar-item ').removeClass('active');
+
+      $('.sidebar-item').removeClass('active');
+
+
+      $(this).parent().parent().parent().addClass('active');
+      console.log($(this).parent().parent().parent())
+     
+   
+    }
+    else{
+      console.log('not matched')
+    }
+  })
+
+  $('a.sidebar-link').each(function(){
+    if($(this).attr('href') == window.location.pathname){
+
+      console.log($(this).attr('href'))
+      console.log(window.location.pathname)
+     $('a.sidebar-item').removeClass('active');
+      $('.sidebar-item').removeClass('active');
+
+
+      $(this).parent().addClass('active');
+      // console.log($(this).parent().parent().parent())
+   
+    }
+    else{
+      console.log('not matched')
+    }
+  })
+
+
+
+  </script>
