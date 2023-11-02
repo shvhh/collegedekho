@@ -180,7 +180,7 @@ routes.post("/categoryCreate", AdminAuth(["admin"]), async (req, res) => {
 routes.get("/courseCategoryList", AdminAuth(["admin"]), async (req, res) => {
   try {
     const data = await courseCategory.find().sort({ createdAt: -1 }).lean();
-    res.render("pages/courseCategoryList", {
+    res.render("pages/courseCategorylist", {
       data,
     });
   } catch (error) {
@@ -328,7 +328,7 @@ routes.get("/courseList", AdminAuth(["admin"]), async (req, res) => {
       element.courseCategoryName = category.category;
     });
 
-    res.render("pages/courseList", {
+    res.render("pages/courselist", {
       data,
       message: "",
     });
@@ -572,7 +572,7 @@ routes.get("/subCourseList", AdminAuth(["admin"]), async (req, res) => {
   try {
     const data = await subCourse.find().sort({ createdAt: -1 }).lean();
 
-    res.render("pages/subCourseList", {
+    res.render("pages/subCourselist", {
       data,
       message: "",
     });
@@ -683,7 +683,7 @@ routes.post("/examCategoryCreate", AdminAuth(["admin"]), async (req, res) => {
 routes.get("/examCategoryList", AdminAuth(["admin"]), async (req, res) => {
   try {
     const data = await ExamCategory.find().sort({ createdAt: -1 }).lean();
-    res.render("pages/examCategoryList", {
+    res.render("pages/examCategorylist", {
       data,
       message: "",
     });
@@ -808,7 +808,7 @@ routes.post("/examCreate", AdminAuth(["admin"]), async (req, res) => {
 routes.get("/examList", AdminAuth(["admin"]), async (req, res) => {
   try {
     const data = await Exam.find().sort({ createdAt: -1 }).lean();
-    res.render("pages/examList", {
+    res.render("pages/examlist", {
       data,
       message: "",
     });
@@ -1389,7 +1389,7 @@ routes.get(
 routes.get("/faqList", AdminAuth(["admin"]), async (req, res) => {
   try {
     const data = await Faq.find().sort({ createdAt: -1 }).lean();
-    res.render("pages/faqList", {
+    res.render("pages/faqlist", {
       data,
       message: "",
     });
