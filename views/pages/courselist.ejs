@@ -167,6 +167,7 @@
                     <thead>
                       <tr>
                         <th>Name</th>
+                        <th>Course Category</th>
                         <th>Image</th>
                         <th>Fees</th>
                        
@@ -184,11 +185,12 @@
                       <% data?.forEach(function(data){ %>
 
                       <tr>
-                        <td><%=data.name %></td>
+                        <td><%=data?.name%></td>
+                        <td><%=data?.courseCategoryName%></td>
                          
                         <td>
                           <img
-                          src="<%=data.image%>"
+                          src="<%=data?.image%>"
                          id="img"
                          width="70px"
                           height="70px"
@@ -204,7 +206,7 @@
                  
 
                      
-                        <td><a href="/admin/courseSection/<%=data._id%>"
+                        <td><a href="/admin/courseSection/<%=data?._id%>"
                           class="badge bg-success">Section</a>
                        </td>
 
@@ -212,11 +214,11 @@
 
                      
 
-                        <td><a href="/admin/courseEdit/<%=data._id%>"
+                        <td><a href="/admin/courseEdit/<%=data?._id%>"
                            class="badge bg-success">Edit</a>
                         </td>
 
-                        <td><a href="/admin/courseDelete/<%=data._id%>"
+                        <td><a href="/admin/courseDelete/<%=data?._id%>"
                           class="badge bg-success">Delete</a>
                        </td>
 

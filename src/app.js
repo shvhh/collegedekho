@@ -19,6 +19,7 @@ const College = require("./models/college");
 const course = require("./models/course");
 const courseCategory = require("./models/courseCategory");
 const State = require("./models/state");
+const Career = require("./models/career");
 
 const jwt = require("jsonwebtoken");
 const routes = require("./routes/main");
@@ -129,12 +130,18 @@ function addUserToView(req, res, next) {
 
  
   const courses = await course.find().lean();
+  const careerDetail = await Career.find().lean();
+
+  const userToken = req.cookies.userToken;
+ 
 
 
     let viewData = {
       exam,
       college,
-      courses
+      courses,
+      careerDetail,
+      userToken
     }
     if(data){
       viewData = {...data,...viewData}
@@ -225,98 +232,98 @@ app.listen(port, () => {
 
 // allt state in json/
 
-const state = [
-  "Andhra Pradesh",
-  "Arunachal Pradesh",
-  "Assam",
-  "Bihar",
-  "Chhattisgarh",
-  "Chandigarh (UT)",
-  "Dadra and Nagar Haveli (UT)",
-  "Daman and Diu (UT)",
-  "Delhi (NCT)",
-  "Goa",
-  "Gujarat",
-  "Haryana",
-  "Himachal Pradesh",
-  "Jammu and Kashmir",
-  "Jharkhand",
-  "Karnataka",
-  "Kerala",
-  "Lakshadweep (UT)",
-  "Madhya Pradesh",
-  "Maharashtra",
-  "Manipur",
-  "Meghalaya",
-  "Mizoram",
-  "Nagaland",
-  "Odisha",
-  "Puducherry (UT)",
-  "Punjab",
-  "Rajasthan",
-  "Sikkim",
-  "Tamil Nadu",
-  "Telangana",
-  "Tripura",
-  "Uttarakhand",
-  "Uttar Pradesh",
-  "West Bengal",
-];
+// const state = [
+//   "Andhra Pradesh",
+//   "Arunachal Pradesh",
+//   "Assam",
+//   "Bihar",
+//   "Chhattisgarh",
+//   "Chandigarh (UT)",
+//   "Dadra and Nagar Haveli (UT)",
+//   "Daman and Diu (UT)",
+//   "Delhi (NCT)",
+//   "Goa",
+//   "Gujarat",
+//   "Haryana",
+//   "Himachal Pradesh",
+//   "Jammu and Kashmir",
+//   "Jharkhand",
+//   "Karnataka",
+//   "Kerala",
+//   "Lakshadweep (UT)",
+//   "Madhya Pradesh",
+//   "Maharashtra",
+//   "Manipur",
+//   "Meghalaya",
+//   "Mizoram",
+//   "Nagaland",
+//   "Odisha",
+//   "Puducherry (UT)",
+//   "Punjab",
+//   "Rajasthan",
+//   "Sikkim",
+//   "Tamil Nadu",
+//   "Telangana",
+//   "Tripura",
+//   "Uttarakhand",
+//   "Uttar Pradesh",
+//   "West Bengal",
+// ];
 
-const states = async (state) => {
-  const data = await State.findOne({ name: state }).lean();
+// const states = async (state) => {
+//   const data = await State.findOne({ name: state }).lean();
 
-  if (!data) {
-    State.create({
-      name: state,
-    });
-  }
-};
+//   if (!data) {
+//     State.create({
+//       name: state,
+//     });
+//   }
+// };
 
-for (let i = 0; i < state.length; i++) {
-  states(state[i]);
-}
+// for (let i = 0; i < state.length; i++) {
+//   states(state[i]);
+// }
 
-// Andhra pradesh/
-const district = [
-  "Alipurduar",
-  "Bankura",
-  "Birbhum",
-  "Burdwan (Bardhaman)",
-  "Cooch Behar",
-  "Dakshin Dinajpur (South Dinajpur)",
-  "Darjeeling",
-  "Hooghly",
-  "Howrah",
-  "Jalpaiguri",
-  "Kalimpong",
-  "Kolkata",
-  "Malda",
-  "Murshidabad",
-  "Nadia",
-  "North 24 Parganas",
-  "Paschim Medinipur (West Medinipur)",
-  "Purba Medinipur (East Medinipur)",
-  "Purulia",
-  "South 24 Parganas",
-  "Uttar Dinajpur (North Dinajpur)",
-];
+// // Andhra pradesh/
+// const district = [
+//   "Alipurduar",
+//   "Bankura",
+//   "Birbhum",
+//   "Burdwan (Bardhaman)",
+//   "Cooch Behar",
+//   "Dakshin Dinajpur (South Dinajpur)",
+//   "Darjeeling",
+//   "Hooghly",
+//   "Howrah",
+//   "Jalpaiguri",
+//   "Kalimpong",
+//   "Kolkata",
+//   "Malda",
+//   "Murshidabad",
+//   "Nadia",
+//   "North 24 Parganas",
+//   "Paschim Medinipur (West Medinipur)",
+//   "Purba Medinipur (East Medinipur)",
+//   "Purulia",
+//   "South 24 Parganas",
+//   "Uttar Dinajpur (North Dinajpur)",
+// ];
 
-const id = "651e91e01c02fa3330071b5e";
+// const id = "651e91e01c02fa3330071b5e";
 
-const districts = async (district) => {
-  const data = await District.findOne({ stateId: id, name: district }).lean();
+// const districts = async (district) => {
+//   const data = await District.findOne({ stateId: id, name: district }).lean();
 
-  if (!data) {
-    District.create({
-      stateId: id,
-      name: district,
-    });
-  }
-};
-for (let i = 0; i < district.length; i++) {
-  districts(district[i]);
-}
+//   if (!data) {
+//     District.create({
+//       stateId: id,
+//       name: district,
+//     });
+//   }
+// };
+// for (let i = 0; i < district.length; i++) {
+//   districts(district[i]);
+// }
 
 // Arunchal pradesh/
 

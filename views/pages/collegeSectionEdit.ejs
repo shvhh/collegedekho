@@ -122,7 +122,7 @@
           <div class="page-title">
             <div class="row">
               <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>  College Section</h3>
+                <h3>  <%=data?.name%> Section</h3>
                 <!-- <p class="text-subtitle text-muted">
                   Powerful interactive tables with datatables (jQuery required).
                 </p> -->
@@ -185,7 +185,7 @@
                         <td>OverView</td>
                      
 
-                        <td><a href="/admin/editCollegeSectionForUpdate/<%=data._id%>/overView"
+                        <td><a href="/admin/editCollegeSectionForUpdate/<%=data?._id%>/overView"
                            class="badge bg-success">Edit</a>
                         </td>
  </tr>
@@ -193,7 +193,7 @@
  <tr>
   <td>courses</td>
 
-  <td><a href="/admin/editCollegeSectionForUpdate/<%=data._id%>/courses"
+  <td><a href="/admin/editCollegeSectionForUpdate/<%=data?._id%>/courses"
     class="badge bg-success">Edit</a>
  </td>
 
@@ -204,7 +204,7 @@
 <tr>
   <td>admission</td>
 
-  <td><a href="/admin/editCollegeSectionForUpdate/<%=data._id%>/admission"
+  <td><a href="/admin/editCollegeSectionForUpdate/<%=data?._id%>/admission"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -215,7 +215,7 @@
 <tr>
   <td>ScholarShip</td>
 
-  <td><a href="/admin/editCollegeSectionForUpdate/<%=data._id%>/scholarShip"
+  <td><a href="/admin/editCollegeSectionForUpdate/<%=data?._id%>/scholarShip"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -226,7 +226,7 @@
 <tr>
   <td>placement</td>
 
-  <td><a href="/admin/editCollegeSectionForUpdate/<%=data._id%>/placement"
+  <td><a href="/admin/editCollegeSectionForUpdate/<%=data?._id%>/placement"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -237,7 +237,7 @@
 <tr>
   <td>campus</td>
 
-  <td><a href="/admin/editCollegeSectionForUpdate/<%=data._id%>/campus"
+  <td><a href="/admin/editCollegeSectionForUpdate/<%=data?._id%>/campus"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -245,7 +245,7 @@
 
 </tr>
 
-<tr>
+<!-- <tr>
   <td>gallery </td>
 
   <td><a href="/admin/editCollegeSectionForUpdate/<%=data._id%>/gallery"
@@ -254,7 +254,7 @@
 
 
 
-</tr>
+</tr> -->
 
 
 
@@ -262,7 +262,7 @@
 <tr>
   <td>Reviews </td>
 
-  <td><a href="/admin/editCollegeSectionForUpdate/<%=data._id%>/reviews"
+  <td><a href="/admin/editCollegeSectionForUpdate/<%=data?._id%>/reviews"
      class="badge bg-success">Edit</a>
   </td>
 

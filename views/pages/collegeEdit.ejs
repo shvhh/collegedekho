@@ -131,14 +131,14 @@
                 </div>
                 <div class="card-content">
                   <div class="card-body">
-                    <form action="/admin/collegeUpdate/<%=collegeData._id%>" method="post" enctype="multipart/form-data">
+                    <form action="/admin/collegeUpdate/<%=collegeData?._id%>" method="post" enctype="multipart/form-data">
                       <div class="row">
 
 
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Name" name="name" value="<%=collegeData.name%>" data-parsley-required="true" required />
+                            <input type="text" class="form-control" placeholder="Enter Name" name="name" value="<%=collegeData?.name%>" data-parsley-required="true" required />
                           </div>
                         </div>
 
@@ -160,8 +160,8 @@
                         <select class="form-select" aria-label="Default select example" id="cars"onchange="getDistrict(this)"  name="stateId" >
                      
                           <option value="">Open this select menu</option>
-          <% state.forEach(function(state){ %>
-                          <option value="<%=state._id%>"<%= (`${state._id}` === `${collegeData.stateId}`)? 'selected' : '' %>><%=state.name%></option>
+          <% state?.forEach(function(state){ %>
+                          <option value="<%=state?._id%>"<%= (`${state?._id}` === `${collegeData?.stateId}`)? 'selected' : '' %>><%=state?.name%></option>
 
           <% }) %>
                         </select>
@@ -189,7 +189,7 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Address</label>
-                            <input type="text" class="form-control" placeholder="Enter Address" value="<%=collegeData.address%>" name="address" data-parsley-required="true" required />
+                            <input type="text" class="form-control" placeholder="Enter Address" value="<%=collegeData?.address%>" name="address" data-parsley-required="true" required />
                           </div>
                         </div>
 
@@ -203,8 +203,8 @@
                      
                           <option value="">Open this select menu</option>
           
-                          <% courseCategoryDetail.forEach(function(courseCategoryDetail){ %>
-                          <option value="<%=courseCategoryDetail._id%>"<%= (`${courseCategoryDetail._id}` === `${collegeData.courseCategoryId}`)? 'selected' : '' %>><%=courseCategoryDetail.category%></option>
+                          <% courseCategoryDetail?.forEach(function(courseCategoryDetail){ %>
+                          <option value="<%=courseCategoryDetail?._id%>"<%= (`${courseCategoryDetail?._id}` === `${collegeData?.courseCategoryId}`)? 'selected' : '' %>><%=courseCategoryDetail?.category%></option>
 
                        
                           <% }) %>
@@ -408,7 +408,7 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Keyword</label>
-                            <input type="text" class="form-control" placeholder="Enter Keyword" value="<%=collegeData.slag%>" name="metaKeyword" data-parsley-required="true"  />
+                            <input type="text" class="form-control" placeholder="Enter Keyword" value="<%=collegeData?.slag%>" name="metaKeyword" data-parsley-required="true"  />
                           </div>
                         </div> 
 
@@ -417,7 +417,7 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Title</label>
-                            <input type="text" class="form-control" placeholder="Enter Title" value="<%=collegeData.metaTitle%>" name="metaTitle" data-parsley-required="true"  />
+                            <input type="text" class="form-control" placeholder="Enter Title" value="<%=collegeData?.metaTitle%>" name="metaTitle" data-parsley-required="true"  />
                           </div>
                         </div> 
 
@@ -425,7 +425,7 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Description</label>
-                            <input type="text" class="form-control" placeholder="Enter Description" value="<%=collegeData.metaDescription%>" name="metaDescription" data-parsley-required="true"  />
+                            <input type="text" class="form-control" placeholder="Enter Description" value="<%=collegeData?.metaDescription%>" name="metaDescription" data-parsley-required="true"  />
                           </div>
                         </div> 
 
@@ -433,7 +433,7 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Colonial</label>
-                            <input type="text" class="form-control" placeholder="Enter Canonical" value="<%=collegeData.canonical%>" name="canonical" data-parsley-required="true"  />
+                            <input type="text" class="form-control" placeholder="Enter Canonical" value="<%=collegeData?.canonical%>" name="canonical" data-parsley-required="true"  />
                           </div>
                         </div> 
 
@@ -444,7 +444,7 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Approved Field</label>
-                            <input type="text" class="form-control" placeholder="Enter Approved" value="<%=collegeData.approvedField%>" name="approvedField" data-parsley-required="true"  />
+                            <input type="text" class="form-control" placeholder="Enter Approved" value="<%=collegeData?.approvedField%>" name="approvedField" data-parsley-required="true"  />
                           </div>
                         </div> 
 
@@ -470,7 +470,7 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Alt For Image</label>
-                            <input type="text" class="form-control" placeholder="Enter Alt For Image" value="<%=collegeData.altForImage%>" name="altForImage" data-parsley-required="true" required />
+                            <input type="text" class="form-control" placeholder="Enter Alt For Image" value="<%=collegeData?.altForImage%>" name="altForImage" data-parsley-required="true" required />
                           </div>
                         </div>
 
@@ -500,7 +500,7 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Alt For Icon</label>
-                            <input type="text" class="form-control" placeholder="Enter Alt For Icon" value="<%=collegeData.altForIcon%>" name="altForIcon" data-parsley-required="true" />
+                            <input type="text" class="form-control" placeholder="Enter Alt For Icon" value="<%=collegeData?.altForIcon%>" name="altForIcon" data-parsley-required="true" />
                           </div>
                         </div>
 
@@ -520,7 +520,7 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Ranking  </label>
-                            <input type="text" class="form-control" placeholder="Enter Ranking" value="<%=collegeData.ranking%>" name="ranking" data-parsley-required="true" required />
+                            <input type="text" class="form-control" placeholder="Enter Ranking" value="<%=collegeData?.ranking%>" name="ranking" data-parsley-required="true" required />
                           </div>
                         </div>
 
@@ -529,20 +529,20 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">CutOfff  </label>
-                            <input type="text" class="form-control" placeholder="Enter CutOff"  value="<%=collegeData.cutOff%>"name="cutOff" data-parsley-required="true" required />
+                            <input type="text" class="form-control" placeholder="Enter CutOff"  value="<%=collegeData?.cutOff%>"name="cutOff" data-parsley-required="true" required />
                           </div>
                         </div>
                            
                       <div class="col-md-6 col-12">
                         <div class="form-group mandatory">
                           <label for="first-name-column" class="form-label">Application Date</label>
-                          <input type="text"  class="form-control"  id="allDate" name="applicationDate" value="<%=collegeData.date%>"  required/ >
+                          <input type="text"  class="form-control"  id="allDate" name="applicationDate" value="<%=collegeData?.date%>"  required/ >
                           <!-- <input id="datedata" class="form-control" placeholder="Enter Date" name="dateRange" data-parsley-required="true" required /> -->
                         </div>
                       </div> 
 
 
-<%if(collegeData.isPopular==true){%>
+<%if(collegeData?.isPopular==true){%>
                         <div>
                           <input type="checkbox" id="vehicle1"checked name="isPopular" >
                           <label for="popular">Popular College</label><br>
@@ -555,7 +555,7 @@
                         <% } %>
 
   
-<%if(collegeData.isTop==true){%>
+<%if(collegeData?.isTop==true){%>
   
                         <div>
                           <input type="checkbox" id="vehicle3" checked name="isTop" >

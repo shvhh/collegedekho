@@ -26,6 +26,8 @@ const carrerCategory = require("../models/carrerCategory");
 const Career = require("../models/career");
 const Slider = require("../models/slider");
 const slider = require("../models/slider");
+const User = require("../models/user");
+const SearchHistory = require("../models/searchHistory");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -45,7 +47,12 @@ var multiupload2 = upload.fields([
 var multiupload = upload.fields([{ name: "gallery", maxCount: 20 }]);
 
 routes.get("/", AdminAuth(["admin"]), async (req, res) => {
-  res.render("pages/dashboard", {});
+  const college = await College.find().lean();
+  const course = await Course.find().lean();
+  const exam = await Exam.find().lean();
+  const user = await User.find().lean();
+  const career = await Career.find().lean();
+  res.render("pages/dashboard", { college, course, exam, user, career });
 });
 
 routes.get("/login", async (req, res) => {
@@ -146,10 +153,6 @@ routes.post("/categoryCreate", AdminAuth(["admin"]), async (req, res) => {
   try {
     req.body.category = req.body.category;
 
-    console.log(req.body.isTop);
-    console.log("BOdgggvhgvgvy",req.body);
-
-
     const data = await courseCategory.find().lean();
     if (req.body.isTop == "on") {
       req.body.isTop = true;
@@ -204,24 +207,17 @@ routes.get("/categoryEdit/:id", AdminAuth(["admin"]), async (req, res) => {
 
 routes.post("/categoryUpdate/:id", AdminAuth(["admin"]), async (req, res) => {
   try {
- 
     const data = await courseCategory.find().lean();
 
+    if (req.body.isTop == "on") {
+      req.body.isTop = true;
 
-
-  if (req.body.isTop == "on") {
-    console.log("isTop is on");
-    req.body.isTop = true;
-
-    console.log("BOdgggvhgvgvy");
-  
-    data.forEach(async (item) => {
-      await courseCategory.findByIdAndUpdate(item._id, { isTop: false });
-    });
-  } else {
-    req.body.isTop = false;
-  }
-
+      data.forEach(async (item) => {
+        await courseCategory.findByIdAndUpdate(item._id, { isTop: false });
+      });
+    } else {
+      req.body.isTop = false;
+    }
 
     const id = req.params.id;
     const category = req.body.category;
@@ -266,7 +262,7 @@ routes.get(
 
 routes.get("/course", AdminAuth(["admin"]), async (req, res) => {
   try {
-    const category = await courseCategory.find();
+    const category = await courseCategory.find({ isDisabled: false }).lean();
 
     res.render("pages/courseCreate", {
       category,
@@ -295,9 +291,16 @@ routes.post(
       } else {
         req.body.isTop = false;
       }
+      if (req.body.courseCategoryId) {
+        req.body.courseCategoryId = req.body.courseCategoryId;
+        const category = await courseCategory.findById(
+          req.body.courseCategoryId
+        );
+        req.body.courseCategoryName = category.category;
+      }
 
       const data = await Course.create(req.body);
-      console.log(data);
+
       res.redirect("/admin/courseList");
     } catch (error) {
       console.log(error);
@@ -316,10 +319,13 @@ routes.get("/courseList", AdminAuth(["admin"]), async (req, res) => {
   try {
     const data = await Course.find().sort({ createdAt: -1 }).lean();
 
-    // join the from and to fees
-
     data?.forEach((element) => {
       element.fees = element?.fees?.from + " - " + element?.fees?.to;
+    });
+
+    data?.forEach(async (element) => {
+      const category = await courseCategory.findById(element.courseCategoryId);
+      element.courseCategoryName = category.category;
     });
 
     res.render("pages/courseList", {
@@ -339,17 +345,26 @@ routes.get("/courseEdit/:id", AdminAuth(["admin"]), async (req, res) => {
 
     const data = await Course.findById(id);
 
-    const category = await courseCategory.find().lean();
-
-    console.log(data.fees.from);
-    console.log(data.fees.to);
+    const category = await courseCategory.find({ isDisabled: false }).lean();
 
     const fees = data?.fees.from + " - " + data?.fees.to;
+
+    const mode = [
+      "None",
+      "Regular/Distance/Part-time",
+      "Part-time",
+      "Regular/Part-time/Distance",
+      "Regular/Distance",
+      "Regular",
+      "Full time",
+      "Distance",
+    ];
 
     res.render("pages/courseEdit", {
       data,
       fees,
       category,
+      mode,
     });
   } catch (error) {
     console.log(error);
@@ -383,8 +398,16 @@ routes.post(
         req.body.image = course.image;
       }
 
-      if (!req.body.courseCategory) {
+      if (!req.body.courseCategoryId) {
         req.body.courseCategoryId = course.courseCategoryId;
+      }
+
+      if (req.body.courseCategoryId) {
+        req.body.courseCategoryId = req.body.courseCategoryId;
+        const category = await courseCategory.findById(
+          req.body.courseCategoryId
+        );
+        req.body.courseCategoryName = category.category;
       }
 
       const data = await Course.findByIdAndUpdate(id, req.body);
@@ -442,9 +465,6 @@ routes.post(
     try {
       const id = req.params.id;
       const section = req.params.section;
-      console.log(section);
-      console.log(req.body[section]);
-      console.log(id);
 
       const data = await Course.findById(id);
       // update the field by section name
@@ -452,7 +472,7 @@ routes.post(
       const update = await Course.findByIdAndUpdate(id, {
         [section]: req.body[section],
       });
-      console.log(update);
+
       res.redirect("/admin/courseSection/" + id);
     } catch (error) {
       console.log(error);
@@ -735,7 +755,9 @@ routes.get("/logout", (req, res) => {
 
 routes.get("/exam", AdminAuth(["admin"]), async (req, res) => {
   try {
-    const data = await ExamCategory.find().sort({ createdAt: -1 }).lean();
+    const data = await ExamCategory.find({ isDisabled: false })
+      .sort({ createdAt: -1 })
+      .lean();
     const course = await Course.find().lean();
 
     res.render("pages/examCreate", {
@@ -748,10 +770,10 @@ routes.get("/exam", AdminAuth(["admin"]), async (req, res) => {
 
 routes.post("/examCreate", AdminAuth(["admin"]), async (req, res) => {
   try {
-    const appicationDate = req.body.appicationDate.split(" - ");
-    req.body.appicationDate = {
-      from: appicationDate[0],
-      to: appicationDate[1],
+    const applicationDate = req.body.applicationDate.split(" - ");
+    req.body.applicationDate = {
+      from: applicationDate[0],
+      to: applicationDate[1],
     };
 
     const examDate = req.body.examDate.split(" - ");
@@ -760,7 +782,11 @@ routes.post("/examCreate", AdminAuth(["admin"]), async (req, res) => {
       to: examDate[1],
     };
 
-    //  if req.body.section[0][heading] is empty then paste default data in it/
+    if (req.body.examCategoryId) {
+      req.body.examCategoryId = req.body.examCategoryId;
+      const examCategory = await ExamCategory.findById(req.body.examCategoryId);
+      req.body.examCategoryName = examCategory?.examCategory;
+    }
 
     const data = await Exam.create(req.body);
 
@@ -797,14 +823,16 @@ routes.get("/examEdit/:id", AdminAuth(["admin"]), async (req, res) => {
   try {
     const id = req.params.id;
     const examDetail = await Exam.findById(id);
-    const data = await ExamCategory.find().sort({ createdAt: -1 }).lean();
+    const data = await ExamCategory.find({ isDisabled: false })
+      .sort({ createdAt: -1 })
+      .lean();
     const course = await Course.find().lean();
 
     // applicant date
-    examDetail.from = moment(examDetail.appicationDate.from).format(
+    examDetail.from = moment(examDetail.applicationDate.from).format(
       "MM/DD/YYYY"
     );
-    examDetail.to = moment(examDetail.appicationDate.to).format("MM/DD/YYYY");
+    examDetail.to = moment(examDetail.applicationDate.to).format("MM/DD/YYYY");
 
     examDetail.date = examDetail.from + " - " + examDetail.to;
 
@@ -842,17 +870,24 @@ routes.post("/examUpdate/:id", AdminAuth(["admin"]), async (req, res) => {
     const data = await Exam.findById(id);
 
     if (!req.body.examCategoryId) {
-      req.body.examCategoryId = data.examCategoryId;
+      req.body.examCategoryId = data?.examCategoryId;
+      req.body.examCategoryName = data?.examCategoryName;
+    }
+
+    if (req.body.examCategoryId) {
+      req.body.examCategoryId = req.body.examCategoryId;
+      const examCategory = await ExamCategory.findById(req.body.examCategoryId);
+      req.body.examCategoryName = examCategory?.examCategory;
     }
     if (!req.body.courseId) {
       req.body.courseId = data.courseId;
     }
 
-    if (req.body.appicationDate) {
-      const appicationDate = req.body.appicationDate.split(" - ");
-      req.body.appicationDate = {
-        from: appicationDate[0],
-        to: appicationDate[1],
+    if (req.body.applicationDate) {
+      const applicationDate = req.body.applicationDate.split(" - ");
+      req.body.applicationDate = {
+        from: applicationDate[0],
+        to: applicationDate[1],
       };
     }
 
@@ -936,20 +971,7 @@ routes.post(
   AdminAuth(["admin"]),
   async (req, res) => {
     try {
-      console.log(req.body);
       const id = req.params.id;
-      // const section = req.params.section;
-      // console.log(section)
-      // console.log(req.body[section])
-      // console.log(id)
-
-      // const data = await Exam.findById(id);
-      // // update the field by section name
-
-      // const update = await Exam.findByIdAndUpdate(id,{
-      //   [section]:req.body[section],
-      // })
-      // console.log(update)
 
       const update = await Exam.findByIdAndUpdate(id, req.body);
 
@@ -1018,11 +1040,9 @@ routes.get(
   async (req, res) => {
     try {
       const id = req.query.courseCategoryId;
-      console.log(id);
-      console.log("hello");
+
       const course = await Course.find({ courseCategoryId: id }).lean();
-      console.log("courselength");
-      console.log(course.length);
+
       res.send(course);
     } catch (error) {}
   }
@@ -1036,13 +1056,12 @@ routes.post(
   multiupload2,
   async (req, res) => {
     try {
-
       const applicationDate = req.body.applicationDate.split(" - ");
       req.body.applicationDate = {
         from: applicationDate[0],
         to: applicationDate[1],
       };
-  
+
       const data = await College.create(req.body);
       res.redirect("/admin/collegeList");
     } catch (error) {
@@ -1085,18 +1104,11 @@ routes.get("/collegeList", AdminAuth(["admin"]), async (req, res) => {
 routes.get("/getSubCourseId", AdminAuth(["admin"]), async (req, res) => {
   try {
     const courseId = req.query.courseId;
-    console.log(courseId);
-    //     // get the subCourseId by using courseId
-    //     const id = [courseId]
-    // console.log(id)
-
-    // courseId is multi//
 
     const id = courseId.split(",");
-    console.log(id);
 
     const subCourseId = await subCourse.find({ courseId: id }).lean();
-    console.log(subCourseId.length);
+
     res.send(subCourseId);
   } catch (error) {
     console.log(error);
@@ -1108,9 +1120,9 @@ routes.get("/getSubCourseId", AdminAuth(["admin"]), async (req, res) => {
 routes.get("/getDistrictByStateId", AdminAuth(["admin"]), async (req, res) => {
   try {
     const id = req.query.stateId;
-    console.log(id);
+
     const district = await District.find({ stateId: id }).lean();
-    console.log(district.length);
+
     res.send(district);
   } catch (error) {}
 });
@@ -1135,16 +1147,16 @@ routes.get("/collegeEdit/:id", AdminAuth(["admin"]), async (req, res) => {
       .sort({ createdAt: -1 })
       .lean();
 
-// collegeDate convert to mmddyyy
+    // collegeDate convert to mmddyyy
 
+    collegeData.from = moment(collegeData?.applicationDate?.from).format(
+      "MM/DD/YYYY"
+    );
+    collegeData.to = moment(collegeData?.applicationDate?.to).format(
+      "MM/DD/YYYY"
+    );
 
-collegeData.from = moment(collegeData?.applicationDate?.from).format(
-  "MM/DD/YYYY"
-);
-collegeData.to = moment(collegeData?.applicationDate?.to).format("MM/DD/YYYY");
-
-collegeData.date = collegeData.from + " - " + collegeData.to;
-
+    collegeData.date = collegeData.from + " - " + collegeData.to;
 
     const course = await Course.find().lean();
     const data = await subCourse.find().lean();
@@ -1155,7 +1167,6 @@ collegeData.date = collegeData.from + " - " + collegeData.to;
     const examData = collegeData.examId;
     const hostelData = collegeData.hostel;
     const facilityData = collegeData.facility;
-
 
     const courseData = await Course.find({ _id: courses }).lean();
 
@@ -1336,7 +1347,7 @@ routes.get(
       // find that array by section name
 
       const sectionData = data[section];
-      console.log(sectionData);
+
       res.render("pages/collegeSectionUpdate", {
         data,
         section,
@@ -1406,10 +1417,9 @@ routes.get("/faq", AdminAuth(["admin"]), async (req, res) => {
 routes.post("/faqCreate", AdminAuth(["admin"]), async (req, res) => {
   try {
     const courseId = req.body.courseId;
-    console.log(courseId);
 
     const courseData = await Course.findById(courseId);
-    console.log(courseData);
+
     req.body.courseName = courseData.name;
 
     const data = await Faq.create(req.body);
@@ -1570,7 +1580,10 @@ routes.get(
 
 routes.get("/career", AdminAuth(["admin"]), async (req, res) => {
   try {
-    const data = await carrerCategory.find().sort({ createdAt: -1 }).lean();
+    const data = await carrerCategory
+      .find({ isDisabled: false })
+      .sort({ createdAt: -1 })
+      .lean();
     res.render("pages/careerCreate", {
       data,
       message: "",
@@ -1606,7 +1619,7 @@ routes.get("/careerEdit/:id", AdminAuth(["admin"]), async (req, res) => {
     const id = req.params.id;
     const data = await Career.findById(id);
     const careerCategory = await carrerCategory
-      .find()
+      .find({ isDisabled: false })
       .sort({ createdAt: -1 })
       .lean();
 
@@ -1648,7 +1661,6 @@ routes.get("/careerSection/:id", AdminAuth(["admin"]), async (req, res) => {
     const id = req.params.id;
     const data = await Career.findById(id);
 
-    console.log(id);
     // put all section in careerSection
 
     // const section =   [data.section,data.importantDates,data.applicationForm,data.eligibility,data.admitCard,data.syllabus,data.examPattern,data.counsellingProccess,data.howToPrepare,data.coachingInstitute,data.participateCollege,data.faq,data.newsArticle,data.result,data.seatAllotment,data.cutOff,data.meritList,data.bestBook,data.collegePredictor]
@@ -1675,8 +1687,6 @@ routes.get(
       // find that array by section name
 
       const sectionData = data[section];
-
-      console.log(sectionData);
 
       res.render("pages/careerSectionUpdate", {
         data,
@@ -1721,20 +1731,7 @@ routes.post(
   multiupload2,
   async (req, res) => {
     try {
-      console.log(req.body);
       const id = req.params.id;
-      // const section = req.params.section;
-      // console.log(section)
-      // console.log(req.body[section])
-      // console.log(id)
-
-      // const data = await Exam.findById(id);
-      // // update the field by section name
-
-      // const update = await Exam.findByIdAndUpdate(id,{
-      //   [section]:req.body[section],
-      // })
-      // console.log(update)
 
       const update = await Career.findByIdAndUpdate(id, req.body);
 
@@ -1753,7 +1750,6 @@ routes.post(
   multiupload,
   async (req, res) => {
     try {
-      console.log(req.body);
       const id = req.params.id;
 
       if (req.body.gallery) {
@@ -1854,6 +1850,26 @@ routes.post(
   }
 );
 
+// user list
+
+routes.get("/userList", AdminAuth(["admin"]), async (req, res) => {
+  try {
+    const data = await User.find().sort({ createdAt: -1 }).lean();
+    // convert data.dob to mm/dd/yyyy
+
+    data.forEach((item) => {
+      item.dob = moment(item.dob).format("MM/DD/YYYY");
+    });
+
+    res.render("pages/userlist", {
+      data,
+      message: "",
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 // sliderDelete/
 
 routes.get("/sliderDelete/:id", AdminAuth(["admin"]), async (req, res) => {
@@ -1874,6 +1890,50 @@ routes.post("/file", uploadS3.single("file"), async (req, res) => {
     console.log(error);
   }
 });
+
+routes.get("/userSearchlist", AdminAuth(["admin"]), async (req, res) => {
+  try {
+    const data = await User.find().sort({ createdAt: -1 }).lean();
+    // convert data.dob to mm/dd/yyyy
+
+    data.forEach((item) => {
+      item.dob = moment(item.dob).format("MM/DD/YYYY");
+    });
+
+    res.render("pages/userSearchlist", {
+      data,
+      message: "",
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// get search history  by userId///
+
+routes.get(
+  "/getSearchHistoryByUserId/:id",
+  AdminAuth(["admin"]),
+  async (req, res) => {
+    try {
+      const userId = req.params.id;
+
+      const userDetail = await User.findById(userId);
+      const userName = userDetail?.name;
+      const data = await SearchHistory.find({ userId: userId }).lean();
+
+      data.forEach((item) => {
+        item.createdAt = moment(item.createdAt).format("DD/MM/YYYY");
+      });
+
+      res.render("pages/userWiseSearchHistory", {
+        data,
+        userName,
+        message: "",
+      });
+    } catch (error) {}
+  }
+);
 
 module.exports = routes;
 

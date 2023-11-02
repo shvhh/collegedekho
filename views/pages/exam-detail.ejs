@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <meta charset="utf-8">
+
+    <title><%=examDetail?.metaTitle%></title>
+    <meta name="description" content="<%=examDetail?.metaDescription%>">
+    <meta name="keyword" content="<%=examDetail?.metaKeyword%>">
+    <link rel="canonical" href="<%=examDetail?.canonical%>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/public/css/style.css" rel="stylesheet">
+    <link href="/public/css/responsive.css" rel="stylesheet">
+</head>
+
+<body>
+
+
+
+    <%- include('../partials/navbar')%>
+
+ <p hidden id="examSection"><%=examSection%></p>
+ <p hidden id="examSlag"><%=examDetail?.slag%></p>
+
+    <div class="mainBg">
+        <section class="bannerSec">
+            <div class="container">
+                <div class="bannerTitle">
+                    <img src="/public/images/banner_bg.svg">
+                    <h3><%=examDetail?.heading%></h3>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <form action="/searchByExam" class="searchState">
+                            <i class="fa-regular fa-magnifying-glass"></i>
+                            <input type="text" placeholder="Search"
+                                style="box-shadow: 0px 10px 25px #0000000f;", value="" name="search">
+                                <button type="submit" class="submitBtn">Search</button>
+                        </form>
+                    </div>
+                </div>
+                <img src="/public/images/banner.png" class="w-100 mt-3">
+            </div>
+        </section>
+        <section class="topColleges">
+            <div class="container">
+                <div class="row stateList">
+                    <div class="col-md-3 bg-white py-2">
+                        <ul class="popularStateList">
+                   
+
+                            <a href="/exam-detail/<%=examDetail?.slag%>/section"><li class="linkGet">Section</li></a>
+                            <a href="/exam-detail/<%=examDetail?.slag%>/importantDates"><li class="linkGet">Important Dates</li></a>
+                            <a href="/exam-detail/<%=examDetail?.slag%>/applicationForm"><li class="linkGet">Application Form</li></a>
+                            <a href="/exam-detail/<%=examDetail?.slag%>/eligibility"><li class="linkGet">Eligibility</li></a>
+                            <a href="/exam-detail/<%=examDetail?.slag%>/admitCard"><li class="linkGet">Admit Card</li></a>
+                            <a href="/exam-detail/<%=examDetail?.slag%>/syllabus"><li class="linkGet">Syllabus</li></a>
+                            <a href="/exam-detail/<%=examDetail?.slag%>/examPattern"><li class="linkGet">Exam Pattern</li></a>
+                            <a href="/exam-detail/<%=examDetail?.slag%>/counsellingProccess"><li class="linkGet">Counselling Proccess</li></a>
+                            <a href="/exam-detail/<%=examDetail?.slag%>/howToPrepare"><li class="linkGet">How To Prepare</li></a>
+                            <a href="/exam-detail/<%=examDetail?.slag%>/coachingInstitute"><li class="linkGet">Coaching Institute</li></a>
+                            <a href="/exam-detail/<%=examDetail?.slag%>/participateCollege"><li class="linkGet">Participate College</li></a>
+                            <a href="/exam-detail/<%=examDetail?.slag%>/faq"><li class="linkGet">Faq</li></a>
+                            <a href="/exam-detail/<%=examDetail?.slag%>/newsArticle"><li class="linkGet">News Articles</li></a>
+                            <a href="/exam-detail/<%=examDetail?.slag%>/result"><li class="linkGet">Result</li></a>
+
+                            <a href="/exam-detail/<%=examDetail?.slag%>/seatAllotment"><li class="linkGet">Seat Allotment</li></a>
+                            <a href="/exam-detail/<%=examDetail?.slag%>/cutOff"><li class="linkGet">Cut Off  </li></a>
+                            <a href="/exam-detail/<%=examDetail?.slag%>/meritList"><li class="linkGet">Merit list</li></a>
+
+                            <a href="/exam-detail/<%=examDetail?.slag%>/bestBook">     <li class="linkGet">   Best Book</li></a>
+
+                            <a href="/exam-detail/<%=examDetail?.slag%>/collegePredictor">      <li class="linkGet">   College Predictor</li></a>
+
+                       
+
+                        
+                           
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="boxe">
+                            <h3>CAT 2023 Latest Updates</h3>
+                            <h4>CAT 2023 registration is extended by IIM Lucknow till September 20, 2023 (5:00 PM).</h4>
+                            <ul class="listUpdates">
+                                <li>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        Check CAT 2023 Photo Size Guidelines
+                                        <a href="#!">...Read More</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mockTestCta blocksec">
+                            <div class="box">
+                                <div class="innerBox">
+                                    <img src="https://static.collegedekho.com/static-up/images/mock-test.b117a5ab5b52.svg"
+                                        alt="" loading="lazy">
+                                    <div class="w-75">
+                                        <h2 class="m-0">Start Free Mock Test Now</h2>
+                                        <p>Get real time exam experience with full length mock test and get detailed
+                                            analysis.</p>
+                                        <div class="w-25">
+                                            <a href="#!" class="sampleBtn">Attempt now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+               <% sectionData?.forEach(function(sectionData){ %>
+
+                        <div class="boxe">
+                            <h4><span style="color: #E45330;"><%=sectionData?.heading%>
+                               
+                            </h4>
+                        </div>
+                        <p class="para"><%-sectionData?.description%>
+                       
+                            <span style="color: #E45330;">Check CAT Syllabus and Pattern</span>
+                        </p>
+                        <% }) %>
+
+
+                      
+
+                        <!-- <div class="row justify-content-center py-3">
+                            <div class="col-md-6">
+                                <a href="#!" class="applyBtn">Apply Now</a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="#!" class="checkBtn">Check Eligibility</a>
+                            </div>
+                        </div>
+                        <p class="para">You must prepare to score at least 100 marks to get a 99+ percentile in CAT. The
+                            competition level is very high with almost 2.5 lakh candidates registering from various
+                            backgrounds.
+                            <span style="color: #E45330;">Check CAT 2023 Score vs Percentile</span>
+                        </p> -->
+                    </div>
+
+                    <!-- <div class="col-md-3">
+                        <a href="#!" class="applyBtn">Get More Info</a>
+                        <a href="#!" class="quesBtn my-3">Ask a Question</a>
+                        <a href="#!" class="sampleBtn">Sample Papers</a>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+
+        <section class="subscribeSec">
+            <div class="container">
+                <div class="subscribe">
+                    <h3>Subscribe To Our News Letter</h3>
+                    <p class="pt-3">Get College Notifications, Exam Notifications and News Updates</p>
+                    <form class="form-card">
+                        <div class="d-flex">
+                            <input type="text" id="fname" name="fname" placeholder="Email address">
+                            <input type="text" id="mobile" name="mobile" placeholder="Mobile no">
+                            <select class="form-select" aria-label="Choose your course">
+                                <option selected>Choose your course</option>
+                                <option value="1">Teacher</option>
+                                <option value="2">School Admin</option>
+                                <option value="3">Principal</option>
+                                <option value="4">School Owner</option>
+                                <option value="5">Parent</option>
+                            </select>
+                            <div class="text-center mx-2">
+                                <a href="#!" type="submit" class="submitBtn">Submit</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <%- include('../partials/footer')%>
+
+    <script type="text/javascript" src="/public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/public/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            $('.stateList li').click(function () {
+                $('.stateList li').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+
+      
+        // if id section and li section are same then add class active to li
+
+
+        $(document).ready(function () {
+
+        var examSection = document.getElementById('examSection').innerHTML;
+        var examSlag = document.getElementById('examSlag').innerHTML;
+
+        console.log(examSection);
+
+
+
+
+console.log(examSlag);
+
+   $('.popularStateList a').each(function(){
+   
+
+// console.log('/exam-detauuil/'+examSlag+'/'+examSection);
+ 
+
+         if($(this).attr('href') == '/exam-detail/'+examSlag+'/'+examSection){
+            // add active class on his li child//
+    console.log($(this).attr('href'))
+
+    $(this).children('li').addClass('optionactive');
+
+        
+       
+
+         }
+    });
+    
+            });
+
+     
+
+            // <a href="/exam-detail/<%=examDetail.slag%>/section"><li class="linkGet">Section</li></a>
+
+
+
+
+
+   
+
+   
+
+
+
+      
+ 
+  
+
+
+
+    </script>
+</body>
+</html>

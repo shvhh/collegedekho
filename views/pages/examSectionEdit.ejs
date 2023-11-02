@@ -122,7 +122,7 @@
           <div class="page-title">
             <div class="row">
               <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3> Exam List</h3>
+                <h3> <%=data?.heading%> Section</h3>
                 <!-- <p class="text-subtitle text-muted">
                   Powerful interactive tables with datatables (jQuery required).
                 </p> -->
@@ -154,7 +154,7 @@
               <div class="card-header">
              <!-- <a href="/admin/exam"  type="button" class="btn btn-primary float-start float-lg-end">ADD NEW</a> -->
 
-                <h5 class="card-title">Exam List</h5>
+                <h5 class="card-title">Section</h5>
               </div>
 
               <div class="card-body">
@@ -185,15 +185,15 @@
                         <td>Section</td>
                      
 
-                        <td><a href="/admin/editSectionForUpdate/<%=data._id%>/section"
+                        <td><a href="/admin/editSectionForUpdate/<%=data?._id%>/section"
                            class="badge bg-success">Edit</a>
                         </td>
  </tr>
 
  <tr>
-  <td>ImportantDates</td>
+  <td>Important Dates</td>
 
-  <td><a href="/admin/editSectionForUpdate/<%=data._id%>/importantDates"
+  <td><a href="/admin/editSectionForUpdate/<%=data?._id%>/importantDates"
     class="badge bg-success">Edit</a>
  </td>
 
@@ -204,7 +204,7 @@
 <tr>
   <td>Application Form</td>
 
-  <td><a href="/admin/editSectionForUpdate/<%=data._id%>/applicationForm"
+  <td><a href="/admin/editSectionForUpdate/<%=data?._id%>/applicationForm"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -215,7 +215,7 @@
 <tr>
   <td>Eligibility</td>
 
-  <td><a href="/admin/editSectionForUpdate/<%=data._id%>/eligibility"
+  <td><a href="/admin/editSectionForUpdate/<%=data?._id%>/eligibility"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -224,9 +224,9 @@
 </tr>
 
 <tr>
-  <td>AdmitCard</td>
+  <td>Admit Card</td>
 
-  <td><a href="/admin/editSectionForUpdate/<%=data._id%>/admitCard"
+  <td><a href="/admin/editSectionForUpdate/<%=data?._id%>/admitCard"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -237,7 +237,7 @@
 <tr>
   <td>Syllabus</td>
 
-  <td><a href="/admin/editSectionForUpdate/<%=data._id%>/syllabus"
+  <td><a href="/admin/editSectionForUpdate/<%=data?._id%>/syllabus"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -248,7 +248,7 @@
 <tr>
   <td>Exam Pattern</td>
 
-  <td><a href="/admin/editSectionForUpdate/<%=data._id%>/examPattern"
+  <td><a href="/admin/editSectionForUpdate/<%=data?._id%>/examPattern"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -259,7 +259,7 @@
 <tr>
   <td>Counselling Proccess</td>
 
-  <td><a href="/admin/editSectionForUpdate/<%=data._id%>/counsellingProccess"
+  <td><a href="/admin/editSectionForUpdate/<%=data?._id%>/counsellingProccess"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -270,7 +270,7 @@
 <tr>
   <td>How To Prepare</td>
 
-  <td><a href="/admin/editSectionForUpdate/<%=data._id%>/howToPrepare"
+  <td><a href="/admin/editSectionForUpdate/<%=data?._id%>/howToPrepare"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -281,7 +281,7 @@
 <tr>
   <td>Coaching Institute</td>
 
-  <td><a href="/admin/editSectionForUpdate/<%=data._id%>/coachingInstitute"
+  <td><a href="/admin/editSectionForUpdate/<%=data?._id%>/coachingInstitute"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -292,7 +292,7 @@
 <tr>
   <td>Participate College</td>
 
-  <td><a href="/admin/editSectionForUpdate/<%=data._id%>/participateCollege"
+  <td><a href="/admin/editSectionForUpdate/<%=data?._id%>/participateCollege"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -303,7 +303,7 @@
 <tr>
   <td>Faq</td>
 
-  <td><a href="/admin/editSectionForUpdate/<%=data._id%>/faq"
+  <td><a href="/admin/editSectionForUpdate/<%=data?._id%>/faq"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -314,7 +314,7 @@
 <tr>
   <td>News Article</td>
 
-  <td><a href="/admin/editSectionForUpdate/<%=data._id%>/newsArticle"
+  <td><a href="/admin/editSectionForUpdate/<%=data?._id%>/newsArticle"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -325,7 +325,7 @@
 <tr>
   <td>Result</td>
 
-  <td><a href="/admin/editSectionForUpdate/<%=data._id%>/result"
+  <td><a href="/admin/editSectionForUpdate/<%=data?._id%>/result"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -336,7 +336,7 @@
 <tr>
   <td>Seat Allotment</td>
 
-  <td><a href="/admin/editSectionForUpdate/<%=data._id%>/seatAllotment"
+  <td><a href="/admin/editSectionForUpdate/<%=data?._id%>/seatAllotment"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -346,9 +346,9 @@
 
 
 <tr>
-  <td>CutOff</td>
+  <td>Cut Off</td>
 
-  <td><a href="/admin/editSectionForUpdate/<%=data._id%>/cutOff"
+  <td><a href="/admin/editSectionForUpdate/<%=data?._id%>/cutOff"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -359,7 +359,7 @@
 <tr>
   <td>Merit List</td>
 
-  <td><a href="/admin/editSectionForUpdate/<%=data._id%>/meritList"
+  <td><a href="/admin/editSectionForUpdate/<%=data?._id%>/meritList"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -370,7 +370,7 @@
 <tr>
   <td>Best Book</td>
 
-  <td><a href="/admin/editSectionForUpdate/<%=data._id%>/bestBook"
+  <td><a href="/admin/editSectionForUpdate/<%=data?._id%>/bestBook"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -381,7 +381,7 @@
 <tr>
   <td>College Predictor</td>
 
-  <td><a href="/admin/editSectionForUpdate/<%=data._id%>/collegePredictor"
+  <td><a href="/admin/editSectionForUpdate/<%=data?._id%>/collegePredictor"
      class="badge bg-success">Edit</a>
   </td>
 

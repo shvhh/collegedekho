@@ -179,7 +179,7 @@
                       <% data?.forEach(function(data){ %>
 
                       <tr>
-                        <td><%=data.examCategory %></td>
+                        <td><%=data?.examCategory %></td>
                      
                     
     
@@ -194,16 +194,16 @@
 
                      
 
-                        <td><a href="/admin/examCategoryEdit/<%=data._id%>"
+                        <td><a href="/admin/examCategoryEdit/<%=data?._id%>"
                            class="badge bg-success">Edit</a>
                         </td>
 
 
 
 
-                        <% if(data.isDisabled == true){%>
+                        <% if(data?.isDisabled == true){%>
                           <td><a
-                            href="/admin/examCategoryDisabled/<%=data._id%>" 
+                            href="/admin/examCategoryDisabled/<%=data?._id%>" 
                         
                             class="badge bg-success"
                          >Active</a></td>
@@ -211,7 +211,7 @@
                         <% }else{ %>
                        
                         <td><a
-                          href="/admin/examCategoryDisabled/<%=data._id%>" 
+                          href="/admin/examCategoryDisabled/<%=data?._id%>" 
                       
                           class="badge bg-success"
                        >Deactive</a></td>

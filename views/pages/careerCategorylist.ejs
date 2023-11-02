@@ -166,7 +166,7 @@
                   <table class="table" id="table1">
                     <thead>
                       <tr>
-                        <th>Course</th>
+                        <th>Career</th>
                     
                        
 
@@ -181,7 +181,7 @@
                       <% data?.forEach(function(data){ %>
 
                       <tr>
-                        <td><%=data.name %></td>
+                        <td><%=data?.name %></td>
                          
                        
 
@@ -191,7 +191,7 @@
 
                  
 
-                        <td><a href="/admin/careerCategoryEdit/<%=data._id%>"
+                        <td><a href="/admin/careerCategoryEdit/<%=data?._id%>"
                           class="badge bg-success">Edit</a>
                        </td>
                       
@@ -203,7 +203,7 @@
                      
                         <% if(data.isDisabled == true){%>
                           <td><a
-                            href="/admin/careerCategoryDisabled/<%=data._id%>" 
+                            href="/admin/careerCategoryDisabled/<%=data?._id%>" 
                         
                             class="badge bg-success"
                          >Active</a></td>
@@ -211,7 +211,7 @@
                         <% }else{ %>
                        
                         <td><a
-                          href="/admin/careerCategoryDisabled/<%=data._id%>" 
+                          href="/admin/careerCategoryDisabled/<%=data?._id%>" 
                       
                           class="badge bg-success"
                        >Deactive</a></td>

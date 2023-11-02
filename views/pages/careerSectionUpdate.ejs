@@ -94,7 +94,7 @@
         <div class="page-title">
           <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-              <h3>Careers Section Update</h3>
+              <h3><%=data?.heading%> Section Update</h3>
               <p class="text-subtitle text-muted">
                 <!-- Super simple WYSIWYG editor. But you must include jQuery. -->
               </p>
@@ -122,11 +122,11 @@
                  
 
 
-                   <h4 class="card-title"><%=section%></h4> 
+                   <h4 class="card-title"><%=section?.replace(/^./, section[0].toUpperCase())%></h4> 
                 </div>
                 <div class="card-content">
                   <div class="card-body">
-                    <form action="/admin/careerSectionUpdateByName/<%=data._id%>/<%=section%>" method="post">
+                    <form action="/admin/careerSectionUpdateByName/<%=data?._id%>/<%=section%>" method="post">
                       <div class="row">
 
 
@@ -137,7 +137,7 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Heading</label>
-                            <input type="text" class="form-control" placeholder="Enter Heading" value="<%=sectionData.heading%>" name="<%=section%>[<%= index %>][heading]" data-parsley-required="true" required />
+                            <input type="text" class="form-control" placeholder="Enter Heading" value="<%=sectionData?.heading%>" name="<%=section%>[<%= index %>][heading]" data-parsley-required="true" required />
                           </div>
                         </div>
 
@@ -152,8 +152,8 @@
                                   <h5 class="editorMargin">Description</h5>
                                   <div class="card-body">
                                     <div></div>
-                                    <textarea id="editor<%= index %>"  class="editors" name="<%=section%>[<%= index %>][description]"><%=sectionData.description%></textarea>
-                                    <div><a href="/admin/courseSubpartsDelete/<%=data._id%>/<%=sectionData._id%>"id="buttonDayanamic" class="btn btn-success float-start float-lg-end ">Delete</a></div>
+                                    <textarea id="editor<%= index %>"  class="editors" name="<%=section%>[<%= index %>][description]"><%=sectionData?.description%></textarea>
+                                    <div><a href="/admin/courseSubpartsDelete/<%=data._id%>/<%=sectionData?._id%>"id="buttonDayanamic" class="btn btn-success float-start float-lg-end ">Delete</a></div>
                                     
                                   </div>
 
@@ -238,7 +238,7 @@ let counter = count - 1
           console.log(counter)
           counter++;
 
-          $("#textbox").append('<div class="col-md-6 col-12" id="btn3' + id + '" ><div class="form-group mandatory"><label for="first-name-column" class="form-label">Heading</label><input type="text" class="form-control" placeholder="First Name" name="'+ section +'[' + counter + '][heading]" data-parsley-required="true" /></div></div>')
+          $("#textbox").append('<div class="col-md-6 col-12" id="btn3' + id + '" ><div class="form-group mandatory"><label for="first-name-column" class="form-label">Heading</label><input type="text" class="form-control" placeholder="Enter Heading" name="'+ section +'[' + counter + '][heading]" data-parsley-required="true" /></div></div>')
           $("#textbox").append('<section class="section"  id="btn389' + id + '"  ><div class="row"><div class="col-12"><div class="card"><div class="card-header"><!-- <h4 class="card-title">Default Editor</h4> --></div><h5 class="editorMargin">Description</h5><div class="card-body"><div></div><textarea id="' + id + '" name="'+ section +'[' + counter + '][description]"></textarea></div></div></div></div></section>');
           $('#textbox').append('<button type="button" class="btn btn-danger float-start float-lg-end me-1 mb-60" id=' + id + ' onclick="deleteDiv(this.id)">Delete</button>');
           $('#' + id).summernote({ 

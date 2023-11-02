@@ -36,26 +36,29 @@
                   </div> -->
             </div>
             <div class="w-50">
-              <form class="searchState">
+              <form action="/search"  class="searchState">
                 <i class="fa-regular fa-magnifying-glass"></i>
                 <input
                   type="text"
                   placeholder="Search for colleges, exams, course and more..."
+                  name="search"
+                  value=""
                 />
-                <a href="" class="submitBtn">Search</a>
+                <button type="submit" class="submitBtn">Search</button>
               </form>
             </div>
           </div>
         </div>
-        <% slider.forEach(function(slider){ %>
+        <% slider?.forEach(function(slider){ %>
         <div
           class="slide"
-          style="background-image: url('<%=slider.image%>')"
+          style="background-image: url('<%=slider?.image%>')"
+        alt="<%=slider?.alt%>"
         ></div>
         <% }) %>
 
         <div class="controls-container">
-          <% slider.forEach(function(slider){ %>
+          <% slider?.forEach(function(slider){ %>
           <div class="control"></div>
           <% }) %>
           <!-- <div class="control"></div> -->
@@ -154,17 +157,17 @@
         <div class="row mt-3">
           <% topCourseCategory[0]?.collegeDetail?.forEach(function(d){ %>
 
-          <a href="/collegeDetail/<%=d.slag%>/overView" class="col-md-3 my-3">
+          <a href="/collegeDetail/<%=d?.slag%>/overView" class="col-md-3 my-3">
             <div class="collectionCard">
               <div class="collectionImg">
-                <img src="<%=d.image%>" />
+                <img src="<%=d?.image%>" alt="<%=d?.altForImage%>" />
               </div>
               <div class="collectionText">
                 <div class="d-flex align-items-center justify-content-between">
-                  <h5><%=d.name%></h5>
-                  <p>+8 More</p>
+                  <h5><%=d?.name%></h5>
+                  <!-- <p>+8 More</p>/ -->
                 </div>
-                <% d?.stateDetail.forEach(function(state){ %>
+                <% d?.stateDetail?.forEach(function(state){ %>
                 <h4><%=state?.name%></h4>
                 <% }) %>
               </div>
@@ -201,33 +204,24 @@
           <h3>Explore Programs</h3>
         </div>
         <div class="row mt-5">
-          <div class="col-md-3 my-3">
-            <div class="programCard">
-              <div class="programIcon">
-                <img src="/public/images/test.png" />
+          <a href="/getAllCourse">
+            <div class="col-md-4 my-3">
+              <div class="programCard">
+                <div class="programIcon">
+                  <img src="/public/images/test.png" />
+                </div>
+                <h4>Courses</h4>
+                <p>Compare on the basis of rank, fess, etc.</p>
+                <a href="#!"
+                  >Top Courses in India | <i class="fa-light fa-arrow-right"></i
+                ></a>
               </div>
-              <h4>Exams</h4>
-              <p>Compare on the basis of rank, fess, etc.</p>
-              <a href="#!"
-                >Top Ranked College in India |
-                <i class="fa-light fa-arrow-right"></i
-              ></a>
             </div>
-          </div>
-          <div class="col-md-3 my-3">
-            <div class="programCard">
-              <div class="programIcon">
-                <img src="/public/images/trophy.png" />
-              </div>
-              <h4>Ranking</h4>
-              <p>Compare on the basis of rank, fess, etc.</p>
-              <a href="#!"
-                >Top Ranked College in India |
-                <i class="fa-light fa-arrow-right"></i
-              ></a>
-            </div>
-          </div>
-          <div class="col-md-3 my-3">
+          </a>
+
+          <div class="col-md-4 my-3">
+            
+          <a href="/collegeGetByCourseId/<%=college[0]?.courseDetail[0]?.slag%>">
             <div class="programCard">
               <div class="programIcon">
                 <img src="/public/images/search.png" />
@@ -239,20 +233,14 @@
                 <i class="fa-light fa-arrow-right"></i
               ></a>
             </div>
+            
+
+          </a>
           </div>
-          <div class="col-md-3 my-3">
-            <div class="programCard">
-              <div class="programIcon">
-                <img src="/public/images/file-sharing.png" />
-              </div>
-              <h4>Compare College</h4>
-              <p>Compare on the basis of rank, fess, etc.</p>
-              <a href="#!" class="compareClgBtn"
-                >Compare Colleges | <i class="fa-light fa-arrow-right"></i
-              ></a>
-            </div>
-          </div>
-          <div class="col-md-3 my-3">
+
+          <div class="col-md-4 my-3">
+          <a href="/exam/<%=exam[0]?.slag%>">
+
             <div class="programCard">
               <div class="programIcon">
                 <img src="/public/images/test.png" />
@@ -260,37 +248,14 @@
               <h4>Exams</h4>
               <p>Compare on the basis of rank, fess, etc.</p>
               <a href="#!"
-                >Top Ranked College in India |
+                >Top Exam College in India |
                 <i class="fa-light fa-arrow-right"></i
               ></a>
             </div>
+          </a>
+
           </div>
-          <div class="col-md-3 my-3">
-            <div class="programCard">
-              <div class="programIcon">
-                <img src="/public/images/trophy.png" />
-              </div>
-              <h4>Ranking</h4>
-              <p>Compare on the basis of rank, fess, etc.</p>
-              <a href="#!"
-                >Top Ranked College in India |
-                <i class="fa-light fa-arrow-right"></i
-              ></a>
-            </div>
-          </div>
-          <div class="col-md-3 my-3">
-            <div class="programCard">
-              <div class="programIcon">
-                <img src="/public/images/search.png" />
-              </div>
-              <h4>Find College</h4>
-              <p>Compare on the basis of rank, fess, etc.</p>
-              <a href="#!"
-                >Top Ranked College in India |
-                <i class="fa-light fa-arrow-right"></i
-              ></a>
-            </div>
-          </div>
+
         </div>
       </div>
     </section>
@@ -303,17 +268,22 @@
         <div class="d-flex align-items-center justify-content-end">
           <form class="searchState">
             <i class="fa-regular fa-magnifying-glass"></i>
-            <input type="text" placeholder="Search" />
-            <a href="" class="submitBtn">Search</a>
+            <input
+              type="text"
+              placeholder="Search"
+              oninput="collegeFilter(this)"
+              name="search"
+            />
+            <a class="submitBtn">Search</a>
           </form>
         </div>
         <div class="row stateList">
           <div class="col-md-3">
             <h4>Popular States</h4>
-            <ul class="popularStateList">
-              <% state.forEach(function(state){ %>
-              <li onclick="getCollegeByState('<%= state._id%>')">
-                <%=state.name%>
+            <ul class="popularStateList -list-prop">
+              <% state?.forEach(function(state){ %>
+              <li onclick="getCollegeByState('<%= state?._id%>')">
+                <%=state?.name%>
               </li>
               <% }) %>
             </ul>
@@ -332,17 +302,15 @@
                   </tr>
                 </thead>
                 <tbody id="collegeList">
-                  <tr>
-                    <td>#1</td>
-                    <td>
-                      All India Institute of Medical Sciences - [AIIMS] New
-                      Delhi,Delhi NCR|9.8/10
-                    </td>
-                    <td>ranking-logo #3 out of 57 in India 2023</td>
-                    <td>NEET 2023 Cut off 57</td>
-                    <td>15 June - 26 Sept 2023</td>
+                  <%topCollege?.forEach(function(topCollege, i){ %>
+                  <tr id="collegeGetBySearch-data-<%=topCollege?.name%>">
+                    <td><%=i+1%></td>
+                    <td><%=topCollege?.name%></td>
+                    <td><%=topCollege?.ranking%></td>
+                    <td><%=topCollege?.cutOff%></td>
+                    <td><%=topCollege?.applicationDate%></td>
                     <td style="position: relative">
-                      ₹1,628 1st Year Fees
+                      <%=topCollege?.feesRange%>
                       <div class="wishdropdown">
                         <i
                           onclick="myFunction()"
@@ -354,50 +322,7 @@
                       </div>
                     </td>
                   </tr>
-                  <tr>
-                    <td>#1</td>
-                    <td>
-                      All India Institute of Medical Sciences - [AIIMS] New
-                      Delhi,Delhi NCR|9.8/10
-                    </td>
-                    <td>ranking-logo #3 out of 57 in India 2023</td>
-                    <td>NEET 2023 Cut off 57</td>
-                    <td>15 June - 26 Sept 2023</td>
-                    <td style="position: relative">
-                      ₹1,628 1st Year Fees
-                      <div class="wishdropdown">
-                        <i
-                          onclick="myFunction()"
-                          class="fa-solid fa-ellipsis-vertical wishdropbtn"
-                        ></i>
-                        <div id="mywishDropdown" class="wishdropdown-content">
-                          <a href="#!">Add to Wishlist</a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>#1</td>
-                    <td>
-                      All India Institute of Medical Sciences - [AIIMS] New
-                      Delhi,Delhi NCR|9.8/10
-                    </td>
-                    <td>ranking-logo #3 out of 57 in India 2023</td>
-                    <td>NEET 2023 Cut off 57</td>
-                    <td>15 June - 26 Sept 2023</td>
-                    <td style="position: relative">
-                      ₹1,628 1st Year Fees
-                      <div class="wishdropdown">
-                        <i
-                          onclick="myFunction()"
-                          class="fa-solid fa-ellipsis-vertical wishdropbtn"
-                        ></i>
-                        <div id="mywishDropdown" class="wishdropdown-content">
-                          <a href="#!">Add to Wishlist</a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
+                  <% }) %>
                 </tbody>
               </table>
             </div>
@@ -445,20 +370,20 @@
           </div>
         </div>
         <div class="PartnersSlider slider" id="getCollegeByCourseCategory">
-          <% collegeData[0]?.collegeDetail.forEach(function(d){ %>
+          <% collegeData[0]?.collegeDetail?.forEach(function(d){ %>
           <div class="col-md-3 my-3">
             <div class="collectionCard">
               <div class="collectionImg">
-                <img src="<%=d.image%>" />
+                <img src="<%=d?.image%>" alt="<%=d?.altForImage%>" />
               </div>
               <div class="collectionText">
                 <div class="d-flex align-items-center justify-content-between">
                   <h5><%=d.name%></h5>
                   <!-- <p>+8 More</p> -->
                 </div>
-                <% d?.stateDetail.forEach(function(state){ %>
+                <% d?.stateDetail?.forEach(function(state){ %>
 
-                <h4><%=state.name%></h4>
+                <h4><%=state?.name%></h4>
                 <% }) %>
               </div>
             </div>
@@ -535,7 +460,7 @@
           document.getElementById("collegeList").innerHTML = data
             .map((data, i) => {
               return `
-   <tr>
+   <tr id="dataGet${data.name}">
       <td>${i + 1}</td>
       <td>${data.name}</td>
       <td>${data.ranking}</td>
@@ -561,74 +486,151 @@
     }
   </script>
 
+  <!-- college with slider in explore career section -->
   <script>
     // onclick on getcollege get college by course id and put in slider
 
-    function getcollege(id){
+    function getcollege(id) {
+      console.log(id);
 
-          console.log(id);
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          // document.getElementById("demo").innerHTML =
+          // this.responseText;
+          console.log(this.responseText);
+          var data = JSON.parse(this.responseText);
 
+          console.log(data);
 
-          var xhttp = new XMLHttpRequest();
-             xhttp.onreadystatechange = function () {
-             if (this.readyState == 4 && this.status == 200) {
-                // document.getElementById("demo").innerHTML =
-                // this.responseText;
-                console.log(this.responseText);
-                var data = JSON.parse(this.responseText);
+          // paste data in getCollegeByCourseCategory div with slider class PartnersSlider slider
+          $(".PartnersSlider").slick("unslick");
+          document.getElementById("getCollegeByCourseCategory").innerHTML =
+            data[0]?.collegeDetail
+              .map((data, i) => {
+                return `
+              <div class="col-md-3 my-3">
+                <div class="collectionCard">
+              <div class="collectionImg">
 
-                console.log(data);
-
-
-      // paste data in slider with slider functionality
-
-
-      document.getElementById("getCollegeByCourseCategory").innerHTML = data[0]?collegeDetail.map((collegeDetail,i)=>{
-        return `
-        <div class="col-md-3 my-3">
-        <div class="collectionCard">
-          <div class="collectionImg">
-
-            <img src="${collegeDetail.image}" />
-          </div>
-          <div class="collectionText">
-            <div class="d-flex align-items-center justify-content-between">
-              <h5>${collegeDetail.name}</h5>
-              <!-- <p>+8 More</p> -->
-
+                <img src="${data.image}" alt="${data.altForImage}" />
+              </div>
+              <div class = "collectionText">
+                <div class="d-flex align-items-center justify-content-between">
+                  <h5>${data.name}</h5>
+                  <!-- <p>+8 More</p> -->
+                </div>
+                ${data?.stateDetail.map((state) => {
+                  return `
+                  <h4>${state.name}</h4>
+                  `;
+                })}
+              </div>
             </div>
-            ${collegeDetail.stateDetail.map((state)=>{
-              return `
-              <h4>${state.name}</h4>
-              `
-            }).join('')}
           </div>
-        </div>
-      </div>
-        `
-      }).join('')
+              `;
+              })
+              .join("");
+     
+              
+              $('.PartnersSlider').slick({
+                slidesToShow: 5,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                arrows: true,
+                dots: false,
+                prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+                nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+                pauseOnHover: false,
+                responsive: [{
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 3
+                    }
+                }, {
+                    breakpoint: 520,
+                    settings: {
+                        slidesToShow: 2
+                    }
+                }]
 
-    }
-  };  
+            }); 
 
 
-   
-      
+
+
  
-             
-        
-      
-
 
             
 
 
 
-         
+        
 
-                xhttp.open("GET", `/getCollegeByCourseId?courseCategoryId=${id}`, true);
 
-                xhttp.send();
-             }
+
+        }
+      };
+
+
+          
+
+      xhttp.open("GET", `/getCollegeByCourseId?courseCategoryId=${id}`, true);
+
+      xhttp.send();
+    }
   </script>
+
+  <!-- Search college by name in top college section -->
+  <script>
+    function collegeFilter(element) {
+      console.log(element.value);
+
+      document.getElementById("collegeList").childNodes.forEach((element) => {
+        if (element.id) {
+          const idArray = element.id.split("-");
+          // console.log(idArray);
+          idArray.shift();
+          idArray.shift();
+          const courseName = idArray.join("-");
+          console.log(courseName);
+
+          if (!courseName.toLowerCase().toLowerCase().includes(element.value)) {
+            element.style.display = "none";
+          } else {
+            element.style.display = "table-row";
+          }
+        }
+      });
+    }
+  </script>
+
+<script>
+
+$(document).ready(function () {
+    $('.PartnersSlider').slick({
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        arrows: true,
+        dots: false,
+        prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+        nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+        pauseOnHover: false,
+        responsive: [{
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 3
+            }
+        }, {
+            breakpoint: 520,
+            settings: {
+                slidesToShow: 2
+            }
+        }]
+    });
+});
+</script>
 </html>

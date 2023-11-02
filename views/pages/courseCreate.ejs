@@ -163,9 +163,41 @@
                         <select class="form-select" aria-label="Default select example" id="cars" name="courseCategoryId" required>
                      
                           <option value="">Open this select menu</option>
-          <% category.forEach(function(category){ %>
-                          <option value="<%=category._id%>"><%=category.category%></option>
+          <% category?.forEach(function(category){ %>
+                          <option value="<%=category?._id%>"><%=category?.category%></option>
           <% }) %>
+                        </select>
+                        </div></div>
+
+
+                        <div class="col-md-6 col-12">
+                          <div class="form-group mandatory">
+                            <label for="first-name-column" class="form-label"
+                              >Mode</label
+                            >
+                        <select class="form-select" aria-label="Default select example" id="data" name="mode" required>
+                     
+                          <option value="">Open this select menu</option>
+       
+                          <option value="None">None</option>
+                          <option value="Regular">Regular</option>
+                          <option value="Regular/Distance/Part-time">Regular/Distance/Part-time</option>
+                          <option value="Part-time">Part-time</option>
+                          <option value="Regular/Part-time/Distance">Regular/Part-time/Distance</option>
+                          <option value="Regular/Distance">Regular/Distance</option>
+                          <option value="Regular">Regular</option>
+                          <option value="Full time">Full time</option>
+                          <option value="Distance">Distance</option>
+
+               
+
+
+
+                         
+                         
+                        
+
+          
                         </select>
                         </div></div>
                          

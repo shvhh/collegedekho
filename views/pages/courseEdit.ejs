@@ -107,12 +107,14 @@
                 </div>
                 <div class="card-content">
                   <div class="card-body">
-                    <form action="/admin/courseUpdate/<%=data._id%>" method="post" enctype="multipart/form-data">
+                    <form action="/admin/courseUpdate/<%=data?._id%>" method="post" enctype="multipart/form-data">
                       <div class="row">
+
+                        
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Name"value="<%=data.name%>" name="name" data-parsley-required="true" required />
+                            <input type="text" class="form-control" placeholder="Enter Name"value="<%=data?.name%>" name="name" data-parsley-required="true" required />
                           </div>
                         </div>
 
@@ -129,7 +131,7 @@
                          <div class="row">
                             <div class="col-md-2">
                               <div class="imgsecccc">
-                                <img src="<%=data.image%>" id="img" alt="alt" />
+                                <img src="<%=data?.image%>" id="img" alt="alt" />
                              
                               </div>
                             </div>
@@ -141,13 +143,13 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Alt For Image </label>
-                            <input type="text" class="form-control" placeholder="Enter Alt  For Image " value="<%=data.imageAlt%>" name="imageAlt" data-parsley-required="true" required />
+                            <input type="text" class="form-control" placeholder="Enter Alt  For Image " value="<%=data?.imageAlt%>" name="imageAlt" data-parsley-required="true" required />
                           </div>
                         </div>
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Average Duration (In Month)</label>
-                            <input type="text" class="form-control" placeholder="Enter Average Duration" value="<%=data.averageDuration%>" name="averageDuration" data-parsley-required="true" required />
+                            <input type="text" class="form-control" placeholder="Enter Average Duration" value="<%=data?.averageDuration%>" name="averageDuration" data-parsley-required="true" required />
                           </div>
                         </div>
 
@@ -158,6 +160,36 @@
                             <input type="text" class="form-control" placeholder="Enter Average Duration" value="<%=fees%>" name="fees" data-parsley-required="true" required />
                           </div>
                         </div>
+
+                        <div class="col-md-6 col-12">
+                          <div class="form-group mandatory">
+                            <label for="first-name-column" class="form-label"
+                              >Mode</label
+                            >
+                        <select class="form-select" aria-label="Default select example" id="data" name="mode" required>
+                     
+                          <option value="">Open this select menu</option>
+       
+                          <%mode?.forEach(function(mode){ %>
+                          <option value="<%=mode%>"  <%= (`${mode}` === `${data.mode}`)? 'selected' : '' %>><%=mode%></option>
+                    
+
+
+                          <% }) %>
+                          
+
+
+               
+
+
+
+                         
+                         
+                        
+
+          
+                        </select>
+                        </div></div>
 
                          
                  
@@ -176,8 +208,8 @@
                         <select class="form-select" aria-label="Default select example" id="cars" name="courseCategoryId" >
                      
                           <option value="">Open this select menu</option>
-          <% category.forEach(function(category){ %>
-                          <option value="<%=category._id%>" <%= (`${category._id}` === `${data.courseCategory}`)? 'selected' : '' %>> <%=category.category%></option>
+          <% category?.forEach(function(category){ %>
+                          <option value="<%=category?._id%>" <%= (`${category?._id}` === `${data?.courseCategoryId}`)? 'selected' : '' %>> <%=category?.category%></option>
    
 
           <% }) %>
@@ -188,28 +220,28 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Keyword </label>
-                            <input type="text" class="form-control" placeholder="Enter Keyword " value="<%=data.metaKeyword%>" name="metaKeyword" data-parsley-required="true" required />
+                            <input type="text" class="form-control" placeholder="Enter Keyword " value="<%=data?.metaKeyword%>" name="metaKeyword" data-parsley-required="true" required />
                           </div>
                         </div>
 
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label"> Description</label>
-                            <input type="text" class="form-control" placeholder="Enter  Description"value="<%=data.metaDescription%>" name="metaDescription" data-parsley-required="true" required />
+                            <input type="text" class="form-control" placeholder="Enter  Description"value="<%=data?.metaDescription%>" name="metaDescription" data-parsley-required="true" required />
                           </div>
                         </div>
 
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Title </label>
-                            <input type="text" class="form-control" placeholder="Enter Title" value="<%=data.metaTitle%>" name="metaTitle" data-parsley-required="true" required />
+                            <input type="text" class="form-control" placeholder="Enter Title" value="<%=data?.metaTitle%>" name="metaTitle" data-parsley-required="true" required />
                           </div>
                         </div>
 
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Colonial </label>
-                            <input type="text" class="form-control" placeholder="Enter Canonical" value="<%=data.canonical%>" name="canonical" data-parsley-required="true" required />
+                            <input type="text" class="form-control" placeholder="Enter Canonical" value="<%=data?.canonical%>" name="canonical" data-parsley-required="true" required />
                           </div>
                         </div>
                       
@@ -232,7 +264,7 @@
 
 
 
-<%if(data.isTop==true){%>
+<%if(data?.isTop==true){%>
   <div>
     <input type="checkbox" id="vehicle1"checked name="isTop" >
     <label for="popular">Popular Course</label><br>
@@ -255,42 +287,6 @@
 
 
 
-<% data.sallary?.forEach(function(sallary,index){%>
-<div class="col-md-6 col-12">
-  <div class="form-group mandatory">
-    <label for="first-name-column" class="form-label"> Sallary Heading</label>
-    <input type="text" class="form-control" placeholder="Enter Sallary Heading" value="<%=sallary.heading%>" name="sallary[<%= index %>][heading]" data-parsley-required="true" required />
-  </div>
-</div>
-
-
-<div>
-  <section class="section">
-    <div class="row">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-header">
-            <!-- <h4 class="card-title">Default Editor</h4> -->
-          </div>
-          <h5 class="editorMargin">Sallary  Description</h5>
-          <div class="card-body">
-            <div></div>
-            <textarea id="salary<%= index %>" class="editors" name="sallary[<%= index %>][description]"><%=sallary.description%></textarea>
-            <div><a href="/admin/courseSubpartsDelete/<%=data._id%>/<%=sallary._id%>"id="buttonDayanamic" class="btn btn-success float-start float-lg-end ">Delete</a></div>
-                                    
-
-
-                         
-
-
-          </div>
-          <%})%>
-          </div>
-        </div>
-      </div>
-
-  </section>
-</div>
 
 
 

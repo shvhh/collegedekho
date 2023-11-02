@@ -12,6 +12,11 @@ const exam = new mongoose.Schema({
         
     ],
 
+    examCategoryName: {
+        type: String,
+    },
+    
+
     level:{
         type: String,
     },
@@ -19,7 +24,7 @@ const exam = new mongoose.Schema({
     mode:{
         type: String,
     },
-    appicationDate:{
+    applicationDate:{
         from:{
             type:Date,
         },

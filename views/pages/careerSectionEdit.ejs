@@ -122,7 +122,7 @@
           <div class="page-title">
             <div class="row">
               <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>  Career Section</h3>
+                <h3>  <%=data?.heading%> Section</h3>
                 <!-- <p class="text-subtitle text-muted">
                   Powerful interactive tables with datatables (jQuery required).
                 </p> -->
@@ -185,7 +185,7 @@
                         <td>About</td>
                      
 
-                        <td><a href="/admin/editCareerSectionForUpdate/<%=data._id%>/about"
+                        <td><a href="/admin/editCareerSectionForUpdate/<%=data?._id%>/about"
                            class="badge bg-success">Edit</a>
                         </td>
  </tr>
@@ -193,7 +193,7 @@
  <tr>
   <td>Eligibility</td>
 
-  <td><a href="/admin/editCareerSectionForUpdate/<%=data._id%>/eligibility"
+  <td><a href="/admin/editCareerSectionForUpdate/<%=data?._id%>/eligibility"
     class="badge bg-success">Edit</a>
  </td>
 
@@ -204,7 +204,7 @@
 <tr>
   <td>JobRole</td>
 
-  <td><a href="/admin/editCareerSectionForUpdate/<%=data._id%>/jobRole"
+  <td><a href="/admin/editCareerSectionForUpdate/<%=data?._id%>/jobRole"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -215,7 +215,7 @@
 <tr>
   <td>Salary</td>
 
-  <td><a href="/admin/editCareerSectionForUpdate/<%=data._id%>/salary"
+  <td><a href="/admin/editCareerSectionForUpdate/<%=data?._id%>/salary"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -226,7 +226,7 @@
 <tr>
   <td>PreBooks</td>
 
-  <td><a href="/admin/editCareerSectionForUpdate/<%=data._id%>/preBooks"
+  <td><a href="/admin/editCareerSectionForUpdate/<%=data?._id%>/preBooks"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -237,7 +237,7 @@
 <tr>
   <td>Pros</td>
 
-  <td><a href="/admin/editCareerSectionForUpdate/<%=data._id%>/pros"
+  <td><a href="/admin/editCareerSectionForUpdate/<%=data?._id%>/pros"
      class="badge bg-success">Edit</a>
   </td>
 
@@ -248,7 +248,7 @@
 <tr>
   <td>Cons </td>
 
-  <td><a href="/admin/editCareerSectionForUpdate/<%=data._id%>/cons"
+  <td><a href="/admin/editCareerSectionForUpdate/<%=data?._id%>/cons"
      class="badge bg-success">Edit</a>
   </td>
 

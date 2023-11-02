@@ -107,7 +107,7 @@
                 </div>
                 <div class="card-content">
                   <div class="card-body">
-                    <form action="/admin/sliderUpdate/<%=data._id%>" method="post" enctype="multipart/form-data">
+                    <form action="/admin/sliderUpdate/<%=data?._id%>" method="post" enctype="multipart/form-data">
                       <div class="row">
 
 
@@ -129,7 +129,7 @@
                          <div class="row">
                             <div class="col-md-2">
                               <div class="imgsecccc">
-                                <img src="<%=data.image%>" id="img" alt="alt" />
+                                <img src="<%=data?.image%>" id="img" alt="alt" />
                              
                               </div>
                             </div>
@@ -145,7 +145,7 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Alt </label>
-                            <input type="text" class="form-control" placeholder="Enter Alt" value="<%=data.alt%>" name="alt" data-parsley-required="true"  />
+                            <input type="text" class="form-control" placeholder="Enter Alt" value="<%=data?.alt%>" name="alt" data-parsley-required="true"  />
                           </div>
                         </div>
 

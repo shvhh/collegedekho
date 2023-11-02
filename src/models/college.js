@@ -217,11 +217,11 @@ const College = new mongoose.Schema({
         },
     ],
 
-    gallery: [
-        {
-          type: String,
-        },
-      ],
+    // gallery: [
+    //     {
+    //       type: String,
+    //     },
+    //   ],
     
 
       isPopular: {

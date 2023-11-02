@@ -107,7 +107,7 @@
                 </div>
                 <div class="card-content">
                   <div class="card-body">
-                    <form action="/admin/careerCategoryUpdate/<%=data._id%>" method="post" enctype="multipart/form-data">
+                    <form action="/admin/careerCategoryUpdate/<%=data?._id%>" method="post" enctype="multipart/form-data">
                       <div class="row">
 
 
@@ -125,7 +125,7 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Name </label>
-                            <input type="text" class="form-control" placeholder="Enter Name" value="<%=data.name%>" name="name" data-parsley-required="true" required />
+                            <input type="text" class="form-control" placeholder="Enter Name" value="<%=data?.name%>" name="name" data-parsley-required="true" required />
                           </div>
                         </div>
                            
@@ -138,28 +138,28 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Keyword </label>
-                            <input type="text" class="form-control" placeholder="Enter Keyword" value="<%=data.metaKeyword%>" name="metaKeyword" data-parsley-required="true"  />
+                            <input type="text" class="form-control" placeholder="Enter Keyword" value="<%=data?.metaKeyword%>" name="metaKeyword" data-parsley-required="true"  />
                           </div>
                         </div>
 
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label"> Description</label>
-                            <input type="text" class="form-control" placeholder="Enter  Description" value="<%data.metaDescription%>" name="metaDescription" data-parsley-required="true"  />
+                            <input type="text" class="form-control" placeholder="Enter  Description" value="<%data?.metaDescription%>" name="metaDescription" data-parsley-required="true"  />
                           </div>
                         </div>
 
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Title </label>
-                            <input type="text" class="form-control" placeholder="Enter Title" value="<%=data.metaTitle%>" name="metaTitle" data-parsley-required="true"  />
+                            <input type="text" class="form-control" placeholder="Enter Title" value="<%=data?.metaTitle%>" name="metaTitle" data-parsley-required="true"  />
                           </div>
                         </div>
 
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Colonial </label>
-                            <input type="text" class="form-control" placeholder="Enter Canonical" value="<%=data.canonical%>" name="canonical" data-parsley-required="true"  />
+                            <input type="text" class="form-control" placeholder="Enter Canonical" value="<%=data?.canonical%>" name="canonical" data-parsley-required="true"  />
                           </div>
                         </div>
                         <div class="col-md-6 col-12">
@@ -172,7 +172,7 @@
                          <div class="row">
                             <div class="col-md-2">
                               <div class="imgsecccc">
-                                <img src="<%=data.image%>" id="img" alt="alt" />
+                                <img src="<%=data?.image%>" id="img" alt="alt" />
                              
                               </div>
                             </div>
@@ -183,7 +183,7 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Alt For Image</label>
-                            <input type="text" class="form-control" placeholder="Enter Alt For Image" value="<%=data.altForImage%>" name="altForImage" data-parsley-required="true" required />
+                            <input type="text" class="form-control" placeholder="Enter Alt For Image" value="<%=data?.altForImage%>" name="altForImage" data-parsley-required="true" required />
                           </div>
                         </div>
 

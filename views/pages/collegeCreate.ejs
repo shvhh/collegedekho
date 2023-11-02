@@ -155,8 +155,8 @@
                         <select class="form-select" aria-label="Default select example" id="cars"onchange="getDistrict(this)"  name="stateId" required>
                      
                           <option value="">Open this select menu</option>
-          <% state.forEach(function(state){ %>
-                          <option value="<%=state._id%>"><%=state.name%></option>
+          <% state?.forEach(function(state){ %>
+                          <option value="<%=state?._id%>"><%=state?.name%></option>
           <% }) %>
                         </select>
                         </div></div>
@@ -195,8 +195,8 @@
                      
                           <option value="">Open this select menu</option>
           
-                          <% courseCategoryDetail.forEach(function(courseCategoryDetail){ %>
-                          <option value="<%=courseCategoryDetail._id%>"><%=courseCategoryDetail.category%></option>
+                          <% courseCategoryDetail?.forEach(function(courseCategoryDetail){ %>
+                          <option value="<%=courseCategoryDetail?._id%>"><%=courseCategoryDetail?.category%></option>
                           <% }) %>
        
                         </select>
@@ -245,7 +245,7 @@
 
                           <% exam?.forEach(function(exam){ %>
         
-                          <option value="<%=exam._id%>"><%=exam.heading%></option>
+                          <option value="<%=exam?._id%>"><%=exam?.heading%></option>
                           <% }) %>
         
                         </select>

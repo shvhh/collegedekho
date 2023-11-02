@@ -126,7 +126,7 @@
                 </div>
                 <div class="card-content">
                   <div class="card-body">
-                    <form action="/admin/examUpdate/<%=examDetail._id%>" method="post">
+                    <form action="/admin/examUpdate/<%=examDetail?._id%>" method="post">
                       <div class="row">
                         <!-- <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
@@ -152,9 +152,9 @@
                         <select class="form-select" aria-label="Default select example" id="cars" name="examCategoryId" required>
                      
                           <option value="">Open this select menu</option>
-          <% data.forEach(function(data){ %>
+          <% data?.forEach(function(data){ %>
                           <!-- <option value="<%=data._id%>"><%=data.examCategory%></option> -->
-                          <option value="<%=data._id%>" <%= (`${data._id}` === `${examDetail.examCategoryId}`)? 'selected' : '' %>> <%=data.examCategory%></option>
+                          <option value="<%=data?._id%>" <%= (`${data?._id}` === `${examDetail?.examCategoryId}`)? 'selected' : '' %>> <%=data?.examCategory%></option>
 
           <% }) %>
                         </select>
@@ -189,7 +189,7 @@
                           <option value="">Open this select menu</option>
        
                           <% level?.forEach(function(level){ %>
-                            <option value="<%=level%>" <%= (`${level}` === `${examDetail.level}`)? 'selected' : '' %>><%=level%></option>
+                            <option value="<%=level%>" <%= (`${level}` === `${examDetail?.level}`)? 'selected' : '' %>><%=level%></option>
             <% }) %>
 
           
@@ -208,7 +208,7 @@
        
                           
                           <% model?.forEach(function(model){ %>
-                            <option value="<%=model%>" <%= (`${model}` === `${examDetail.mode}`)? 'selected' : '' %>><%=model%></option>
+                            <option value="<%=model%>" <%= (`${model}` === `${examDetail?.mode}`)? 'selected' : '' %>><%=model%></option>
             <% }) %>
 
           
@@ -219,7 +219,7 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Application Date</label>
-                            <input type="text"  class="form-control"  id="allDate" name="appicationDate" value="<%=examDetail.date%>" required/ >
+                            <input type="text"  class="form-control"  id="allDate" name="applicationDate" value="<%=examDetail?.date%>" required/ >
                             <!-- <input id="datedata" class="form-control" placeholder="Enter Date" name="dateRange" data-parsley-required="true" required /> -->
                           </div>
                         </div> 
@@ -227,7 +227,7 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Exam Date</label>
-                            <input type="text"  class="form-control"  id="allDate" name="examDate" value="<%=examDetail.exam%>"  required/ >
+                            <input type="text"  class="form-control"  id="allDate" name="examDate" value="<%=examDetail?.exam%>"  required/ >
                             <!-- <input id="datedata" class="form-control" placeholder="Enter Date" name="dateRange" data-parsley-required="true" required /> -->
                           </div>
                         </div> 
@@ -235,7 +235,7 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Keyword</label>
-                            <input type="text" class="form-control" placeholder="Enter Keyword"value="<%=examDetail.metaKeyword%>" name="metaKeyword" data-parsley-required="true" required />
+                            <input type="text" class="form-control" placeholder="Enter Keyword"value="<%=examDetail?.metaKeyword%>" name="metaKeyword" data-parsley-required="true" required />
                           </div>
                         </div> 
 
@@ -244,7 +244,7 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Title</label>
-                            <input type="text" class="form-control" placeholder="Enter Title" value="<%=examDetail.metaTitle%>" name="metaTitle" data-parsley-required="true" required  />
+                            <input type="text" class="form-control" placeholder="Enter Title" value="<%=examDetail?.metaTitle%>" name="metaTitle" data-parsley-required="true" required  />
                           </div>
                         </div> 
 
@@ -252,7 +252,7 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Description</label>
-                            <input type="text" class="form-control" placeholder="Enter Description" value="<%=examDetail.metaDescription%>" name="metaDescription" data-parsley-required="true" required />
+                            <input type="text" class="form-control" placeholder="Enter Description" value="<%=examDetail?.metaDescription%>" name="metaDescription" data-parsley-required="true" required />
                           </div>
                         </div> 
 
@@ -260,7 +260,7 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Colonial</label>
-                            <input type="text" class="form-control" placeholder="Enter Canonical" value="<%=examDetail.canonical%>" name="canonical" data-parsley-required="true"  required />
+                            <input type="text" class="form-control" placeholder="Enter Canonical" value="<%=examDetail?.canonical%>" name="canonical" data-parsley-required="true"  required />
                           </div>
                         </div> 
 
@@ -270,7 +270,7 @@
                          <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Heading</label>
-                            <input type="text" class="form-control" placeholder="Enter Name"value="<%=examDetail.heading%>" name="heading" data-parsley-required="true" />
+                            <input type="text" class="form-control" placeholder="Enter Name"value="<%=examDetail?.heading%>" name="heading" data-parsley-required="true" />
                           </div>
                         </div> 
 
@@ -286,7 +286,7 @@
                                   <h5 class="editorMargin"> Description</h5>
                                   <div class="card-body">
                                     <div></div>
-                                    <textarea id="description" name="description"><%=examDetail.description%></textarea>
+                                    <textarea id="description" name="description"><%=examDetail?.description%></textarea>
 
                                   </div>
                                 </div>

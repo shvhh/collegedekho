@@ -122,7 +122,7 @@
           <div class="page-title">
             <div class="row">
               <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>  Course Section</h3>
+                <h3> <%=data?.name%> Section</h3>
                 <!-- <p class="text-subtitle text-muted">
                   Powerful interactive tables with datatables (jQuery required).
                 </p> -->
@@ -185,15 +185,15 @@
                         <td>Syllabus</td>
                      
 
-                        <td><a href="/admin/editCourseSectionForUpdate/<%=data._id%>/syllabus"
+                        <td><a href="/admin/editCourseSectionForUpdate/<%=data?._id%>/syllabus"
                            class="badge bg-success">Edit</a>
                         </td>
  </tr>
 
  <tr>
-  <td>Sallary</td>
+  <td>Salary</td>
 
-  <td><a href="/admin/editCourseSectionForUpdate/<%=data._id%>/sallary"
+  <td><a href="/admin/editCourseSectionForUpdate/<%=data?._id%>/salary"
     class="badge bg-success">Edit</a>
  </td>
 
@@ -204,7 +204,7 @@
 <tr>
   <td>Section</td>
 
-  <td><a href="/admin/editCourseSectionForUpdate/<%=data._id%>/section"
+  <td><a href="/admin/editCourseSectionForUpdate/<%=data?._id%>/section"
      class="badge bg-success">Edit</a>
   </td>
 

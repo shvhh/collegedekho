@@ -167,6 +167,7 @@
                     <thead>
                       <tr>
                         <th>Name</th>
+                        <th>Exam Category</th>
 
 
                      <th>Action</th>
@@ -180,7 +181,8 @@
                       <% data?.forEach(function(data){ %>
 
                       <tr>
-                        <td><%=data.heading %></td>
+                        <td><%=data?.heading %></td>
+                        <td><%=data?.examCategoryName%></td>
                      
                     
     
@@ -192,18 +194,18 @@
                       
 
                        
-                        <td><a href="/admin/examSection/<%=data._id%>"
+                        <td><a href="/admin/examSection/<%=data?._id%>"
                           class="badge bg-success">Section</a>
                        </td>
                      
 
-                        <td><a href="/admin/examEdit/<%=data._id%>"
+                        <td><a href="/admin/examEdit/<%=data?._id%>"
                            class="badge bg-success">Edit</a>
                         </td>
 
 
 
-                        <td><a href="/admin/examDelete/<%=data._id%>"
+                        <td><a href="/admin/examDelete/<%=data?._id%>"
                           class="badge bg-success">Delete</a>
                        </td>
 

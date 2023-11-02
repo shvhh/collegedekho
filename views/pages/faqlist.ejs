@@ -181,7 +181,7 @@
                       <% data?.forEach(function(data){ %>
 
                       <tr>
-                        <td><%=data.courseName %></td>
+                        <td><%=data?.courseName %></td>
                          
                        
 
@@ -198,11 +198,11 @@
 
                      
 
-                        <td><a href="/admin/faqEdit/<%=data._id%>"
+                        <td><a href="/admin/faqEdit/<%=data?._id%>"
                            class="badge bg-success">Edit</a>
                         </td>
 
-                        <td><a href="/admin/faqDelete/<%=data._id%>"
+                        <td><a href="/admin/faqDelete/<%=data?._id%>"
                           class="badge bg-success">Delete</a>
                        </td>
 

@@ -1,253 +1,908 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Rigalma</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@100;200;300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/public/css/style.css" rel="stylesheet">
-    <link href="/public/css/responsive.css" rel="stylesheet">
-</head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arima:wght@100;200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="/public/css/style.css" rel="stylesheet" />
+    <link href="/public/css/responsive.css" rel="stylesheet" />
+  </head>
 
-<body>
-
-
-
+  <body style="background-color: #f4f4f7">
     <%- include('../partials/navbar')%>
 
- <p hidden id="examSection"><%=examSection%></p>
- <p hidden id="examSlag"><%=examDetail.slag%></p>
 
-    <div class="mainBg">
-        <section class="bannerSec">
+    <div class="body">
+      <div class="wrapper examListingPage">
+        <div class="container">
+          <section class="collegesPage">
             <div class="container">
-                <div class="bannerTitle">
-                    <img src="/public/images/banner_bg.svg">
-                    <h3>Exam.</h3>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-md-6">
-                        <form class="searchState">
-                            <i class="fa-regular fa-magnifying-glass"></i>
-                            <input type="text" placeholder="Search for states"
-                                style="box-shadow: 0px 10px 25px #0000000f;">
-                            <a href="" class="submitBtn">Search</a>
-                        </form>
-                    </div>
-                </div>
-                <img src="/public/images/banner.png" class="w-100 mt-3">
-            </div>
-        </section>
-        <section class="topColleges">
-            <div class="container">
-                <div class="row stateList">
-                    <div class="col-md-3 bg-white py-2">
-                        <ul class="popularStateList">
-                   
-
-                            <a href="/exam-detail/<%=examDetail.slag%>/section"><li class="linkGet">Section</li></a>
-                            <a href="/exam-detail/<%=examDetail.slag%>/importantDates"><li class="linkGet">Important Dates</li></a>
-                            <a href="/exam-detail/<%=examDetail.slag%>/applicationForm"><li class="linkGet">Application Form</li></a>
-                            <a href="/exam-detail/<%=examDetail.slag%>/eligibility"><li class="linkGet">Eligibility</li></a>
-                            <a href="/exam-detail/<%=examDetail.slag%>/admitCard"><li class="linkGet">Admit Card</li></a>
-                            <a href="/exam-detail/<%=examDetail.slag%>/syllabus"><li class="linkGet">Syllabus</li></a>
-                            <a href="/exam-detail/<%=examDetail.slag%>/examPattern"><li class="linkGet">Exam Pattern</li></a>
-                            <a href="/exam-detail/<%=examDetail.slag%>/counsellingProccess"><li class="linkGet">Counselling Proccess</li></a>
-                            <a href="/exam-detail/<%=examDetail.slag%>/howToPrepare"><li class="linkGet">How To Prepare</li></a>
-                            <a href="/exam-detail/<%=examDetail.slag%>/coachingInstitute"><li class="linkGet">Coaching Institute</li></a>
-                            <a href="/exam-detail/<%=examDetail.slag%>/participateCollege"><li class="linkGet">Participate College</li></a>
-                            <a href="/exam-detail/<%=examDetail.slag%>/faq"><li class="linkGet">Faq</li></a>
-                            <a href="/exam-detail/<%=examDetail.slag%>/newsArticle"><li class="linkGet">News Articles</li></a>
-                            <a href="/exam-detail/<%=examDetail.slag%>/result"><li class="linkGet">Result</li></a>
-
-                            <a href="/exam-detail/<%=examDetail.slag%>/seatAllotment"><li class="linkGet">Seat Allotment</li></a>
-                            <a href="/exam-detail/<%=examDetail.slag%>/cutOff"><li class="linkGet">Cut Off  </li></a>
-                            <a href="/exam-detail/<%=examDetail.slag%>/meritList"><li class="linkGet">Merit list</li></a>
-
-                            <a href="/exam-detail/<%=examDetail.slag%>/bestBook">     <li class="linkGet">   Best Book</li></a>
-
-                            <a href="/exam-detail/<%=examDetail.slag%>/collegePredictor">      <li class="linkGet">   College Predictor</li></a>
-
-                       
-
-                        
-                           
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="boxe">
-                            <h3>CAT 2023 Latest Updates</h3>
-                            <h4>CAT 2023 registration is extended by IIM Lucknow till September 20, 2023 (5:00 PM).</h4>
-                            <ul class="listUpdates">
-                                <li>
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        Check CAT 2023 Photo Size Guidelines
-                                        <a href="#!">...Read More</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="mockTestCta blocksec">
-                            <div class="box">
-                                <div class="innerBox">
-                                    <img src="https://static.collegedekho.com/static-up/images/mock-test.b117a5ab5b52.svg"
-                                        alt="" loading="lazy">
-                                    <div class="w-75">
-                                        <h2 class="m-0">Start Free Mock Test Now</h2>
-                                        <p>Get real time exam experience with full length mock test and get detailed
-                                            analysis.</p>
-                                        <div class="w-25">
-                                            <a href="#!" class="sampleBtn">Attempt now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-               <% sectionData?.forEach(function(sectionData){ %>
-
-                        <div class="boxe">
-                            <h4><span style="color: #E45330;"><%=sectionData.heading%>
-                               
-                            </h4>
-                        </div>
-                        <p class="para"><%-sectionData.description%>
-                       
-                            <span style="color: #E45330;">Check CAT Syllabus and Pattern</span>
-                        </p>
-                        <% }) %>
-
-
-                      
-
-                        <!-- <div class="row justify-content-center py-3">
-                            <div class="col-md-6">
-                                <a href="#!" class="applyBtn">Apply Now</a>
-                            </div>
-                            <div class="col-md-6">
-                                <a href="#!" class="checkBtn">Check Eligibility</a>
-                            </div>
-                        </div>
-                        <p class="para">You must prepare to score at least 100 marks to get a 99+ percentile in CAT. The
-                            competition level is very high with almost 2.5 lakh candidates registering from various
-                            backgrounds.
-                            <span style="color: #E45330;">Check CAT 2023 Score vs Percentile</span>
-                        </p> -->
-                    </div>
-
-                    <!-- <div class="col-md-3">
-                        <a href="#!" class="applyBtn">Get More Info</a>
-                        <a href="#!" class="quesBtn my-3">Ask a Question</a>
-                        <a href="#!" class="sampleBtn">Sample Papers</a>
-                    </div> -->
-                </div>
-            </div>
-        </section>
-
-        <section class="subscribeSec">
-            <div class="container">
-                <div class="subscribe">
-                    <h3>Subscribe To Our News Letter</h3>
-                    <p class="pt-3">Get College Notifications, Exam Notifications and News Updates</p>
-                    <form class="form-card">
-                        <div class="d-flex">
-                            <input type="text" id="fname" name="fname" placeholder="Email address">
-                            <input type="text" id="mobile" name="mobile" placeholder="Mobile no">
-                            <select class="form-select" aria-label="Choose your course">
-                                <option selected>Choose your course</option>
-                                <option value="1">Teacher</option>
-                                <option value="2">School Admin</option>
-                                <option value="3">Principal</option>
-                                <option value="4">School Owner</option>
-                                <option value="5">Parent</option>
-                            </select>
-                            <div class="text-center mx-2">
-                                <a href="#!" type="submit" class="submitBtn">Submit</a>
-                            </div>
-                        </div>
+              <div class="row pt-3">
+                <div class="col-md-3">
+                  <div class="filterSec">
+                    <h3>Stream</h3>
+                    <form class="searchState">
+                      <i class="fa-regular fa-magnifying-glass"></i>
+                      <input
+                        type="text"
+                        placeholder="Search course"
+                        value=""
+                        oninput="filterBySearch(`examCategory`,this)"
+                        name="search"
+                      />
                     </form>
+                    <div class="stream-scroll">
+                      <span id="examCategoryData">
+                      <% examCategory?.forEach(function(examCategory){ %>
+
+                      <div class="form-check" id="course-checkboxe-<%= examCategory?.slag %>" >
+                     
+                          <input
+                            class="form-check-input listCheck"
+                            type="checkbox"
+                            onclick="getexamByslag('<%=examCategory?.slag%>')"
+                            value="<%=examCategory?.slag%>"
+                            id="flexCheckDefault"
+                          />
+                       
+                        <label class="form-check-label" for="flexCheckDefault">
+                          <a href="/exam/<%=examCategory.slag%>">
+                            <%=examCategory?.examCategory%>
+                          </a>
+                        </label>
+                      </div>
+
+                      <% }) %>
+                    </span>
+                    </div>
+                  </div>
+                  <div class="filterSec">
+                    <h3>Course</h3>
+                    <form class="searchState">
+                      <i class="fa-regular fa-magnifying-glass"></i>
+                      <input
+                        type="text"
+                        placeholder="Search course"
+                        value=""
+                        oninput="filterBySearch(`course`,this)"
+                        name="search"
+                      />
+                    </form>
+                    <div class="stream-scroll">
+<span id="courseIdData">
+                      <% examData[0]?.courseDetail?.forEach(function(d){ %>
+                      <div class="form-check" id="courseId-checkboxe-<%= d?.name %>">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+
+                          onclick="getExamByCourseId(this)"
+                          value="<%=d?._id%>"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          <%=d?.name%>
+                        </label>
+                      </div>
+                      <% }) %>
+                    </span>
+                    </div>
+                  </div>
+                  <div class="filterSec">
+                    <h3>Level</h3>
+                    <form class="searchState">
+                      <i class="fa-regular fa-magnifying-glass"></i>
+                      <input type="text" placeholder="Program Type" />
+                    </form>
+
+                    <div class="stream-scroll">
+                      <span id="levelData">
+                      <div class="form-check" >
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          onclick="getExamByLevel(`level`,this)"
+                          value="U.G"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          U.G
+                        </label>
+                      </div>
+                      <div class="form-check" >
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          onclick="getExamByLevel(`level`,this)"
+
+                          value="P.G"
+                          id="flexCheckChecked"
+                          
+                        />
+                        <label class="form-check-label" for="flexCheckChecked">
+                          P.G
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          onclick="getExamByLevel(`level`,this)"
+                          value="Ph.D"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Ph.D
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          onclick="getExamByLevel(`level`,this)"
+                          value="Diploma"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Diploma
+                        </label>
+                      </div>
+
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          onclick="getExamByLevel(`level`,this)"
+                          value="Certificate"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Certificate
+                        </label>
+                      </div>
+
+                    </span>
+                    </div>
+                  </div>
+
+
+                  <div class="filterSec">
+                    <h3>Mode</h3>
+                    <form class="searchState">
+                      <i class="fa-regular fa-magnifying-glass"></i>
+                      <input type="text" placeholder="Program Type" />
+                    </form>
+                    <div class="stream-scroll">
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          onclick="getExamByLevel(`mode`,this)"
+                          value="Online"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Online
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          onclick="getExamByLevel(`mode`,this)"
+
+                          value="Offline"
+                          id="flexCheckChecked"
+                          
+                        />
+                        <label class="form-check-label" for="flexCheckChecked">
+                          Offline
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          onclick="getExamByLevel(`mode`,this)"
+                          value="Both Online & Offline"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Both Online & Offline
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          onclick="getExamByLevel(`mode`,this)"
+                          value="None"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          None
+                        </label>
+                      </div>
+
+                    
+                    </div>
+                  </div>
                 </div>
+
+                <!-- ======================================== -->
+
+                <div class="col-md-9 col-sm-12 bodyContent right-col sort-gap">
+                  <div class="filterBlock">
+                    <select class="form-control select" id="date_sort"   onchange="getExamWithShorting(this)">
+                      <option disabled="" selected="">Sort by</option>
+                      <option value="name">Name</option>
+              
+                    </select>
+                  </div>
+                  <div class="exam-box" id="allExam">
+                    <% getExam?.forEach(function(getExam){ %>
+                    <ul class="examList">
+                      <li
+                        class="ex_rows"
+                        data-mode="Online"
+                        data-level=" UG "
+                        data-degree=" B.Tech"
+                        data-exam_date=""
+                      >
+                        <input
+                          type="hidden"
+                          class="aplication_date"
+                          value="Joint Entrance Examination (JEE) Main - 2024"
+                        /><input
+                          type="hidden"
+                          class="exam_date"
+                          value="2024-01-06"
+                        /><input type="hidden" class="result_date" value="" />
+                        <h2>
+                          <a
+                            href="/exam/jee-main"
+                            target="_blank"
+                            title="JEE Main 2024"
+                          >
+                            <%=getExam?.heading%>
+                          </a>
+                        </h2>
+
+                        <% if(userToken) { %>
+                    
+
+                        <% }else{ %>
+                          <div class="button">
+                          <span
+                            class="button gtm-lead-click apply_now_det_cd ex_list change-alert-text"
+                            data-exam_id="1547"
+                            data-content_type="492"
+                            data-app_label="exams"
+                            data-object_id="1547"
+                            data-button_id="3"
+                            id="btn-cta-3"
+                            data-button_action="1"
+                            data-cta_id="240"
+                            data-template="exam_listing"
+                            data-position="1"
+                            onclick="registerOpen()"
+                            
+                            >Register Now</span
+                          >
+                        </div>
+                        <% } %>
+
+
+                        <div class="examDetailInfo">
+                          <div
+                            class="col-md-4 col-sm-4 col-xs-6 application-date"
+                          >
+                            <h5>Application Date</h5>
+                            <p><%=getExam?.applicationDate%></p>
+                          </div>
+                          <div class="col-md-4 col-sm-4 col-xs-6 exam-date">
+                            <h5>Exam Date</h5>
+                            <p><%=getExam?.examDate%></p>
+                          </div>
+                        </div>
+                        <ul class="examlinks">
+                          <li class="overview">
+                            <a
+                              href="/exam-detail/<%=getExam?.slag%>/applicationForm"
+                              >Application Form</a
+                            >
+                          </li>
+                          <li class="important_dates">
+                            <a href="/exam-detail/<%=getExam?.slag%>/eligibility"
+                              >Eligibility
+                            </a>
+                          </li>
+                          <li class="application_form">
+                            <a href="/exam-detail/<%=getExam?.slag%>/admitCard"
+                              >Admit Card</a
+                            >
+                          </li>
+                          <li class="eligibility">
+                            <a href="/exam-detail/<%=getExam?.slag%>/syllabus"
+                              >Syllabus</a
+                            >
+                          </li>
+                          <li class="admit_card">
+                            <a href="/exam-detail/<%=getExam?.slag%>/examPattern"
+                              >Exam Pattern
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+
+                    <% }) %>
+                  </div>
+                </div>
+              </div>
             </div>
-        </section>
+          </section>
+          <!-- SIDEBAR end -->
+        </div>
+      </div>
     </div>
+
+
+    <p id="getIdForFilter" hidden><%=examCategoryBySlag?._id%></p>
 
     <%- include('../partials/footer')%>
 
-    <script type="text/javascript" src="/public/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/public/js/main.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+    <script
+      src="https://code.jquery.com/jquery-2.2.0.min.js"
+      type="text/javascript"
+    ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 
     <script>
 
+        function getexamByslag(slag){
+            window.location.href = "/exam/"+slag;
+        }
+    </script>
+
+    <!-- implement checked if slug is same with examCategory.slag -->
+
+    <script>
         $(document).ready(function () {
-            $('.stateList li').click(function () {
-                $('.stateList li').removeClass('active');
-                $(this).addClass('active');
-            });
+            var url = window.location.href;
+            var slug = url.split("/").pop();
+         
+        
+
+         document.getElementById('examCategoryData').childNodes.forEach(element=>{
+
+            if(element.id == "course-checkboxe-"+slug){
+                element.childNodes[1].checked = true;
+
+
+          }
+          })
         });
 
-      
-        // if id section and li section are same then add class active to li
 
 
-        $(document).ready(function () {
-
-        var examSection = document.getElementById('examSection').innerHTML;
-        var examSlag = document.getElementById('examSlag').innerHTML;
-
-        console.log(examSection);
-
-
-
-
-console.log(examSlag);
-
-   $('.popularStateList a').each(function(){
-   
-
-// console.log('/exam-detauuil/'+examSlag+'/'+examSection);
- 
-
-         if($(this).attr('href') == '/exam-detail/'+examSlag+'/'+examSection){
-            // add active class on his li child//
-    console.log($(this).attr('href'))
-
-    $(this).children('li').addClass('optionactive');
-
-        
-       
-
-         }
-    });
-    
-            });
-
-     
-
-            // <a href="/exam-detail/<%=examDetail.slag%>/section"><li class="linkGet">Section</li></a>
-
-
-
-
-
-   
-
-   
-
-
-
-      
- 
-  
 
 
 
     </script>
-</body>
+
+
+<!-- get exam by course id -->
+
+
+<script>
+
+function getExamByCourseId(element){
+  // onclick element add checked class and get all checkedclass value//
+
+  element.classList.toggle("checked");
+      var checkedBoxDataGet = document.getElementsByClassName("checked");
+      var data = [];
+      for (var i = 0; i < checkedBoxDataGet.length; i++) {
+        data.push(checkedBoxDataGet[i].value);
+      }
+
+  
+
+ 
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          // document.getElementById("demo").innerHTML =
+          // this.responseText;
+          console.log(this.responseText);
+          var data = JSON.parse(this.responseText);
+          console.log("aaaaaaaaaaaaaaaaaaaaaaaaaa",data);
+
+          document.getElementById("allExam").innerHTML = data.map((data) => {
+            return `
+            <ul class="examList">
+                      <li
+                        class="ex_rows"
+                        data-mode="Online"
+                        data-level=" UG "
+                        data-degree=" B.Tech"
+                        data-exam_date=""
+                      >
+                        <input
+                          type="hidden"
+                          class="aplication_date"
+                          value="Joint Entrance Examination (JEE) Main - 2024"
+                        /><input
+                          type="hidden"
+                          class="exam_date"
+                          value="2024-01-06"
+                        /><input type="hidden" class="result_date" value="" />
+                        <h2>
+                          <a
+                            href="/exam/jee-main"
+                            target="_blank"
+                            title="JEE Main 2024"
+                          >
+                           ${data.heading}
+                          </a>
+                        </h2>
+                        // if user login then show register button else show login button
+
+                        
+
+
+
+                        <div class="button">
+                          <span
+                            class="button gtm-lead-click apply_now_det_cd ex_list change-alert-text"
+                            data-exam_id="1547"
+                            data-content_type="492"
+                            data-app_label="exams"
+                            data-object_id="1547"
+                            data-button_id="3"
+                            id="btn-cta-3"
+                            data-button_action="1"
+                            data-cta_id="240"
+                            data-template="exam_listing"
+                            data-position="1"
+                            onclick="registerOpen()"
+                            >Register Now</span
+                          >
+                        </div>
+
+                        
+                        <div class="examDetailInfo">
+                          <div
+                            class="col-md-4 col-sm-4 col-xs-6 application-date"
+                          >
+                            <h5>Application Date</h5>
+                            <p>${data.applicationDate}</p>
+                          </div>
+                          <div class="col-md-4 col-sm-4 col-xs-6 exam-date">
+                            <h5>Exam Date</h5>
+                            <p>${data.examDate}</p>
+                          </div>
+                        </div>
+                        <ul class="examlinks">
+                          <li class="overview">
+                            <a
+                              href="/exam-detail/${data.slag}/applicationForm"
+                              >Application Form</a
+                            >
+                          </li>
+                          <li class="important_dates">
+                            <a href="/exam-detail/${data.slag}/eligibility"
+                              >Eligibility
+                            </a>
+                          </li>
+                          <li class="application_form">
+                            <a href="/exam-detail/${data.slag}/admitCard"
+                              >Admit Card</a
+                            >
+                          </li>
+                          <li class="eligibility">
+                            <a href="/exam-detail/${data.slag}/syllabus"
+                              >Syllabus</a
+                            >
+                          </li>
+                          <li class="admit_card">
+                            <a href="/exam-detail/${data.slag}/examPattern"
+                              >Exam Pattern
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+            `;  
+          }).join("");
+
+          
+
+
+
+
+        }
+      }
+      xhttp.open(
+        "GET",
+        `/getExamById?courseId=${data}`,
+        true
+      );
+      xhttp.send();
+    }
+
+      
+    
+
+
+
+
+
+</script>
+
+
+
+<!-- get exma bt lavel//// -->
+
+
+<script>
+
+
+function getExamByLevel(element,element2){
+  // console.log(element);
+  // console.log(element2);
+  // const element = element.value;
+// console.log(element);
+  const examCategory = document.getElementById("getIdForFilter").innerHTML;
+      // onclick element add checked class and get all checkedclass value//
+      console.log(examCategory);
+
+      element2.classList.toggle("checked");
+      var checkedBoxDataGet = document.getElementsByClassName("checked");
+      var data = [];
+      for (var i = 0; i < checkedBoxDataGet.length; i++) {
+        data.push(checkedBoxDataGet[i].value);
+      }
+
+      console.log(data);
+
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          // document.getElementById("demo").innerHTML =
+          // this.responseText;
+          console.log(this.responseText);
+          var data = JSON.parse(this.responseText);
+
+
+ 
+          document.getElementById("allExam").innerHTML = data.map((data) => {
+            return `
+            <ul class="examList">
+                      <li
+                        class="ex_rows"
+                        data-mode="Online"
+                        data-level=" UG "
+                        data-degree=" B.Tech"
+                        data-exam_date=""
+                      >
+                        <input
+                          type="hidden"
+                          class="aplication_date"
+                          value="Joint Entrance Examination (JEE) Main - 2024"
+                        /><input
+                          type="hidden"
+                          class="exam_date"
+                          value="2024-01-06"
+                        /><input type="hidden" class="result_date" value="" />
+                        <h2>
+                          <a
+                            href="/exam/jee-main"
+                            target="_blank"
+                            title="JEE Main 2024"
+                          >
+                           ${data.heading}
+                          </a>
+                        </h2>
+                        <div class="button">
+                          <span
+                            class="button gtm-lead-click apply_now_det_cd ex_list change-alert-text"
+                            data-exam_id="1547"
+                            data-content_type="492"
+                            data-app_label="exams"
+                            data-object_id="1547"
+                            data-button_id="3"
+                            id="btn-cta-3"
+                            data-button_action="1"
+                            data-cta_id="240"
+                            data-template="exam_listing"
+                            data-position="1"
+                            onclick="registerOpen()"
+                            >Register Now</span
+                          >
+                        </div>
+                        <div class="examDetailInfo">
+                          <div
+                            class="col-md-4 col-sm-4 col-xs-6 application-date"
+                          >
+                            <h5>Application Date</h5>
+                            <p>${data.applicationDate}</p>
+                          </div>
+                          <div class="col-md-4 col-sm-4 col-xs-6 exam-date">
+                            <h5>Exam Date</h5>
+                            <p>${data.examDate}</p>
+                          </div>
+                        </div>
+                        <ul class="examlinks">
+                          <li class="overview">
+                            <a
+                              href="/exam-detail/${data.slag}/applicationForm"
+                              >Application Form</a
+                            >
+                          </li>
+                          <li class="important_dates">
+                            <a href="/exam-detail/${data.slag}/eligibility"
+                              >Eligibility
+                            </a>
+                          </li>
+                          <li class="application_form">
+                            <a href="/exam-detail/${data.slag}/admitCard"
+                              >Admit Card</a
+                            >
+                          </li>
+                          <li class="eligibility">
+                            <a href="/exam-detail/${data.slag}/syllabus"
+                              >Syllabus</a
+                            >
+                          </li>
+                          <li class="admit_card">
+                            <a href="/exam-detail/${data.slag}/examPattern"
+                              >Exam Pattern
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+            `;  
+          }).join("");
+
+
+
+
+        }
+      }
+
+          xhttp.open(
+        "GET",
+        `/getExamByFilter?examId=${examCategory}&key=${element}&short=${data}`,
+        true
+      );
+      xhttp.send();
+    }
+
+
+
+
+
+
+</script>
+
+
+<!-- search filter in exam page -->
+<script>
+
+
+function filterBySearch(type, element2) {
+
+console.log(type);
+console.log(element2.value);
+
+
+if(type=='examCategory'){
+    document.getElementById("examCategoryData").childNodes.forEach(element=>{
+
+if(element.id){
+const idArray = element.id.split("-");
+        idArray.shift();
+        idArray.shift();
+        const courseName = idArray.join("-");
+        if(!courseName.toLowerCase().toLowerCase().includes(element2.value)){
+            element.style.display = "none";
+        }else{
+            element.style.display = "block";
+        }
+        
+}
+
+    })
+
+
+}
+
+
+
+
+
+if(type=='course'){
+  
+    document.getElementById("courseIdData").childNodes.forEach(element=>{
+
+if(element.id){
+const idArray = element.id.split("-");
+        idArray.shift();
+        idArray.shift();
+        const courseName = idArray.join("-");
+        console.log(courseName);
+        if(!courseName.toLowerCase().toLowerCase().includes(element2.value)){
+            element.style.display = "none";
+        }else{
+            element.style.display = "block";
+        }
+        
+
+}
+  
+      })
+    }
+
+
+
+
+  }
+
+
+
+
+</script>
+
+
+<!-- get exam with shorting// -->
+
+
+<script>
+
+
+function getExamWithShorting(element) {
+      const short = element.value;
+      console.log(short);
+
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          // document.getElementById("demo").innerHTML =
+          // this.responseText;
+          console.log(this.responseText);
+          var data = JSON.parse(this.responseText);
+          document.getElementById("allExam").innerHTML = data.map((data) => {
+            return `
+            <ul class="examList">
+                      <li
+                        class="ex_rows"
+                        data-mode="Online"
+                        data-level=" UG "
+                        data-degree=" B.Tech"
+                        data-exam_date=""
+                      >
+                        <input
+                          type="hidden"
+                          class="aplication_date"
+                          value="Joint Entrance Examination (JEE) Main - 2024"
+                        /><input
+                          type="hidden"
+                          class="exam_date"
+                          value="2024-01-06"
+                        /><input type="hidden" class="result_date" value="" />
+                        <h2>
+                          <a
+                            href="/exam/jee-main"
+                            target="_blank"
+                            title="JEE Main 2024"
+                          >
+                           ${data.heading}
+                          </a>
+                        </h2>
+                        <div class="button">
+                          <span
+                            class="button gtm-lead-click apply_now_det_cd ex_list change-alert-text"
+                            data-exam_id="1547"
+                            data-content_type="492"
+                            data-app_label="exams"
+                            data-object_id="1547"
+                            data-button_id="3"
+                            id="btn-cta-3"
+                            data-button_action="1"
+                            data-cta_id="240"
+                            data-template="exam_listing"
+                            data-position="1"
+                            onclick="registerOpen()"
+                            >Register Now</span
+                          >
+                        </div>
+                        <div class="examDetailInfo">
+                          <div
+                            class="col-md-4 col-sm-4 col-xs-6 application-date"
+                          >
+                            <h5>Application Date</h5>
+                            <p>${data.applicationDate}</p>
+                          </div>
+                          <div class="col-md-4 col-sm-4 col-xs-6 exam-date">
+                            <h5>Exam Date</h5>
+                            <p>${data.examDate}</p>
+                          </div>
+                        </div>
+                        <ul class="examlinks">
+                          <li class="overview">
+                            <a
+                              href="/exam-detail/${data.slag}/applicationForm"
+                              >Application Form</a
+                            >
+                          </li>
+                          <li class="important_dates">
+                            <a href="/exam-detail/${data.slag}/eligibility"
+                              >Eligibility
+                            </a>
+                          </li>
+                          <li class="application_form">
+                            <a href="/exam-detail/${data.slag}/admitCard"
+                              >Admit Card</a
+                            >
+                          </li>
+                          <li class="eligibility">
+                            <a href="/exam-detail/${data.slag}/syllabus"
+                              >Syllabus</a
+                            >
+                          </li>
+                          <li class="admit_card">
+                            <a href="/exam-detail/${data.slag}/examPattern"
+                              >Exam Pattern
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+            `;  
+          }).join("");
+
+          
+
+
+        }
+      };
+      xhttp.open("GET", `/examShorting?short=${short}`, true);
+      xhttp.send();
+    }
+
+
+</script>
+
+<script>
+  // open register model
+
+  function registerOpenForExam() {
+    console.log('clickedrtrt')
+    $("#exampleModal2").modal("show");
+   console.log('clicked')
+ 
+
+  }
+
+</script>
+
+  </body>
 </html>

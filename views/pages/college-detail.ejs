@@ -2,8 +2,13 @@
 <html lang="en">
 
 <head>
-    <title>Rigalma</title>
+  
     <meta charset="utf-8">
+
+    <title><%=data?.metaTitle%></title>
+    <meta name="description" content="<%=data?.metaDescription%>">
+    <meta name="keyword" content="<%=data?.metaKeyword%>">
+    <link rel="canonical" href="<%=data?.canonical%>" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Arima:wght@100;200;300;400;500;600;700&display=swap"
         rel="stylesheet">
@@ -19,7 +24,7 @@
 
 
     <p hidden id="collegeSection"><%=collegeSection%></p>
-    <p hidden id="collegeSlag"><%=data.slag%></p>
+    <p hidden id="collegeSlag"><%=data?.slag%></p>
 
     <div class="bannerSecBg" style="background-image: url(/public/images/detailBanner.jpg);">
         <div class="bannerOverlay">
@@ -46,14 +51,14 @@
     <section class="college_detail_page">
         <div class="container">
             <ul class="collegeInfo">
-                <a href="/collegeDetail/<%=data.slag%>/overView">  <li class="collegeInfoTab">OverView</li></a>
-                <a href="/collegeDetail/<%=data.slag%>/courses">    <li class="collegeInfoTab">Courses </li></a>
-                <a href="/collegeDetail/<%=data.slag%>/admission">    <li class="collegeInfoTab">Admission</li></a>
-                <a href="/collegeDetail/<%=data.slag%>/placement">   <li class="collegeInfoTab">Placement</li></a>
-                <a href="/collegeDetail/<%=data.slag%>/scholarShip">   <li class="collegeInfoTab">Scholarship</li></a>
-                <a href="/collegeDetail/<%=data.slag%>/campus">  <li class="collegeInfoTab">Campus</li></a>
-                <a href="/collegeDetail/<%=data.slag%>/gallery">    <li class="collegeInfoTab">Gallery</li></a>
-                <a href="/collegeDetail/<%=data.slag%>/reviews">    <li class="collegeInfoTab">Reviews</li></a>
+                <a href="/collegeDetail/<%=data?.slag%>/overView">  <li class="collegeInfoTab">OverView</li></a>
+                <a href="/collegeDetail/<%=data?.slag%>/courses">    <li class="collegeInfoTab">Courses </li></a>
+                <a href="/collegeDetail/<%=data?.slag%>/admission">    <li class="collegeInfoTab">Admission</li></a>
+                <a href="/collegeDetail/<%=data?.slag%>/placement">   <li class="collegeInfoTab">Placement</li></a>
+                <a href="/collegeDetail/<%=data?.slag%>/scholarShip">   <li class="collegeInfoTab">Scholarship</li></a>
+                <a href="/collegeDetail/<%=data?.slag%>/campus">  <li class="collegeInfoTab">Campus</li></a>
+                <!-- <a href="/collegeDetail/<%=data?.slag%>/gallery">    <li class="collegeInfoTab">Gallery</li></a>// -->
+                <a href="/collegeDetail/<%=data?.slag%>/reviews">    <li class="collegeInfoTab">Reviews</li></a>
 
 
             </ul>
@@ -98,11 +103,11 @@
 
                  <% sectionData?.forEach(function(sectionData){ %>
                     <div class="collegeDetailFilter2">
-                        <h4><%=sectionData.heading%></h4>
+                        <h4><%=sectionData?.heading%></h4>
                         <div class="border-top collegefilter2 pt-2 row align-items-center">
-                            <div class="col-md-9">
-                                <h5><%-sectionData.description%></h5>
-                           
+                            <div class="college-comment">
+                                <h5><%-sectionData?.description%></h5>
+                            
                            
                             </div>
                            
@@ -113,9 +118,9 @@
                 </div>
                 <div class="col-md-3 pt-3">
                     <!-- <a href="#!" class="applyBtn mt-5">Apply Now</a> -->
-                    <% if(data.brochureUrl){ %>
+                    <% if(data?.brochureUrl){ %>
 
-                    <a href="<%=data.brochureUrl%>" class="quesBtn my-3">Download Brochure</a>
+                    <a href="<%=data?.brochureUrl%>" class="quesBtn my-3">Download Brochure</a>
 
                     <% } else{ %>
                   
@@ -124,17 +129,17 @@
                     
                  
                     <div class="parantCollegeGroup">
-                        <h4>Top Courses</h4>
+                        <h4>Top College</h4>
 
                         <%topCollege?.forEach(function(topCollege){ %>
-                            <a href="/collegeDetail/<%=topCollege.slag%>/overView">
+                            <a href="/collegeDetail/<%=topCollege?.slag%>/overView">
                         <div class="border-top topCou pt-2 d-flex">
                             <div class="w-75">
-                                <h5><%=topCollege.name%></h5>
-                                <p>AVG FEE - <%=topCollege.feesRange%></p>
+                                <h5><%=topCollege?.name%></h5>
+                                <p>AVG FEE - <%=topCollege?.feesRange%></p>
                             </div>
                             <div class="w-25">
-                                <p>3 Years</p>
+                                <!-- <p>3 Years</p> -->
                             </div>
                         </div>
                         </a>
@@ -178,16 +183,14 @@
       var collegeSection = document.getElementById("collegeSection").innerHTML;
       var collegeSlag = document.getElementById("collegeSlag").innerHTML;
 
-      console.log(collegeSection);
-
-      console.log(collegeSlag);
+ 
 
       $(".collegeInfo a").each(function () {
-        // console.log('/exam-detauuil/'+examSlag+'/'+examSection);
+        console.log($(this).attr("href"));
+        console.log("/collegeDetail/" + collegeSlag + "/" + collegeSection);
 
         if (
-          $(this).attr("href") ==
-          "/collegeDetail/" + collegeSlag + "/" + collegeSection
+          $(this).attr("href") == "/collegeDetail/" + collegeSlag + "/" + collegeSection
         ) {
           // add active class on his li child//
           console.log($(this).attr("href"));

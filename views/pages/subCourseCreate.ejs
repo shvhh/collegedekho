@@ -151,8 +151,8 @@
                         <select class="form-select" aria-label="Default select example" id="cars" name="courseId" required>
                      
                           <option value="">Open this select menu</option>
-          <% course.forEach(function(course){ %>
-                          <option value="<%=course._id%>"><%=course.name%></option>
+          <% course?.forEach(function(course){ %>
+                          <option value="<%=course?._id%>"><%=course?.name%></option>
           <% }) %>
                         </select>
                         </div></div>

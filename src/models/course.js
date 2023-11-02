@@ -9,6 +9,10 @@ const Course = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "courseCategory",
     },
+
+    courseCategoryName: {
+        type: String,
+    },
  
    image: {
         type: String,
@@ -64,7 +68,7 @@ section: [
     ],
 
 
-    sallary: [
+    salary: [
         {
         heading: {
             type: String,
@@ -103,6 +107,12 @@ section: [
         type:Boolean,
         default:false,
       },
+
+      mode:{
+     type:String,
+      },
+      
+      
       
   
 },

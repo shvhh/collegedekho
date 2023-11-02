@@ -55,7 +55,7 @@
                       courseCategoryDetail[0]?.stateDetail?.forEach(function(d){
                       %>
 
-                      <option value="<%=d._id%>"><%=d.name%></option>
+                      <option value="<%=d?._id%>"><%=d?.name%></option>
                       <% }) %>
                     </select>
                   </div>
@@ -75,7 +75,7 @@
                       courseCategoryDetail[0]?.districtDetail?.forEach(function(d){
                       %>
 
-                      <option value="<%=d._id%>"><%=d.name%></option>
+                      <option value="<%=d?._id%>"><%=d?.name%></option>
                       <% }) %>
                     </select>
                   </div>
@@ -148,24 +148,26 @@
                   />
                 </form>
 
-                <span id="courseData">
-                  <% courseCategoryDetail[0]?.courseDetail?.forEach(function(d){
-                  %>
-                  <div class="form-check" id="course-checkbox-<%= d.name %>" >
-                    <input
-                      class="form-check-input"
-                      onclick="getCollege(this)"
-                      type="checkbox"
-                      class="checkedBoxDataGet"
-                      value="<%=d._id%>"
-                      id="flexCheckDefault"
-                    />
-                    <label class="form-check-label" for="flexCheckDefault">
-                      <%=d.name%>
-                    </label>
-                  </div>
-                  <% }) %>
-                </span>
+                <div class="Course-sslider">
+                  <span id="courseData">
+                    <% courseCategoryDetail[0]?.courseDetail?.forEach(function(d){
+                    %>
+                    <div class="form-check" id="course-checkbox-<%= d.name %>" >
+                      <input
+                        class="form-check-input"
+                        onclick="getCollege(this)"
+                        type="checkbox"
+                        class="checkedBoxDataGet"
+                        value="<%=d?._id%>"
+                        id="flexCheckDefault"
+                      />
+                      <label class="form-check-label" for="flexCheckDefault">
+                        <%=d?.name%>
+                      </label>
+                    </div>
+                    <% }) %>
+                  </span>
+                </div>
               </div>
 
               <!-- specilization// -->
@@ -182,6 +184,7 @@
                   />
                 </form>
 
+                <div class="Course-sslider">
                 <span id="alldata">
                   <%
                   courseCategoryDetail[0]?.subCoursesDetail?.forEach(function(d){
@@ -192,15 +195,16 @@
                       onclick="getByState(`subCourseId`,this)"
                       class="getDataBySubcourse"
                       type="checkbox"
-                      value="<%=d._id%>"
+                      value="<%=d?._id%>"
                       id="flexCheckDefault"
                     />
                     <label class="form-check-label" for="flexCheckDefault">
-                      <%=d.subCourseName%>
+                      <%=d?.subCourseName%>
                     </label>
                   </div>
                   <% }) %>
                 </span>
+                </div>
               </div>
 
               <!-- exam filter// -->
@@ -217,6 +221,7 @@
                   />
                 </form>
 
+                <div class="Course-sslider">
                 <span id="examData">
                   <% courseCategoryDetail[0]?.examDetail?.forEach(function(d){
                   %>
@@ -225,16 +230,17 @@
                       class="form-check-input"
                       onclick="getByState(`examId`,this)"
                       type="checkbox"
-                      value="<%=d._id%>"
+                      value="<%=d?._id%>"
                       id="flexCheckDefault"
                     />
                     <label class="form-check-label" for="flexCheckDefault">
-                      <%=d.heading%>
+                      <%=d?.heading%>
                     </label>
                   </div>
 
                   <% }) %>
                 </span>
+                </div>
               </div>
 
               <!-- instituteType -->
@@ -379,6 +385,7 @@
                   <i class="fa-regular fa-magnifying-glass"></i>
                   <input type="text" placeholder="Program Type" />
                 </form>
+                <div class="Course-sslider">
                 <div class="form-check">
                   <input
                     class="form-check-input"
@@ -387,6 +394,8 @@
                     value="less Than 1 Lakh"
                     id="flexCheckDefault"
                   />
+
+
                   <label class="form-check-label" for="flexCheckDefault">
                     less Than 1 Lakh
                   </label>
@@ -453,6 +462,7 @@
                     Greater Than 5 Lakh
                   </label>
                 </div>
+                </div>
               </div>
 
               <!-- facility provide/ -->
@@ -470,6 +480,7 @@
                     />
                   </form>
 
+                  <div class="Course-sslider">
                 <span id="facilityData">
                 <% facility?.forEach(function(facility){ %>
                 <div class="form-check" id="exam-checkbox-<%=facility%>">
@@ -486,36 +497,51 @@
                 </div>
                 <% }) %>
             </span>
+            </div>
               </div>
             </div>
             <div class="col-md-9" id="allColleges">
-              <% data.forEach(function(data){ %>
+              <% data?.forEach(function(data){ %>
               <div class="collegeCard">
                 <div class="row">
                   <div class="col-md-4">
-                    <a href="/collegeDetail/<%=data.slag%>/overView">
+                    <!-- <a href="/collegeDetail/<%=data?.slag%>/overView"> -->
                       <div class="collImage">
-                        <img src="<%=data.image%>" />
+
+                        <% if(data?.isWishlisted == true){%>
+
+                                    
+                                        
+                          <i class="fas fa-star checkedData"  onclick="addWishlist(this,'<%=data?._id%>')"></i>
+                                                    <%} else { %>
+                            <i class="fas fa-star"  onclick="addWishlist(this,'<%=data?._id%>')"></i>                       
+                              <% } %>
+
+
+
+                        <!-- <i class="fa-regular fa-heart wish-list-heart" onclick="addWishlist('<%=data?._id%>')"></i> -->
+            
+                        <img src="<%=data?.image%>" alt="<%=data?.altForImage%>" />
                       </div>
-                    </a>
+                    <!-- </a> -->
                   </div>
                   <div class="col-md-8">
                     <div class="collDetail">
                       <div class="collTit">
                         <div class="collLogo">
-                          <img src="<%=data.icon%>" />
+                          <img src="<%=data?.icon%>" alt="<%=data?.altForIcon%>"/>
                         </div>
                         <div class="mx-2">
-                          <a href="/collegeDetail/<%=data.slag%>/overView">
+                          <a href="/collegeDetail/<%=data?.slag%>/overView">
                             <h3><%=data.name%></h3>
                           </a>
-                          <p>Approved by:<%=data.approvedField%></p>
+                          <p>Approved by:<%=data?.approvedField%></p>
                         </div>
                       </div>
                       <div class="row pt-2">
                         <div class="col-md-4">
                           <div class="collFeee">
-                            <span>₹ <%=data.feesRange%></span>
+                            <span>₹ <%=data?.feesRange%></span>
                             <p>Fees</p>
                           </div>
                         </div>
@@ -526,7 +552,7 @@
                             <div class="iconSe">
                               <img src="/public/images/test.png" />
                             </div>
-                            <a href="/collegeDetail/<%=data.slag%>/courses">
+                            <a href="/collegeDetail/<%=data?.slag%>/courses">
                               <p>Course & Fees</p>
                             </a>
                           </div>
@@ -536,7 +562,7 @@
                             <div class="iconSe">
                               <img src="/public/images/test.png" />
                             </div>
-                            <a href="/collegeDetail/<%=data.slag%>/placement">
+                            <a href="/collegeDetail/<%=data?.slag%>/placement">
                               <p>Placement</p>
                             </a>
                           </div>
@@ -546,7 +572,7 @@
                             <div class="iconSe">
                               <img src="/public/images/test.png" />
                             </div>
-                            <a href="/collegeDetail/<%=data.slag%>/reviews">
+                            <a href="/collegeDetail/<%=data?.slag%>/reviews">
                               <p>Reviews</p>
                             </a>
                           </div>
@@ -557,7 +583,7 @@
                       <div class="col-md-12">
                         <div class="d-flex">
                           <a
-                            href="/collegeDetail/<%=data.slag%>/overView"
+                            href="/collegeDetail/<%=data?.slag%>/overView"
                             class="applyBtn"
                             >Get More Info</a
                           >
@@ -572,169 +598,15 @@
 
               <% }) %>
 
-              <!-- <p id="getCourseCategoryId"> <%=data[0]?.courseCategoryId%></p> -->
-
-              <!-- <div class="collegeCard">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="collImage">
-                                        <img src="/public/images/college.jpg">
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="collDetail">
-                                        <div class="collTit">
-                                            <div class="collLogo">
-                                                <img src="/public/images/logo.png">
-                                            </div>
-                                            <div class="mx-2">
-                                                <h3>IIT Madras - Indian Institute of Technology - [IITM], Chennai</h3>
-                                                <p>Chennai, Tamil Nadu AICTE Approved</p>
-                                            </div>
-                                        </div>
-                                        <div class="row pt-2">
-                                            <div class="col-md-4">
-                                                <div class="collFeee">
-                                                    <span>₹ 77,285</span>
-                                                    <p>BHMS - First Year Fees</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="collFeee">
-                                                    <span>₹ 77,285</span>
-                                                    <p>BHMS - First Year Fees</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="collFeee">
-                                                    <span>₹ 77,285</span>
-                                                    <p>BHMS - First Year Fees</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="collRcp d-flex align-items-center">
-                                                    <div class="iconSe">
-                                                        <img src="/public/images/test.png">
-                                                    </div>
-                                                    <p>Course & Fees</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="collRcp d-flex align-items-center">
-                                                    <div class="iconSe">
-                                                        <img src="/public/images/test.png">
-                                                    </div>
-                                                    <p>Placement</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="collRcp d-flex align-items-center">
-                                                    <div class="iconSe">
-                                                        <img src="/public/images/test.png">
-                                                    </div>
-                                                    <p>Reviews</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row pt-2">
-                                        <div class="col-md-12">
-                                            <div class="d-flex">
-                                                <a href="college_detail.html" class="applyBtn">Get More Info</a>
-                                                <a href="#!" class="quesBtn mx-2">Ask a Question</a>
-                                                <a href="#!" class="sampleBtn">Sample Papers</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="collegeCard">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="collImage">
-                                        <img src="/public/images/college.jpg">
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="collDetail">
-                                        <div class="collTit">
-                                            <div class="collLogo">
-                                                <img src="/public/images/logo.png">
-                                            </div>
-                                            <div class="mx-2">
-                                                <h3>IIT Madras - Indian Institute of Technology - [IITM], Chennai</h3>
-                                                <p>Chennai, Tamil Nadu AICTE Approved</p>
-                                            </div>
-                                        </div>
-                                        <div class="row pt-2">
-                                            <div class="col-md-4">
-                                                <div class="collFeee">
-                                                    <span>₹ 77,285</span>
-                                                    <p>BHMS - First Year Fees</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="collFeee">
-                                                    <span>₹ 77,285</span>
-                                                    <p>BHMS - First Year Fees</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="collFeee">
-                                                    <span>₹ 77,285</span>
-                                                    <p>BHMS - First Year Fees</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="collRcp d-flex align-items-center">
-                                                    <div class="iconSe">
-                                                        <img src="/public/images/test.png">
-                                                    </div>
-                                                    <p>Course & Fees</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="collRcp d-flex align-items-center">
-                                                    <div class="iconSe">
-                                                        <img src="/public/images/test.png">
-                                                    </div>
-                                                    <p>Placement</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="collRcp d-flex align-items-center">
-                                                    <div class="iconSe">
-                                                        <img src="/public/images/test.png">
-                                                    </div>
-                                                    <p>Reviews</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row pt-2">
-                                        <div class="col-md-12">
-                                            <div class="d-flex">
-                                                <a href="college_detail.html" class="applyBtn">Get More Info</a>
-                                                <a href="#!" class="quesBtn mx-2">Ask a Question</a>
-                                                <a href="#!" class="sampleBtn">Sample Papers</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
+            
             </div>
           </div>
         </div>
       </section>
     </div>
 
-    <p id="getIdForFilter" hidden><%=courseCategoryDetail[0]._id%></p>
+    <p id="getIdForFilter" hidden><%=courseCategoryDetail[0]?._id%></p>
+    <p id="userDetail" hidden><%=userToken%></p>
 
     <%- include('../partials/footer')%>
 
@@ -761,7 +633,7 @@
         data.push(checkedBoxDataGet[i].value);
       }
 
-      console.log(category);
+   
 
       console.log(data);
 
@@ -823,11 +695,16 @@
               return `<div class="collegeCard">
             <div class="row">
                                 <div class="col-md-4">
-                                  <a href="/collegeDetail/${college.slag}/overView">
+                                 
                                     <div class="collImage">
+
+                                      ${data.isWishlisted== true ?`   <i class="fas fa-star checkedData" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i> ` : `  <i class="fas fa-star" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i>`}
+
+
+          
                                         <img src="${college.image}">
                                     </div>
-                                    </a>
+                                 
                                 </div>
                                 <div class="col-md-8">
                                     <div class="collDetail">
@@ -954,11 +831,12 @@
               return `<div class="collegeCard">
             <div class="row">
                                 <div class="col-md-4">
-                                  <a href="/collegeDetail/${data.slag}/overView">
+                                  
                                     <div class="collImage">
+                                      <i class="fas fa-star" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i>
                                         <img src="${data.image}">
                                     </div>
-                                    </a>
+                                  
                                 </div>
                                 <div class="col-md-8">
                                     <div class="collDetail">
@@ -1084,11 +962,12 @@
               return `<div class="collegeCard">
             <div class="row">
                                 <div class="col-md-4">
-                                  <a href="/collegeDetail/${data.slag}/overView">
+                                
                                     <div class="collImage">
+                                      <i class="fas fa-star" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i>
                                         <img src="${data.image}">
                                     </div>
-                                    </a>
+                                  
                                 </div>
                                 <div class="col-md-8">
                                     <div class="collDetail">
@@ -1300,11 +1179,12 @@ if(element.id){
               return `<div class="collegeCard">
             <div class="row">
                                 <div class="col-md-4">
-                                  <a href="/collegeDetail/${data.slag}/overView">
+                               
                                     <div class="collImage">
+                                      <i class="fas fa-star" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i>
                                         <img src="${data.image}">
                                     </div>
-                                    </a>
+                                  
                                 </div>
                                 <div class="col-md-8">
                                     <div class="collDetail">
@@ -1387,6 +1267,67 @@ if(element.id){
     }
   </script>
 
+
+<script>
+
+// onclick if user is logged in then add college in wishlist and if not open login modal
+
+
+function addWishlist(element,id){
+  const userDetail = document.getElementById("userDetail").innerHTML;
+  console.log(element)
+  const model = element.value
+  console.log(model)
+
+  if(userDetail){
+    var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          // document.getElementById("demo").innerHTML =
+          // this.responseText;
+          console.log(this.responseText);
+          var data = JSON.parse(this.responseText);
+
+        const addWishlist =  data.message
+          if(addWishlist ==  "add"){
+       
+
+            // this.item par checked class add karna hai//
+
+            element.classList.toggle("checkedData");
+
+
+
+        
+
+  
+          
+
+
+
+      
+
+
+
+
+          
+            
+          }else{
+          // remove cheked class
+          element.classList.remove("checkedData");
+          }
+        }
+      };
+      xhttp.open("GET", `/addWishlist?collegeId=${id}`, true);
+      xhttp.send();
+  }else{
+    $("#exampleModal").modal("show");
+  }
+}
+
+ 
+
+</script>
 
 
 </html>

@@ -3,6 +3,11 @@
   <head>
     <title>Rigalma</title>
     <meta charset="utf-8" />
+
+    <title><%=data?.metaTitle%></title>
+    <meta name="description" content="<%=data?.metaDescription%>">
+    <meta name="keyword" content="<%=data?.metaKeyword%>">
+    <link rel="canonical" href="<%=data?.canonical%>" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       href="https://fonts.googleapis.com/css2?family=Arima:wght@100;200;300;400;500;600;700&display=swap"
@@ -24,7 +29,7 @@
     <%- include('../partials/navbar')%>
 
     <p hidden id="courseSection"><%=courseSection%></p>
-    <p hidden id="courseSlag"><%=data.slag%></p>
+    <p hidden id="courseSlag"><%=data?.slag%></p>
 
     <div
       class="bannerSecBg"
@@ -54,14 +59,14 @@
     <section class="college_detail_page">
       <div class="container">
         <ul class="collegeInfo">
-          <a href="/courseDetail/<%=data.slag%>/section">
+          <a href="/courseDetail/<%=data?.slag%>/section">
             <li class="collegeInfoTab">Section</li></a
           >
-          <a href="/courseDetail/<%=data.slag%>/syllabus">
+          <a href="/courseDetail/<%=data?.slag%>/syllabus">
             <li class="collegeInfoTab">Syllabus</li></a
           >
-          <a href="/courseDetail/<%=data.slag%>/sallary">
-            <li class="collegeInfoTab">Sallary</li></a
+          <a href="/courseDetail/<%=data?.slag%>/sallary">
+            <li class="collegeInfoTab">Salary</li></a
           >
         </ul>
         <div class="row">
@@ -105,12 +110,12 @@
 
             <% sectionData?.forEach(function(sectionData){ %>
             <div class="collegeDetailFilter2">
-              <h4><%=sectionData.heading%></h4>
+              <h4><%=sectionData?.heading%></h4>
               <div
                 class="border-top collegefilter2 pt-2 row align-items-center"
               >
                 <div class="col-md-9">
-                  <h5><%-sectionData.description%></h5>
+                  <h5><%-sectionData?.description%></h5>
                 </div>
               </div>
             </div>
@@ -137,17 +142,19 @@
             <div class="parantCollegeGroup">
               <h4>Top Courses</h4>
               <%topCourse?.forEach(function(topCourse){ %>
+                <a href="/courseDetail/<%=topCourse?.slag%>/section">
 
               <div class="border-top topCou pt-2 d-flex">
                 <div class="w-75">
-                  <h5><%=topCourse.name%></h5>
-                  <p>FEE - <%=topCourse.fees%></p>
+                  <h5><%=topCourse?.name%></h5>
+                  <p>FEE - <%=topCourse?.fees%></p>
                 </div>
                 <div class="w-25">
-                  <p><%=topCourse.averageDuration%> Month</p>
+                  <p><%=topCourse?.averageDuration%> Month</p>
                 </div>
               </div>
               <% }) %>
+            </a>
             </div>
           </div>
         </div>

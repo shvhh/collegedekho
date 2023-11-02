@@ -154,7 +154,7 @@
                          <div class="row">
                             <div class="col-md-2">
                               <div class="imgsecccc">
-                                <img src="<%=data.image%>" id="img" alt="alt" />
+                                <img src="<%=data?.image%>" id="img" alt="alt" />
                              
                               </div>
                             </div>
@@ -165,7 +165,7 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory"
                             <label for="first-name-column" class="form-label">Alt For Image </label>
-                            <input type="text" class="form-control" placeholder="Enter Alt For Image " value="<%=data.imageAlt%>" name="imageAlt" data-parsley-required="true"  />
+                            <input type="text" class="form-control" placeholder="Enter Alt For Image " value="<%=data?.imageAlt%>" name="imageAlt" data-parsley-required="true"  />
                           </div>
                         </div>
 
@@ -177,9 +177,9 @@
                         <select class="form-select" aria-label="Default select example" id="cars" name="courseId" required>
                      
                           <option value="">Open this select menu</option>
-          <% course.forEach(function(course){ %>
+          <% course?.forEach(function(course){ %>
                           <!-- <option value="<%=course._id%>"><%=course.name%></option> -->
-                          <option value="<%=course._id%>" <%= (`${course._id}` === `${data.courseId}`)? 'selected' : '' %>> <%=course.name%></option>
+                          <option value="<%=course?._id%>" <%= (`${course?._id}` === `${data?.courseId}`)? 'selected' : '' %>> <%=course?.name%></option>
           <% }) %>
 
                         </select>
@@ -189,28 +189,28 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Keyword </label>
-                            <input type="text" class="form-control" placeholder="Enter Keyword " value="<%=data.metaKeyword%>" name="metaKeyword" data-parsley-required="true" required />
+                            <input type="text" class="form-control" placeholder="Enter Keyword " value="<%=data?.metaKeyword%>" name="metaKeyword" data-parsley-required="true" required />
                           </div>
                         </div>
 
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label"> Description</label>
-                            <input type="text" class="form-control" placeholder="Enter  Description"value="<%=data.metaDescription%>" name="metaDescription" data-parsley-required="true" required />
+                            <input type="text" class="form-control" placeholder="Enter  Description"value="<%=data?.metaDescription%>" name="metaDescription" data-parsley-required="true" required />
                           </div>
                         </div>
 
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Title </label>
-                            <input type="text" class="form-control" placeholder="Enter Title" value="<%=data.metaTitle%>" name="metaTitle" data-parsley-required="true" required />
+                            <input type="text" class="form-control" placeholder="Enter Title" value="<%=data?.metaTitle%>" name="metaTitle" data-parsley-required="true" required />
                           </div>
                         </div>
 
                         <div class="col-md-6 col-12">
                           <div class="form-group mandatory">
                             <label for="first-name-column" class="form-label">Colonial </label>
-                            <input type="text" class="form-control" placeholder="Enter Canonical" value="<%=data.canonical%>" name="canonical" data-parsley-required="true" required />
+                            <input type="text" class="form-control" placeholder="Enter Canonical" value="<%=data?.canonical%>" name="canonical" data-parsley-required="true" required />
                           </div>
                         </div>
                       

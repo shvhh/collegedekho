@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Rigalma</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/public/css/style.css" rel="stylesheet">
+    <link href="/public/css/responsive.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <%- include('../partials/navbar')%>
+
+
+    <p hidden id="collegeSection"><%=collegeSection%></p>
+    <p hidden id="collegeSlag"><%=data.slag%></p>
+
+    <div class="bannerSecBg" style="background-image: url(/public/images/detailBanner.jpg);">
+        <div class="bannerOverlay">
+            <div class="container">
+                <div class="bannerDetailTitle">
+                    <h3><%=data?.name%> - Admission, Fees, Courses Placement</h3>
+                    <!-- <h4 class="m-0">Chennai, Tamil Nadu AICTE Approved</h4> -->
+                    <!-- <div class="d-flex align-items-center pt-3">
+                        <div class="d-flex align-items-center">
+                            <span class="starCount">10</span>
+                            <div class="reviewsCo">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <p>4 User reviews</p>
+                            </div>
+                        </div>
+                        <a href="#!" class="consultationBtn">Get Contact Details</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="college_detail_page">
+        <div class="container">
+            <ul class="collegeInfo">
+                <a href="/collegeDetail/<%=data.slag%>/overView">  <li class="collegeInfoTab">OverView</li></a>
+                <a href="/collegeDetail/<%=data.slag%>/courses">    <li class="collegeInfoTab">Courses </li></a>
+                <a href="/collegeDetail/<%=data.slag%>/admission">    <li class="collegeInfoTab">Admission</li></a>
+                <a href="/collegeDetail/<%=data.slag%>/placement">   <li class="collegeInfoTab">Placement</li></a>
+                <a href="/collegeDetail/<%=data.slag%>/scholarShip">   <li class="collegeInfoTab">Scholarship</li></a>
+                <a href="/collegeDetail/<%=data.slag%>/campus">  <li class="collegeInfoTab">Campus</li></a>
+                <a href="/collegeDetail/<%=data.slag%>/gallery">    <li class="collegeInfoTab">Gallery</li></a>
+                <a href="/collegeDetail/<%=data.slag%>/reviews">    <li class="collegeInfoTab">Reviews</li></a>
+
+
+            </ul>
+          <div class="row">
+            <div class="col-md-9">
+                <div class="container">
+                    <div class="college_gallery_u7AtV">
+                        <h2>college gallery</h2>
+                        <div class="college_imgBox__ovpk6">
+
+
+                            <% sectionData?.forEach(function(sectionData){ %>
+                            <div class="college_galleryImg__blgLw"  onclick="viewImage('<%=sectionData%>')">
+                                <div class="hoverEE">
+                                    <div class="background-page" id="myBtn">
+                                        <img srcset="<%=sectionData%>"
+                                            alt="img"
+                                            src="<%=sectionData%>"
+                                            decoding="async" data-nimg="1" style="color:transparent;margin:10px">
+                                    </div>
+                                </div>
+                            </div>
+                            <% }) %>
+                        
+                        </div>
+        
+                        <!-- The Modal -->
+                        <div id="myModal" class="modal">
+                            <!-- Modal content -->
+                                <div class="modal-content-1">
+                                    <div class="GalleryModal_popUp__GMd7Z">
+                                        <h2>Gallery</h2>
+                                        <span class="close">&times;</span>
+                                        <div class="container">
+                                            <div class="modal-image">
+                                                <img src="https://media.collegedekho.com/media/img/institute/crawled_images/its6.jpeg?width=240&amp;height=120&amp;mode=crop&amp;crop=smart"
+                                                alt="" class="modal-inner">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+        
+                        </div>
+                    </div>
+            </div>
+            <div class="col-md-3 pt-3">
+             
+              <div class="parantCollegeGroup">
+                <h4>Top Courses</h4>
+
+                <%topCollege?.forEach(function(topCollege){ %>
+                    <a href="/collegeDetail/<%=topCollege.slag%>/overView">
+                <div class="border-top topCou pt-2 d-flex">
+                    <div class="w-75">
+                        <h5><%=topCollege.name%></h5>
+                        <p>AVG FEE - <%=topCollege.feesRange%></p>
+                    </div>
+                    <div class="w-25">
+                        <p>3 Years</p>
+                    </div>
+                </div>
+                </a>
+                <% }) %>
+            </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="subscribeSec">
+        <div class="container">
+            <div class="collegeDetail">
+                <form class="form-card">
+                    <h3>Comment</h3>
+                    <label for="exampleFormControlTextarea1" class="form-label mt-3">Example textarea</label>
+                    <textarea class="form-control" placeholder="Enter text here" rows="5"></textarea>
+                    <div class="text-center mx-2 mt-3">
+                        <a href="#!" type="submit" class="submitBtn">Submit</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    <%- include('../partials/footer')%>
+    <script type="text/javascript" src="/public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/public/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+
+
+    <script>
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+    </script>
+
+// on click on viewImage oepn modal and set image src
+
+<script>
+
+function viewImage(src){
+    var modal = document.getElementById("myModal");
+    modal.style.display = "block";
+    var modalImg = document.querySelector(".modal-inner");
+    modalImg.src = src;
+}
+
+
+</script>
+
+
+<!-- implement active class on college detail page    -->
+
+
+<script>
+    $(document).ready(function () {
+         var collegeSection = document.getElementById("collegeSection").innerHTML;
+         var collegeSlag = document.getElementById("collegeSlag").innerHTML;
+   
+    
+   
+         $(".collegeInfo a").each(function () {
+           console.log($(this).attr("href"));
+           console.log("/collegeDetail/" + collegeSlag + "/" + collegeSection);
+   
+           if (
+             $(this).attr("href") == "/collegeDetail/" + collegeSlag + "/" + collegeSection
+           ) {
+             // add active class on his li child//
+             console.log($(this).attr("href"));
+   
+             $(this).children("li").addClass("optionactive");
+           }
+         });
+       });
+     </script>
+   
+
+</body>
+
+</html>

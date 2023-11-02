@@ -15,6 +15,53 @@
         margin: 0px !important;
     }
 
+    .rightside{
+        width: 100%;
+    }
+
+    ul.examList .examDetailInfo{
+        display: flex;
+        flex-direction: column;
+    }
+
+    
+    
+    .schoolBlock .readbtn{
+        margin-left: 0px;
+    }
+
+    .content ul.attr_box>li{
+        margin-top: 10px;
+    }
+
+    ul.examlinks {
+        display: block;
+        overflow-x: auto;
+        width: auto;
+        white-space: nowrap;
+    }
+
+    .filterBlock .select{
+        width: 354px;
+    }
+
+    .sort-gap{
+        margin-top: 20px;
+    }
+
+    .body {
+        margin-top: 0;
+    }
+
+    .schoolBlock{
+        margin-top: 30px;
+    }
+
+    .examListingPage .modal-header,
+    .examListingPage .modal-footer {
+        display: none;
+    }
+
     #header20 {
         position: static;
         width: 100%;
@@ -169,7 +216,7 @@
     .bannerTitle2 {
         padding: 0 0 0 40px;
     }
-
+    
     .studyGoalTitle h3::before {
         left: 31%;
     }
@@ -195,4 +242,114 @@
         margin-right: auto !important;
         float: none;
     }
+}
+
+@media screen and (max-width: 1024px){
+    .schoolBlock .box .content .coursePic {
+        width: 270px;
+    }
+
+    .headerLogo img {
+        width: 149px;
+        height: 40px;
+    }
+
+    .collImage {
+        height: 161px;
+        width:187px;
+    }
+
+    .leftFixed, .fixed-div{
+        width: 178px;
+        left: 17px;
+    }
+
+    .header-box{
+        display: flex;
+    }
+
+    .GalleryModal_popUp__GMd7Z{
+        position: relative;
+        left: 12%;
+    }
+
+    .college_imgBox__ovpk6{
+    display: flex;
+    justify-content: center;
+    }
+
+    .college_gallery_u7AtV{
+        margin-top: 55px;
+    }
+
+}
+@media screen and (max-width: 767px) {
+    .careerDetailsBlock{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .careerDetails ul.career-info {
+        display: block;
+        padding: 0;
+        white-space: nowrap;
+        overflow-x: auto;
+        background: var(--anchorColor);
+        position: relative;
+        z-index: 9;
+        height: 61px;
+        clear: both;
+    }
+
+    .careerDetails ul.career-info li a{
+    color: #ffffff;
+    background-color: #e45330;
+    }
+
+    .careerDetailsBlock{
+        margin-top: 0%;
+    }
+
+    .careerDetails ul.career-info li {
+        display: inline-block;
+        white-space: normal;
+    }
+
+    .leftFixed, .fixed-div {
+        position: sticky;
+        display: block;
+        width: 100%;
+        top: 90px;
+    }
+
+    .modal-image {
+        width: 80%;
+        height: 161px;
+        margin-left: 10%;
+    }
+
+    .GalleryModal_popUp__GMd7Z {
+        height: 303px;
+        width: 360px;
+        left: 5%;
+        margin-top: 20vh;
+    }
+
+    .college_galleryImg__blgLw {
+        width: 151px;
+        margin: 0px 1.5% 0.7% 0px;
+        cursor: pointer;
+        height: 108px;
+    }
+
+    .background-page {
+        height: 82px;
+        width: 138px;
+    }
+
+    .college_gallery_u7AtV{
+        margin-top: 10px;
+    }
+
+
 }
