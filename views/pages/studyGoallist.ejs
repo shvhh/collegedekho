@@ -122,7 +122,7 @@
           <div class="page-title">
             <div class="row">
               <div class="col-12 col-md-6 order-md-1 order-last">
-                <!-- <h3> Search  List</h3> -->
+                <h3>Study Goal  list</h3>
                 <!-- <p class="text-subtitle text-muted">
                   Powerful interactive tables with datatables (jQuery required).
                 </p> -->
@@ -152,9 +152,9 @@
           <section class="section">
             <div class="card">
               <div class="card-header">
-             <!-- <a href="/admin/career"  type="button" class="btn btn-primary float-start float-lg-end">ADD NEW</a> -->
+             <a href="/admin/studyGoal"  type="button" class="btn btn-primary float-start float-lg-end">ADD NEW</a>
 
-                <h5 class="card-title">Searc History of <%=userName%> </h5>
+                <h5 class="card-title">Study Goal list</h5>
               </div>
 
               <div class="card-body">
@@ -166,14 +166,14 @@
                   <table class="table" id="table1">
                     <thead>
                       <tr>
-                        <th>Searchh Text</th>
-
-
-                     <th>Date</th>
+                        <th>Heading</th>
                     
-                 
                        
-                    
+
+
+                     <th>Action</th>
+                       
+                        <th>Action</th>
 
                       </tr>
                     </thead>
@@ -181,25 +181,35 @@
                       <% data?.forEach(function(data){ %>
 
                       <tr>
-                        <td><%=data?.searchText %></td>
-                        <td><%=data?.createdAt%></td>
+                        <td><%=data?.heading %></td>
+                         
                        
-                        
 
-
-                     
                     
-    
+                        
        
-                     
+
                  
 
-                     
+                        <td><a href="/admin/studyGoalEdit/<%=data?._id%>"
+                          class="badge bg-success">Edit</a>
+                       </td>
                       
 
                        
+
+                     
+
+                          <td><a
+                            href="/admin/studyGoalDelete/<%=data?._id%>" 
+                        
+                            class="badge bg-success"
+                         >Delete</a></td>
+
                        
                        
+
+                     
                       </tr>
                       <% }) %>
                   

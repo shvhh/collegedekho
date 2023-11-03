@@ -73,69 +73,23 @@
           <h3>Select Your Study Goal</h3>
         </div>
         <div class="PartnersSlider slider">
+            <% studyGoalData?.forEach(function(studyGoalData){ %>
+
           <div class="slide1">
-            <h4>Engineering</h4>
-            <h5>6124 Colleges</h5>
-            <p>BE/B.Tech</p>
-            <p>Diploma In Engineering</p>
-            <p>ME/M.Tech</p>
+
+            <h4><%=studyGoalData?.heading%></h4>
+            <h5><%=studyGoalData.title%></h5>
+            <% studyGoalData?.subParts?.forEach(function(d){ %>
+            <p><%=d?.subTitle%></p>
+            
+            <% }) %>
           </div>
-          <div class="slide1">
-            <h4>Engineering</h4>
-            <h5>6124 Colleges</h5>
-            <p>BE/B.Tech</p>
-            <p>Diploma In Engineering</p>
-            <p>ME/M.Tech</p>
-          </div>
-          <div class="slide1">
-            <h4>Engineering</h4>
-            <h5>6124 Colleges</h5>
-            <p>BE/B.Tech</p>
-            <p>Diploma In Engineering</p>
-            <p>ME/M.Tech</p>
-          </div>
-          <div class="slide1">
-            <h4>Engineering</h4>
-            <h5>6124 Colleges</h5>
-            <p>BE/B.Tech</p>
-            <p>Diploma In Engineering</p>
-            <p>ME/M.Tech</p>
-          </div>
-          <div class="slide1">
-            <h4>Engineering</h4>
-            <h5>6124 Colleges</h5>
-            <p>BE/B.Tech</p>
-            <p>Diploma In Engineering</p>
-            <p>ME/M.Tech</p>
-          </div>
-          <div class="slide1">
-            <h4>Engineering</h4>
-            <h5>6124 Colleges</h5>
-            <p>BE/B.Tech</p>
-            <p>Diploma In Engineering</p>
-            <p>ME/M.Tech</p>
-          </div>
-          <div class="slide1">
-            <h4>Engineering</h4>
-            <h5>6124 Colleges</h5>
-            <p>BE/B.Tech</p>
-            <p>Diploma In Engineering</p>
-            <p>ME/M.Tech</p>
-          </div>
-          <div class="slide1">
-            <h4>Engineering</h4>
-            <h5>6124 Colleges</h5>
-            <p>BE/B.Tech</p>
-            <p>Diploma In Engineering</p>
-            <p>ME/M.Tech</p>
-          </div>
-          <div class="slide1">
-            <h4>Engineering</h4>
-            <h5>6124 Colleges</h5>
-            <p>BE/B.Tech</p>
-            <p>Diploma In Engineering</p>
-            <p>ME/M.Tech</p>
-          </div>
+
+          <% }) %>
+        
+        
+
+        
         </div>
       </div>
     </section>

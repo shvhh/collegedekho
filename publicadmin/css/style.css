@@ -2412,7 +2412,9 @@ input {
   color: orange;
 }
 
-
+#header20 ul li a:active {
+  background-color:#fff;
+}
 
 .optionactive {
   background-color: #e45330;

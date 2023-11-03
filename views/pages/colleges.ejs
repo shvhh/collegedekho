@@ -698,7 +698,7 @@
                                  
                                     <div class="collImage">
 
-                                      ${data.isWishlisted== true ?`   <i class="fas fa-star checkedData" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i> ` : `  <i class="fas fa-star" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i>`}
+                                      ${college.isWishlisted== true ?`   <i class="fas fa-star checkedData" id="wishlist" onclick="addWishlist(this,'${college._id}')"></i> ` : `  <i class="fas fa-star" id="wishlist" onclick="addWishlist(this,'${college._id}')"></i>`}
 
 
           
@@ -833,7 +833,8 @@
                                 <div class="col-md-4">
                                   
                                     <div class="collImage">
-                                      <i class="fas fa-star" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i>
+                                      ${data.isWishlisted== true ?`   <i class="fas fa-star checkedData" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i> ` : `  <i class="fas fa-star" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i>`}
+
                                         <img src="${data.image}">
                                     </div>
                                   
@@ -964,7 +965,8 @@
                                 <div class="col-md-4">
                                 
                                     <div class="collImage">
-                                      <i class="fas fa-star" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i>
+                                      ${data.isWishlisted== true ?`   <i class="fas fa-star checkedData" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i> ` : `  <i class="fas fa-star" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i>`}
+
                                         <img src="${data.image}">
                                     </div>
                                   
@@ -1181,7 +1183,8 @@ if(element.id){
                                 <div class="col-md-4">
                                
                                     <div class="collImage">
-                                      <i class="fas fa-star" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i>
+                                      ${data.isWishlisted== true ?`   <i class="fas fa-star checkedData" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i> ` : `  <i class="fas fa-star" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i>`}
+
                                         <img src="${data.image}">
                                     </div>
                                   

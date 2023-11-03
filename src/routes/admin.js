@@ -28,6 +28,8 @@ const Slider = require("../models/slider");
 const slider = require("../models/slider");
 const User = require("../models/user");
 const SearchHistory = require("../models/searchHistory");
+const studyGoal = require("../models/studyGoal");
+
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -490,7 +492,7 @@ routes.get(
       const subParts = await Course.findById(req.params.id);
       const section = subParts.section;
       const syllabus = subParts.syllabus;
-      const sallary = subParts.sallary;
+      const salary = subParts.salary;
       const id = req.params.id;
       const subPartdId = req.params.subPartdId;
       if (section) {
@@ -503,9 +505,9 @@ routes.get(
           $pull: { syllabus: { _id: subPartdId } },
         });
       }
-      if (sallary) {
+      if (salary) {
         const sallaryData = await Course.findByIdAndUpdate(id, {
-          $pull: { sallary: { _id: subPartdId } },
+          $pull: { salary: { _id: subPartdId } },
         });
       }
       res.redirect("/admin/courseSection/" + id);
@@ -1920,7 +1922,7 @@ routes.get(
 
       const userDetail = await User.findById(userId);
       const userName = userDetail?.name;
-      const data = await SearchHistory.find({ userId: userId }).lean();
+      const data = await SearchHistory.find({ userId: userId }).sort({createdAt:-1}).lean();
 
       data.forEach((item) => {
         item.createdAt = moment(item.createdAt).format("DD/MM/YYYY");
@@ -1934,6 +1936,123 @@ routes.get(
     } catch (error) {}
   }
 );
+
+
+routes.get("/studyGoal", (req, res) => {
+  try{
+    res.render("pages/studyGoalCreate",{
+      message:""
+    })
+
+  }catch(error){
+      
+    }
+}
+);
+
+routes.get("/studyGoalList", async(req, res) => {
+  try{
+    const data = await studyGoal.find().sort({ createdAt: -1 }).lean();
+    res.render("pages/studyGoallist",{
+      message:"",
+      data
+    })
+
+  }catch(error){
+      
+    }
+}
+);
+
+routes.post("/studyGoalsCreate", async(req, res) => {
+  try{
+    const data = await studyGoal.create(req.body);
+    res.redirect("/admin/studyGoalList");
+  }catch(error){
+      
+    }
+} 
+);
+
+
+
+// delete studyGoal by id
+
+routes.get("/studyGoalDelete/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const data = await studyGoal.findByIdAndDelete(id);
+    res.redirect("/admin/studyGoalList");
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+
+// study goal edit
+
+routes.get("/studyGoalEdit/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const data = await studyGoal.findById(id);
+    res.render("pages/studyGoalEdit", {
+      data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+);
+
+
+routes.get("/studyGoalDelete/:id/:subPartsId", async (req, res) => {
+  try{
+    const id = req.params.id;
+
+    
+    const data = await studyGoal.findById(id);
+
+    const subParts = data.subParts;
+    
+    const subPartsId = req.params.subPartsId;
+    console.log(subPartsId);
+    const subPartsIndex = subParts.findIndex(
+      (subParts) => subParts._id == subPartsId
+    );
+   
+    subParts.splice(subPartsIndex, 1);
+    await data.save();
+
+
+
+
+  
+    res.redirect("/admin/studyGoalEdit/" + id);
+  }catch(error){
+console.log(error);
+  }
+}
+);
+
+routes.post("/studyGoalUpdate/:id", async (req, res) => {
+  try{
+    const data = await studyGoal.findByIdAndUpdate(req.params.id, req.body);
+    res.redirect("/admin/studyGoalList");
+
+  }catch(error){
+console.log(error);
+  }
+}
+);
+
+
+
+
+
+
+
+
+
 
 module.exports = routes;
 

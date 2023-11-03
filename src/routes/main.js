@@ -21,11 +21,13 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const SearchHistory = require("../models/searchHistory");
 const Wishlist = require("../models/wishlist");
-const wishlist = require("../models/wishlist");
+const studyGoal = require("../models/studyGoal");
+
 
 routes.get("/", async (req, res) => {
   try {
     const slider = await Slider.find();
+    const studyGoalData = await studyGoal.find().lean();
 
     const topCourseCategory = await courseCategory.aggregate([
       {
@@ -123,6 +125,7 @@ routes.get("/", async (req, res) => {
       courseCategoryData,
       collegeData,
       topCollege,
+      studyGoalData,
     });
   } catch (error) {
     console.log(error);
@@ -564,11 +567,43 @@ routes.get("/collegesGetBytheFilters", async (req, res) => {
                   courseId: { $in: id },
                 },
               },
+              {
+                $lookup: {
+                  from: "wishlists",
+                  let: { id: "$_id" },
+                  pipeline: [
+                    {
+                      $match: {
+                        $expr: {
+                          $and: [
+                            { $eq: ["$collegeId", "$$id"] },
+                            { $eq: ["$userId", users] },
+                          ],
+                        },
+                      },
+                    },
+                  ],
+                  as: "isWishlisted",
+                },
+                },
+                {$addFields: {
+                  isWishlisted: {
+                    $cond: {
+                      if: { $gt: [{ $size: "$isWishlisted" }, 0] },
+                      then: true,
+                      else: false,
+                    },
+                  },
+                }}
+              
             ],
             as: "collegeDetail",
           },
         },
 
+
+
+        // {$unwind: "$collegeDetail"},
         {
           $lookup: {
             from: "states",
@@ -604,12 +639,12 @@ routes.get("/collegesGetBytheFilters", async (req, res) => {
             as: "subCoursesDetail",
           },
         },
+       
 
     
       ]);
 
-      console.log(data);
-
+     
       res.send(data);
     } else {
       const data = await courseCategory.aggregate([
@@ -719,7 +754,8 @@ routes.get("/collegesGetBytheFilters", async (req, res) => {
 routes.get("/getcollegeByMultipleFilter", async (req, res) => {
   try {
     const key = req.query.field;
-    // const id = req.query.filterBy;
+    const token = req.cookies.userToken;
+
 
     const id = (req.query.filterBy = req.query.filterBy.split(","));
 
@@ -728,15 +764,72 @@ routes.get("/getcollegeByMultipleFilter", async (req, res) => {
       id[i] = new mongoose.Types.ObjectId(id[i]);
     }
 
+
+    if (token) {
+      const user = jwt.verify(token, "collegeDekhoSecretKet");
+      const userId = user.userid;
+      const users = new mongoose.Types.ObjectId(userId);
+
+
+      const data = await College.aggregate([
+        {
+          $match: {
+            [key]: { $in: id },
+          },
+        },
+      
+        {
+          $lookup: {
+            from: "wishlists",
+            let: { id: "$_id" },
+            pipeline: [
+              {
+                $match: {
+                  $expr: {
+                    $and: [
+                      { $eq: ["$collegeId", "$$id"] },
+                      { $eq: ["$userId", users] },
+                    ],
+                  },
+                },
+              },
+            ],
+            as: "wishlist",
+          },
+        },
+        {
+          $addFields: {
+            isWishlisted: {
+              $cond: {
+                if: { $gt: [{ $size: "$wishlist" }, 0] },
+                then: true,
+                else: false,
+              },
+            },
+          },
+        },
+        
+      ]);
+      
+      res.send(data);
+
+
+    }
+    else{
+
     const data = await College.aggregate([
       {
         $match: {
           [key]: { $in: id },
         },
       },
+   
+
+
     ]);
 
     res.send(data);
+  }
   } catch (error) {
     console.log(error);
   }
@@ -748,6 +841,7 @@ routes.get("/getCollegeByStatic", async (req, res) => {
   try {
     const key = req.query.field;
     const category = req.query.category;
+    const token = req.cookies.userToken;
 
     const id = (req.query.filterBy = req.query.filterBy.split(","));
 
@@ -766,6 +860,60 @@ routes.get("/getCollegeByStatic", async (req, res) => {
     //   ])
     // );
 
+    if (token) {
+      const user = jwt.verify(token, "collegeDekhoSecretKet");
+      const userId = user.userid;
+      const users = new mongoose.Types.ObjectId(userId);
+
+
+      const data = await College.aggregate([
+        {
+          $match: {
+            courseCategoryId: new mongoose.Types.ObjectId(category),
+          },
+        },
+        {
+          $match: {
+            [key]: { $in: id },
+          },
+        },
+        {
+          $lookup: {
+            from: "wishlists",
+            let: { id: "$_id" },
+            pipeline: [
+              {
+                $match: {
+                  $expr: {
+                    $and: [
+                      { $eq: ["$collegeId", "$$id"] },
+                      { $eq: ["$userId", users] },
+                    ],
+                  },
+                },
+              },
+            ],
+            as: "wishlist",
+          },
+        },
+        {
+          $addFields: {
+            isWishlisted: {
+              $cond: {
+                if: { $gt: [{ $size: "$wishlist" }, 0] },
+                then: true,
+                else: false,
+              },
+            },
+          },
+        },
+      ]);
+      
+      res.send(data);
+
+
+    }else{
+
     const data = await College.aggregate([
       {
         $match: {
@@ -780,6 +928,7 @@ routes.get("/getCollegeByStatic", async (req, res) => {
     ]);
 
     res.send(data);
+  }
   } catch (error) {
     console.log(error);
   }
@@ -790,10 +939,64 @@ routes.get("/getCollegeByStatic", async (req, res) => {
 routes.get("/collegeShorting", async (req, res) => {
   try {
     const shortBy = req.query.short;
+    const token = req.cookies.userToken;
 
     const category = req.query.category;
 
     // sort college with aplhabet/
+if(token){
+
+  const user = jwt.verify(token, "collegeDekhoSecretKet");
+      const userId = user.userid;
+      const users = new mongoose.Types.ObjectId(userId);
+
+
+      const data = await College.aggregate([
+        {
+          $sort: {
+            name: 1,
+          },
+        },
+       
+        {
+          $lookup: {
+            from: "wishlists",
+            let: { id: "$_id" },
+            pipeline: [
+              {
+                $match: {
+                  $expr: {
+                    $and: [
+                      { $eq: ["$collegeId", "$$id"] },
+                      { $eq: ["$userId", users] },
+                    ],
+                  },
+                },
+              },
+            ],
+            as: "wishlist",
+          },
+        },
+        {
+          $addFields: {
+            isWishlisted: {
+              $cond: {
+                if: { $gt: [{ $size: "$wishlist" }, 0] },
+                then: true,
+                else: false,
+              },
+            },
+          },
+        },
+      ]);
+      
+
+      res.send(data);
+
+
+}else{
+
+
 
     const data = await College.aggregate([
       {
@@ -804,6 +1007,8 @@ routes.get("/collegeShorting", async (req, res) => {
     ]);
 
     res.send(data);
+
+  }
   } catch (error) {
     console.log(error);
   }
@@ -1592,6 +1797,21 @@ routes.get("/search", async (req, res) => {
 routes.get("/searchByExam", async (req, res) => {
   try {
     const search = req.query.search;
+
+    const token = req.cookies.userToken;
+    if (token) {
+      const token = req.cookies.userToken;
+      const decoded = jwt.verify(token, "collegeDekhoSecretKet");
+      const userId = decoded.userid;
+
+      const user = {
+        userId: userId,
+        searchText: search,
+      };
+
+      const userSearch = await SearchHistory.create(user);
+    }
+
     const examDetail = await Exam.findOne({
       heading: { $regex: search, $options: "i" },
     }).lean();
