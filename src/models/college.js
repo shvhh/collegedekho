@@ -255,6 +255,18 @@ const College = new mongoose.Schema({
             },
             },
 
+            viewCount:{
+                type:Number,
+                default:0,
+            },
+
+            matchKeyword: [
+                {
+                  type: String,
+                },
+              ],
+         
+        
 
 
 },

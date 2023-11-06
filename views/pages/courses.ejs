@@ -175,7 +175,7 @@ function getCourseByDuration(element){
           document.getElementById("coursesData").innerHTML = data.map((course) => {
             return `<div class="box course_list" data-mode="Regular" data-duration="4 Years">
             <h2>
-                <a href="/courses/engineering-b-tech-biochemical"
+                <a href="/courseDetail/${course?.slag}/sectio"
                     title="B.Tech - Biochemical Engineering"> ${course.name}</a></h2>
             <div class="coursebtn">
                 <!-- <a href="javascript:void(0)" class="course_follow"
@@ -241,7 +241,7 @@ function getCourseByMode(element){
             document.getElementById("coursesData").innerHTML = data.map((course) => {
             return `<div class="box course_list" data-mode="Regular" data-duration="4 Years">
             <h2>
-                <a href="/courses/engineering-b-tech-biochemical"
+                <a href="/courseDetail/${data?.slag}/sectio"
                     title="B.Tech - Biochemical Engineering"> ${course.name}</a></h2>
             <div class="coursebtn">
                 <!-- <a href="javascript:void(0)" class="course_follow"

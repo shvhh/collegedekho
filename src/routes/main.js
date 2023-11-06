@@ -22,7 +22,10 @@ const jwt = require("jsonwebtoken");
 const SearchHistory = require("../models/searchHistory");
 const Wishlist = require("../models/wishlist");
 const studyGoal = require("../models/studyGoal");
-
+const wishlist = require("../models/wishlist");
+const userCollegeHistory = require("../models/userCollegeHistory");
+const userExamHistory = require("../models/userExamHistory");
+const userCourseHistory = require("../models/userCourseHistory");
 
 routes.get("/", async (req, res) => {
   try {
@@ -135,8 +138,31 @@ routes.get("/", async (req, res) => {
 // exam-detail page/
 routes.get("/exam-detail/:slag/:section", async (req, res) => {
   const examSection = req.params.section;
+  const token = req.cookies.userToken;
   const examDetail = await Exam.findOne({ slag: req.params.slag });
   const sectionData = examDetail[examSection];
+
+  if (token) {
+    const user = jwt.verify(token, "collegeDekhoSecretKet");
+    const userId = user.userid;
+
+    const examHistory = {
+      userId: userId,
+      examId: examDetail._id,
+    };
+
+    // create examHistory using upsert
+
+    const examHistoryData = await userExamHistory.findOneAndUpdate(
+      {
+        userId: userId,
+        examId: examDetail._id,
+      },
+      examHistory,
+      { upsert: true }
+    );
+  }
+
   res.view("pages/exam-detail", {
     examDetail,
     examSection,
@@ -492,38 +518,46 @@ routes.get("/getCollegeByState/:stateName/:category", async (req, res) => {
 routes.get("/collegeDetail/:slag/:section", async (req, res) => {
   try {
     const collegeSection = req.params.section;
+    const token = req.cookies.userToken;
 
-    if (collegeSection == "gallery") {
-      const data = await College.findOne({ slag: req.params.slag }).lean();
-      const topCollege = await College.find({ isTop: true })
-        .sort({ createdAt: -1 })
-        .limit(4)
-        .lean();
+    const data = await College.findOne({ slag: req.params.slag }).lean();
+    const increase = data.viewCount + 1;
+    const viewCount = await College.findOneAndUpdate(
+      { slag: req.params.slag },
+      { viewCount: increase }
+    );
 
-      const sectionData = data[collegeSection];
+    const topCollege = await College.find({ isTop: true })
+      .sort({ createdAt: -1 })
+      .limit(4)
+      .lean();
 
-      res.view("pages/gallery", {
-        data,
-        sectionData,
-        collegeSection,
-        topCollege,
-      });
-    } else {
-      const data = await College.findOne({ slag: req.params.slag }).lean();
-      const topCollege = await College.find({ isTop: true })
-        .sort({ createdAt: -1 })
-        .limit(4)
-        .lean();
+    const sectionData = data[collegeSection];
 
-      const sectionData = data[collegeSection];
+    if (token) {
+      const user = jwt.verify(token, "collegeDekhoSecretKet");
+      const userId = user.userid;
 
-      res.view("pages/college-detail", {
-        data,
-        sectionData,
-        collegeSection,
-        topCollege,
-      });
+      const collegeHistory = {
+        userId: userId,
+        collegeId: data._id,
+      };
+
+      // create collegeHistory using upsert
+
+      const collegeHistoryData = await userCollegeHistory.findOneAndUpdate(
+        { userId: userId, collegeId: data._id },
+        collegeHistory,
+        { upsert: true }
+      );
     }
+
+    res.view("pages/college-detail", {
+      data,
+      sectionData,
+      collegeSection,
+      topCollege,
+    });
   } catch (error) {
     console.log(error);
   }
@@ -585,8 +619,9 @@ routes.get("/collegesGetBytheFilters", async (req, res) => {
                   ],
                   as: "isWishlisted",
                 },
-                },
-                {$addFields: {
+              },
+              {
+                $addFields: {
                   isWishlisted: {
                     $cond: {
                       if: { $gt: [{ $size: "$isWishlisted" }, 0] },
@@ -594,14 +629,12 @@ routes.get("/collegesGetBytheFilters", async (req, res) => {
                       else: false,
                     },
                   },
-                }}
-              
+                },
+              },
             ],
             as: "collegeDetail",
           },
         },
-
-
 
         // {$unwind: "$collegeDetail"},
         {
@@ -639,12 +672,8 @@ routes.get("/collegesGetBytheFilters", async (req, res) => {
             as: "subCoursesDetail",
           },
         },
-       
-
-    
       ]);
 
-     
       res.send(data);
     } else {
       const data = await courseCategory.aggregate([
@@ -756,7 +785,6 @@ routes.get("/getcollegeByMultipleFilter", async (req, res) => {
     const key = req.query.field;
     const token = req.cookies.userToken;
 
-
     const id = (req.query.filterBy = req.query.filterBy.split(","));
 
     // const data1 = await College.find({courseId:{$in:id}}).lean();
@@ -764,12 +792,10 @@ routes.get("/getcollegeByMultipleFilter", async (req, res) => {
       id[i] = new mongoose.Types.ObjectId(id[i]);
     }
 
-
     if (token) {
       const user = jwt.verify(token, "collegeDekhoSecretKet");
       const userId = user.userid;
       const users = new mongoose.Types.ObjectId(userId);
-
 
       const data = await College.aggregate([
         {
@@ -777,7 +803,7 @@ routes.get("/getcollegeByMultipleFilter", async (req, res) => {
             [key]: { $in: id },
           },
         },
-      
+
         {
           $lookup: {
             from: "wishlists",
@@ -808,28 +834,20 @@ routes.get("/getcollegeByMultipleFilter", async (req, res) => {
             },
           },
         },
-        
       ]);
-      
+
       res.send(data);
-
-
-    }
-    else{
-
-    const data = await College.aggregate([
-      {
-        $match: {
-          [key]: { $in: id },
+    } else {
+      const data = await College.aggregate([
+        {
+          $match: {
+            [key]: { $in: id },
+          },
         },
-      },
-   
+      ]);
 
-
-    ]);
-
-    res.send(data);
-  }
+      res.send(data);
+    }
   } catch (error) {
     console.log(error);
   }
@@ -864,7 +882,6 @@ routes.get("/getCollegeByStatic", async (req, res) => {
       const user = jwt.verify(token, "collegeDekhoSecretKet");
       const userId = user.userid;
       const users = new mongoose.Types.ObjectId(userId);
-
 
       const data = await College.aggregate([
         {
@@ -908,27 +925,24 @@ routes.get("/getCollegeByStatic", async (req, res) => {
           },
         },
       ]);
-      
+
       res.send(data);
-
-
-    }else{
-
-    const data = await College.aggregate([
-      {
-        $match: {
-          courseCategoryId: new mongoose.Types.ObjectId(category),
+    } else {
+      const data = await College.aggregate([
+        {
+          $match: {
+            courseCategoryId: new mongoose.Types.ObjectId(category),
+          },
         },
-      },
-      {
-        $match: {
-          [key]: { $in: id },
+        {
+          $match: {
+            [key]: { $in: id },
+          },
         },
-      },
-    ]);
+      ]);
 
-    res.send(data);
-  }
+      res.send(data);
+    }
   } catch (error) {
     console.log(error);
   }
@@ -939,25 +953,43 @@ routes.get("/getCollegeByStatic", async (req, res) => {
 routes.get("/collegeShorting", async (req, res) => {
   try {
     const shortBy = req.query.short;
+    console.log(shortBy);
     const token = req.cookies.userToken;
 
     const category = req.query.category;
 
-    // sort college with aplhabet/
-if(token){
+    if (shortBy == "A to Z") {
+      var short = 1;
+    }
+    if (shortBy == "Z to A") {
+      var short = -1;
+    }
+    console.log(short);
 
-  const user = jwt.verify(token, "collegeDekhoSecretKet");
+    if (!token && shortBy == "Popularity") {
+      const data = await College.aggregate([
+        {
+          $sort: {
+            viewCount: -1,
+          },
+        },
+      ]);
+
+      res.send(data);
+    }
+
+    if (token && shortBy == "Popularity") {
+      const user = jwt.verify(token, "collegeDekhoSecretKet");
       const userId = user.userid;
+      console.log(userId);
       const users = new mongoose.Types.ObjectId(userId);
-
 
       const data = await College.aggregate([
         {
           $sort: {
-            name: 1,
+            viewCount: -1,
           },
         },
-       
         {
           $lookup: {
             from: "wishlists",
@@ -989,26 +1021,68 @@ if(token){
           },
         },
       ]);
-      
 
       res.send(data);
+    }
 
+    if (token && short) {
+      const user = jwt.verify(token, "collegeDekhoSecretKet");
+      const userId = user.userid;
+      console.log(userId);
+      const users = new mongoose.Types.ObjectId(userId);
 
-}else{
-
-
-
-    const data = await College.aggregate([
-      {
-        $sort: {
-          name: 1,
+      const data = await College.aggregate([
+        {
+          $sort: {
+            name: short,
+          },
         },
-      },
-    ]);
 
-    res.send(data);
+        {
+          $lookup: {
+            from: "wishlists",
+            let: { id: "$_id" },
+            pipeline: [
+              {
+                $match: {
+                  $expr: {
+                    $and: [
+                      { $eq: ["$collegeId", "$$id"] },
+                      { $eq: ["$userId", users] },
+                    ],
+                  },
+                },
+              },
+            ],
+            as: "wishlist",
+          },
+        },
+        {
+          $addFields: {
+            isWishlisted: {
+              $cond: {
+                if: { $gt: [{ $size: "$wishlist" }, 0] },
+                then: true,
+                else: false,
+              },
+            },
+          },
+        },
+      ]);
 
-  }
+      res.send(data);
+    }
+    if (!token && short) {
+      const data = await College.aggregate([
+        {
+          $sort: {
+            name: short,
+          },
+        },
+      ]);
+
+      res.send(data);
+    }
   } catch (error) {
     console.log(error);
   }
@@ -1017,6 +1091,7 @@ if(token){
 routes.get("/courseDetail/:slag/:section", async (req, res) => {
   try {
     const courseSection = req.params.section;
+    const token = req.cookies.userToken;
 
     const data = await course.findOne({ slag: req.params.slag }).lean();
     const topCourse = await course
@@ -1033,6 +1108,24 @@ routes.get("/courseDetail/:slag/:section", async (req, res) => {
     });
 
     const sectionData = data[req.params.section];
+
+    if (token) {
+      const user = jwt.verify(token, "collegeDekhoSecretKet");
+      const userId = user.userid;
+
+      const courseHistory = {
+        userId: userId,
+        courseId: data._id,
+      };
+
+      // create courseHistory using upsert
+
+      const courseHistoryData = await userCourseHistory.findOneAndUpdate(
+        { userId: userId, courseId: data._id },
+        courseHistory,
+        { upsert: true }
+      );
+    }
 
     res.view("pages/course-detail", {
       data,
@@ -1702,9 +1795,10 @@ routes.get("/logout", async (req, res) => {
 routes.get("/search", async (req, res) => {
   try {
     const search = req.query.search;
+    
 
-    // if user login save the search result in database
     const token = req.cookies.userToken;
+
     if (token) {
       const token = req.cookies.userToken;
       const decoded = jwt.verify(token, "collegeDekhoSecretKet");
@@ -1717,76 +1811,68 @@ routes.get("/search", async (req, res) => {
 
       const userSearch = await SearchHistory.create(user);
     }
+    if (search) {
+      const collegeData = await College.find({
+        $or: [
+          { name: { $regex: search, $options: "i" } },
+          { matchKeyword: { $regex: search, $options: "i" } },
+        ],
 
-    const data = await College.findOne({
-      name: { $regex: search, $options: "i" },
-    }).lean();
-    const data1 = await course
-      .findOne({ name: { $regex: search, $options: "i" } })
-      .lean();
-    const data2 = await Exam.findOne({
-      heading: { $regex: search, $options: "i" },
-    }).lean();
+      }).lean();
 
-    if (data) {
-      const collegeSection = "overView";
-      const sectionData = data[collegeSection];
-      const topCollege = await College.find({ isTop: true })
-        .sort({ createdAt: -1 })
-        .limit(4)
+     
+
+      const courseData = await course
+        .find({
+          $or: [
+            { name: { $regex: search, $options: "i" } },
+            { matchKeyword: { $regex: search, $options: "i" } },
+          ],
+
+      
+     
+      
+      })
         .lean();
 
-      res.view("pages/college-detail", {
-        data,
-        sectionData,
-        collegeSection,
-        topCollege,
-      });
+      const examData = await Exam.find({
+        $or: [
+          { heading: { $regex: search, $options: "i" } },
+          { matchKeyword: { $regex: search, $options: "i" } },
+        ],
+      }).lean();
+
+     
+
+      console.log(collegeData.length);
+      console.log(courseData.length);
+      console.log(examData.length);
+
+      if (collegeData.length > 0) {
+        let examData = [];
+        let courseData = [];
+
+        res.view("pages/search", { collegeData, search, examData, courseData });
+      }
+
+    
+      if (collegeData.length == 0 || courseData.length < 0) {
+        let collegeData = [];
+        let examData = [];
+    
+        res.view("pages/search", { examData, search, collegeData, courseData });
+      }
+ 
+
+      if (!collegeData  || !courseData || !examData) {
+        const collegeData = [];
+        const examData = [];
+        const courseData = [];
+      
+        res.view("pages/search", { collegeData, search, examData, courseData });
+      }
     }
-
-    if (data1) {
-      // data1 convert to data
-
-      let data = data1;
-      const topCourse = await course
-        .find({ isTop: true })
-        .sort({ createdAt: -1 })
-        .limit(4)
-        .lean();
-
-      topCourse.forEach((course) => {
-        course.from = course.fees.from;
-        course.to = course.fees.to;
-
-        course.fees = course.fees.from + " - " + course.fees.to;
-      });
-      const courseSection = "section";
-
-      const sectionData = data[req.params.section];
-
-      res.view("pages/course-detail", {
-        data,
-        sectionData,
-        courseSection,
-        topCourse,
-      });
-    }
-
-    if (data2) {
-      let examDetail = data2;
-      const examSection = "section";
-
-      const sectionData = examDetail[examSection];
-      res.view("pages/exam-detail", {
-        examDetail,
-        examSection,
-        sectionData,
-      });
-    }
-
-    // if nothing will find redirect to index page//
-
-    if (!data && !data1 && !data2) {
+    if (!search) {
       res.redirect("/");
     }
   } catch (error) {
@@ -1861,5 +1947,396 @@ routes.get("/addWishlist", userAuth(["user"]), async (req, res) => {
     console.log(error);
   }
 });
+
+routes.get("/getWishlistByUserId", userAuth(["user"]), async (req, res) => {
+  try {
+    const userId = res.locals.user.userid;
+
+    // find wishlist college by userId/ and college detail
+
+    const data = await Wishlist.aggregate([
+      {
+        $match: {
+          userId: new mongoose.Types.ObjectId(userId),
+        },
+      },
+
+      {
+        $lookup: {
+          from: "colleges",
+          localField: "collegeId",
+          foreignField: "_id",
+          as: "collegeDetail",
+        },
+      },
+    ]);
+
+    res.view("pages/wishlist", { data });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// delete wishlist by id
+
+routes.get("/deleteWishlistById/:id", userAuth(["user"]), async (req, res) => {
+  try {
+    const id = req.params.id;
+    const userId = res.locals.user.userid;
+
+    const deleteWishlist = await Wishlist.findByIdAndDelete({ _id: id });
+
+    const data = await Wishlist.aggregate([
+      {
+        $match: {
+          userId: new mongoose.Types.ObjectId(userId),
+        },
+      },
+
+      {
+        $lookup: {
+          from: "colleges",
+          localField: "collegeId",
+          foreignField: "_id",
+          as: "collegeDetail",
+        },
+      },
+    ]);
+
+    res.send(data);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// my profile get
+
+routes.get("/myProfile", userAuth(["user"]), async (req, res) => {
+  try {
+    const userId = res.locals.user.userid;
+
+    const data = await User.findById({ _id: userId }).lean();
+    const gender = ["Male", "Female", "Other"];
+
+    // convert the date in dd/mm/yyyy format/
+
+    data.from = moment(data?.dob).format("DD/MM/YYYY");
+    data.dob = data.from;
+
+    res.view("pages/my-profile", { data, gender });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// user your profile update
+
+routes.post("/userProfileUpdated", userAuth(["user"]), async (req, res) => {
+  try {
+    const userId = res.locals.user.userid;
+
+    if (req.body.dob) {
+      const dob = req.body.dob;
+      const date = dob.split("/")[0];
+      const month = dob.split("/")[1];
+      const year = dob.split("/")[2];
+
+      const date1 = new Date(year, month - 1, date);
+
+      req.body.dob = date1;
+    }
+
+    const updateProfile = await User.findByIdAndUpdate(
+      { _id: userId },
+      req.body
+    );
+
+    res.redirect("/");
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+routes.get("/getUserRecentData", userAuth(["user"]), async (req, res) => {
+  try {
+    const userId = res.locals.user.userid;
+
+    const data = await userCollegeHistory.aggregate([
+      {
+        $match: {
+          userId: new mongoose.Types.ObjectId(userId),
+        },
+      },
+
+      {
+        $lookup: {
+          from: "colleges",
+          localField: "collegeId",
+          foreignField: "_id",
+          as: "collegeDetail",
+        },
+      },
+    ]);
+
+    res.view("pages/recent-view", { data });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+routes.get("/getUserData", userAuth(["user"]), async (req, res) => {
+  try {
+    const userId = res.locals.user.userid;
+    const key = req.query.type;
+    console.log(key);
+    if (key == "college") {
+      const collegeData = await userCollegeHistory.aggregate([
+        {
+          $match: {
+            userId: new mongoose.Types.ObjectId(userId),
+          },
+        },
+
+        {
+          $lookup: {
+            from: "colleges",
+            localField: "collegeId",
+            foreignField: "_id",
+            as: "collegeDetail",
+          },
+        },
+      ]);
+
+      console.log(collegeData);
+      res.send({ collegeDetail: collegeData });
+    }
+    if (key == "course") {
+      const courseData = await userCourseHistory.aggregate([
+        {
+          $match: {
+            userId: new mongoose.Types.ObjectId(userId),
+          },
+        },
+
+        {
+          $lookup: {
+            from: "courses",
+            localField: "courseId",
+            foreignField: "_id",
+            as: "courseDetail",
+          },
+        },
+      ]);
+
+      courseData.forEach((courseData) => {
+        courseData.from = courseData?.courseDetail[0]?.fees?.from;
+        courseData.to = courseData?.courseDetail[0]?.fees?.to;
+
+        courseData.courseDetail[0].fees =
+          courseData.from + " - " + courseData.to;
+
+        if (courseData?.courseDetail[0]?.averageDuration < 12) {
+          courseData.courseDetail[0].averageDuration =
+            courseData?.courseDetail[0]?.averageDuration + " Months";
+        } else if (courseData?.courseDetail[0]?.averageDuration > 12) {
+          const year = Math.floor(
+            courseData?.courseDetail[0]?.averageDuration / 12
+          );
+          const month = courseData?.courseDetail[0]?.averageDuration % 12;
+          if (month == 0) {
+            courseData.courseDetail[0].averageDuration = year + " Year";
+          } else {
+            courseData.courseDetail[0].averageDuration =
+              year + " Year " + month + " Months";
+          }
+        }
+      });
+
+      res.send({ courseDetail: courseData });
+    }
+    if (key == "exam") {
+      const examData = await userExamHistory.aggregate([
+        {
+          $match: {
+            userId: new mongoose.Types.ObjectId(userId),
+          },
+        },
+
+        {
+          $lookup: {
+            from: "exams",
+            localField: "examId",
+            foreignField: "_id",
+            as: "examDetail",
+          },
+        },
+      ]);
+
+      //  examDetail mai appicationDateand examDate convert karna hai/
+
+      // examData mai examDetail mai sa applicationDate and examDate  convert karna hai/
+
+      examData.forEach((examData) => {
+        examData.from = moment(
+          examData?.examDetail[0]?.applicationDate?.from
+        ).format("DD MMM");
+        examData.to = moment(
+          examData?.examDetail[0]?.applicationDate?.to
+        ).format("DD MMM-YYYY");
+        examData.examDetail[0].applicationDate =
+          examData.from + " - " + examData.to;
+
+        examData.from = moment(examData?.examDetail[0]?.examDate?.from).format(
+          "DD MMM"
+        );
+        examData.to = moment(examData?.examDetail[0]?.examDate?.to).format(
+          "DD MMM-YYYY"
+        );
+        examData.examDetail[0].examDate = examData.from + " - " + examData.to;
+
+        // convert the date in dd/mm/yyyy format/
+      });
+
+      res.send({ examDetail: examData });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+routes.get("/getBySearch", async (req, res) => {
+  const search = req.query.search;
+  const type = req.query.typeFor;
+
+  if (type == "college") {
+    const data = await College.find({
+      $or: [
+        { name: { $regex: search, $options: "i" } },
+        { matchKeyword: { $regex: search, $options: "i" } },
+      ],
+
+    }).lean();
+
+    res.send({ college: data });
+  }
+
+  if (type == "course") {
+    const data = await course.find({
+      $or: [
+        { name: { $regex: search, $options: "i" } },
+        { matchKeyword: { $regex: search, $options: "i" } },
+      ],
+
+    }).lean();
+
+
+    data.forEach((data) => {
+      data.from = data.fees.from;
+      data.to = data.fees.to;
+
+      data.fees = data.fees.from + " - " + data.fees.to;
+
+      // convert averageDuration in year and month format/ if less than 12 month then show in month format/and if greater than 12 month then show in year and month format if month is 0 then show only year/
+
+      if (data.averageDuration < 12) {
+        data.averageDuration = data.averageDuration + " Months";
+      } else if (data.averageDuration > 12) {
+        const year = Math.floor(data.averageDuration / 12);
+        const month = data.averageDuration % 12;
+        if (month == 0) {
+          data.averageDuration = year + " Year";
+        } else {
+          data.averageDuration = year + " Year " + month + " Months";
+        }
+      }
+    });
+
+   
+    res.send({ course: data });
+  }
+
+  if (type == "exam") {
+    const data = await Exam.find({
+      $or: [
+        { heading: { $regex: search, $options: "i" } },
+        { matchKeyword: { $regex: search, $options: "i" } },
+      ],
+
+      
+
+    }).lean();
+
+    data.forEach((data) => {
+      data.from = moment(data?.applicationDate?.from).format("DD MMM");
+      data.to = moment(data?.applicationDate?.to).format("DD MMM-YYYY");
+      data.applicationDate = data.from + " - " + data.to;
+  
+      data.from = moment(data?.examDate?.from).format("DD MMM");
+      data.to = moment(data?.examDate?.to).format("DD MMM-YYYY");
+      data.examDate = data.from + " - " + data.to;
+  
+
+    });
+
+    
+    res.send({ exam: data });
+  }
+});
+
+
+
+// password change/
+
+routes.post("/userPasswordChangeHere", userAuth(["user"]), async (req, res) => {
+  try {
+    const userId = res.locals.user.userid;
+    const oldPassword = req.body.oldPassword;
+    const newPassword = req.body.newPassword;
+
+    const userDetail = await User.findById({ _id: userId });
+
+    const isMatch = await bcrypt.compare(oldPassword, userDetail.password);
+
+    if (isMatch) {
+      const salt = await bcrypt.genSalt(10);
+      const hashPassword = await bcrypt.hash(newPassword, salt);
+
+      const updatePassword = await User.findByIdAndUpdate(
+        { _id: userId },
+        { password: hashPassword }
+      );
+
+    res.redirect("/");
+
+    } else {
+      res.view("pages/userPasswordChange", {
+        message: "Old Password is not match",
+      });
+
+    }
+  } catch (error) {
+    console.log(error)
+   res.view("pages/userPasswordChange", {
+ 
+      message: "Something went wrong",
+    });
+  }
+}
+);
+
+
+// password page render
+
+routes.get("/passwordChange", userAuth(["user"]), async (req, res) => {
+  try {
+    res.view("pages/userPasswordChange",{
+      message:""
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+);
+
 
 module.exports = routes;

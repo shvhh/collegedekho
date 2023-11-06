@@ -249,16 +249,6 @@
         width: 270px;
     }
 
-    .headerLogo img {
-        width: 149px;
-        height: 40px;
-    }
-
-    .collImage {
-        height: 161px;
-        width:187px;
-    }
-
     .leftFixed, .fixed-div{
         width: 178px;
         left: 17px;
@@ -267,6 +257,13 @@
     .header-box{
         display: flex;
     }
+
+    .headerLogo img {
+        width: 149px;
+        height: 40px;
+    }
+    
+
 
     .GalleryModal_popUp__GMd7Z{
         position: relative;
@@ -351,5 +348,30 @@
         margin-top: 10px;
     }
 
+    .Wishlist-slider{
+        display: none;
+    }
+
+    .collImage{
+        height: 221px;
+    width: 335px;
+    }
+
+    .delete-icon{
+        position: relative;
+    bottom: 212px;
+    right: 25px;
+    background-color: #ffffffdb;
+    padding: 4px 10px;
+    border-radius: 35px;
+    }
+
+    .wish-text{
+        width: 125px;
+    }
+
+    .img-account{
+        height: 150px;
+    }
 
 }

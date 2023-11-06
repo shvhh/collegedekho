@@ -325,6 +325,11 @@ const exam = new mongoose.Schema({
 
         
        
+          matchKeyword: [
+            {
+              type: String,
+            },
+          ],
 
 
         },

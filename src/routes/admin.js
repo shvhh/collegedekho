@@ -301,6 +301,12 @@ routes.post(
         req.body.courseCategoryName = category.category;
       }
 
+      if(req.body.matchKeyword){
+        const matchKeyword = req.body.matchKeyword.split(",");
+        req.body.matchKeyword = matchKeyword;
+      }
+
+
       const data = await Course.create(req.body);
 
       res.redirect("/admin/courseList");
@@ -346,6 +352,8 @@ routes.get("/courseEdit/:id", AdminAuth(["admin"]), async (req, res) => {
     const id = req.params.id;
 
     const data = await Course.findById(id);
+
+
 
     const category = await courseCategory.find({ isDisabled: false }).lean();
 
@@ -410,6 +418,11 @@ routes.post(
           req.body.courseCategoryId
         );
         req.body.courseCategoryName = category.category;
+      }
+
+      if(req.body.matchKeyword){
+        const matchKeyword = req.body.matchKeyword.split(",");
+        req.body.matchKeyword = matchKeyword;
       }
 
       const data = await Course.findByIdAndUpdate(id, req.body);
@@ -790,6 +803,11 @@ routes.post("/examCreate", AdminAuth(["admin"]), async (req, res) => {
       req.body.examCategoryName = examCategory?.examCategory;
     }
 
+
+    if(req.body.matchKeyword){
+      const matchKeyword = req.body.matchKeyword.split(",");
+      req.body.matchKeyword = matchKeyword;
+    }
     const data = await Exam.create(req.body);
 
     res.redirect("/admin/examList");
@@ -899,6 +917,11 @@ routes.post("/examUpdate/:id", AdminAuth(["admin"]), async (req, res) => {
         from: examDate[0],
         to: examDate[1],
       };
+    }
+
+    if(req.body.matchKeyword){
+      const matchKeyword = req.body.matchKeyword.split(",");
+      req.body.matchKeyword = matchKeyword;
     }
 
     const examUpdate = await Exam.findByIdAndUpdate(id, req.body);
@@ -1063,6 +1086,22 @@ routes.post(
         from: applicationDate[0],
         to: applicationDate[1],
       };
+      if (req.body.isPopular == "on") {
+        req.body.isPopular = true;
+      } else {
+        req.body.isPopular = false;
+      }
+
+      if (req.body.isTop == "on") {
+        req.body.isTop = true;
+      } else {
+        req.body.isTop = false;
+      }
+      
+      if(req.body.matchKeyword){
+        const matchKeyword = req.body.matchKeyword.split(",");
+        req.body.matchKeyword = matchKeyword;
+      }
 
       const data = await College.create(req.body);
       res.redirect("/admin/collegeList");
@@ -1315,6 +1354,12 @@ routes.post(
         };
       }
 
+
+      if(req.body.matchKeyword){
+        const matchKeyword = req.body.matchKeyword.split(",");
+        req.body.matchKeyword = matchKeyword;
+      }
+      
       const data = await College.findByIdAndUpdate(id, req.body);
 
       res.redirect("/admin/collegeList");

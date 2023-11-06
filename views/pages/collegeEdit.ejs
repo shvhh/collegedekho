@@ -542,6 +542,14 @@
                       </div> 
 
 
+                      <div class="col-md-6 col-12">
+                        <div class="form-group mandatory">
+                          <label for="first-name-column" class="form-label">Match Keyword </label>
+                          <input type="text" class="form-control" placeholder="Enter Match Keyword" value="<%=collegeData?.matchKeyword%>" name="matchKeyword" data-parsley-required="true" multiple  />
+                        </div>
+                      </div>
+
+
 <%if(collegeData?.isPopular==true){%>
                         <div>
                           <input type="checkbox" id="vehicle1"checked name="isPopular" >
