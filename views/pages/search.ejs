@@ -102,7 +102,7 @@
               </ul>
             </div>
             <div class="col-md-9" id="allColleges">
-             
+         
 
               <% if (collegeData) { %>
               
@@ -329,20 +329,24 @@
 
 
  
-
+<div id="fffff">
   <div class="row">
     <div class="col-md-12">
       <div class="noData">
         <!-- <img src="/public/images/noData.svg" /> -->
-        <h2 id="">No Data Found</h2>
+        <h2>No Data Found</h2>
 
 
         </div>
     </div>
     </div>
+  </div>
   
+  <% } %>
 
-<% } %>
+
+
+
 
 
 
@@ -350,8 +354,7 @@
             </div>
 
   
-<p id="dataGet"></p>
-          
+          <p id="fffff"></p>
 
             
 
@@ -430,17 +433,13 @@
           if (this.readyState == 4 && this.status == 200) {
             // document.getElementById("demo").innerHTML =
             // this.responseText;
-              console.log(this.responseText);
+              // console.log(this.responseText);///
             var data = JSON.parse(this.responseText);
 
             var exam = data.exam;
             var course = data.course;
             var college = data.college;
     
-
-
-
-
 
 
 
@@ -678,14 +677,28 @@
               
             
           }
-        };
+        }
+        if(exam?.length == 0 || course?.length == 0 || college?.length == 0){
+          document.getElementById("allColleges").innerHTML = 
+           `<div class="row">
+            <div class="col-md-12">
+              <div class="noData">
+                <!-- <img src="/public/images/noData.svg" /> -->
+                <h2>No Data Found</h2>
+                </div>
+            </div>
+            </div>`
+        
 
+      
+      
         
                 
                     
                     
     }
-// on click add active class on li
+          }
+        
 
    
             

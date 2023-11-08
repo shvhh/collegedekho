@@ -2237,7 +2237,7 @@ routes.get(
 
 routes.post("/bannerUpdate/:id",AdminAuth(["admin"]),  multiupload2, async (req, res) => {
 
-console.log(req.body);
+
 
 if(!req.body.url){
   const data = await Banner.findById(req.params.id).lean();
