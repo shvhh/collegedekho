@@ -28,7 +28,6 @@ const userExamHistory = require("../models/userExamHistory");
 const userCourseHistory = require("../models/userCourseHistory");
 const SiteMap = require("../models/sitemap");
 
-
 routes.get("/", async (req, res) => {
   try {
     const slider = await Slider.find();
@@ -149,7 +148,6 @@ routes.get("/exam-detail/:slag/:section", async (req, res) => {
     { viewCount: increase }
   );
 
-
   const sectionData = examDetail[examSection];
 
   if (token) {
@@ -197,10 +195,9 @@ routes.get("/collegeGetByCourseId/:slag", async (req, res) => {
   try {
     const slag = req.params.slag;
     const token = req.cookies.userToken;
-  
 
     const courseData = await course.findOne({ slag: slag });
-  
+
     const courseCategoryId = courseData.courseCategoryId;
     const courseCategoryDetail = await courseCategory.aggregate([
       {
@@ -341,9 +338,10 @@ routes.get("/collegeGetByCourseId/:slag", async (req, res) => {
       res.view("pages/colleges", { data, courseCategoryDetail, facility });
     } else {
       // const courseData = await course.findOne({ slag: slag });
-      const data = await College.find({ courseCategoryId: courseCategoryId }).lean();
+      const data = await College.find({
+        courseCategoryId: courseCategoryId,
+      }).lean();
 
-    
       res.view("pages/colleges", { data, courseCategoryDetail, facility });
     }
   } catch (error) {
@@ -590,14 +588,11 @@ routes.get("/collegesGetBytheFilters", async (req, res) => {
       id[i] = new mongoose.Types.ObjectId(id[i]);
     }
 
-    
-
     if (token) {
       const user = jwt.verify(token, "collegeDekhoSecretKet");
       const userId = user.userid;
 
       const users = new mongoose.Types.ObjectId(userId);
-    
 
       const data = await courseCategory.aggregate([
         {
@@ -689,8 +684,6 @@ routes.get("/collegesGetBytheFilters", async (req, res) => {
         },
       ]);
 
-   
-
       res.send(data);
     } else {
       const data = await courseCategory.aggregate([
@@ -750,15 +743,8 @@ routes.get("/collegesGetBytheFilters", async (req, res) => {
             as: "subCoursesDetail",
           },
         },
-
-      
-
-        
-
-      
       ]);
 
-    
       res.send(data);
     }
   } catch (error) {
@@ -941,7 +927,7 @@ routes.get("/getCollegeByStatic", async (req, res) => {
 routes.get("/collegeShorting", async (req, res) => {
   try {
     const shortBy = req.query.short;
-    
+
     const token = req.cookies.userToken;
 
     const category = req.query.category;
@@ -952,7 +938,6 @@ routes.get("/collegeShorting", async (req, res) => {
     if (shortBy == "Z to A") {
       var short = -1;
     }
- 
 
     if (!token && shortBy == "Popularity") {
       const data = await College.aggregate([
@@ -1083,15 +1068,12 @@ routes.get("/courseDetail/:slag/:section", async (req, res) => {
 
     const data = await course.findOne({ slag: req.params.slag }).lean();
 
-  
-
-const increase = data?.viewCount + 1;
-console.log(increase);
-const viewCount = await course.findOneAndUpdate(
-  { slag: req.params.slag },
-  { viewCount: increase }
-);
-
+    const increase = data?.viewCount + 1;
+    console.log(increase);
+    const viewCount = await course.findOneAndUpdate(
+      { slag: req.params.slag },
+      { viewCount: increase }
+    );
 
     const topCourse = await course
       .find({ isTop: true })
@@ -1286,15 +1268,13 @@ routes.get("/getExamById", async (req, res) => {
   try {
     const courseId = req.query.courseId;
 
+    const id = (req.query.courseId = req.query.courseId.split(","));
 
-const id = (req.query.courseId = req.query.courseId.split(","));
+    // const data1 = await College.find({courseId:{$in:id}}).lean();
+    for (let i = 0; i < id.length; i++) {
+      id[i] = new mongoose.Types.ObjectId(id[i]);
+    }
 
-
-// const data1 = await College.find({courseId:{$in:id}}).lean();
-for (let i = 0; i < id.length; i++) {
-  id[i] = new mongoose.Types.ObjectId(id[i]);
-}
- 
     const examData = await Exam.aggregate([
       {
         $match: {
@@ -1316,16 +1296,12 @@ for (let i = 0; i < id.length; i++) {
     });
     const token = req.cookies.userToken;
 
+    // pass token into examData//
 
-// pass token into examData//
-
-
-// examData.forEach((examData) => {
-//   examData.token = token;
-// }
-// )
-
-
+    // examData.forEach((examData) => {
+    //   examData.token = token;
+    // }
+    // )
 
     res.send(examData);
   } catch (error) {
@@ -1378,7 +1354,6 @@ routes.get("/getExamByFilter", async (req, res) => {
 routes.get("/examShorting", async (req, res) => {
   try {
     const shortBy = req.query.short;
-   
 
     if (shortBy == "A to Z") {
       var short = 1;
@@ -1386,7 +1361,6 @@ routes.get("/examShorting", async (req, res) => {
     if (shortBy == "Z to A") {
       var short = -1;
     }
-
 
     if (shortBy == "Popularity") {
       const data = await Exam.aggregate([
@@ -1401,11 +1375,11 @@ routes.get("/examShorting", async (req, res) => {
         data.from = moment(data?.applicationDate?.from).format("DD MMM");
         data.to = moment(data?.applicationDate?.to).format("DD MMM-YYYY");
         data.applicationDate = data.from + " - " + data.to;
-  
+
         data.from = moment(data?.examDate?.from).format("DD MMM");
         data.to = moment(data?.examDate?.to).format("DD MMM-YYYY");
         data.examDate = data.from + " - " + data.to;
-  
+
         // convert the date in dd/mm/yyyy format/
       });
 
@@ -1425,19 +1399,16 @@ routes.get("/examShorting", async (req, res) => {
         data.from = moment(data?.applicationDate?.from).format("DD MMM");
         data.to = moment(data?.applicationDate?.to).format("DD MMM-YYYY");
         data.applicationDate = data.from + " - " + data.to;
-  
+
         data.from = moment(data?.examDate?.from).format("DD MMM");
         data.to = moment(data?.examDate?.to).format("DD MMM-YYYY");
         data.examDate = data.from + " - " + data.to;
-  
+
         // convert the date in dd/mm/yyyy format/
       });
 
       res.send(data);
     }
-
-   
-
   } catch (error) {
     console.log(error);
   }
@@ -1858,7 +1829,6 @@ routes.get("/logout", async (req, res) => {
 routes.get("/search", async (req, res) => {
   try {
     const search = req.query.search;
-    
 
     const token = req.cookies.userToken;
 
@@ -1880,10 +1850,7 @@ routes.get("/search", async (req, res) => {
           { name: { $regex: search, $options: "i" } },
           { matchKeyword: { $regex: search, $options: "i" } },
         ],
-
       }).lean();
-
-     
 
       const courseData = await course
         .find({
@@ -1891,11 +1858,7 @@ routes.get("/search", async (req, res) => {
             { name: { $regex: search, $options: "i" } },
             { matchKeyword: { $regex: search, $options: "i" } },
           ],
-
-      
-     
-      
-      })
+        })
         .lean();
 
       const examData = await Exam.find({
@@ -1905,10 +1868,6 @@ routes.get("/search", async (req, res) => {
         ],
       }).lean();
 
-     
-
-    
-
       if (collegeData.length > 0) {
         let examData = [];
         let courseData = [];
@@ -1916,20 +1875,18 @@ routes.get("/search", async (req, res) => {
         res.view("pages/search", { collegeData, search, examData, courseData });
       }
 
-    
       if (collegeData.length == 0 || courseData.length < 0) {
         let collegeData = [];
         let examData = [];
 
-
         courseData.forEach((courseData) => {
           courseData.from = courseData.fees.from;
           courseData.to = courseData.fees.to;
-    
+
           courseData.fees = courseData.fees.from + " - " + courseData.fees.to;
-    
+
           // convert averageDuration in year and month format/ if less than 12 month then show in month format/and if greater than 12 month then show in year and month format if month is 0 then show only year/
-    
+
           if (courseData.averageDuration < 12) {
             courseData.averageDuration = courseData.averageDuration + " Months";
           } else if (courseData.averageDuration > 12) {
@@ -1942,17 +1899,15 @@ routes.get("/search", async (req, res) => {
             }
           }
         });
-    
-    
+
         res.view("pages/search", { examData, search, collegeData, courseData });
       }
- 
 
-      if (!collegeData  || !courseData || !examData) {
+      if (!collegeData || !courseData || !examData) {
         const collegeData = [];
         const examData = [];
         const courseData = [];
-      
+
         res.view("pages/search", { collegeData, search, examData, courseData });
       }
     }
@@ -2172,7 +2127,7 @@ routes.get("/getUserData", userAuth(["user"]), async (req, res) => {
   try {
     const userId = res.locals.user.userid;
     const key = req.query.type;
-   
+
     if (key == "college") {
       const collegeData = await userCollegeHistory.aggregate([
         {
@@ -2191,7 +2146,6 @@ routes.get("/getUserData", userAuth(["user"]), async (req, res) => {
         },
       ]);
 
-    
       res.send({ collegeDetail: collegeData });
     }
     if (key == "course") {
@@ -2298,21 +2252,20 @@ routes.get("/getBySearch", async (req, res) => {
         { name: { $regex: search, $options: "i" } },
         { matchKeyword: { $regex: search, $options: "i" } },
       ],
-
     }).lean();
 
     res.send({ college: data });
   }
 
   if (type == "course") {
-    const data = await course.find({
-      $or: [
-        { name: { $regex: search, $options: "i" } },
-        { matchKeyword: { $regex: search, $options: "i" } },
-      ],
-
-    }).lean();
-
+    const data = await course
+      .find({
+        $or: [
+          { name: { $regex: search, $options: "i" } },
+          { matchKeyword: { $regex: search, $options: "i" } },
+        ],
+      })
+      .lean();
 
     data.forEach((data) => {
       data.from = data.fees.from;
@@ -2335,7 +2288,6 @@ routes.get("/getBySearch", async (req, res) => {
       }
     });
 
-   
     res.send({ course: data });
   }
 
@@ -2345,29 +2297,21 @@ routes.get("/getBySearch", async (req, res) => {
         { heading: { $regex: search, $options: "i" } },
         { matchKeyword: { $regex: search, $options: "i" } },
       ],
-
-      
-
     }).lean();
 
     data.forEach((data) => {
       data.from = moment(data?.applicationDate?.from).format("DD MMM");
       data.to = moment(data?.applicationDate?.to).format("DD MMM-YYYY");
       data.applicationDate = data.from + " - " + data.to;
-  
+
       data.from = moment(data?.examDate?.from).format("DD MMM");
       data.to = moment(data?.examDate?.to).format("DD MMM-YYYY");
       data.examDate = data.from + " - " + data.to;
-  
-
     });
 
-    
     res.send({ exam: data });
   }
 });
-
-
 
 // password change/
 
@@ -2390,47 +2334,36 @@ routes.post("/userPasswordChangeHere", userAuth(["user"]), async (req, res) => {
         { password: hashPassword }
       );
 
-    res.redirect("/");
-
+      res.redirect("/");
     } else {
       res.view("pages/userPasswordChange", {
         message: "Old Password is not match",
       });
-
     }
   } catch (error) {
-    console.log(error)
-   res.view("pages/userPasswordChange", {
- 
+    console.log(error);
+    res.view("pages/userPasswordChange", {
       message: "Something went wrong",
     });
   }
-}
-);
-
+});
 
 // password page render
 
 routes.get("/passwordChange", userAuth(["user"]), async (req, res) => {
   try {
-    res.view("pages/userPasswordChange",{
-      message:""
+    res.view("pages/userPasswordChange", {
+      message: "",
     });
   } catch (error) {
     console.log(error);
   }
-}
-);
-
-
-
-
+});
 
 // xml siteMap/
 
 routes.get("/sitemap.xml", async (req, res) => {
   const sitemap = await SiteMap.find().lean();
-
 
   let siteMapResponse = `<?xml version="1.0" encoding="UTF-8"?><urlset
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -2439,13 +2372,13 @@ routes.get("/sitemap.xml", async (req, res) => {
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 `;
 
-
-
   sitemap.forEach((item) => {
     siteMapResponse += `
   <url>
   <loc>${item.url}</loc>
-  <lastmod>${moment(new Date(item.lastmod)).format("YYYY-MM-DDTHH:mm:ss+00:00")}</lastmod>
+  <lastmod>${moment(new Date(item.lastmod)).format(
+    "YYYY-MM-DDTHH:mm:ss+00:00"
+  )}</lastmod>
   <priority>${item.priority}</priority>
 </url>
   `;
@@ -2456,24 +2389,20 @@ routes.get("/sitemap.xml", async (req, res) => {
   res.end(siteMapResponse);
 });
 
-
-
 // get course by shoting
-
 
 // exam with shorting/
 
 routes.get("/getCourseByShorting", async (req, res) => {
   try {
     const shortBy = req.query.short;
-   
+
     if (shortBy == "A to Z") {
       var short = 1;
     }
     if (shortBy == "Z to A") {
       var short = -1;
     }
-
 
     if (shortBy == "Popularity") {
       const data = await course.aggregate([
@@ -2487,11 +2416,11 @@ routes.get("/getCourseByShorting", async (req, res) => {
       data.forEach((data) => {
         data.from = data.fees.from;
         data.to = data.fees.to;
-  
+
         data.fees = data.fees.from + " - " + data.fees.to;
-  
+
         // convert averageDuration in year and month format/ if less than 12 month then show in month format/and if greater than 12 month then show in year and month format if month is 0 then show only year/
-  
+
         if (data.averageDuration < 12) {
           data.averageDuration = data.averageDuration + " Months";
         } else if (data.averageDuration > 12) {
@@ -2505,7 +2434,6 @@ routes.get("/getCourseByShorting", async (req, res) => {
         }
       });
 
-     
       res.send(data);
     }
 
@@ -2521,11 +2449,11 @@ routes.get("/getCourseByShorting", async (req, res) => {
       data.forEach((data) => {
         data.from = data.fees.from;
         data.to = data.fees.to;
-  
+
         data.fees = data.fees.from + " - " + data.fees.to;
-  
+
         // convert averageDuration in year and month format/ if less than 12 month then show in month format/and if greater than 12 month then show in year and month format if month is 0 then show only year/
-  
+
         if (data.averageDuration < 12) {
           data.averageDuration = data.averageDuration + " Months";
         } else if (data.averageDuration > 12) {
@@ -2541,9 +2469,6 @@ routes.get("/getCourseByShorting", async (req, res) => {
 
       res.send(data);
     }
-
-   
-
   } catch (error) {
     console.log(error);
   }

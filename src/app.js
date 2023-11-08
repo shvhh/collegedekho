@@ -32,129 +32,116 @@ const { get } = require("http");
 
 // get navbar data//
 
-
-
-
-
 function addUserToView(req, res, next) {
-  
-
-
   res.view = async function (viewName, data) {
     const exam = await ExamCategory.aggregate([
-    {
-      $match: {
-        isDisabled: false,
+      {
+        $match: {
+          isDisabled: false,
+        },
       },
-    },
-    {
-      $lookup: {
-        from: "exams",
-        localField: "_id",
-        foreignField: "examCategoryId",
-        as: "examDetail",
+      {
+        $lookup: {
+          from: "exams",
+          localField: "_id",
+          foreignField: "examCategoryId",
+          as: "examDetail",
+        },
       },
-    },
-  ]);
+    ]);
 
-  const college = await courseCategory.aggregate([
-    {
-      $match: {
-        isDisabled: false,
+    const college = await courseCategory.aggregate([
+      {
+        $match: {
+          isDisabled: false,
+        },
       },
-    },
 
-    //     // find the course by courseCategoryId/
+      //     // find the course by courseCategoryId/
 
-    {
-      $lookup: {
-        from: "courses",
-        localField: "_id",
-        foreignField: "courseCategoryId",
-        as: "courseDetail",
+      {
+        $lookup: {
+          from: "courses",
+          localField: "_id",
+          foreignField: "courseCategoryId",
+          as: "courseDetail",
+        },
       },
-    },
 
-    {
-      $lookup: {
-        from: "colleges",
-        localField: "_id",
-        foreignField: "courseCategoryId",
-        as: "collegeDetail",
+      {
+        $lookup: {
+          from: "colleges",
+          localField: "_id",
+          foreignField: "courseCategoryId",
+          as: "collegeDetail",
+        },
       },
-    },
 
-    // find the state by state id in collegeDetail/
+      // find the state by state id in collegeDetail/
 
-    {
-      $lookup: {
-        from: "states",
-        localField: "collegeDetail.stateId",
-        foreignField: "_id",
-        as: "stateDetail",
+      {
+        $lookup: {
+          from: "states",
+          localField: "collegeDetail.stateId",
+          foreignField: "_id",
+          as: "stateDetail",
+        },
       },
-    },
 
-    //     // if collegeDetail.isPopular is true then add in popularCollege array/
+      //     // if collegeDetail.isPopular is true then add in popularCollege array/
 
-    {
-      $addFields: {
-        popularCollege: {
-          $filter: {
-            input: "$collegeDetail",
-            as: "college",
-            cond: {
-              $eq: ["$$college.isPopular", true],
+      {
+        $addFields: {
+          popularCollege: {
+            $filter: {
+              input: "$collegeDetail",
+              as: "college",
+              cond: {
+                $eq: ["$$college.isPopular", true],
+              },
             },
           },
         },
       },
-    },
-    //     // if collegeDetail.isPopular is true then add in popularCollege array/
+      //     // if collegeDetail.isPopular is true then add in popularCollege array/
 
-    {
-      $addFields: {
-        topCollege: {
-          $filter: {
-            input: "$collegeDetail",
-            as: "college",
-            cond: {
-              $eq: ["$$college.isTop", true],
+      {
+        $addFields: {
+          topCollege: {
+            $filter: {
+              input: "$collegeDetail",
+              as: "college",
+              cond: {
+                $eq: ["$$college.isTop", true],
+              },
             },
           },
         },
       },
-    },
-  ]);
+    ]);
 
+    const courses = await course.find().lean();
+    const careerDetail = await Career.find().lean();
 
- 
-  const courses = await course.find().lean();
-  const careerDetail = await Career.find().lean();
-
-  const userToken = req.cookies.userToken;
- 
-
+    const userToken = req.cookies.userToken;
 
     let viewData = {
       exam,
       college,
       courses,
       careerDetail,
-      userToken
+      userToken,
+    };
+    if (data) {
+      viewData = { ...data, ...viewData };
     }
-    if(data){
-      viewData = {...data,...viewData}
-    }
-    res.render(viewName,viewData);
+    res.render(viewName, viewData);
   };
 
   next();
 }
 
 app.use(addUserToView);
-
-
 
 // const { connected } = require("process");
 
@@ -191,12 +178,14 @@ app.use("/", routes);
 //     console.log(err);
 //   });
 
-
-
-mongoose.connect('mongodb+srv://admin:Webadmin1@cluster0.ul9cde6.mongodb.net/collegedekho').then(()=>{
-  console.log("db connected")
-}).
-  catch(error => (error));
+mongoose
+  .connect(
+    "mongodb+srv://admin:Webadmin1@cluster0.ul9cde6.mongodb.net/collegedekho"
+  )
+  .then(() => {
+    console.log("db connected");
+  })
+  .catch((error) => error);
 
 const port = process.env.PORT || 5000;
 

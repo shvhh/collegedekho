@@ -33,7 +33,6 @@ const SiteMap = require("../models/sitemap");
 const MetaTag = require("../models/metaTags");
 const Banner = require("../models/banner");
 
-
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, path.join(__dirname, "../../publicadmin/images"));
@@ -47,11 +46,10 @@ const upload = multer({ storage: storage });
 var multiupload2 = upload.fields([
   { name: "image", maxCount: 1 },
   { name: "multiImage", maxCount: 5 },
-  {name: "url", maxCount: 1}
+  { name: "url", maxCount: 1 },
 ]);
 
 var multiupload = upload.fields([{ name: "gallery", maxCount: 20 }]);
-
 
 routes.get("/", AdminAuth(["admin"]), async (req, res) => {
   const college = await College.find().lean();
@@ -2004,12 +2002,11 @@ routes.get("/studyGoalList", async (req, res) => {
 
 routes.post("/studyGoalsCreate", async (req, res) => {
   try {
-    
     const data = await studyGoal.create(req.body);
-    
+
     res.redirect("/admin/studyGoalList");
   } catch (error) {
-  console.log(error);
+    console.log(error);
   }
 });
 
@@ -2048,7 +2045,7 @@ routes.get("/studyGoalDelete/:id/:subPartsId", async (req, res) => {
     const subParts = data.subParts;
 
     const subPartsId = req.params.subPartsId;
-    
+
     const subPartsIndex = subParts.findIndex(
       (subParts) => subParts._id == subPartsId
     );
@@ -2150,9 +2147,6 @@ routes.get("/sitemapDelete/:id", AdminAuth(["admin"]), async (req, res) => {
   }
 });
 
-
-
-
 // metatag list
 routes.get("/metaTagList", AdminAuth(["admin"]), async (req, res) => {
   try {
@@ -2164,89 +2158,60 @@ routes.get("/metaTagList", AdminAuth(["admin"]), async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-}
-);
-
+});
 
 // metatag edit
 
-
-
 routes.get("/metaTagEdit/:id", AdminAuth(["admin"]), async (req, res) => {
-  try{
+  try {
+    const metatagEdit = await MetaTag.findById(req.params.id).lean();
 
-  const metatagEdit = await MetaTag.findById(req.params.id).lean();
-  
-
-  res.render("pages/metaTagEdit", { metatagEdit, });
+    res.render("pages/metaTagEdit", { metatagEdit });
+  } catch (err) {
+    console.log(err);
   }
-  catch(err){
-console.log(err);
-  }
-  });
-
-
-
-
-  routes.post("/metaTagUpdated/:id", AdminAuth(["admin"]), async (req, res) => {
-    try{
-    
-   
-
-    const data = await MetaTag.findByIdAndUpdate(req.params.id, req.body);
-    res.redirect("/admin/metaTagList");
-    }
-    catch(err){
-  console.log(err);
-      
-    } 
-    });
-
-
-
-    // banner list
-
-
-
-    // bannerv edit route/
-
-routes.get(
-  "/bannerList",
-  AdminAuth(["admin",]),
-  async (req, res) => {
-    
-
-
-    const bannerList = await Banner.find().lean();
-    res.render("pages/bannerlist", { bannerList });
-  }
-);
-
-routes.get(
-  "/bannerEdit/:id",
-  AdminAuth(["admin"]),
-  async (req, res) => {
-
-
-    const data = await Banner.findById(req.params.id).lean();
-
-    
-    res.render("pages/bannerEdit", { data });
-  }
-);
-
-routes.post("/bannerUpdate/:id",AdminAuth(["admin"]),  multiupload2, async (req, res) => {
-
-
-
-if(!req.body.url){
-  const data = await Banner.findById(req.params.id).lean();
-  req.body.url = data.url;
-}
-  const bannerupdate = await Banner.findByIdAndUpdate(req.params.id, req.body);
-  res.redirect("/admin/bannerList");
 });
 
+routes.post("/metaTagUpdated/:id", AdminAuth(["admin"]), async (req, res) => {
+  try {
+    const data = await MetaTag.findByIdAndUpdate(req.params.id, req.body);
+    res.redirect("/admin/metaTagList");
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// banner list
+
+// bannerv edit route/
+
+routes.get("/bannerList", AdminAuth(["admin"]), async (req, res) => {
+  const bannerList = await Banner.find().lean();
+  res.render("pages/bannerlist", { bannerList });
+});
+
+routes.get("/bannerEdit/:id", AdminAuth(["admin"]), async (req, res) => {
+  const data = await Banner.findById(req.params.id).lean();
+
+  res.render("pages/bannerEdit", { data });
+});
+
+routes.post(
+  "/bannerUpdate/:id",
+  AdminAuth(["admin"]),
+  multiupload2,
+  async (req, res) => {
+    if (!req.body.url) {
+      const data = await Banner.findById(req.params.id).lean();
+      req.body.url = data.url;
+    }
+    const bannerupdate = await Banner.findByIdAndUpdate(
+      req.params.id,
+      req.body
+    );
+    res.redirect("/admin/bannerList");
+  }
+);
 
 module.exports = routes;
 
@@ -2261,49 +2226,72 @@ module.exports = routes;
 //    totalProject:"0",
 // })
 
-
 // banner created
 
+const pageName = [
+  "index",
+  "About",
+  "College-Detail",
+  "Contact Us",
+  "Privacy Policy",
+  "Term Condition",
+  "All college",
+  "All Exam",
+  "All Course",
+  "Search",
+  "Wishlist",
+  "My Account",
+  "Password Change",
+  "colleges",
+  "All Career",
+];
+const imgurl = "banner1.webp";
 
-
-const pageName = ["index","About","College-Detail","Contact Us","Privacy Policy","Term Condition","All college", "All Exam", "All Course", "Search", "Wishlist", "My Account", "Password Change", "colleges", "All Career"]
-const imgurl = "banner1.webp"
-
-const banner = async (pageName,url) => {
-  const data = await Banner.findOne({pageName:pageName}).lean();
+const banner = async (pageName, url) => {
+  const data = await Banner.findOne({ pageName: pageName }).lean();
   // console.log("bannerData", data);
   if (!data) {
     Banner.create({
-      pageName:pageName,
-      url:url,
+      pageName: pageName,
+      url: url,
     });
-
   }
-  }
+};
 
-  for(let i=0;i<pageName.length;i++){
-    banner(pageName[i],imgurl);
-  }
+for (let i = 0; i < pageName.length; i++) {
+  banner(pageName[i], imgurl);
+}
 
+// metaTag created
 
-
-
-  // metaTag created
-
-
-
-  const pageName1 = ["index","About","College-Detail","Contact Us","Privacy Policy","Term Condition","All college", "All Exam", "All Course", "Search", "Wishlist", "My Account", "Password Change", "colleges", "All Career"]
+const pageName1 = [
+  "index",
+  "About",
+  "College-Detail",
+  "Contact Us",
+  "Privacy Policy",
+  "Term Condition",
+  "All college",
+  "All Exam",
+  "All Course",
+  "Search",
+  "Wishlist",
+  "My Account",
+  "Password Change",
+  "colleges",
+  "All Career",
+];
 
 const page = async (pageName) => {
-  const data = await MetaTag.findOne({pageName:pageName}).lean();
+  const data = await MetaTag.findOne({ pageName: pageName }).lean();
   // console.log("metaData", data);
   if (!data) {
     MetaTag.create({
-      pageName:pageName,
-    })
+      pageName: pageName,
+    });
   }
-  }
+};
 
-  for(let i=0;i<pageName1.length;i++){
-    page(pageName1[i]);
-  }
+for (let i = 0; i < pageName1.length; i++) {
+  page(pageName1[i]);
+}
