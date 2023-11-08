@@ -76,7 +76,7 @@
         <div class="page-title">
           <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-              <h3>Create Study Goals</h3>
+              <h3>Update Banner</h3>
               <p class="text-subtitle text-muted">
                 <!-- Super simple WYSIWYG editor. But you must include jQuery. -->
               </p>
@@ -100,65 +100,88 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-
-                  <button type="button" id="btn1" class="btn btn-primary float-start float-lg-end">ADD SUBPARTS</button>
+                  <h4 class="card-title"><%=data?.pageName%></h4>
+                  <!-- <button type="button" id="btn1" class="btn btn-primary float-start float-lg-end">ADD SUBPARTS</button> -->
 
                <h4 class="card-title"></h4> 
                 </div>
                 <div class="card-content">
                   <div class="card-body">
-                    <form action="/admin/studyGoalsCreate" method="post">
+                    <form action="/admin/bannerUpdate/<%=data?._id%>" method="post" enctype="multipart/form-data">
                       <div class="row">
 
-
-                 
-
-                
-
-                
-
                         
+                     
 
-                 
+                    
+
+
+                        <div class="col-md-6 col-12">
+                          <div class="form-group mandatory">
+                            <label for="company-column" class="form-label">Image</label>
+                            <input type="hidden" id="imagesdata" name="url" />
+
+                            <input type="file" class="form-control"id="imagetype"onchange="previewImageHere(event)" placeholder="Enter Url"  name="url" data-parsley-required="true"/>
+                          </div>
+                         <div class="row">
+                            <div class="col-md-2">
+                              <div class="imgsecccc">
+                                <img src="<%=data?.url%>" id="img" alt="alt" />
+                             
+                              </div>
+                            </div>
+                        </div> 
+
+        
+                        </div>
+
+                        <div class="col-md-6 col-12">
+                          <div class="form-group mandatory">
+                            <label for="first-name-column" class="form-label">Alt For Image </label>
+                            <input type="text" class="form-control" placeholder="Enter Alt  For Image " value="<%=data?.alt%>" name="alt" data-parsley-required="true" required />
+                          </div>
+                        </div>
+                      
+
 
                      
+                          
+
+
+               
+
+
+
+                         
+                         
+                        
+
+          
                          
                  
-                        <div class="col-md-6 col-12">
-                          <div class="form-group mandatory">
-                            <label for="first-name-column" class="form-label">Heading </label>
-                            <input type="text" class="form-control" placeholder="Enter Heading" name="heading" data-parsley-required="true" required />
-                          </div>
-                        </div>
-                           
-                      
-                        
-                      
-
-                      
-                
-
-
-
-                     
-
-                        <div class="col-md-6 col-12">
-                          <div class="form-group mandatory">
-                            <label for="first-name-column" class="form-label">Title </label>
-                            <input type="text" class="form-control" placeholder="Enter Title " name="title" data-parsley-required="true"  />
-                          </div>
-                        </div>
-
-                        <div class="col-md-6 col-12">
-                          <div class="form-group mandatory">
-                            <label for="first-name-column" class="form-label">SubTitle  </label>
-                            <input type="text" class="form-control" placeholder="Enter SubTitle " name="subParts[0][subTitle]" data-parsley-required="true"  />
-                          </div>
-                        </div>
-
-                      <p id="goals"></p>
 
                        
+
+
+                      
+
+
+
+                        
+                       
+    
+     
+
+
+
+
+    
+
+
+
+
+
+
 
 
 
@@ -180,7 +203,7 @@
           </div>
         </section>
 
-
+    
 
         <footer>
 
@@ -198,57 +221,62 @@
     <script src="/public/assets/static/js/pages/summernote.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sumoselect/3.4.9/jquery.sumoselect.min.js" integrity="sha512-+Ea4TZ8vBWO588N7H6YOySCtkjerpyiLnV7bgqwrQF+vqR8+q/InGK9WDZx5d6VtdGRoV6uLd5Dwz2vE7EL3oQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-      function imagView(event, id) {
-        console.log(event.target.files[0]);
-        var input = event.target;
-console.log(input.id);
-        var data = new FormData();
-        data.append("file", input.files[0]);
+// get image form imagetype input and set it to img src
+function previewImageHere(event) {
+  console.log(event.target.files[0]);
+      var input = event.target;
 
-        var xhr = new XMLHttpRequest();
-        // xhr.withCredentials = true;
+      var data = new FormData();
+data.append("file", input.files[0]);
+ 
+var xhr = new XMLHttpRequest();
+// xhr.withCredentials = true;
 
-        xhr.addEventListener("readystatechange", function() {
-          if (this.readyState === 4) {
-            if (input.id == 'imageSelected') {
-              var preview = document.getElementById('imageurl'+id);
-              // debugger;
-              console.log(this.responseText);
-              document.getElementById('primaryImage'+id).value = this.responseText;
-              preview.innerHTML = '<img class="data" src="' + this.responseText + '">';
-            }
-          }
-        });
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    if(input.id == 'imagetype'){
+            // var preview = document.getElementsByClassName('imageArea');
 
-        xhr.open("POST", "/admin/file");
-        xhr.send(data);
+            document.getElementById('imagesdata').value = this.responseText;
+          // preview.innerHTML = '<img  src="' + this.responseText + '"/>';
+          $('.imgsecccc').html('<img  src="' + this.responseText + '"/>');
+    }
+  }
+});
 
-
-
-      }
+xhr.open("POST", "/admin/file");
+xhr.send(data);
 
 
 
-      let counter = 1;
+    }
+
+  
+
+
+
+
+
+   
       $(document).ready(function() {
+        let count = document.getElementById("sectionLength").innerHTML
+console.log(count)
+let counter = count - 1
         $("#btn1").click(function() {
 
           const id = 'multiAdd' + Math.floor(Math.random() * 10000000000000000000);
-          console.log(id);
-
-          counter++;
-          $("#goals").append('<div class="col-md-6 col-12" id="btn3' + id + '" ><div class="form-group mandatory"><label for="first-name-column" class="form-label">SubTitle</label><input type="text" class="form-control" placeholder="First SubTitle " name="subParts[' + counter + '][subTitle]" data-parsley-required="true" /></div></div>')
-          // delete button//
-          $('#goals').append('<button type="button" class="btn btn-danger float-start float-lg-end me-1 mb-60" id=' + id + ' onclick="deleteDiv(this.id)">Delete</button>');
-
-        
-
-        
+          counter++
+          $("#textbox").append('<div class="col-md-6 col-12" id="btn3' + id + '" ><div class="form-group mandatory"><label for="first-name-column" class="form-label"> Section Heading</label><input type="text" class="form-control" placeholder="First Secton Heading" name="section[' + counter + '][heading]" data-parsley-required="true" /></div></div>')
+          $("#textbox").append('<section class="section"  id="btn389' + id + '"  ><div class="row"><div class="col-12"><div class="card"><div class="card-header"><!-- <h4 class="card-title">Default Editor</h4> --></div><h5 class="editorMargin">Section Description</h5><div class="card-body"><div></div><textarea id="' + id + '" name="section[' + counter + '][description]"></textarea></div></div></div></div></section>');
+          $('#textbox').append('<button type="button" class="btn btn-danger float-start float-lg-end me-1 mb-60" id=' + id + ' onclick="deleteDiv(this.id)">Delete</button>');
+          $('#' + id).summernote({ 
+             tabsize: 2,
+  height: 120,
 });
+          
          
-          console.log(counter);
         });
-    
+      });
 
 
 
@@ -257,7 +285,7 @@ console.log(input.id);
 
       // delete text area and editor//
       function deleteDiv(id) {
-        console.log(id);
+       
 
         $('#btn3' + id).remove();
         $('#btn389' + id).remove();
@@ -273,12 +301,15 @@ console.log(input.id);
 
 <script>
 
-let syllabus = 1;
+
       $(document).ready(function() {
+        let count = document.getElementById("syllabusLength").innerHTML
+console.log(count)
+let syllabus = count - 1
         $("#btn2").click(function() {
 
           const id = 'multiAdd' + Math.floor(Math.random() * 100000000000000000000);
-          console.log(id);
+          syllabus++
           $("#syllaboxBox").append('<div class="col-md-6 col-12" id="btn3' + id + '" ><div class="form-group mandatory"><label for="first-name-column" class="form-label"> Syllabus Heading</label><input type="text" class="form-control" placeholder="First Syllabus Heading" name="syllabus[' + syllabus + '][heading]" data-parsley-required="true" /></div></div>')
           $("#syllaboxBox").append('<section class="section"  id="btn389' + id + '"  ><div class="row"><div class="col-12"><div class="card"><div class="card-header"><!-- <h4 class="card-title">Default Editor</h4> --></div><h5 class="editorMargin">Syllabus Description</h5><div class="card-body"><div></div><textarea id="' + id + '" name="syllabus[' + syllabus + '][description]"></textarea></div></div></div></div></section>');
           $('#syllaboxBox').append('<button type="button" class="btn btn-danger float-start float-lg-end me-1 mb-60" id=' + id + ' onclick="deleteDiv(this.id)">Delete</button>');
@@ -287,7 +318,7 @@ let syllabus = 1;
   height: 120,
 });
           counter++;
-          console.log(counter);
+          
         });
       });
 
@@ -298,7 +329,7 @@ let syllabus = 1;
 
       // delete text area and editor//
       function deleteDiv(id) {
-        console.log(id);
+     
 
         $('#btn3' + id).remove();
         $('#btn389' + id).remove();
@@ -312,13 +343,16 @@ let syllabus = 1;
 
 <script>
 
-  let salary = 1;
+
         $(document).ready(function() {
+          let count = document.getElementById("sallarylength").innerHTML
+console.log(count)
+let salary = count - 1
           $("#btn3").click(function() {
   
             const id = 'multiAdd' + Math.floor(Math.random() * 1000000000000000000000);
-            console.log(id);
-            $("#sallaryBox").append('<div class="col-md-6 col-12" id="btn3' + id + '" ><div class="form-group mandatory"><label for="first-name-column" class="form-label"> Syllabus Heading</label><input type="text" class="form-control" placeholder= Sallary Heading" name="sallary[' + salary + '][heading]" data-parsley-required="true" /></div></div>')
+            salary++
+            $("#sallaryBox").append('<div class="col-md-6 col-12" id="btn3' + id + '" ><div class="form-group mandatory"><label for="first-name-column" class="form-label"> Sallary Heading</label><input type="text" class="form-control" placeholder= Sallary Heading" name="sallary[' + salary + '][heading]" data-parsley-required="true" /></div></div>')
             $("#sallaryBox").append('<section class="section"  id="btn389' + id + '"  ><div class="row"><div class="col-12"><div class="card"><div class="card-header"><!-- <h4 class="card-title">Default Editor</h4> --></div><h5 class="editorMargin">Sallary Description</h5><div class="card-body"><div></div><textarea id="' + id + '" name="sallary[' + salary + '][description]"></textarea></div></div></div></div></section>');
             $('#sallaryBox').append('<button type="button" class="btn btn-danger float-start float-lg-end me-1 mb-60" id=' + id + ' onclick="deleteDiv(this.id)">Delete</button>');
             $('#' + id).summernote({ 
@@ -337,7 +371,7 @@ let syllabus = 1;
   
         // delete text area and editor//
         function deleteDiv(id) {
-          console.log(id);
+        
   
           $('#btn3' + id).remove();
           $('#btn389' + id).remove();

@@ -29,6 +29,9 @@ const slider = require("../models/slider");
 const User = require("../models/user");
 const SearchHistory = require("../models/searchHistory");
 const studyGoal = require("../models/studyGoal");
+const SiteMap = require("../models/sitemap");
+const MetaTag = require("../models/metaTags");
+const Banner = require("../models/banner");
 
 
 const storage = multer.diskStorage({
@@ -44,9 +47,11 @@ const upload = multer({ storage: storage });
 var multiupload2 = upload.fields([
   { name: "image", maxCount: 1 },
   { name: "multiImage", maxCount: 5 },
+  {name: "url", maxCount: 1}
 ]);
 
 var multiupload = upload.fields([{ name: "gallery", maxCount: 20 }]);
+
 
 routes.get("/", AdminAuth(["admin"]), async (req, res) => {
   const college = await College.find().lean();
@@ -301,11 +306,10 @@ routes.post(
         req.body.courseCategoryName = category.category;
       }
 
-      if(req.body.matchKeyword){
+      if (req.body.matchKeyword) {
         const matchKeyword = req.body.matchKeyword.split(",");
         req.body.matchKeyword = matchKeyword;
       }
-
 
       const data = await Course.create(req.body);
 
@@ -352,8 +356,6 @@ routes.get("/courseEdit/:id", AdminAuth(["admin"]), async (req, res) => {
     const id = req.params.id;
 
     const data = await Course.findById(id);
-
-
 
     const category = await courseCategory.find({ isDisabled: false }).lean();
 
@@ -420,7 +422,7 @@ routes.post(
         req.body.courseCategoryName = category.category;
       }
 
-      if(req.body.matchKeyword){
+      if (req.body.matchKeyword) {
         const matchKeyword = req.body.matchKeyword.split(",");
         req.body.matchKeyword = matchKeyword;
       }
@@ -803,8 +805,7 @@ routes.post("/examCreate", AdminAuth(["admin"]), async (req, res) => {
       req.body.examCategoryName = examCategory?.examCategory;
     }
 
-
-    if(req.body.matchKeyword){
+    if (req.body.matchKeyword) {
       const matchKeyword = req.body.matchKeyword.split(",");
       req.body.matchKeyword = matchKeyword;
     }
@@ -919,7 +920,7 @@ routes.post("/examUpdate/:id", AdminAuth(["admin"]), async (req, res) => {
       };
     }
 
-    if(req.body.matchKeyword){
+    if (req.body.matchKeyword) {
       const matchKeyword = req.body.matchKeyword.split(",");
       req.body.matchKeyword = matchKeyword;
     }
@@ -1097,8 +1098,8 @@ routes.post(
       } else {
         req.body.isTop = false;
       }
-      
-      if(req.body.matchKeyword){
+
+      if (req.body.matchKeyword) {
         const matchKeyword = req.body.matchKeyword.split(",");
         req.body.matchKeyword = matchKeyword;
       }
@@ -1354,12 +1355,11 @@ routes.post(
         };
       }
 
-
-      if(req.body.matchKeyword){
+      if (req.body.matchKeyword) {
         const matchKeyword = req.body.matchKeyword.split(",");
         req.body.matchKeyword = matchKeyword;
       }
-      
+
       const data = await College.findByIdAndUpdate(id, req.body);
 
       res.redirect("/admin/collegeList");
@@ -1967,7 +1967,9 @@ routes.get(
 
       const userDetail = await User.findById(userId);
       const userName = userDetail?.name;
-      const data = await SearchHistory.find({ userId: userId }).sort({createdAt:-1}).lean();
+      const data = await SearchHistory.find({ userId: userId })
+        .sort({ createdAt: -1 })
+        .lean();
 
       data.forEach((item) => {
         item.createdAt = moment(item.createdAt).format("DD/MM/YYYY");
@@ -1982,44 +1984,34 @@ routes.get(
   }
 );
 
-
 routes.get("/studyGoal", (req, res) => {
-  try{
-    res.render("pages/studyGoalCreate",{
-      message:""
-    })
+  try {
+    res.render("pages/studyGoalCreate", {
+      message: "",
+    });
+  } catch (error) {}
+});
 
-  }catch(error){
-      
-    }
-}
-);
-
-routes.get("/studyGoalList", async(req, res) => {
-  try{
+routes.get("/studyGoalList", async (req, res) => {
+  try {
     const data = await studyGoal.find().sort({ createdAt: -1 }).lean();
-    res.render("pages/studyGoallist",{
-      message:"",
-      data
-    })
+    res.render("pages/studyGoallist", {
+      message: "",
+      data,
+    });
+  } catch (error) {}
+});
 
-  }catch(error){
-      
-    }
-}
-);
-
-routes.post("/studyGoalsCreate", async(req, res) => {
-  try{
+routes.post("/studyGoalsCreate", async (req, res) => {
+  try {
+    
     const data = await studyGoal.create(req.body);
+    
     res.redirect("/admin/studyGoalList");
-  }catch(error){
-      
-    }
-} 
-);
-
-
+  } catch (error) {
+  console.log(error);
+  }
+});
 
 // delete studyGoal by id
 
@@ -2033,7 +2025,6 @@ routes.get("/studyGoalDelete/:id", async (req, res) => {
   }
 });
 
-
 // study goal edit
 
 routes.get("/studyGoalEdit/:id", async (req, res) => {
@@ -2046,57 +2037,215 @@ routes.get("/studyGoalEdit/:id", async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-}
-);
-
+});
 
 routes.get("/studyGoalDelete/:id/:subPartsId", async (req, res) => {
-  try{
+  try {
     const id = req.params.id;
 
-    
     const data = await studyGoal.findById(id);
 
     const subParts = data.subParts;
-    
+
     const subPartsId = req.params.subPartsId;
-    console.log(subPartsId);
+    
     const subPartsIndex = subParts.findIndex(
       (subParts) => subParts._id == subPartsId
     );
-   
+
     subParts.splice(subPartsIndex, 1);
     await data.save();
 
-
-
-
-  
     res.redirect("/admin/studyGoalEdit/" + id);
-  }catch(error){
-console.log(error);
+  } catch (error) {
+    console.log(error);
   }
-}
-);
+});
 
 routes.post("/studyGoalUpdate/:id", async (req, res) => {
-  try{
+  try {
     const data = await studyGoal.findByIdAndUpdate(req.params.id, req.body);
     res.redirect("/admin/studyGoalList");
+  } catch (error) {
+    console.log(error);
+  }
+});
 
-  }catch(error){
-console.log(error);
+// sitemap xml
+
+// render sitemap create page
+
+routes.get("/sitemap", async (req, res) => {
+  try {
+    res.render("pages/sitemapForMarketing", {});
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// sitemap create post
+
+routes.post("/sitemapCreate", AdminAuth(["admin"]), async (req, res) => {
+  try {
+    const data = await SiteMap.create(req.body);
+    res.redirect("/admin/sitemapList");
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// sitemapList
+
+routes.get("/sitemapList", AdminAuth(["admin"]), async (req, res) => {
+  try {
+    const sitemapList = await SiteMap.find().lean();
+
+    sitemapList.forEach((item) => {
+      item.lastmod = moment(item.lastmod).format("DD/MM/YYYY");
+    });
+
+    res.render("pages/sitemaplistForMarketing", { sitemapList });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// sitemap edit
+
+routes.get("/sitemapEdit/:id", AdminAuth(["admin"]), async (req, res) => {
+  try {
+    const sitemapEdit = await SiteMap.findById(req.params.id).lean();
+
+    sitemapEdit.date = moment(sitemapEdit.lastmod).format("YYYY-MM-DD");
+
+    res.render("pages/sitemapEditForMarketing", { sitemapEdit });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// sitemap update
+
+routes.post("/sitemapUpdate/:id", AdminAuth(["admin"]), async (req, res) => {
+  try {
+    const sitemapEdit = await SiteMap.findById(req.params.id).lean();
+
+    const data = await SiteMap.findByIdAndUpdate(req.params.id, req.body);
+    res.redirect("/admin/sitemapList");
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// sitemap delete
+
+routes.get("/sitemapDelete/:id", AdminAuth(["admin"]), async (req, res) => {
+  try {
+    const sitemapEdit = await SiteMap.findById(req.params.id).lean();
+
+    const data = await SiteMap.findByIdAndDelete(req.params.id);
+    res.redirect("/admin/sitemapList");
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+
+
+
+// metatag list
+routes.get("/metaTagList", AdminAuth(["admin"]), async (req, res) => {
+  try {
+    const data = await MetaTag.find().sort({ createdAt: -1 }).lean();
+    res.render("pages/metaTaglist", {
+      data,
+      message: "",
+    });
+  } catch (error) {
+    console.log(error);
   }
 }
 );
 
 
+// metatag edit
+
+
+
+routes.get("/metaTagEdit/:id", AdminAuth(["admin"]), async (req, res) => {
+  try{
+
+  const metatagEdit = await MetaTag.findById(req.params.id).lean();
+  
+
+  res.render("pages/metaTagEdit", { metatagEdit, });
+  }
+  catch(err){
+console.log(err);
+  }
+  });
 
 
 
 
+  routes.post("/metaTagUpdated/:id", AdminAuth(["admin"]), async (req, res) => {
+    try{
+    
+   
+
+    const data = await MetaTag.findByIdAndUpdate(req.params.id, req.body);
+    res.redirect("/admin/metaTagList");
+    }
+    catch(err){
+  console.log(err);
+      
+    } 
+    });
 
 
+
+    // banner list
+
+
+
+    // bannerv edit route/
+
+routes.get(
+  "/bannerList",
+  AdminAuth(["admin",]),
+  async (req, res) => {
+    
+
+
+    const bannerList = await Banner.find().lean();
+    res.render("pages/bannerlist", { bannerList });
+  }
+);
+
+routes.get(
+  "/bannerEdit/:id",
+  AdminAuth(["admin"]),
+  async (req, res) => {
+
+
+    const data = await Banner.findById(req.params.id).lean();
+
+    
+    res.render("pages/bannerEdit", { data });
+  }
+);
+
+routes.post("/bannerUpdate/:id",AdminAuth(["admin"]),  multiupload2, async (req, res) => {
+
+console.log(req.body);
+
+if(!req.body.url){
+  const data = await Banner.findById(req.params.id).lean();
+  req.body.url = data.url;
+}
+  const bannerupdate = await Banner.findByIdAndUpdate(req.params.id, req.body);
+  res.redirect("/admin/bannerList");
+});
 
 
 module.exports = routes;
@@ -2111,3 +2260,50 @@ module.exports = routes;
 //    liveProject:"0",
 //    totalProject:"0",
 // })
+
+
+// banner created
+
+
+
+const pageName = ["index","About","College-Detail","Contact Us","Privacy Policy","Term Condition","All college", "All Exam", "All Course", "Search", "Wishlist", "My Account", "Password Change", "colleges", "All Career"]
+const imgurl = "banner1.webp"
+
+const banner = async (pageName,url) => {
+  const data = await Banner.findOne({pageName:pageName}).lean();
+  // console.log("bannerData", data);
+  if (!data) {
+    Banner.create({
+      pageName:pageName,
+      url:url,
+    });
+
+  }
+  }
+
+  for(let i=0;i<pageName.length;i++){
+    banner(pageName[i],imgurl);
+  }
+
+
+
+
+  // metaTag created
+
+
+
+  const pageName1 = ["index","About","College-Detail","Contact Us","Privacy Policy","Term Condition","All college", "All Exam", "All Course", "Search", "Wishlist", "My Account", "Password Change", "colleges", "All Career"]
+
+const page = async (pageName) => {
+  const data = await MetaTag.findOne({pageName:pageName}).lean();
+  // console.log("metaData", data);
+  if (!data) {
+    MetaTag.create({
+      pageName:pageName,
+    })
+  }
+  }
+
+  for(let i=0;i<pageName1.length;i++){
+    page(pageName1[i]);
+  }

@@ -24,6 +24,34 @@
         <div class="wrapper examListingPage">
             <div class="container">
 
+                <div class="bannerTitle2">
+                    <img src="/public/images/banner_bg.svg">
+                    <h3>Top Course</h3>
+                    <h4>List of Top Courses</h4>
+                  </div>
+
+                  <img src="/public/images/banner.png" class="w-100 mt-3">
+
+
+                  <div class="col-md-3">
+                    <form class="form-modal">
+                      <div class="form-group">
+                        <select
+                          class="form-select p-2"
+                          aria-label="Sort By"
+                          onchange="getCourseByShorting(this)"
+                        >
+                          <option selected="">Relevance </option>
+                          <option value="A to Z">A to Z</option>
+                          <option value="Z to A">Z to A</option>
+                          <option value="Popularity">Popularity</option>
+      
+      
+                        </select>
+                      </div>
+                    </form>
+                  </div>
+
                 <section class="collegesPage">
                     <div class="container">
                         <div class="row pt-3">
@@ -160,23 +188,23 @@
 
 function getCourseByDuration(element){
     const duration = element.value;
-      console.log(duration);
+  
 
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           // document.getElementById("demo").innerHTML =
           // this.responseText;
-          console.log(this.responseText);
+        //   console.log(this.responseText);
           var data = JSON.parse(this.responseText);
 
           document.getElementById("course_count").innerHTML = data.length;
 
-          document.getElementById("coursesData").innerHTML = data.map((course) => {
+          document.getElementById("coursesData").innerHTML = data?.map((course) => {
             return `<div class="box course_list" data-mode="Regular" data-duration="4 Years">
             <h2>
                 <a href="/courseDetail/${course?.slag}/sectio"
-                    title="B.Tech - Biochemical Engineering"> ${course.name}</a></h2>
+                    title="B.Tech - Biochemical Engineering"> ${course?.name}</a></h2>
             <div class="coursebtn">
                 <!-- <a href="javascript:void(0)" class="course_follow"
                     data-course_id="2">Follow</a> -->
@@ -185,20 +213,20 @@ function getCourseByDuration(element){
                 <div class="coursePic">
                     <a href="/courses/engineering-b-tech-biochemical"
                         title="B.Tech - Biochemical Engineering"><img
-                            src="${course.image}" alt="${course.imageAlt}"
+                            src="${course?.image}" alt="${course?.imageAlt}"
                             alt="B.Tech - Biochemical Engineering"></a></div>
                 <ul class="attr_box">
                     <li>Average Duration <span>
-                           ${course.averageDuration}
+                           ${course?.averageDuration}
                         </span>
                     </li>
                     <li>Average Fees<span>
-                        ${course.fees}
+                        ${course?.fees}
                         </span>
                     </li>
                 </ul>
-                <p>${course.shortDescription}</p>
-                <a href="/courseDetail/${course.slag}/section" class="readbtn">
+                <p>${course?.shortDescription}</p>
+                <a href="/courseDetail/${course?.slag}/section" class="readbtn">
                     View Details</a>
                 <div class="clear"></div>
             </div>
@@ -237,12 +265,12 @@ function getCourseByMode(element){
 
 
 
-            document.getElementById("course_count").innerHTML = data.length;
-            document.getElementById("coursesData").innerHTML = data.map((course) => {
+            document.getElementById("course_count").innerHTML = data?.length;
+            document.getElementById("coursesData").innerHTML = data?.map((course) => {
             return `<div class="box course_list" data-mode="Regular" data-duration="4 Years">
             <h2>
                 <a href="/courseDetail/${data?.slag}/sectio"
-                    title="B.Tech - Biochemical Engineering"> ${course.name}</a></h2>
+                    title="B.Tech - Biochemical Engineering"> ${course?.name}</a></h2>
             <div class="coursebtn">
                 <!-- <a href="javascript:void(0)" class="course_follow"
                     data-course_id="2">Follow</a> -->
@@ -251,20 +279,20 @@ function getCourseByMode(element){
                 <div class="coursePic">
                     <a href="/courses/engineering-b-tech-biochemical"
                         title="B.Tech - Biochemical Engineering"><img
-                            src="${course.image}" alt="${course.imageAlt}"
+                            src="${course?.image}" alt="${course?.imageAlt}"
                             alt="B.Tech - Biochemical Engineering"></a></div>
                 <ul class="attr_box">
                     <li>Average Duration <span>
-                           ${course.averageDuration}
+                           ${course?.averageDuration}
                         </span>
                     </li>
                     <li>Average Fees<span>
-                        ${course.fees}
+                        ${course?.fees}
                         </span>
                     </li>
                 </ul>
-                <p>${course.shortDescription}</p>
-                <a href="/courseDetail/${course.slag}/section" class="readbtn">
+                <p>${course?.shortDescription}</p>
+                <a href="/courseDetail/${course?.slag}/section" class="readbtn">
                     View Details</a>
                 <div class="clear"></div>
             </div>
@@ -352,5 +380,66 @@ function getCourseByMode(element){
     
     </script>
 
+
+<script>
+
+function getCourseByShorting(element){
+    const shorting = element.value;
+    console.log(shorting);
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        // document.getElementById("demo").innerHTML =
+        // this.responseText;
+        console.log(this.responseText);
+        var data = JSON.parse(this.responseText);
+
+
+        document.getElementById("course_count").innerHTML = data?.length;
+            document.getElementById("coursesData").innerHTML = data?.map((course) => {
+            return `<div class="box course_list" data-mode="Regular" data-duration="4 Years">
+            <h2>
+                <a href="/courseDetail/${data?.slag}/sectio"
+                    title="B.Tech - Biochemical Engineering"> ${course?.name}</a></h2>
+            <div class="coursebtn">
+                <!-- <a href="javascript:void(0)" class="course_follow"
+                    data-course_id="2">Follow</a> -->
+                    </div>
+            <div class="content">
+                <div class="coursePic">
+                    <a href="/courses/engineering-b-tech-biochemical"
+                        title="B.Tech - Biochemical Engineering"><img
+                            src="${course?.image}" alt="${course?.imageAlt}"
+                            alt="B.Tech - Biochemical Engineering"></a></div>
+                <ul class="attr_box">
+                    <li>Average Duration <span>
+                           ${course?.averageDuration}
+                        </span>
+                    </li>
+                    <li>Average Fees<span>
+                        ${course?.fees}
+                        </span>
+                    </li>
+                </ul>
+                <p>${course?.shortDescription}</p>
+                <a href="/courseDetail/${course?.slag}/section" class="readbtn">
+                    View Details</a>
+                <div class="clear"></div>
+            </div>
+        </div>`
+            }).join("");
+
+
+
+        }
+    }
+    xhttp.open("GET", `/getCourseByShorting?short=${shorting}`, true);
+    xhttp.send();
+}
+           
+
+
+</script>
 
 </html>

@@ -331,6 +331,11 @@ const exam = new mongoose.Schema({
             },
           ],
 
+          viewCount:{
+            type:Number,
+            default:0,
+        },
+
 
         },
 

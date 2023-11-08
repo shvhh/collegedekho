@@ -26,6 +26,8 @@ const wishlist = require("../models/wishlist");
 const userCollegeHistory = require("../models/userCollegeHistory");
 const userExamHistory = require("../models/userExamHistory");
 const userCourseHistory = require("../models/userCourseHistory");
+const SiteMap = require("../models/sitemap");
+
 
 routes.get("/", async (req, res) => {
   try {
@@ -140,6 +142,14 @@ routes.get("/exam-detail/:slag/:section", async (req, res) => {
   const examSection = req.params.section;
   const token = req.cookies.userToken;
   const examDetail = await Exam.findOne({ slag: req.params.slag });
+
+  const increase = examDetail?.viewCount + 1;
+  const viewCount = await Exam.findOneAndUpdate(
+    { slag: req.params.slag },
+    { viewCount: increase }
+  );
+
+
   const sectionData = examDetail[examSection];
 
   if (token) {
@@ -187,8 +197,10 @@ routes.get("/collegeGetByCourseId/:slag", async (req, res) => {
   try {
     const slag = req.params.slag;
     const token = req.cookies.userToken;
+  
 
     const courseData = await course.findOne({ slag: slag });
+  
     const courseCategoryId = courseData.courseCategoryId;
     const courseCategoryDetail = await courseCategory.aggregate([
       {
@@ -289,7 +301,7 @@ routes.get("/collegeGetByCourseId/:slag", async (req, res) => {
       const query = [
         {
           $match: {
-            courseId: new mongoose.Types.ObjectId(courseData._id),
+            courseCategoryId: new mongoose.Types.ObjectId(courseCategoryId),
           },
         },
 
@@ -329,8 +341,9 @@ routes.get("/collegeGetByCourseId/:slag", async (req, res) => {
       res.view("pages/colleges", { data, courseCategoryDetail, facility });
     } else {
       // const courseData = await course.findOne({ slag: slag });
-      const data = await College.find({ courseId: courseData._id }).lean();
+      const data = await College.find({ courseCategoryId: courseCategoryId }).lean();
 
+    
       res.view("pages/colleges", { data, courseCategoryDetail, facility });
     }
   } catch (error) {
@@ -577,12 +590,14 @@ routes.get("/collegesGetBytheFilters", async (req, res) => {
       id[i] = new mongoose.Types.ObjectId(id[i]);
     }
 
+    
+
     if (token) {
       const user = jwt.verify(token, "collegeDekhoSecretKet");
       const userId = user.userid;
 
       const users = new mongoose.Types.ObjectId(userId);
-      console.log(users);
+    
 
       const data = await courseCategory.aggregate([
         {
@@ -674,6 +689,8 @@ routes.get("/collegesGetBytheFilters", async (req, res) => {
         },
       ]);
 
+   
+
       res.send(data);
     } else {
       const data = await courseCategory.aggregate([
@@ -734,43 +751,14 @@ routes.get("/collegesGetBytheFilters", async (req, res) => {
           },
         },
 
-        {
-          $lookup: {
-            from: "states",
-            localField: "stateId",
-            foreignField: "_id",
-            as: "stateDetail",
-          },
-        },
+      
 
-        {
-          $lookup: {
-            from: "districts",
-            localField: "districtId",
-            foreignField: "_id",
-            as: "districtDetail",
-          },
-        },
+        
 
-        {
-          $lookup: {
-            from: "exams",
-            localField: "examId",
-            foreignField: "_id",
-            as: "examDetail",
-          },
-        },
-
-        {
-          $lookup: {
-            from: "subcourses",
-            localField: "subCourseId",
-            foreignField: "_id",
-            as: "subCoursesDetail",
-          },
-        },
+      
       ]);
-      console.log(data.length);
+
+    
       res.send(data);
     }
   } catch (error) {
@@ -953,7 +941,7 @@ routes.get("/getCollegeByStatic", async (req, res) => {
 routes.get("/collegeShorting", async (req, res) => {
   try {
     const shortBy = req.query.short;
-    console.log(shortBy);
+    
     const token = req.cookies.userToken;
 
     const category = req.query.category;
@@ -964,7 +952,7 @@ routes.get("/collegeShorting", async (req, res) => {
     if (shortBy == "Z to A") {
       var short = -1;
     }
-    console.log(short);
+ 
 
     if (!token && shortBy == "Popularity") {
       const data = await College.aggregate([
@@ -1094,6 +1082,17 @@ routes.get("/courseDetail/:slag/:section", async (req, res) => {
     const token = req.cookies.userToken;
 
     const data = await course.findOne({ slag: req.params.slag }).lean();
+
+  
+
+const increase = data?.viewCount + 1;
+console.log(increase);
+const viewCount = await course.findOneAndUpdate(
+  { slag: req.params.slag },
+  { viewCount: increase }
+);
+
+
     const topCourse = await course
       .find({ isTop: true })
       .sort({ createdAt: -1 })
@@ -1287,8 +1286,22 @@ routes.get("/getExamById", async (req, res) => {
   try {
     const courseId = req.query.courseId;
 
-    const id = new mongoose.Types.ObjectId(courseId);
-    const examData = await Exam.find({ courseId: id }).lean();
+
+const id = (req.query.courseId = req.query.courseId.split(","));
+
+
+// const data1 = await College.find({courseId:{$in:id}}).lean();
+for (let i = 0; i < id.length; i++) {
+  id[i] = new mongoose.Types.ObjectId(id[i]);
+}
+ 
+    const examData = await Exam.aggregate([
+      {
+        $match: {
+          courseId: { $in: id },
+        },
+      },
+    ]);
 
     examData.forEach((examData) => {
       examData.from = moment(examData?.applicationDate?.from).format("DD MMM");
@@ -1301,6 +1314,18 @@ routes.get("/getExamById", async (req, res) => {
 
       // convert the date in dd/mm/yyyy format/
     });
+    const token = req.cookies.userToken;
+
+
+// pass token into examData//
+
+
+// examData.forEach((examData) => {
+//   examData.token = token;
+// }
+// )
+
+
 
     res.send(examData);
   } catch (error) {
@@ -1352,29 +1377,67 @@ routes.get("/getExamByFilter", async (req, res) => {
 
 routes.get("/examShorting", async (req, res) => {
   try {
-    // sort college with aplhabet/
+    const shortBy = req.query.short;
+   
 
-    const data = await Exam.aggregate([
-      {
-        $sort: {
-          heading: 1,
+    if (shortBy == "A to Z") {
+      var short = 1;
+    }
+    if (shortBy == "Z to A") {
+      var short = -1;
+    }
+
+
+    if (shortBy == "Popularity") {
+      const data = await Exam.aggregate([
+        {
+          $sort: {
+            viewCount: -1,
+          },
         },
-      },
-    ]);
+      ]);
 
-    data.forEach((data) => {
-      data.from = moment(data?.applicationDate?.from).format("DD MMM");
-      data.to = moment(data?.applicationDate?.to).format("DD MMM-YYYY");
-      data.applicationDate = data.from + " - " + data.to;
+      data.forEach((data) => {
+        data.from = moment(data?.applicationDate?.from).format("DD MMM");
+        data.to = moment(data?.applicationDate?.to).format("DD MMM-YYYY");
+        data.applicationDate = data.from + " - " + data.to;
+  
+        data.from = moment(data?.examDate?.from).format("DD MMM");
+        data.to = moment(data?.examDate?.to).format("DD MMM-YYYY");
+        data.examDate = data.from + " - " + data.to;
+  
+        // convert the date in dd/mm/yyyy format/
+      });
 
-      data.from = moment(data?.examDate?.from).format("DD MMM");
-      data.to = moment(data?.examDate?.to).format("DD MMM-YYYY");
-      data.examDate = data.from + " - " + data.to;
+      res.send(data);
+    }
 
-      // convert the date in dd/mm/yyyy format/
-    });
+    if (short) {
+      const data = await Exam.aggregate([
+        {
+          $sort: {
+            heading: short,
+          },
+        },
+      ]);
 
-    res.send(data);
+      data.forEach((data) => {
+        data.from = moment(data?.applicationDate?.from).format("DD MMM");
+        data.to = moment(data?.applicationDate?.to).format("DD MMM-YYYY");
+        data.applicationDate = data.from + " - " + data.to;
+  
+        data.from = moment(data?.examDate?.from).format("DD MMM");
+        data.to = moment(data?.examDate?.to).format("DD MMM-YYYY");
+        data.examDate = data.from + " - " + data.to;
+  
+        // convert the date in dd/mm/yyyy format/
+      });
+
+      res.send(data);
+    }
+
+   
+
   } catch (error) {
     console.log(error);
   }
@@ -1844,9 +1907,7 @@ routes.get("/search", async (req, res) => {
 
      
 
-      console.log(collegeData.length);
-      console.log(courseData.length);
-      console.log(examData.length);
+    
 
       if (collegeData.length > 0) {
         let examData = [];
@@ -1859,6 +1920,29 @@ routes.get("/search", async (req, res) => {
       if (collegeData.length == 0 || courseData.length < 0) {
         let collegeData = [];
         let examData = [];
+
+
+        courseData.forEach((courseData) => {
+          courseData.from = courseData.fees.from;
+          courseData.to = courseData.fees.to;
+    
+          courseData.fees = courseData.fees.from + " - " + courseData.fees.to;
+    
+          // convert averageDuration in year and month format/ if less than 12 month then show in month format/and if greater than 12 month then show in year and month format if month is 0 then show only year/
+    
+          if (courseData.averageDuration < 12) {
+            courseData.averageDuration = courseData.averageDuration + " Months";
+          } else if (courseData.averageDuration > 12) {
+            const year = Math.floor(courseData.averageDuration / 12);
+            const month = courseData.averageDuration % 12;
+            if (month == 0) {
+              courseData.averageDuration = year + " Year";
+            } else {
+              courseData.averageDuration = year + " Year " + month + " Months";
+            }
+          }
+        });
+    
     
         res.view("pages/search", { examData, search, collegeData, courseData });
       }
@@ -2020,7 +2104,7 @@ routes.get("/myProfile", userAuth(["user"]), async (req, res) => {
 
     // convert the date in dd/mm/yyyy format/
 
-    data.from = moment(data?.dob).format("DD/MM/YYYY");
+    data.from = moment(data?.dob).format("MM/DD/YYYY");
     data.dob = data.from;
 
     res.view("pages/my-profile", { data, gender });
@@ -2088,7 +2172,7 @@ routes.get("/getUserData", userAuth(["user"]), async (req, res) => {
   try {
     const userId = res.locals.user.userid;
     const key = req.query.type;
-    console.log(key);
+   
     if (key == "college") {
       const collegeData = await userCollegeHistory.aggregate([
         {
@@ -2107,7 +2191,7 @@ routes.get("/getUserData", userAuth(["user"]), async (req, res) => {
         },
       ]);
 
-      console.log(collegeData);
+    
       res.send({ collegeDetail: collegeData });
     }
     if (key == "course") {
@@ -2338,5 +2422,131 @@ routes.get("/passwordChange", userAuth(["user"]), async (req, res) => {
 }
 );
 
+
+
+
+
+// xml siteMap/
+
+routes.get("/sitemap.xml", async (req, res) => {
+  const sitemap = await SiteMap.find().lean();
+
+
+  let siteMapResponse = `<?xml version="1.0" encoding="UTF-8"?><urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+`;
+
+
+
+  sitemap.forEach((item) => {
+    siteMapResponse += `
+  <url>
+  <loc>${item.url}</loc>
+  <lastmod>${moment(new Date(item.lastmod)).format("YYYY-MM-DDTHH:mm:ss+00:00")}</lastmod>
+  <priority>${item.priority}</priority>
+</url>
+  `;
+  });
+
+  siteMapResponse += `</urlset>`;
+
+  res.end(siteMapResponse);
+});
+
+
+
+// get course by shoting
+
+
+// exam with shorting/
+
+routes.get("/getCourseByShorting", async (req, res) => {
+  try {
+    const shortBy = req.query.short;
+   
+    if (shortBy == "A to Z") {
+      var short = 1;
+    }
+    if (shortBy == "Z to A") {
+      var short = -1;
+    }
+
+
+    if (shortBy == "Popularity") {
+      const data = await course.aggregate([
+        {
+          $sort: {
+            viewCount: -1,
+          },
+        },
+      ]);
+
+      data.forEach((data) => {
+        data.from = data.fees.from;
+        data.to = data.fees.to;
+  
+        data.fees = data.fees.from + " - " + data.fees.to;
+  
+        // convert averageDuration in year and month format/ if less than 12 month then show in month format/and if greater than 12 month then show in year and month format if month is 0 then show only year/
+  
+        if (data.averageDuration < 12) {
+          data.averageDuration = data.averageDuration + " Months";
+        } else if (data.averageDuration > 12) {
+          const year = Math.floor(data.averageDuration / 12);
+          const month = data.averageDuration % 12;
+          if (month == 0) {
+            data.averageDuration = year + " Year";
+          } else {
+            data.averageDuration = year + " Year " + month + " Months";
+          }
+        }
+      });
+
+     
+      res.send(data);
+    }
+
+    if (short) {
+      const data = await course.aggregate([
+        {
+          $sort: {
+            name: short,
+          },
+        },
+      ]);
+
+      data.forEach((data) => {
+        data.from = data.fees.from;
+        data.to = data.fees.to;
+  
+        data.fees = data.fees.from + " - " + data.fees.to;
+  
+        // convert averageDuration in year and month format/ if less than 12 month then show in month format/and if greater than 12 month then show in year and month format if month is 0 then show only year/
+  
+        if (data.averageDuration < 12) {
+          data.averageDuration = data.averageDuration + " Months";
+        } else if (data.averageDuration > 12) {
+          const year = Math.floor(data.averageDuration / 12);
+          const month = data.averageDuration % 12;
+          if (month == 0) {
+            data.averageDuration = year + " Year";
+          } else {
+            data.averageDuration = year + " Year " + month + " Months";
+          }
+        }
+      });
+
+      res.send(data);
+    }
+
+   
+
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 module.exports = routes;

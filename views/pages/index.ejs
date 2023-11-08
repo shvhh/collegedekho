@@ -399,29 +399,30 @@
 
   <script>
     function getCollegeByState(id) {
-      console.log(id);
+    
 
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           // document.getElementById("demo").innerHTML =
           // this.responseText;
-          console.log(this.responseText);
+        
           var data = JSON.parse(this.responseText);
 
-          console.log(data);
+         
 
           document.getElementById("collegeList").innerHTML = data
             .map((data, i) => {
               return `
-   <tr id="dataGet${data.name}">
+   <tr  class="data" id="collegeGetBySearch-data-${data?.name}" >
+   
       <td>${i + 1}</td>
-      <td>${data.name}</td>
-      <td>${data.ranking}</td>
-      <td>${data.cutOff}</td>
-      <td>${data.applicationDate}</td>
+      <td>${data?.name}</td>
+      <td>${data?.ranking}</td>
+      <td>${data?.cutOff}</td>
+      <td>${data?.applicationDate}</td>
       <td style="position: relative;">
-         ₹${data.feesRange} Fees
+         ₹${data?.feesRange} Fees
        
       </td>
    </tr>
@@ -462,16 +463,16 @@
                 <div class="collectionCard">
               <div class="collectionImg">
 
-                <img src="${data.image}" alt="${data.altForImage}" />
+                <img src="${data?.image}" alt="${data?.altForImage}" />
               </div>
               <div class = "collectionText">
                 <div class="d-flex align-items-center justify-content-between">
-                  <h5>${data.name}</h5>
+                  <h5>${data?.name}</h5>
                   <!-- <p>+8 More</p> -->
                 </div>
                 ${data?.stateDetail.map((state) => {
                   return `
-                  <h4>${state.name}</h4>
+                  <h4>${state?.name}</h4>
                   `;
                 })}
               </div>

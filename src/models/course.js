@@ -118,7 +118,14 @@ section: [
           type: String,
         },
       ],
+
+      viewCount:{
+        type:Number,
+        default:0,
+    },
       
+
+     
 
       
   

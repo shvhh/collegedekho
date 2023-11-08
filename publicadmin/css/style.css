@@ -117,6 +117,11 @@ ul.examlinks li {
   text-align: center;
 }
 
+ul.examlinks li a:hover {
+  color: #e45330;
+  border: 1px solid #e45330;
+}
+
 ul.examlinks li a {
   display: block;
   text-decoration: none;
@@ -476,6 +481,7 @@ ul.examList .result-date {
 
   #header20 .menu20 a:hover {
     color: #e45330 !important;
+    cursor: pointer;
   }
 
   #header20 .menu20 ul {
@@ -513,12 +519,13 @@ ul.examList .result-date {
     font-size: 14px;
   }
 
-  #header20 .menu20 ul li .menu20Content a b {
+  /* #header20 .menu20 ul li .menu20Content a b {
     color: #0050d7 !important;
-  }
+  } */
 
-  #header20 .menu20 ul li .menu20Content a:hover b {
-    color: #622dfa !important;
+  #header20 .menu20 ul li,
+  #header20 .menu20 ul li .menu20Content a:active {
+    background-color: transparent;
   }
 
   #header20 .menu20 ul li .menu20Content a span {
@@ -998,6 +1005,7 @@ h1 {
   font-size: 14px;
   background: #e45330;
   /* border: 1px solid #3f53d9; */
+  border-radius: 9px;
 }
 
 h2 {
@@ -1480,12 +1488,10 @@ input {
 .stateList h4 {
   font-size: 20px;
 }
-
 .careerDetails ul.career-info li a:hover {
   background-color: #e45330;
   color: #fff;
 }
-
 .careerDetails ul.career-info li a {
   border: 1px solid #ffe0db;
   padding: 8px 10px;
@@ -1840,7 +1846,7 @@ input {
   width: 44px;
 }
 
-.careerPage{
+.careerPage {
   margin-top: 55px;
 }
 
@@ -2205,7 +2211,7 @@ input {
 }
 
 .collegeDetailFilter2 {
-  background-color: #fff;
+  /* background-color: #fff; */
   border-radius: 10px;
   padding: 10px;
   margin: 10px 0;
@@ -2417,21 +2423,19 @@ input {
   font-size: 23px;
 }
 
-.optionactive{
+.optionactive {
   background-color: #e45330;
   color: #fff;
 }
 
-
-
 /* ============================== */
 
-.careerDetailsBlock{
+.careerDetailsBlock {
   margin-top: 55px;
   display: flex;
 }
 
-.careerPage .careerDetails{
+.careerPage .careerDetails {
   clear: both;
   padding: 30px 0 0;
   background: #f6f6fb;
@@ -2447,15 +2451,15 @@ input {
 }
 
 .fixed-div {
-  transition: all .8s;
+  transition: all 0.8s;
 }
-
-.careerDetails ul.career-info li a:active{
+.careerDetails ul.career-info li a:active {
   background-color: #ff0000;
   color: #fff;
 }
 
-.leftFixed , .fixed-div{
+.leftFixed,
+.fixed-div {
   position: sticky;
   display: block;
   width: 270px;
@@ -2468,7 +2472,6 @@ input {
 .fixed-div .details-by {
   text-align: center;
 }
-
 .careerDetails ul.career-info li a {
   display: block;
   color: #4a4a4a;
@@ -2484,11 +2487,10 @@ input {
   position: relative;
   -webkit-transition-property: color;
   transition-property: color;
-  -webkit-transition-duration: .3s;
-  transition-duration: .3s;
-  transition: all .2s;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  transition: all 0.2s;
 }
-
 .careerDetails ul.career-info li a:before {
   content: "";
   position: absolute;
@@ -2504,8 +2506,8 @@ input {
   -webkit-transform-origin: 50%;
   -webkit-transition-property: transform;
   transition-property: transform;
-  -webkit-transition-duration: .3s;
-  transition-duration: .3s;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
   -webkit-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
 }
@@ -2518,7 +2520,9 @@ input {
   margin-bottom: 0px;
 }
 
-.button a, .button, button.btn {
+.button a,
+.button,
+button.btn {
   display: inline-block;
   color: var(--whiteColor);
   cursor: pointer;
@@ -2527,9 +2531,9 @@ input {
   padding: 10px 15px;
   border: 0;
   border-radius: 4px;
-  transition: all .2s;
+  transition: all 0.2s;
 }
-.follow{
+.follow {
   float: right;
 }
 
@@ -2539,12 +2543,12 @@ input {
   text-align: center;
 }
 
-.careerDetails .right-col .content{
+.careerDetails .right-col .content {
   background-color: #fff;
   padding: 20px;
 }
 
-.block-content{
+.block-content {
   padding: 20px;
   background-color: #fff;
 }
@@ -2567,15 +2571,15 @@ input {
 
 .college_galleryImg__blgLw {
   width: 275px;
-    margin: 0px 1.5% 0.7% 0px;
-    cursor: pointer;
-    height: 147px;
+  margin: 0px 1.5% 0.7% 0px;
+  cursor: pointer;
+  height: 147px;
 }
 
-img{
+img {
   height: 100%;
-    width: 100%;
-    OBJECT-FIT: cover;
+  width: 100%;
+  object-fit: cover;
 }
 
 .GalleryModal_imgContainer__R3_5U {
@@ -2588,8 +2592,6 @@ img{
   display: flex;
   align-items: center;
 }
-
-
 
 .GalleryModal_popUp__GMd7Z {
   padding: 25px;
@@ -2606,10 +2608,10 @@ img{
   margin-top: 20vh;
 }
 
-.modal-image{
+.modal-image {
   width: 80%;
-    height: 302px;
-    margin-left: 10%;
+  height: 302px;
+  margin-left: 10%;
 }
 
 .GalleryModal_popUp__GMd7Z h2 {
@@ -2622,11 +2624,12 @@ span.GalleryModal_close__Q_uDq {
   cursor: pointer;
 }
 
-.GalleryModal_close__Q_uDq:after, .GalleryModal_close__Q_uDq:before {
+.GalleryModal_close__Q_uDq:after,
+.GalleryModal_close__Q_uDq:before {
   content: "";
   position: absolute;
   width: 2px;
-  background-color:#717171;
+  background-color: #717171;
   height: 15px;
   transform: rotate(45deg);
   right: 29px;
@@ -2637,7 +2640,8 @@ span.GalleryModal_close__Q_uDq {
   transform: rotate(-45deg);
 }
 
-.GalleryModal_close__Q_uDq:after, .GalleryModal_close__Q_uDq:before {
+.GalleryModal_close__Q_uDq:after,
+.GalleryModal_close__Q_uDq:before {
   content: "";
   position: absolute;
   width: 2px;
@@ -2665,7 +2669,7 @@ span.GalleryModal_close__Q_uDq {
   padding: 7px 15px;
   border-radius: 50px;
   color: #050038;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .GalleryModal_contentTabs__Uesd_ {
@@ -2682,27 +2686,24 @@ span.GalleryModal_close__Q_uDq {
   position: absolute;
   bottom: 63px;
   text-decoration-line: none;
-  transition: color 1.0s;
+  transition: color 1s;
   display: none;
 }
 
-
-
-.background-page{
+.background-page {
   height: 136px;
   width: 272px;
 }
-.cp_row_mPS2id-t{
+.cp_row_mPS2id-t {
   padding: 80px 0 20px 0;
 }
 
-.gallery-main{
+.gallery-main {
   margin-top: 100px;
 }
 
-.allError{
+.allError {
   color: red;
-
 }
 
 .modal-success {
@@ -2710,12 +2711,12 @@ span.GalleryModal_close__Q_uDq {
   height: 358px;
 }
 
-.modal-succ-head{
+.modal-succ-head {
   height: 161px;
-    border: 0px;
-    justify-content: center;
-    padding-top: 50px;
-    color: green;
+  border: 0px;
+  justify-content: center;
+  padding-top: 50px;
+  color: green;
 }
 
 .banner-modal2 {
@@ -2736,10 +2737,10 @@ span.GalleryModal_close__Q_uDq {
   padding: 0px 9px;
 }
 
-.modal-icon{
+.modal-icon {
   font-size: 67px;
 }
-.modal-butoon{
+.modal-butoon {
   justify-content: center;
   color: #fff;
   border: 0px;
@@ -2747,53 +2748,52 @@ span.GalleryModal_close__Q_uDq {
   padding-bottom: 40px;
 }
 
-.success-icon{
+.success-icon {
   padding-top: 10px;
 }
 
-.modal-butoon-succ{
+.modal-butoon-succ {
   background-color: #e45330;
   color: #fff;
   border-radius: 0px 0px 19px 19px;
   padding: 4px 18px;
-    border-radius: 24px;
-    font-size: 19px;
-    box-shadow: 4px 5px 7px #000000b5;
+  border-radius: 24px;
+  font-size: 19px;
+  box-shadow: 4px 5px 7px #000000b5;
 }
 
-
-.modal-butoon-succ:hover{
+.modal-butoon-succ:hover {
   background-color: #e45330;
   color: #fff;
 }
 
-.banner-modal{
+.banner-modal {
   background-color: transparent;
   border: 0px;
 }
 
-.modal-left{
+.modal-left {
   position: relative;
   left: 6%;
   margin-top: 20vh;
 }
 
-.Wishlist-head{
+.Wishlist-head {
   margin-top: 70px;
   margin-bottom: 60px;
 }
 
-.Wishlist-slider{
+.Wishlist-slider {
   position: sticky;
   top: 80px;
 }
 
-.Wishlist-slider-img{
+.Wishlist-slider-img {
   width: 157px;
   margin-left: 93px;
 }
 
-.Wishlist-over{
+.Wishlist-over {
   border-radius: 5px;
   overflow: hidden;
   height: 400px;
@@ -2804,21 +2804,69 @@ span.GalleryModal_close__Q_uDq {
 width: 216px;
 } */
 
-.collTit-delete{
+.collTit-delete {
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
 }
 
-.img-account{
+.img-account {
   height: 300px;
 }
 
-.account-head{
+.account-head {
   text-align: center;
 }
 
-
-.examListingPage{
+.examListingPage {
   margin-top: 100px;
+}
+
+.checkedData {
+  color: #eca500;
+}
+
+.modal-body {
+  margin-top: 50px;
+}
+
+#header20 .menu20 ul li,
+#header20 .menu20 ul li .menu20Content a:hover {
+  background-color: #fff;
+}
+
+.dropdown-item:hover {
+  background-color: #fff;
+}
+
+.star-back {
+  position: absolute;
+  left: 246px;
+  top: 13px;
+  font-size: 16px;
+  background-color: #ddd;
+  border-radius: 25px;
+  padding: 4px 3px;
+}
+
+#header20 .menu20 ul li .menu20Content a:hover {
+  background-color: #f4f4f4;
+}
+
+.col-sort {
+  width: 250px;
+}
+
+.form-check-label a {
+  color: #738695;
+}
+
+._mPS2id-h a {
+  background-color: #e45330;
+  color: #fff !important;
+}
+
+.overall-1 {
+  background-color: #fff;
+  border-radius: 10px;
 }

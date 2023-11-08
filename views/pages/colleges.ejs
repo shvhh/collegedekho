@@ -497,9 +497,9 @@
 
                                     
                                         
-                          <i class="fas fa-star checkedData"  onclick="addWishlist(this,'<%=data?._id%>')"></i>
+                          <i class="fas fa-star checkedData  star-back"  onclick="addWishlist(this,'<%=data?._id%>')"></i>
                                                     <%} else { %>
-                            <i class="fas fa-star"  onclick="addWishlist(this,'<%=data?._id%>')"></i>                       
+                            <i class="fas fa-star star-back"  onclick="addWishlist(this,'<%=data?._id%>')"></i>                       
                               <% } %>
 
 
@@ -683,7 +683,7 @@
                                  
                                     <div class="collImage">
 
-                                      ${college.isWishlisted== true ?`   <i class="fas fa-star checkedData" id="wishlist" onclick="addWishlist(this,'${college._id}')"></i> ` : `  <i class="fas fa-star" id="wishlist" onclick="addWishlist(this,'${college._id}')"></i>`}
+                                      ${college.isWishlisted== true ?`   <i class="fas fa-star checkedData  star-back" id="wishlist" onclick="addWishlist(this,'${college._id}')"></i> ` : `  <i class="fas fa-star star-back" id="wishlist" onclick="addWishlist(this,'${college._id}')"></i>`}
 
 
           
@@ -784,8 +784,7 @@
       const key = element;
 
       const idn = element2.value;
-      console.log("gfytdsrtryeewaqe", key);
-      console.log("gfytdsrtryeewaqe", idn);
+   
 
       if (key == "subCourseId" || key == "examId" || key == "instituteType") {
         element2.classList.toggle("checked");
@@ -818,7 +817,7 @@
                                 <div class="col-md-4">
                                   
                                     <div class="collImage">
-                                      ${data.isWishlisted== true ?`   <i class="fas fa-star checkedData" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i> ` : `  <i class="fas fa-star" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i>`}
+                                      ${data.isWishlisted== true ?`   <i class="fas fa-star checkedData  star-back" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i> ` : `  <i class="fas fa-star star-back" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i>`}
 
                                         <img src="${data.image}">
                                     </div>
@@ -943,16 +942,15 @@
 
           console.log(data.length);
 
-          document.getElementById("allColleges").innerHTML = data
-            .map((data) => {
+          document.getElementById("allColleges").innerHTML = data?.map((data) => {
               return `<div class="collegeCard">
             <div class="row">
                                 <div class="col-md-4">
                                 
                                     <div class="collImage">
-                                      ${data.isWishlisted== true ?`   <i class="fas fa-star checkedData" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i> ` : `  <i class="fas fa-star" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i>`}
+                                      ${data?.isWishlisted== true ?`   <i class="fas fa-star checkedData  star-back" id="wishlist" onclick="addWishlist(this,'${data?._id}')"></i> ` : `  <i class="fas fa-star star-back" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i>`}
 
-                                        <img src="${data.image}">
+                                        <img src="${data?.image}">
                                     </div>
                                   
                                 </div>
@@ -960,20 +958,20 @@
                                     <div class="collDetail">
                                         <div class="collTit">
                                             <div class="collLogo">
-                                                <img src=${data.icon}>
+                                                <img src=${data?.icon}>
                                             </div>
 
                                             <div class="mx-2">
-                                              <a href="/collegeDetail/${data.slag}/overView">
-                            <h3>${data.name}</h3>
+                                              <a href="/collegeDetail/${data?.slag}/overView">
+                            <h3>${data?.name}</h3>
                           </a>
-                                                <p>Approved by: ${data.approvedField}</p>
+                                                <p>Approved by: ${data?.approvedField}</p>
                                             </div>
                                         </div>
                                         <div class="row pt-2">
                                             <div class="col-md-4">
                                                 <div class="collFeee">
-                                                    <span>₹ ${data.feesRange}</span>
+                                                    <span>₹ ${data?.feesRange}</span>
                                                     <p> Fees</p>
                                                 </div>
                                             </div>
@@ -986,7 +984,7 @@
                                                     <div class="iconSe">
                                                         <img src="/public/images/test.png">
                                                     </div>
-                                                    <a href="/collegeDetail/${data.slag}/courses">  
+                                                    <a href="/collegeDetail/${data?.slag}/courses">  
                                                     <p>Course & Fees</p>
                                                 </a>
                                                 </div>
@@ -996,7 +994,7 @@
                                                     <div class="iconSe">
                                                         <img src="/public/images/test.png">
                                                     </div>
-                                                    <a href="/collegeDetail/${data.slag}/placement">  
+                                                    <a href="/collegeDetail/${data?.slag}/placement">  
 
 <p>Placement</p>
 </a>
@@ -1007,7 +1005,7 @@
                                                     <div class="iconSe">
                                                         <img src="/public/images/test.png">
                                                     </div>
-                                                    <a href="/collegeDetail/${data.slag}/reviews">  
+                                                    <a href="/collegeDetail/${data?.slag}/reviews">  
 
 <p>Reviews</p>
 </a>
@@ -1019,7 +1017,7 @@
                                     <div class="row pt-2">
                                         <div class="col-md-12">
                                             <div class="d-flex">
-                                                <a href="/collegeDetail/${data.slag}/overView" class="applyBtn">Get More Info</a>
+                                                <a href="/collegeDetail/${data?.slag}/overView" class="applyBtn">Get More Info</a>
                                                 <a href="#!" class="quesBtn mx-2">Ask a Question</a>
                                                 <a href="#!" class="sampleBtn">Sample Papers</a>
                                             </div>
@@ -1161,16 +1159,15 @@ if(element.id){
           console.log(this.responseText);
           var data = JSON.parse(this.responseText);
 
-          document.getElementById("allColleges").innerHTML = data
-            .map((data) => {
+          document.getElementById("allColleges").innerHTML = data?.map((data) => {
               return `<div class="collegeCard">
             <div class="row">
                                 <div class="col-md-4">
                                
                                     <div class="collImage">
-                                      ${data.isWishlisted== true ?`   <i class="fas fa-star checkedData" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i> ` : `  <i class="fas fa-star" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i>`}
+                                      ${data?.isWishlisted== true ?`   <i class="fas fa-star checkedData  star-back" id="wishlist" onclick="addWishlist(this,'${data?._id}')"></i> ` : `  <i class="fas fa-star star-back" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i>`}
 
-                                        <img src="${data.image}">
+                                        <img src="${data?.image}">
                                     </div>
                                   
                                 </div>
@@ -1178,20 +1175,20 @@ if(element.id){
                                     <div class="collDetail">
                                         <div class="collTit">
                                             <div class="collLogo">
-                                                <img src=${data.icon}>
+                                                <img src=${data?.icon}>
                                             </div>
 
                                             <div class="mx-2">
-                                              <a href="/collegeDetail/${data.slag}/overView">
-                            <h3>${data.name}</h3>
+                                              <a href="/collegeDetail/${data?.slag}/overView">
+                            <h3>${data?.name}</h3>
                           </a>
-                                                <p>Approved by: ${data.approvedField}</p>
+                                                <p>Approved by: ${data?.approvedField}</p>
                                             </div>
                                         </div>
                                         <div class="row pt-2">
                                             <div class="col-md-4">
                                                 <div class="collFeee">
-                                                    <span>₹ ${data.feesRange}</span>
+                                                    <span>₹ ${data?.feesRange}</span>
                                                     <p> Fees</p>
                                                 </div>
                                             </div>
@@ -1204,7 +1201,7 @@ if(element.id){
                                                     <div class="iconSe">
                                                         <img src="/public/images/test.png">
                                                     </div>
-                                                    <a href="/collegeDetail/${data.slag}/courses">  
+                                                    <a href="/collegeDetail/${data?.slag}/courses">  
                                                     <p>Course & Fees</p>
                                                 </a>
                                                 </div>
@@ -1214,7 +1211,7 @@ if(element.id){
                                                     <div class="iconSe">
                                                         <img src="/public/images/test.png">
                                                     </div>
-                                                    <a href="/collegeDetail/${data.slag}/placement">  
+                                                    <a href="/collegeDetail/${data?.slag}/placement">  
 
 <p>Placement</p>
 </a>
@@ -1225,7 +1222,7 @@ if(element.id){
                                                     <div class="iconSe">
                                                         <img src="/public/images/test.png">
                                                     </div>
-                                                    <a href="/collegeDetail/${data.slag}/reviews">  
+                                                    <a href="/collegeDetail/${data?.slag}/reviews">  
 
 <p>Reviews</p>
 </a>
@@ -1237,7 +1234,7 @@ if(element.id){
                                     <div class="row pt-2">
                                         <div class="col-md-12">
                                             <div class="d-flex">
-                                                <a href="/collegeDetail/${data.slag}/overView" class="applyBtn">Get More Info</a>
+                                                <a href="/collegeDetail/${data?.slag}/overView" class="applyBtn">Get More Info</a>
                                                 <a href="#!" class="quesBtn mx-2">Ask a Question</a>
                                                 <a href="#!" class="sampleBtn">Sample Papers</a>
                                             </div>
