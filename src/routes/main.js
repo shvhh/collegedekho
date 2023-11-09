@@ -199,6 +199,7 @@ routes.get("/collegeGetByCourseId/:slag", async (req, res) => {
     const courseData = await course.findOne({ slag: slag });
 
     const courseCategoryId = courseData.courseCategoryId;
+    
     const courseCategoryDetail = await courseCategory.aggregate([
       {
         $match: {
@@ -262,6 +263,7 @@ routes.get("/collegeGetByCourseId/:slag", async (req, res) => {
         },
       },
     ]);
+  
     const facility = [
       "A/C",
       "ATM",

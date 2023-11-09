@@ -199,15 +199,17 @@
                             <label for="first-name-column" class="form-label"
                               >Course Category</label
                             >
-                        <select class="form-select" aria-label="Default select example" id="district"  onclick="getcourse(this)"  name="courseCategoryId" required >
-                     
+                        <select class="form-select" aria-label="Default select example" id="courseCategoryData"  onclick="getcourse(this)"  name="courseCategoryId" multiple required >
+                          
                           <option value="">Open this select menu</option>
-          
-                          <% courseCategoryDetail?.forEach(function(courseCategoryDetail){ %>
-                          <option value="<%=courseCategoryDetail?._id%>"<%= (`${courseCategoryDetail?._id}` === `${collegeData?.courseCategoryId}`)? 'selected' : '' %>><%=courseCategoryDetail?.category%></option>
-
-                       
-                          <% }) %>
+                          <% for (let i = 0; i < courseCategoryForEdit.length; i++) { %>
+                            <% const value1 =  courseCategoryForEdit[i]._id; %>
+                            <% const name =  courseCategoryForEdit[i].category; %>
+                
+                            <% const matchingItem = courseCategoryData.find(item => `${item._id}` === `${value1}`); %>
+                            <option value="<%= value1 %>" <%= matchingItem ? 'selected' : '' %>><%= name %></option>
+                          <%}%>
+                         
        
                         </select>
                         </div></div>
@@ -247,7 +249,7 @@
                          
           <% for (let i = 0; i < data.length; i++) { %>
             <% const value1 =  data[i]._id; %>
-            <% const name =  data[i].courseName; %>
+            <% const name =  data[i].subCourseName; %>
 
             <% const matchingItem = subCourseDetail.find(item => `${item._id}` === `${value1}`); %>
             <option value="<%= value1 %>" <%= matchingItem ? 'selected' : '' %>><%= name %></option>
@@ -263,7 +265,7 @@
                             <label for="first-name-column" class="form-label"
                               >Exam </label
                             >
-                        <select id="exam" class="form-select" aria-label="Default select example"  name="exam"   multiple />
+                        <select id="exam" class="form-select" aria-label="Default select example"  name="examId"   multiple />
                      
                           <option value="">Open this select menu</option>
 
@@ -729,6 +731,21 @@ xhr.send(data);
 
 <script>
 
+$('#courseCategoryData').SumoSelect(
+        {
+          placeholder: 'Select categories',
+          csvDispCount: 3,
+          captionFormat: '{0} categories selected',
+          captionFormatAllSelected: 'All {0} categories selected!',
+          floatWidth: 400,
+          forceCustomRendering: false,
+          nativeOnDevice: ['Android', 'BlackBerry', 'Windows Phone', 'iOS']
+        }
+      );
+
+
+
+
 $('#categories').SumoSelect(
         {
           placeholder: 'Select categories',
@@ -943,9 +960,8 @@ var xhttp = new XMLHttpRequest();
 
 function getcourse(element){
 
- const courseCategory  =    element.value
-
-console.log(courseCategory);
+  var data = $('#courseCategoryData').val();
+console.log(data);
 
 var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
@@ -977,7 +993,7 @@ var xhttp = new XMLHttpRequest();
              
             };
 
-            xhttp.open("GET", `/admin/getCourseByCourseCategoryId?courseCategoryId=${courseCategory}`, true);
+            xhttp.open("GET", `/admin/getCourseByCourseCategoryId?courseCategoryId=${data}`, true);
             xhttp.send();
           }
 

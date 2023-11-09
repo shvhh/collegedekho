@@ -191,7 +191,7 @@
                             <label for="first-name-column" class="form-label"
                               >Course Category</label
                             >
-                        <select class="form-select" aria-label="Default select example" id="district"  onclick="getcourse(this)"  name="courseCategoryId" required >
+                        <select class="form-select" id="courseCategoryData"  aria-label="Default select example"  onclick="getcourse(this)"  name="courseCategoryId" multiple  required >
                      
                           <option value="">Open this select menu</option>
           
@@ -225,7 +225,7 @@
                             <label for="first-name-column" class="form-label"
                               >SubCourse </label
                             >
-                        <select id="subCategory" class="form-select" aria-label="Default select example"  name="subCourseId"   multiple required />
+                        <select id="subCategory" class="form-select" aria-label="Default select example"  name="subCourseId"   multiple />
                      
                           <!-- <option value="">Open this select menu</option> -->
         
@@ -711,6 +711,22 @@ xhr.send(data);
 
 <script>
 
+
+
+
+$('#courseCategoryData').SumoSelect(
+        {
+          placeholder: 'Select categories',
+          csvDispCount: 3,
+          captionFormat: '{0} categories selected',
+          captionFormatAllSelected: 'All {0} categories selected!',
+          floatWidth: 400,
+          forceCustomRendering: false,
+          nativeOnDevice: ['Android', 'BlackBerry', 'Windows Phone', 'iOS']
+        }
+      );
+
+
 $('#categories').SumoSelect(
         {
           placeholder: 'Select categories',
@@ -935,9 +951,9 @@ var xhttp = new XMLHttpRequest();
 
 function getcourse(element){
 
- const courseCategory  =    element.value
+  var data = $('#courseCategoryData').val();
+console.log(data);
 
-console.log(courseCategory);
 
 var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
@@ -969,7 +985,7 @@ var xhttp = new XMLHttpRequest();
              
             };
 
-            xhttp.open("GET", `/admin/getCourseByCourseCategoryId?courseCategoryId=${courseCategory}`, true);
+            xhttp.open("GET", `/admin/getCourseByCourseCategoryId?courseCategoryId=${data}`, true);
             xhttp.send();
           }
 

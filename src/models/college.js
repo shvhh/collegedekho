@@ -98,11 +98,19 @@ const College = new mongoose.Schema({
     },
 
 
-    courseCategoryId:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "courseCategory",
-    },
+    // courseCategoryId:{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "courseCategory",
+    // },
     
+
+    courseCategoryId:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "courseCategory",
+        },
+        
+    ],
   
 
 

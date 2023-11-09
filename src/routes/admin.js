@@ -386,7 +386,7 @@ routes.get("/courseEdit/:id", AdminAuth(["admin"]), async (req, res) => {
 routes.post(
   "/courseUpdate/:id",
   AdminAuth(["admin"]),
-  multiupload,
+  multiupload2,
   async (req, res) => {
     try {
       const course = await Course.findById(req.params.id);
@@ -1039,7 +1039,7 @@ routes.get("/college", AdminAuth(["admin"]), async (req, res) => {
   const exam = await Exam.find().sort({ createdAt: -1 }).lean();
   const state = await State.find().sort({ createdAt: -1 }).lean();
   const courseCategoryDetail = await courseCategory
-    .find()
+    .find({ isDisabled: false})
     .sort({ createdAt: -1 })
     .lean();
   try {
@@ -1063,8 +1063,12 @@ routes.get(
   AdminAuth(["admin"]),
   async (req, res) => {
     try {
-      const id = req.query.courseCategoryId;
+      const courseCategory = req.query.courseCategoryId;
 
+     
+
+      const id = courseCategory.split(",");
+console.log(id)
       const course = await Course.find({ courseCategoryId: id }).lean();
 
       res.send(course);
@@ -1182,8 +1186,8 @@ routes.get("/collegeEdit/:id", AdminAuth(["admin"]), async (req, res) => {
     const id = req.params.id;
 
     const collegeData = await College.findById(id).lean();
-    const courseCategoryDetail = await courseCategory
-      .find()
+    const courseCategoryForEdit = await courseCategory
+      .find({ isDisabled: false})
       .sort({ createdAt: -1 })
       .lean();
 
@@ -1202,17 +1206,20 @@ routes.get("/collegeEdit/:id", AdminAuth(["admin"]), async (req, res) => {
     const data = await subCourse.find().lean();
     const exams = await Exam.find().lean();
     const state = await State.find().lean();
-    const courses = collegeData.courseId;
-    const subCourseData = collegeData.subCourseId;
-    const examData = collegeData.examId;
-    const hostelData = collegeData.hostel;
-    const facilityData = collegeData.facility;
+    const courses = collegeData?.courseId;
+    const subCourseData = collegeData?.subCourseId;
+    const examData = collegeData?.examId;
+    const hostelData = collegeData?.hostel;
+    const facilityData = collegeData?.facility;
+    const categoryCourse = collegeData?.courseCategoryId
 
     const courseData = await Course.find({ _id: courses }).lean();
 
     const subCourseDetail = await subCourse.find({ _id: subCourseData }).lean();
 
     const examDetail = await Exam.find({ _id: examData }).lean();
+
+    const courseCategoryData = await courseCategory.find({ _id: categoryCourse }).lean();
 
     const instituteType = ["Private", "Government", "Semi Government"];
 
@@ -1278,7 +1285,8 @@ routes.get("/collegeEdit/:id", AdminAuth(["admin"]), async (req, res) => {
       hostelData,
       facility,
       facilityData,
-      courseCategoryDetail,
+      courseCategoryForEdit,
+      courseCategoryData
     });
   } catch (error) {
     console.log(error);
@@ -1304,7 +1312,7 @@ routes.post(
       } else {
         req.body.isTop = false;
       }
-
+console.log(req.body)
       const id = req.params.id;
       const college = await College.findById(id);
 
