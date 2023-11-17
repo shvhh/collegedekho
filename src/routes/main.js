@@ -40,7 +40,7 @@ routes.get("/", async (req, res) => {
         },
       },
 
-      // find  the college  by courseCategoryId/ and state name belong to wg\hich state/
+
 
       {
         $lookup: {
@@ -50,10 +50,12 @@ routes.get("/", async (req, res) => {
             {
               $match: {
                 $expr: {
-                  $eq: ["$courseCategoryId", "$$courseCategoryId"],
+                  $in: ["$$courseCategoryId", "$courseCategoryId"],  
                 },
               },
             },
+
+         
             {
               $lookup: {
                 from: "states",
@@ -67,6 +69,10 @@ routes.get("/", async (req, res) => {
         },
       },
     ]);
+
+
+
+  // console.log(topCourseCategory);
 
     const state = await State.find().lean();
     const courseCategoryData = await courseCategory.find().lean();
@@ -104,7 +110,7 @@ routes.get("/", async (req, res) => {
             {
               $match: {
                 $expr: {
-                  $eq: ["$courseCategoryId", "$$courseCategoryId"],
+                  $in: ["$$courseCategoryId", "$courseCategoryId"],
                 },
               },
             },
@@ -1170,7 +1176,7 @@ routes.get("/getCollegeByCourseId", async (req, res) => {
             {
               $match: {
                 $expr: {
-                  $eq: ["$courseCategoryId", "$$courseCategoryId"],
+                  $in: ["$$courseCategoryId", "$courseCategoryId"],
                 },
               },
             },

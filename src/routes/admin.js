@@ -4,8 +4,10 @@ const AdminAuth = require("../middleware/admin.middleware");
 const multer = require("multer");
 const routes = express.Router();
 const uploadS3 = require("../utils/multers3");
+// const Parser = require("parser");
 
 const moment = require("moment");
+const downloadCSV  = require ("download-csv")
 
 const Admin = require("../models/admin");
 const jwt = require("jsonwebtoken");
@@ -2220,6 +2222,16 @@ routes.post(
     res.redirect("/admin/bannerList");
   }
 );
+
+
+
+// download user list in excel
+
+
+
+
+
+
 
 module.exports = routes;
 
