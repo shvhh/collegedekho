@@ -1135,7 +1135,53 @@ routes.post(
 
 routes.get("/collegeList", AdminAuth(["admin"]), async (req, res) => {
   try {
-    const data = await College.find().sort({ createdAt: -1 }).lean();
+    // const data = await College.find().sort({ createdAt: -1 }).lean();
+
+    // find college with district
+
+    const data = await College.aggregate([
+      {
+        $lookup: {
+          from: "districts",
+          localField: "districtId",
+          foreignField: "_id",
+          as: "district",
+        },  
+      },
+
+      {
+        $lookup: {
+          from: "states",
+          localField: "stateId",
+          foreignField: "_id",
+          as: "state",
+        },
+      },
+
+      
+      {
+        $unwind: "$district",
+      },
+
+      {
+        $unwind: "$state",
+      },
+      {
+        $project: {
+          name: 1,
+          district: "$district.name",
+          state: "$state.name",
+          createdAt: 1,
+          isDisabled: 1,
+          isTop: 1,
+          isPopular: 1,
+        },
+      },
+
+      
+    ]);
+   
+    console.log(data)
     res.render("pages/collegelist", {
       data,
       message: "",
