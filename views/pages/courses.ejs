@@ -2,10 +2,11 @@
 <html lang="en">
 
 <head>
-    <title>Rigalma</title>
+    <title>Courses || Rigalma</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@100;200;300;400;500;600;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -14,194 +15,146 @@
 </head>
 
 <body style="background-color: #f4f4f7;">
-
-
     <%- include('../partials/navbar')%>
-
-
-    <div class="body">
-
-        <div class="wrapper examListingPage">
-            <div class="container">
-
-                <div class="bannerTitle2">
-                    <img src="/public/images/banner_bg.svg">
-                    <h3>Top Course</h3>
-                    <h4>List of Top Courses</h4>
-                  </div>
-
-                  <img src="/public/images/banner.png" class="w-100 mt-3">
-
-
-                  <!-- <div class="col-md-3">
-                    <form class="form-modal">
-                      <div class="form-group">
-                        <select
-                          class="form-select p-2"
-                          aria-label="Sort By"
-                          onchange="getCourseByShorting(this)"
-                        >
-                          <option selected="">Relevance </option>
-                          <option value="A to Z">A to Z</option>
-                          <option value="Z to A">Z to A</option>
-                          <option value="Popularity">Popularity</option>
-      
-      
-                        </select>
-                      </div>
-                    </form>
-                  </div> -->
-
-                <section class="collegesPage">
-                    <div class="container">
-                        <div class="row pt-3">
-                            <div class="col-md-3">
-                                <div class="filterSec">
-                                    <h3>Duration</h3>
-                                    <form class="searchState">
-                                        <i class="fa-regular fa-magnifying-glass"></i>
-                                        <input
-                                          type="text"
-                                          placeholder="Search Duration"
-                                          value=""
-                                          oninput="filterBySearch(`duration`,this)"
-                                          name="search"
-                                        />
-                                      </form>
-                                    <div class="stream-scroll">
-                      <span id="durationData">
-
-                        <% duration?.forEach(function(duration){ %>
-                                    <div class="form-check" id="mode-checkboxe-<%= duration %>">
-                                        <input class="form-check-input" type="checkbox" value="<%=duration%>" id="flexCheckDefault"  onclick="getCourseByDuration(this)">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                           <%=duration%>
-                                        </label>
-                                    </div>
-                                    <% }) %>
-
-                                 
+        <div class="body">
+            <section class="bannerSec">
+                <div class="container">
+                    <div class="bannerTitle2">
+                        <img src="/public/images/banner_bg.svg" />
+                        <h3>Top Course</h3>
+                        <h4>List of Top Courses</h4>
+                    </div>
+                    <img src="/public/images/banner.png" class="w-100 mt-3" />
+                </div>
+                <div class="anim-elements">
+                    <div class="anim-element"></div>
+                    <div class="anim-element"></div>
+                    <div class="anim-element"></div>
+                    <div class="anim-element"></div>
+                    <div class="anim-element"></div>
+                </div>
+            </section>
+            <section class="collegesPage p-0">
+                <div class="container">
+                    <div class="row pt-3">
+                        <div class="col-md-3">
+                            <div class="filterSec">
+                                <h3>Duration</h3>
+                                <form class="searchState w-100">
+                                    <i class="fa-regular fa-magnifying-glass"></i>
+                                    <input type="text" placeholder="Search Duration" value=""
+                                        oninput="filterBySearch(`duration`,this)" name="search" />
+                                </form>
+                                <div class="stream-scroll">
+                                    <span id="durationData">
+                                        <% duration?.forEach(function(duration){ %>
+                                            <div class="form-check" id="mode-checkboxe-<%= duration %>">
+                                                <input class="form-check-input" type="checkbox" value="<%=duration%>"
+                                                    id="flexCheckDefault" onclick="getCourseByDuration(this)">
+                                                <label class="form-check-label" for="flexCheckDefault">
+                                                    <%=duration%>
+                                                </label>
+                                            </div>
+                                            <% }) %>
                                     </span>
-                                    </div>
                                 </div>
-                                <div class="filterSec">
-                                    <h3>Mode</h3>
-                                    <form class="searchState">
-                                        <i class="fa-regular fa-magnifying-glass"></i>
-                                        <input
-                                          type="text"
-                                          placeholder="Search Mode"
-                                          value=""
-                                          oninput="filterBySearch(`mode`,this)"
-                                          name="search"
-                                        />
-                                      </form>
-                                    <div class="stream-scroll">
-<span id="modeData">
+                            </div>
+                            <div class="filterSec">
+                                <h3>Mode</h3>
+                                <form class="searchState w-100">
+                                    <i class="fa-regular fa-magnifying-glass"></i>
+                                    <input type="text" placeholder="Search Mode" value=""
+                                        oninput="filterBySearch(`mode`,this)" name="search" />
+                                </form>
+                                <div class="stream-scroll">
+                                    <span id="modeData">
                                         <% mode?.forEach(function(mode){ %>
-                                    <div class="form-check" id="courseId-checkboxe-<%= mode %>">
-                                        <input class="form-check-input" type="checkbox" value="<%=mode%>" id="flexCheckDefault"  onclick="getCourseByMode(this)">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            <%=mode%>
-                                        </label>
-                                    </div>
-                                    <% }) %>
-                                </span>
-
-                                  
+                                            <div class="form-check" id="courseId-checkboxe-<%= mode %>">
+                                                <input class="form-check-input" type="checkbox" value="<%=mode%>"
+                                                    id="flexCheckDefault" onclick="getCourseByMode(this)">
+                                                <label class="form-check-label" for="flexCheckDefault">
+                                                    <%=mode%>
+                                                </label>
+                                            </div>
+                                            <% }) %>
+                                    </span>
                                 </div>
-                                </div>
-                             
                             </div>
-        
+                        </div>
 
-                            <div class="listing-content rightside">
-                                <div class="schoolBlock" id="course_list_wrapper">
-                                    <h2>Total <span id="course_count"><%=data?.length%></span> Courses</h2>
-                             
-                                    <span id="coursesData">
+                        <div class="listing-content rightside">
+                            <div class="schoolBlock" id="course_list_wrapper">
+                                <h2>Total <span id="course_count">
+                                        <%=data?.length%>
+                                    </span> Courses</h2>
+                                <span id="coursesData">
                                     <% data?.forEach(function(data){ %>
-
-                                    <div class="box course_list" data-mode="Regular" data-duration="4 Years">
-                                        <h2>
-                                            <a href="/courseDetail/<%=data?.slag%>/section"
-                                                title="B.Tech - Biochemical Engineering"> <%=data?.name%></a></h2>
-                                        <div class="coursebtn">
-                                            <!-- <a href="javascript:void(0)" class="course_follow"
-                                                data-course_id="2">Follow</a> -->
+                                        <div class="box course_list" data-mode="Regular" data-duration="4 Years">
+                                            <!-- <div class="coursebtn">
+                                                <a href="javascript:void(0)" class="course_follow"
+                                                    data-course_id="2">Follow</a>
+                                            </div> -->
+                                            <div class="row content">
+                                                <div class="col-md-3">
+                                                    <div class="coursePic">
+                                                        <a href="/courseDetail/<%=data?.slag%>/section"
+                                                            title="B.Tech - Biochemical Engineering">
+                                                            <img src="<%=data?.image%> " alt="<%=data?.imageAlt%>"
+                                                                alt="B.Tech - Biochemical Engineering">
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                        <div class="content">
-                                            <div class="coursePic">
-                                                <a href="/courseDetail/<%=data?.slag%>/section"
-                                                    title="B.Tech - Biochemical Engineering"><img
-                                                        src="<%=data?.image%> " alt="<%=data?.imageAlt%>"
-                                                        alt="B.Tech - Biochemical Engineering"></a></div>
-                                            <ul class="attr_box">
-                                                <li>Average Duration <span>
-                                                       <%=data?.averageDuration%>
-                                                    </span>
-                                                </li>
-                                                <li>Average Fees<span>
-                                                    <%=data?.fees%>
-                                                    </span>
-                                                </li>
-                                            </ul>
-                                            <p><%=data?.shortDescription%></p>
-                                            <a href="/courseDetail/<%=data?.slag%>/section" class="readbtn">
-                                                View Details</a>
-                                            <div class="clear"></div>
+                                                <div class="col-md-9 courseDec">
+                                                    <h2 class="m-0">
+                                                        <a href="/courseDetail/<%=data?.slag%>/section"
+                                                            title="B.Tech - Biochemical Engineering">
+                                                            <%=data?.name%>
+                                                        </a>
+                                                    </h2>
+                                                    <ul class="attr_box">
+                                                        <li>Average Duration <span>
+                                                                <%=data?.averageDuration%>
+                                                            </span>
+                                                        </li>
+                                                        <li>Average Fees<span>
+                                                                <%=data?.fees%>
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                    <p>
+                                                        <%=data?.shortDescription%>
+                                                    </p>
+                                                    <a href="/courseDetail/<%=data?.slag%>/section" class="readbtn">
+                                                        View Details</a>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <% }) %>
+                                        <% }) %>
                                 </span>
-                                    
-                                        </div>
-                                    </div> 
-                                </div>
                             </div>
-
                         </div>
                     </div>
-                </section>
-                <!-- SIDEBAR end -->
-
-            </div>
+                </div>
+            </section>
         </div>
-    </div>
-
-
-    <%- include('../partials/footer')%>
-
-
-
-
-    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
-
-
+        <%- include('../partials/footer')%>
+            <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+            <script type="text/javascript" src="assets/js/main.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 </body>
 
 <script>
-
-function getCourseByDuration(element){
-    const duration = element.value;
-  
-
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-          // document.getElementById("demo").innerHTML =
-          // this.responseText;
-        //   console.log(this.responseText);
-          var data = JSON.parse(this.responseText);
-
-          document.getElementById("course_count").innerHTML = data.length;
-
-          document.getElementById("coursesData").innerHTML = data?.map((course) => {
-            return `<div class="box course_list" data-mode="Regular" data-duration="4 Years">
+    function getCourseByDuration(element) {
+        const duration = element.value;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var data = JSON.parse(this.responseText);
+                document.getElementById("course_count").innerHTML = data.length;
+                document.getElementById("coursesData").innerHTML = data?.map((course) => {
+                    return `<div class="box course_list" data-mode="Regular" data-duration="4 Years">
             <h2>
                 <a href="/courseDetail/${course?.slag}/sectio"
                     title="B.Tech - Biochemical Engineering"> ${course?.name}</a></h2>
@@ -231,43 +184,24 @@ function getCourseByDuration(element){
                 <div class="clear"></div>
             </div>
         </div>`
-            }).join("");
-
-
-
-
+                }).join("");
+            }
         }
+        xhttp.open("GET", `/getCourseByDuration?duration=${duration}`, true);
+        xhttp.send();
     }
-    xhttp.open("GET", `/getCourseByDuration?duration=${duration}`, true);
-    xhttp.send();
-}
-
-
 </script>
 
-<!-- get course by mode//// -->
-
-
 <script>
-
-
-function getCourseByMode(element){
-    const mode = element.value;
-      console.log(mode);
-
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-          // document.getElementById("demo").innerHTML =
-          // this.responseText;
-          console.log(this.responseText);
-          var data = JSON.parse(this.responseText);
-
-
-
-            document.getElementById("course_count").innerHTML = data?.length;
-            document.getElementById("coursesData").innerHTML = data?.map((course) => {
-            return `<div class="box course_list" data-mode="Regular" data-duration="4 Years">
+    function getCourseByMode(element) {
+        const mode = element.value;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var data = JSON.parse(this.responseText);
+                document.getElementById("course_count").innerHTML = data?.length;
+                document.getElementById("coursesData").innerHTML = data?.map((course) => {
+                    return `<div class="box course_list" data-mode="Regular" data-duration="4 Years">
             <h2>
                 <a href="/courseDetail/${data?.slag}/sectio"
                     title="B.Tech - Biochemical Engineering"> ${course?.name}</a></h2>
@@ -297,108 +231,59 @@ function getCourseByMode(element){
                 <div class="clear"></div>
             </div>
         </div>`
-            }).join("");
-
-
-
+                }).join("");
+            }
         }
+        xhttp.open("GET", `/getCourseByMode?mode=${mode}`, true);
+        xhttp.send();
     }
-    xhttp.open("GET", `/getCourseByMode?mode=${mode}`, true);
-    xhttp.send();
-}
-           
-
-
 </script>
 
-
-<!-- search filter by name/ -->
-
 <script>
-
-
     function filterBySearch(type, element2) {
-    
-    console.log(type);
-    console.log(element2.value);
-    
-    
-    if(type=='duration'){
-        document.getElementById("durationData").childNodes.forEach(element=>{
-    
-    if(element.id){
-    const idArray = element.id.split("-");
-            idArray.shift();
-            idArray.shift();
-            const courseName = idArray.join("-");
-            if(!courseName.toLowerCase().toLowerCase().includes(element2.value)){
-                element.style.display = "none";
-            }else{
-                element.style.display = "block";
-            }
-            
-    }
-    
-        })
-    
-    
-    }
-    
-    
-    
-    
-    
-    if(type=='mode'){
-      
-        document.getElementById("modeData").childNodes.forEach(element=>{
-    
-    if(element.id){
-    const idArray = element.id.split("-");
-            idArray.shift();
-            idArray.shift();
-            const courseName = idArray.join("-");
-            console.log(courseName);
-            if(!courseName.toLowerCase().toLowerCase().includes(element2.value)){
-                element.style.display = "none";
-            }else{
-                element.style.display = "block";
-            }
-            
-    
-    }
-      
-          })
+        if (type == 'duration') {
+            document.getElementById("durationData").childNodes.forEach(element => {
+                if (element.id) {
+                    const idArray = element.id.split("-");
+                    idArray.shift();
+                    idArray.shift();
+                    const courseName = idArray.join("-");
+                    if (!courseName.toLowerCase().toLowerCase().includes(element2.value)) {
+                        element.style.display = "none";
+                    } else {
+                        element.style.display = "block";
+                    }
+                }
+            })
         }
-    
-    
-    
-    
-      }
-    
-    
-    
-    
-    </script>
-
+        if (type == 'mode') {
+            document.getElementById("modeData").childNodes.forEach(element => {
+                if (element.id) {
+                    const idArray = element.id.split("-");
+                    idArray.shift();
+                    idArray.shift();
+                    const courseName = idArray.join("-");
+                    if (!courseName.toLowerCase().toLowerCase().includes(element2.value)) {
+                        element.style.display = "none";
+                    } else {
+                        element.style.display = "block";
+                    }
+                }
+            })
+        }
+    }
+</script>
 
 <script>
-
-function getCourseByShorting(element){
-    const shorting = element.value;
-    console.log(shorting);
-
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        // document.getElementById("demo").innerHTML =
-        // this.responseText;
-        console.log(this.responseText);
-        var data = JSON.parse(this.responseText);
-
-
-        document.getElementById("course_count").innerHTML = data?.length;
-            document.getElementById("coursesData").innerHTML = data?.map((course) => {
-            return `<div class="box course_list" data-mode="Regular" data-duration="4 Years">
+    function getCourseByShorting(element) {
+        const shorting = element.value;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var data = JSON.parse(this.responseText);
+                document.getElementById("course_count").innerHTML = data?.length;
+                document.getElementById("coursesData").innerHTML = data?.map((course) => {
+                    return `<div class="box course_list" data-mode="Regular" data-duration="4 Years">
             <h2>
                 <a href="/courseDetail/${data?.slag}/sectio"
                     title="B.Tech - Biochemical Engineering"> ${course?.name}</a></h2>
@@ -428,18 +313,12 @@ function getCourseByShorting(element){
                 <div class="clear"></div>
             </div>
         </div>`
-            }).join("");
-
-
-
+                }).join("");
+            }
         }
+        xhttp.open("GET", `/getCourseByShorting?short=${shorting}`, true);
+        xhttp.send();
     }
-    xhttp.open("GET", `/getCourseByShorting?short=${shorting}`, true);
-    xhttp.send();
-}
-           
-
-
 </script>
 
 </html>

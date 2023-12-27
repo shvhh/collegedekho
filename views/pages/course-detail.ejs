@@ -1,56 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Rigalma</title>
-    <meta charset="utf-8" />
 
-    <title><%=data?.metaTitle%></title>
-    <meta name="description" content="<%=data?.metaDescription%>" />
-    <meta name="keyword" content="<%=data?.metaKeyword%>" />
-    <link rel="canonical" href="<%=data?.canonical%>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Arima:wght@100;200;300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link href="/public/css/style.css" rel="stylesheet" />
-    <link href="/public/css/responsive.css" rel="stylesheet" />
-  </head>
+<head>
+  <title>Rigalma</title>
+  <meta charset="utf-8" />
 
-  <body>
-    <%- include('../partials/navbar')%>
+  <title>
+    <%=data?.metaTitle%>
+  </title>
+  <meta name="description" content="<%=data?.metaDescription%>" />
+  <meta name="keyword" content="<%=data?.metaKeyword%>" />
+  <link rel="canonical" href="<%=data?.canonical%>" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/public/css/style.css" rel="stylesheet" />
+  <link href="/public/css/responsive.css" rel="stylesheet" />
+</head>
 
-    <p hidden id="courseSection"><%=courseSection%></p>
-    <p hidden id="courseSlag"><%=data?.slag%></p>
+<body>
+  <%- include('../partials/navbar')%>
 
-    <div
-      class="bannerSecBg"
-      style="background-image: url(/public/images/detailBanner.jpg)"
-    >
+    <p hidden id="courseSection">
+      <%=courseSection%>
+    </p>
+    <p hidden id="courseSlag">
+      <%=data?.slag%>
+    </p>
+
+    <div class="bannerSecBg" style="background-color: #8abcc5;">
       <div class="bannerOverlay">
         <div class="container">
           <div class="bannerDetailTitle">
-            <h3><%=data?.name%></h3>
-            <!-- <h4 class="m-0">Chennai, Tamil Nadu AICTE Approved</h4> -->
-            <!-- <div class="d-flex align-items-center pt-3">
-                        <div class="d-flex align-items-center">
-                            <span class="starCount">10</span>
-                            <div class="reviewsCo">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <p>4 User reviews</p>
-                            </div>
-                        </div>
-                        <a href="#!" class="consultationBtn">Get Contact Details</a>
-                    </div> -->
+            <h3>
+              <%=data?.name%>
+            </h3>
+            <h4 class="m-0">Chennai, Tamil Nadu AICTE Approved</h4>
+            <div class="d-flex align-items-center pt-3">
+              <div class="d-flex align-items-center">
+                <span class="starCount">10</span>
+                <div class="reviewsCo">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <p>4 User reviews</p>
+                </div>
+              </div>
+              <a href="#!" class="consultationBtn">Get Contact Details</a>
+            </div>
           </div>
         </div>
       </div>
@@ -60,14 +59,14 @@
       <div class="container">
         <ul class="collegeInfo">
           <a href="/courseDetail/<%=data?.slag%>/section">
-            <li class="collegeInfoTab">Section</li></a
-          >
+            <li class="collegeInfoTab">Section</li>
+          </a>
           <a href="/courseDetail/<%=data?.slag%>/syllabus">
-            <li class="collegeInfoTab">Syllabus</li></a
-          >
+            <li class="collegeInfoTab">Syllabus</li>
+          </a>
           <a href="/courseDetail/<%=data?.slag%>/sallary">
-            <li class="collegeInfoTab">Salary</li></a
-          >
+            <li class="collegeInfoTab">Salary</li>
+          </a>
         </ul>
         <div class="row">
           <div class="col-md-9">
@@ -110,18 +109,18 @@
 
             <div class="overall-1">
               <% sectionData?.forEach(function(sectionData){ %>
-              <div class="collegeDetailFilter2">
-                <h4><%=sectionData?.heading%></h4>
-                <div
-                  class="border-top collegefilter2 pt-2 row align-items-center"
-                >
-                  <div class="">
-                    <h5><%-sectionData?.description%></h5>
+                <div class="collegeDetailFilter2">
+                  <h4>
+                    <%=sectionData?.heading%>
+                  </h4>
+                  <div class="border-top collegefilter2 pt-2 row align-items-center">
+                    <div class="">
+                      <h5><%-sectionData?.description%></h5>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <% }) %>
+                <% }) %>
             </div>
           </div>
           <div class="col-md-3 pt-3">
@@ -144,18 +143,23 @@
             <div class="parantCollegeGroup">
               <h4>Top Courses</h4>
               <%topCourse?.forEach(function(topCourse){ %>
-              <a href="/courseDetail/<%=topCourse?.slag%>/section">
-                <div class="border-top topCou pt-2 d-flex">
-                  <div class="w-75">
-                    <h5><%=topCourse?.name%></h5>
-                    <p>FEE - <%=topCourse?.fees%></p>
+                <a href="/courseDetail/<%=topCourse?.slag%>/section">
+                  <div class="border-top topCou pt-2 d-flex">
+                    <div class="w-75">
+                      <h5>
+                        <%=topCourse?.name%>
+                      </h5>
+                      <p>FEE - <%=topCourse?.fees%>
+                      </p>
+                    </div>
+                    <div class="w-25">
+                      <p>
+                        <%=topCourse?.averageDuration%> Month
+                      </p>
+                    </div>
                   </div>
-                  <div class="w-25">
-                    <p><%=topCourse?.averageDuration%> Month</p>
-                  </div>
-                </div>
-                <% }) %>
-              </a>
+                  <% }) %>
+                </a>
             </div>
           </div>
         </div>
@@ -166,15 +170,9 @@
       <div class="container">
         <div class="collegeDetail">
           <form class="form-card">
-            <h3>Comment</h3>
-            <label for="exampleFormControlTextarea1" class="form-label mt-3"
-              >Example textarea</label
-            >
-            <textarea
-              class="form-control"
-              placeholder="Enter text here"
-              rows="5"
-            ></textarea>
+            <h3 class="mb-4">Comment</h3>
+            <!-- <label for="exampleFormControlTextarea1" class="form-label mt-3">Example textarea</label> -->
+            <textarea class="form-control" placeholder="Enter text here" rows="5"></textarea>
             <div class="text-center mx-2 mt-3">
               <a href="#!" type="submit" class="submitBtn">Submit</a>
             </div>
@@ -185,40 +183,38 @@
 
     <%- include('../partials/footer')%>
 
-    <script type="text/javascript" src="/public/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/public/js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script
-      src="https://code.jquery.com/jquery-2.2.0.min.js"
-      type="text/javascript"
-    ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
-  </body>
+      <script type="text/javascript" src="/public/js/jquery.min.js"></script>
+      <script type="text/javascript" src="/public/js/main.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+</body>
 
-  <script>
-    // active class//
+<script>
+  // active class//
 
-    $(document).ready(function () {
-      var courseSection = document.getElementById("courseSection").innerHTML;
-      var courseSlag = document.getElementById("courseSlag").innerHTML;
+  $(document).ready(function () {
+    var courseSection = document.getElementById("courseSection").innerHTML;
+    var courseSlag = document.getElementById("courseSlag").innerHTML;
 
-      console.log(courseSection);
+    console.log(courseSection);
 
-      console.log(courseSlag);
+    console.log(courseSlag);
 
-      $(".collegeInfo a").each(function () {
-        // console.log('/exam-detauuil/'+examSlag+'/'+examSection);
+    $(".collegeInfo a").each(function () {
+      // console.log('/exam-detauuil/'+examSlag+'/'+examSection);
 
-        if (
-          $(this).attr("href") ==
-          "/courseDetail/" + courseSlag + "/" + courseSection
-        ) {
-          // add active class on his li child//
-          console.log($(this).attr("href"));
+      if (
+        $(this).attr("href") ==
+        "/courseDetail/" + courseSlag + "/" + courseSection
+      ) {
+        // add active class on his li child//
+        console.log($(this).attr("href"));
 
-          $(this).children("li").addClass("optionactive");
-        }
-      });
+        $(this).children("li").addClass("optionactive");
+      }
     });
-  </script>
+  });
+</script>
+
 </html>

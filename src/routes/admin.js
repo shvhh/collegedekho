@@ -35,6 +35,9 @@ const SiteMap = require("../models/sitemap");
 const MetaTag = require("../models/metaTags");
 const Banner = require("../models/banner");
 
+const uploadMemory = require("../utils/multer.util");
+const  companyController = require('../controllers/company.controller');
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, path.join(__dirname, "../../publicadmin/images"));
@@ -2268,6 +2271,31 @@ routes.post(
     res.redirect("/admin/bannerList");
   }
 );
+
+
+
+// bulk college  get page
+
+
+routes.get('/productCreate',AdminAuth(["admin"]), async(req, res) => {
+  res.render("pages/bulkcollegecreate",{
+    
+     });   
+  });
+
+
+  // bulk  college create
+
+
+  routes.post(
+    '/bulk',
+    AdminAuth(['admin']),
+    uploadMemory.any(),
+    companyController.bulkInsertCompany
+  );
+  
+
+
 
 
 

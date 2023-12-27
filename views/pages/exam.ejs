@@ -1,456 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Rigalma</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Arima:wght@100;200;300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link href="/public/css/style.css" rel="stylesheet" />
-    <link href="/public/css/responsive.css" rel="stylesheet" />
-  </head>
 
-  <body style="background-color: #f4f4f7">
-    <%- include('../partials/navbar')%>
+<head>
+  <title>Exam || Rigalma</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/public/css/style.css" rel="stylesheet" />
+  <link href="/public/css/responsive.css" rel="stylesheet" />
+</head>
 
-    <div class="body">
-      <div class="wrapper examListingPage">
+<body style="background-color: #f4f4f7">
+  <%- include('../partials/navbar')%>
+
+    <section class="p-0">
+      <section class="bannerSec" style="background-image: url(../../public/images/banner/banner2.svg);">
         <div class="container">
           <div class="bannerTitle2">
             <img src="/public/images/banner_bg.svg" />
-            <h3><%=examCategoryBySlag?.examCategory%></h3>
+            <h3>
+              <%=examCategoryBySlag?.examCategory%>
+            </h3>
             <h4>List of Top Exam </h4>
           </div>
+          <img src="/public/images/banner.png" class="w-100 mt-3">
+        </div>
+        <div class="anim-elements">
+          <div class="anim-element"></div>
+          <div class="anim-element"></div>
+          <div class="anim-element"></div>
+          <div class="anim-element"></div>
+          <div class="anim-element"></div>
+        </div>
+      </section>
+      <div class="examListingPage p-0">
+        <div class="container">
+          <div class="row pt-3">
+            <div class="col-md-3">
+              <div class="filterSec">
+                <h3>Stream</h3>
+                <form class="searchState">
+                  <i class="fa-regular fa-magnifying-glass"></i>
+                  <input type="text" placeholder="Search course" value="" oninput="filterBySearch(`examCategory`,this)"
+                    name="search" />
+                </form>
+                <div class="stream-scroll">
+                  <span id="examCategoryData">
+                    <% examCategory?.forEach(function(examCategory){ %>
 
-          <img src="/public/images/banner.png" class="w-100 mt-3" />
+                      <div class="form-check" id="course-checkboxe-<%= examCategory?.slag %>">
+                        <input class="form-check-input listCheck" type="checkbox"
+                          onclick="getexamByslag('<%=examCategory?.slag%>')" value="<%=examCategory?.slag%>"
+                          id="flexCheckDefault" />
 
-          <section class="collegesPage">
-            <div class="container">
-              <div class="row pt-3">
-                <div class="col-md-3">
-                  <div class="filterSec">
-                    <h3>Stream</h3>
-                    <form class="searchState">
-                      <i class="fa-regular fa-magnifying-glass"></i>
-                      <input
-                        type="text"
-                        placeholder="Search course"
-                        value=""
-                        oninput="filterBySearch(`examCategory`,this)"
-                        name="search"
-                      />
-                    </form>
-                    <div class="stream-scroll">
-                      <span id="examCategoryData">
-                        <% examCategory?.forEach(function(examCategory){ %>
-
-                        <div
-                          class="form-check"
-                          id="course-checkboxe-<%= examCategory?.slag %>"
-                        >
-                          <input
-                            class="form-check-input listCheck"
-                            type="checkbox"
-                            onclick="getexamByslag('<%=examCategory?.slag%>')"
-                            value="<%=examCategory?.slag%>"
-                            id="flexCheckDefault"
-                          />
-
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefault"
-                          >
-                            <a href="/exam/<%=examCategory.slag%>">
-                              <%=examCategory?.examCategory%>
-                            </a>
-                          </label>
-                        </div>
-
-                        <% }) %>
-                      </span>
-                    </div>
-                  </div>
-                  <div class="filterSec">
-                    <h3>Course</h3>
-                    <form class="searchState">
-                      <i class="fa-regular fa-magnifying-glass"></i>
-                      <input
-                        type="text"
-                        placeholder="Search course"
-                        value=""
-                        oninput="filterBySearch(`course`,this)"
-                        name="search"
-                      />
-                    </form>
-                    <div class="stream-scroll">
-                      <span id="courseIdData">
-                        <% examData[0]?.courseDetail?.forEach(function(d){ %>
-                        <div
-                          class="form-check"
-                          id="courseId-checkboxe-<%= d?.name %>"
-                        >
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            onclick="getExamByCourseId(this)"
-                            value="<%=d?._id%>"
-                            id="flexCheckDefault"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefault"
-                          >
-                            <%=d?.name%>
-                          </label>
-                        </div>
-                        <% }) %>
-                      </span>
-                    </div>
-                  </div>
-                  <div class="filterSec">
-                    <h3>Level</h3>
-                    <form class="searchState">
-                      <i class="fa-regular fa-magnifying-glass"></i>
-                      <input type="text" placeholder="Program Type" />
-                    </form>
-
-                    <div class="stream-scroll">
-                      <span id="levelData">
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            onclick="getExamByLevel(`level`,this)"
-                            value="U.G"
-                            id="flexCheckDefault"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefault"
-                          >
-                            U.G
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            onclick="getExamByLevel(`level`,this)"
-                            value="P.G"
-                            id="flexCheckChecked"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckChecked"
-                          >
-                            P.G
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            onclick="getExamByLevel(`level`,this)"
-                            value="Ph.D"
-                            id="flexCheckDefault"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefault"
-                          >
-                            Ph.D
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            onclick="getExamByLevel(`level`,this)"
-                            value="Diploma"
-                            id="flexCheckDefault"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefault"
-                          >
-                            Diploma
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            onclick="getExamByLevel(`level`,this)"
-                            value="Certificate"
-                            id="flexCheckDefault"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckDefault"
-                          >
-                            Certificate
-                          </label>
-                        </div>
-                      </span>
-                    </div>
-                  </div>
-
-                  <div class="filterSec">
-                    <h3>Mode</h3>
-                    <form class="searchState">
-                      <i class="fa-regular fa-magnifying-glass"></i>
-                      <input type="text" placeholder="Program Type" />
-                    </form>
-                    <div class="stream-scroll">
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          onclick="getExamByLevel(`mode`,this)"
-                          value="Online"
-                          id="flexCheckDefault"
-                        />
                         <label class="form-check-label" for="flexCheckDefault">
-                          Online
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          onclick="getExamByLevel(`mode`,this)"
-                          value="Offline"
-                          id="flexCheckChecked"
-                        />
-                        <label class="form-check-label" for="flexCheckChecked">
-                          Offline
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          onclick="getExamByLevel(`mode`,this)"
-                          value="Both Online & Offline"
-                          id="flexCheckDefault"
-                        />
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Both Online & Offline
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          onclick="getExamByLevel(`mode`,this)"
-                          value="None"
-                          id="flexCheckDefault"
-                        />
-                        <label class="form-check-label" for="flexCheckDefault">
-                          None
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- ======================================== -->
-
-                <div class="col-md-9 col-sm-12 bodyContent right-col sort-gap">
-                  <div class="filterBlock">
-                    <select
-                      class="form-select col-sort p-2"
-                      id="date_sort"
-                      onchange="getExamWithShorting(this)"
-                    >
-                 
-                      <option selected="">Relevance </option>
-                      <option value="A to Z">A to Z</option>
-                      <option value="Z to A">Z to A</option>
-                      <option value="Popularity">Popularity</option>
-                    </select>
-                  </div>
-                  <div class="exam-box" id="allExam">
-                    <% getExam?.forEach(function(getExam){ %>
-                    <ul class="examList">
-                      <li
-                        class="ex_rows"
-                        data-mode="Online"
-                        data-level=" UG "
-                        data-degree=" B.Tech"
-                        data-exam_date=""
-                      >
-                        <input
-                          type="hidden"
-                          class="aplication_date"
-                          value="Joint Entrance Examination (JEE) Main - 2024"
-                        /><input
-                          type="hidden"
-                          class="exam_date"
-                          value="2024-01-06"
-                        /><input type="hidden" class="result_date" value="" />
-                        <h2>
-                          <a
-                            href="/exam/jee-main"
-                            target="_blank"
-                            title="JEE Main 2024"
-                          >
-                            <%=getExam?.heading%>
+                          <a href="/exam/<%=examCategory.slag%>">
+                            <%=examCategory?.examCategory%>
                           </a>
-                        </h2>
+                        </label>
+                      </div>
 
-                        <% if(userToken) { %> <% }else{ %>
-                        <div class="button">
-                          <span
-                            class="button gtm-lead-click apply_now_det_cd ex_list change-alert-text"
-                            data-exam_id="1547"
-                            data-content_type="492"
-                            data-app_label="exams"
-                            data-object_id="1547"
-                            data-button_id="3"
-                            id="btn-cta-3"
-                            data-button_action="1"
-                            data-cta_id="240"
-                            data-template="exam_listing"
-                            data-position="1"
-                            onclick="registerOpen()"
-                            >Register Now</span
-                          >
-                        </div>
-                        <% } %>
+                      <% }) %>
+                  </span>
+                </div>
+              </div>
+              <div class="filterSec">
+                <h3>Course</h3>
+                <form class="searchState">
+                  <i class="fa-regular fa-magnifying-glass"></i>
+                  <input type="text" placeholder="Search course" value="" oninput="filterBySearch(`course`,this)"
+                    name="search" />
+                </form>
+                <div class="stream-scroll">
+                  <span id="courseIdData">
+                    <% examData[0]?.courseDetail?.forEach(function(d){ %>
+                      <div class="form-check" id="courseId-checkboxe-<%= d?.name %>">
+                        <input class="form-check-input" type="checkbox" onclick="getExamByCourseId(this)"
+                          value="<%=d?._id%>" id="flexCheckDefault" />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          <%=d?.name%>
+                        </label>
+                      </div>
+                      <% }) %>
+                  </span>
+                </div>
+              </div>
+              <div class="filterSec">
+                <h3>Level</h3>
+                <form class="searchState">
+                  <i class="fa-regular fa-magnifying-glass"></i>
+                  <input type="text" placeholder="Program Type" />
+                </form>
 
-                        <div class="examDetailInfo">
-                          <div
-                            class="col-md-4 col-sm-4 col-xs-6 application-date"
-                          >
-                            <h5>Application Date</h5>
-                            <p><%=getExam?.applicationDate%></p>
-                          </div>
-                          <div class="col-md-4 col-sm-4 col-xs-6 exam-date">
-                            <h5>Exam Date</h5>
-                            <p><%=getExam?.examDate%></p>
-                          </div>
-                        </div>
-                        <ul class="examlinks">
-                          <li class="overview">
-                            <a
-                              href="/exam-detail/<%=getExam?.slag%>/applicationForm"
-                              >Application Form</a
-                            >
-                          </li>
-                          <li class="important_dates">
-                            <a
-                              href="/exam-detail/<%=getExam?.slag%>/eligibility"
-                              >Eligibility
-                            </a>
-                          </li>
-                          <li class="application_form">
-                            <a href="/exam-detail/<%=getExam?.slag%>/admitCard"
-                              >Admit Card</a
-                            >
-                          </li>
-                          <li class="eligibility">
-                            <a href="/exam-detail/<%=getExam?.slag%>/syllabus"
-                              >Syllabus</a
-                            >
-                          </li>
-                          <li class="admit_card">
-                            <a
-                              href="/exam-detail/<%=getExam?.slag%>/examPattern"
-                              >Exam Pattern
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
+                <div class="stream-scroll">
+                  <span id="levelData">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" onclick="getExamByLevel(`level`,this)" value="U.G"
+                        id="flexCheckDefault" />
+                      <label class="form-check-label" for="flexCheckDefault">
+                        U.G
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" onclick="getExamByLevel(`level`,this)" value="P.G"
+                        id="flexCheckChecked" />
+                      <label class="form-check-label" for="flexCheckChecked">
+                        P.G
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" onclick="getExamByLevel(`level`,this)"
+                        value="Ph.D" id="flexCheckDefault" />
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Ph.D
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" onclick="getExamByLevel(`level`,this)"
+                        value="Diploma" id="flexCheckDefault" />
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Diploma
+                      </label>
+                    </div>
 
-                    <% }) %>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" onclick="getExamByLevel(`level`,this)"
+                        value="Certificate" id="flexCheckDefault" />
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Certificate
+                      </label>
+                    </div>
+                  </span>
+                </div>
+              </div>
+
+              <div class="filterSec">
+                <h3>Mode</h3>
+                <form class="searchState">
+                  <i class="fa-regular fa-magnifying-glass"></i>
+                  <input type="text" placeholder="Program Type" />
+                </form>
+                <div class="stream-scroll">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" onclick="getExamByLevel(`mode`,this)" value="Online"
+                      id="flexCheckDefault" />
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Online
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" onclick="getExamByLevel(`mode`,this)"
+                      value="Offline" id="flexCheckChecked" />
+                    <label class="form-check-label" for="flexCheckChecked">
+                      Offline
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" onclick="getExamByLevel(`mode`,this)"
+                      value="Both Online & Offline" id="flexCheckDefault" />
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Both Online & Offline
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" onclick="getExamByLevel(`mode`,this)" value="None"
+                      id="flexCheckDefault" />
+                    <label class="form-check-label" for="flexCheckDefault">
+                      None
+                    </label>
                   </div>
                 </div>
               </div>
             </div>
-          </section>
-          <!-- SIDEBAR end -->
+
+            <!-- ======================================== -->
+
+            <div class="col-md-9 col-sm-12 bodyContent right-col sort-gap">
+              <div class="filterBlock">
+                <select class="form-select col-sort p-2" id="date_sort" onchange="getExamWithShorting(this)">
+                  <option selected="">Relevance </option>
+                  <option value="A to Z">A to Z</option>
+                  <option value="Z to A">Z to A</option>
+                  <option value="Popularity">Popularity</option>
+                </select>
+              </div>
+              <div class="exam-box" id="allExam">
+                <% getExam?.forEach(function(getExam){ %>
+                  <ul class="examList">
+                    <li class="ex_rows" data-mode="Online" data-level=" UG " data-degree=" B.Tech" data-exam_date="">
+                      <input type="hidden" class="aplication_date"
+                        value="Joint Entrance Examination (JEE) Main - 2024" /><input type="hidden" class="exam_date"
+                        value="2024-01-06" /><input type="hidden" class="result_date" value="" />
+                      <h2>
+                        <a href="/exam/jee-main" target="_blank" title="JEE Main 2024">
+                          <%=getExam?.heading%>
+                        </a>
+                      </h2>
+
+                      <% if(userToken) { %>
+                        <% }else{ %>
+                          <div class="button">
+                            <span class="sampleBtn px-4" onclick="registerOpen()">Register
+                              Now</span>
+                          </div>
+                          <% } %>
+
+                            <div class="examDetailInfo">
+                              <div class="col-md-4 col-sm-4 col-xs-6">
+                                <div class="examLo">
+                                  <div class="collLogo">
+                                    <img
+                                      src="https://veganmod.s3.ap-south-1.amazonaws.com/1699450400349-859243167-rig-logo.png"
+                                      alt="jkhj">
+                                  </div>
+                                  <div class="mx-2">
+                                    <h5>Application Date</h5>
+                                    <p>
+                                      <%=getExam?.applicationDate%>
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-4 col-sm-4 col-xs-6">
+                                <h5>Exam Date</h5>
+                                <p>
+                                  <%=getExam?.examDate%>
+                                </p>
+                              </div>
+                            </div>
+                            <ul class="examlinks">
+                              <li class="overview">
+                                <a href="/exam-detail/<%=getExam?.slag%>/applicationForm" class="applyBtn text-white">
+                                  Application Form
+                                </a>
+                              </li>
+                              <li class="important_dates">
+                                <a href="/exam-detail/<%=getExam?.slag%>/eligibility">Eligibility
+                                </a>
+                              </li>
+                              <li class="application_form">
+                                <a href="/exam-detail/<%=getExam?.slag%>/admitCard">Admit Card</a>
+                              </li>
+                              <li class="eligibility">
+                                <a href="/exam-detail/<%=getExam?.slag%>/syllabus">Syllabus</a>
+                              </li>
+                              <li class="admit_card">
+                                <a href="/exam-detail/<%=getExam?.slag%>/examPattern">Exam Pattern
+                                </a>
+                              </li>
+                            </ul>
+                    </li>
+                  </ul>
+
+                  <% }) %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-  <p hidden id="checkToken"><%=userToken%></p>  
+    <p hidden id="checkToken">
+      <%=userToken%>
+    </p>
 
-    <p id="getIdForFilter" hidden><%=examCategoryBySlag?._id%></p>
+    <p id="getIdForFilter" hidden>
+      <%=examCategoryBySlag?._id%>
+    </p>
 
     <%- include('../partials/footer')%>
 
-    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script
-      src="https://code.jquery.com/jquery-2.2.0.min.js"
-      type="text/javascript"
-    ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+      <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+      <script type="text/javascript" src="assets/js/main.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 
-    <script>
-      function getexamByslag(slag) {
-        window.location.href = "/exam/" + slag;
-      }
-    </script>
-
-    <!-- implement checked if slug is same with examCategory.slag -->
-
-    <script>
-      $(document).ready(function () {
-        var url = window.location.href;
-        var slug = url.split("/").pop();
-
-        document
-          .getElementById("examCategoryData")
-          .childNodes.forEach((element) => {
-            if (element.id == "course-checkboxe-" + slug) {
-              element.childNodes[1].checked = true;
-            }
-          });
-      });
-    </script>
-
-    <!-- get exam by course id -->
-
-    <script>
-      function getExamByCourseId(element) {
-        // onclick element add checked class and get all checkedclass value//
-
-        element.classList.toggle("checked");
-        var checkedBoxDataGet = document.getElementsByClassName("checked");
-        var data = [];
-        for (var i = 0; i < checkedBoxDataGet.length; i++) {
-          data.push(checkedBoxDataGet[i].value);
+      <script>
+        function getexamByslag(slag) {
+          window.location.href = "/exam/" + slag;
         }
-        // console.log(data);
+      </script>
 
-      const token =   document.getElementById('checkToken').innerHTML
-console.log(token)
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-          if (this.readyState == 4 && this.status == 200) {
-            // document.getElementById("demo").innerHTML =
-            // this.responseText;
-            // console.log(this.responseText);
-            var data = JSON.parse(this.responseText);
+      <!-- implement checked if slug is same with examCategory.slag -->
 
-            document.getElementById("allExam").innerHTML = data
-              .map((data) => {
-                return `
+      <script>
+        $(document).ready(function () {
+          var url = window.location.href;
+          var slug = url.split("/").pop();
+
+          document
+            .getElementById("examCategoryData")
+            .childNodes.forEach((element) => {
+              if (element.id == "course-checkboxe-" + slug) {
+                element.childNodes[1].checked = true;
+              }
+            });
+        });
+      </script>
+
+      <!-- get exam by course id -->
+
+      <script>
+        function getExamByCourseId(element) {
+          // onclick element add checked class and get all checkedclass value//
+
+          element.classList.toggle("checked");
+          var checkedBoxDataGet = document.getElementsByClassName("checked");
+          var data = [];
+          for (var i = 0; i < checkedBoxDataGet.length; i++) {
+            data.push(checkedBoxDataGet[i].value);
+          }
+          // console.log(data);
+
+          const token = document.getElementById('checkToken').innerHTML
+          console.log(token)
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              // document.getElementById("demo").innerHTML =
+              // this.responseText;
+              // console.log(this.responseText);
+              var data = JSON.parse(this.responseText);
+
+              document.getElementById("allExam").innerHTML = data
+                .map((data) => {
+                  return `
             <ul class="examList">
                       <li
                         class="ex_rows"
@@ -484,7 +363,7 @@ console.log(token)
 
 
                        
-                        ${token ?`    ` : `  
+                        ${token ? `    ` : `  
 
 
 
@@ -554,50 +433,50 @@ console.log(token)
                       </li>
                     </ul>
             `;
-              })
-              .join("");
-          }
-        };
-        xhttp.open("GET", `/getExamById?courseId=${data}`, true);
-        xhttp.send();
-      }
-    </script>
-
-    <!-- get exma bt lavel//// -->
-
-    <script>
-      function getExamByLevel(element, element2) {
-        // console.log(element);
-        // console.log(element2);
-        // const element = element.value;
-        // console.log(element);
-        const examCategory =
-          document.getElementById("getIdForFilter").innerHTML;
-      const token =   document.getElementById('checkToken').innerHTML
-
-        // onclick element add checked class and get all checkedclass value//
-        console.log(examCategory);
-
-        element2.classList.toggle("checked");
-        var checkedBoxDataGet = document.getElementsByClassName("checked");
-        var data = [];
-        for (var i = 0; i < checkedBoxDataGet.length; i++) {
-          data.push(checkedBoxDataGet[i].value);
+                })
+                .join("");
+            }
+          };
+          xhttp.open("GET", `/getExamById?courseId=${data}`, true);
+          xhttp.send();
         }
+      </script>
 
-        console.log(data);
+      <!-- get exma bt lavel//// -->
 
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-          if (this.readyState == 4 && this.status == 200) {
-            // document.getElementById("demo").innerHTML =
-            // this.responseText;
-            // console.log(this.responseText);
-            var data = JSON.parse(this.responseText);
+      <script>
+        function getExamByLevel(element, element2) {
+          // console.log(element);
+          // console.log(element2);
+          // const element = element.value;
+          // console.log(element);
+          const examCategory =
+            document.getElementById("getIdForFilter").innerHTML;
+          const token = document.getElementById('checkToken').innerHTML
 
-            document.getElementById("allExam").innerHTML = data
-              .map((data) => {
-                return `
+          // onclick element add checked class and get all checkedclass value//
+          console.log(examCategory);
+
+          element2.classList.toggle("checked");
+          var checkedBoxDataGet = document.getElementsByClassName("checked");
+          var data = [];
+          for (var i = 0; i < checkedBoxDataGet.length; i++) {
+            data.push(checkedBoxDataGet[i].value);
+          }
+
+          console.log(data);
+
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              // document.getElementById("demo").innerHTML =
+              // this.responseText;
+              // console.log(this.responseText);
+              var data = JSON.parse(this.responseText);
+
+              document.getElementById("allExam").innerHTML = data
+                .map((data) => {
+                  return `
             <ul class="examList">
                       <li
                         class="ex_rows"
@@ -624,7 +503,7 @@ console.log(token)
                            ${data?.heading}
                           </a>
                         </h2>
-                        ${token ?`    ` : `  
+                        ${token ? `    ` : `  
 
 
 
@@ -691,93 +570,93 @@ console.log(token)
                       </li>
                     </ul>
             `;
-              })
-              .join("");
+                })
+                .join("");
+            }
+          };
+
+          xhttp.open(
+            "GET",
+            `/getExamByFilter?examId=${examCategory}&key=${element}&short=${data}`,
+            true
+          );
+          xhttp.send();
+        }
+      </script>
+
+      <!-- search filter in exam page -->
+      <script>
+        function filterBySearch(type, element2) {
+          console.log(type);
+          console.log(element2.value);
+
+          if (type == "examCategory") {
+            document
+              .getElementById("examCategoryData")
+              .childNodes.forEach((element) => {
+                if (element.id) {
+                  const idArray = element.id.split("-");
+                  idArray.shift();
+                  idArray.shift();
+                  const courseName = idArray.join("-");
+                  if (
+                    !courseName
+                      .toLowerCase()
+                      .toLowerCase()
+                      .includes(element2.value)
+                  ) {
+                    element.style.display = "none";
+                  } else {
+                    element.style.display = "block";
+                  }
+                }
+              });
           }
-        };
 
-        xhttp.open(
-          "GET",
-          `/getExamByFilter?examId=${examCategory}&key=${element}&short=${data}`,
-          true
-        );
-        xhttp.send();
-      }
-    </script>
-
-    <!-- search filter in exam page -->
-    <script>
-      function filterBySearch(type, element2) {
-        console.log(type);
-        console.log(element2.value);
-
-        if (type == "examCategory") {
-          document
-            .getElementById("examCategoryData")
-            .childNodes.forEach((element) => {
-              if (element.id) {
-                const idArray = element.id.split("-");
-                idArray.shift();
-                idArray.shift();
-                const courseName = idArray.join("-");
-                if (
-                  !courseName
-                    .toLowerCase()
-                    .toLowerCase()
-                    .includes(element2.value)
-                ) {
-                  element.style.display = "none";
-                } else {
-                  element.style.display = "block";
+          if (type == "course") {
+            document
+              .getElementById("courseIdData")
+              .childNodes.forEach((element) => {
+                if (element.id) {
+                  const idArray = element.id.split("-");
+                  idArray.shift();
+                  idArray.shift();
+                  const courseName = idArray.join("-");
+                  console.log(courseName);
+                  if (
+                    !courseName
+                      .toLowerCase()
+                      .toLowerCase()
+                      .includes(element2.value)
+                  ) {
+                    element.style.display = "none";
+                  } else {
+                    element.style.display = "block";
+                  }
                 }
-              }
-            });
+              });
+          }
         }
+      </script>
 
-        if (type == "course") {
-          document
-            .getElementById("courseIdData")
-            .childNodes.forEach((element) => {
-              if (element.id) {
-                const idArray = element.id.split("-");
-                idArray.shift();
-                idArray.shift();
-                const courseName = idArray.join("-");
-                console.log(courseName);
-                if (
-                  !courseName
-                    .toLowerCase()
-                    .toLowerCase()
-                    .includes(element2.value)
-                ) {
-                  element.style.display = "none";
-                } else {
-                  element.style.display = "block";
-                }
-              }
-            });
-        }
-      }
-    </script>
+      <!-- get exam with shorting// -->
 
-    <!-- get exam with shorting// -->
+      <script>
+        function getExamWithShorting(element) {
+          const short = element.value;
+          console.log(short);
+          const token = document.getElementById('checkToken').innerHTML
 
-    <script>
-      function getExamWithShorting(element) {
-        const short = element.value;
-        console.log(short);
-        const token =   document.getElementById('checkToken').innerHTML
-
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-          if (this.readyState == 4 && this.status == 200) {
-            // document.getElementById("demo").innerHTML =
-            // this.responseText;
-            console.log(this.responseText);
-            var data = JSON.parse(this.responseText);
-            document.getElementById("allExam").innerHTML = data
-              .map((data) => {
-                return `
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              // document.getElementById("demo").innerHTML =
+              // this.responseText;
+              console.log(this.responseText);
+              var data = JSON.parse(this.responseText);
+              document.getElementById("allExam").innerHTML = data
+                .map((data) => {
+                  return `
             <ul class="examList">
                       <li
                         class="ex_rows"
@@ -804,7 +683,7 @@ console.log(token)
                            ${data.heading}
                           </a>
                         </h2>
-                        ${token ?`    ` : `  
+                        ${token ? `    ` : `  
 
 
 
@@ -871,23 +750,24 @@ console.log(token)
                       </li>
                     </ul>
             `;
-              })
-              .join("");
-          }
-        };
-        xhttp.open("GET", `/examShorting?short=${short}`, true);
-        xhttp.send();
-      }
-    </script>
+                })
+                .join("");
+            }
+          };
+          xhttp.open("GET", `/examShorting?short=${short}`, true);
+          xhttp.send();
+        }
+      </script>
 
-    <script>
-      // open register model
+      <script>
+        // open register model
 
-      function registerOpenForExam() {
-        console.log("clickedrtrt");
-        $("#exampleModal2").modal("show");
-        console.log("clicked");
-      }
-    </script>
-  </body>
+        function registerOpenForExam() {
+          console.log("clickedrtrt");
+          $("#exampleModal2").modal("show");
+          console.log("clicked");
+        }
+      </script>
+</body>
+
 </html>

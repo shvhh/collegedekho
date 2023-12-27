@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@100;200;300;400;500;600;700&display=swap"
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap"
     rel="stylesheet">
-<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="/public/css/style.css" rel="stylesheet">
-<link href="/public/css/responsive.css" rel="stylesheet">
-  </head>
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/public/css/style.css" rel="stylesheet">
+  <link href="/public/css/responsive.css" rel="stylesheet">
+</head>
 
-  <body>
-    <%- include('../partials/navbar')%>
+<body>
+  <%- include('../partials/navbar')%>
 
     <div class="mainBg">
       <section class="bannerSec">
@@ -23,7 +25,7 @@
           </div>
           <div class="row justify-content-center">
             <div class="col-md-6">
-             
+
             </div>
           </div>
           <!-- <img src="/public/images/banner.png" class="w-100 mt-3" /> -->
@@ -34,103 +36,103 @@
           <div class="row stateList">
             <div class="col-md-3 bg-white py-2">
               <ul class="popularStateList">
-                <a onclick="getuserHistory('college',this)"
-                  ><li class="linkGet optionactive">College</li></a
-                >
-                <a onclick="getuserHistory('course',this)"
-                  ><li class="linkGet">Course</li></a
-                >
-                <a onclick="getuserHistory('exam',this)"
-                  ><li class="linkGet">Exam</li></a
-                >
+                <a onclick="getuserHistory('college',this)">
+                  <li class="linkGet optionactive">College</li>
+                </a>
+                <a onclick="getuserHistory('course',this)">
+                  <li class="linkGet">Course</li>
+                </a>
+                <a onclick="getuserHistory('exam',this)">
+                  <li class="linkGet">Exam</li>
+                </a>
               </ul>
             </div>
             <div class="col-md-9" id="allColleges">
-              <% data?.forEach(function(data){ %> <%
-              data?.collegeDetail?.forEach(function(d){ %>
-              <div class="collegeCard">
-                <div class="row">
-                  <div class="col-md-4">
-                    <!-- <a href="/collegeDetail/<%=data?.slag%>/overView"> -->
-                    <div class="collImage">
-                      <!-- <i class="fa-regular fa-heart wish-list-heart" onclick="addWishlist('<%=data?._id%>')"></i> -->
+              <% data?.forEach(function(data){ %>
+                <% data?.collegeDetail?.forEach(function(d){ %>
+                  <div class="collegeCard">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <!-- <a href="/collegeDetail/<%=data?.slag%>/overView"> -->
+                        <div class="collImage">
+                          <!-- <i class="fa-regular fa-heart wish-list-heart" onclick="addWishlist('<%=data?._id%>')"></i> -->
 
-                      <img src="<%=d?.image%>" alt="<%=d?.altForImage%>" />
+                          <img src="<%=d?.image%>" alt="<%=d?.altForImage%>" />
+                        </div>
+                        <!-- </a> -->
+                      </div>
+                      <div class="col-md-8">
+                        <div class="collDetail">
+                          <div class="collTit">
+                            <div class="collLogo">
+                              <img src="<%=d?.icon%>" alt="<%=d?.altForIcon%>" />
+                            </div>
+                            <div class="mx-2">
+                              <a href="/collegeDetail/<%=d?.slag%>/overView">
+                                <h3>
+                                  <%=d.name%>
+                                </h3>
+                              </a>
+                              <p>Approved by:<%=d?.approvedField%>
+                              </p>
+                            </div>
+                          </div>
+                          <div class="row pt-2">
+                            <div class="col-md-4">
+                              <div class="collFeee">
+                                <span>₹ <%=d?.feesRange%></span>
+                                <p>Fees</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-4">
+                              <div class="collRcp d-flex align-items-center">
+                                <div class="iconSe">
+                                  <img src="/public/images/test.png" />
+                                </div>
+                                <a href="/collegeDetail/<%=d?.slag%>/courses">
+                                  <p>Course & Fees</p>
+                                </a>
+                              </div>
+                            </div>
+                            <div class="col-md-4">
+                              <div class="collRcp d-flex align-items-center">
+                                <div class="iconSe">
+                                  <img src="/public/images/test.png" />
+                                </div>
+                                <a href="/collegeDetail/<%=d?.slag%>/placement">
+                                  <p>Placement</p>
+                                </a>
+                              </div>
+                            </div>
+                            <div class="col-md-4">
+                              <div class="collRcp d-flex align-items-center">
+                                <div class="iconSe">
+                                  <img src="/public/images/test.png" />
+                                </div>
+                                <a href="/collegeDetail/<%=d?.slag%>/reviews">
+                                  <p>Reviews</p>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row pt-2">
+                          <div class="col-md-12">
+                            <div class="d-flex">
+                              <a href="/collegeDetail/<%=d?.slag%>/overView" class="applyBtn">Get More Info</a>
+                              <a href="#" class="quesBtn mx-2">Ask a Question</a>
+                              <a href="#!" class="sampleBtn">Sample Papers</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <!-- </a> -->
                   </div>
-                  <div class="col-md-8">
-                    <div class="collDetail">
-                      <div class="collTit">
-                        <div class="collLogo">
-                          <img src="<%=d?.icon%>" alt="<%=d?.altForIcon%>" />
-                        </div>
-                        <div class="mx-2">
-                          <a href="/collegeDetail/<%=d?.slag%>/overView">
-                            <h3><%=d.name%></h3>
-                          </a>
-                          <p>Approved by:<%=d?.approvedField%></p>
-                        </div>
-                      </div>
-                      <div class="row pt-2">
-                        <div class="col-md-4">
-                          <div class="collFeee">
-                            <span>₹ <%=d?.feesRange%></span>
-                            <p>Fees</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-4">
-                          <div class="collRcp d-flex align-items-center">
-                            <div class="iconSe">
-                              <img src="/public/images/test.png" />
-                            </div>
-                            <a href="/collegeDetail/<%=d?.slag%>/courses">
-                              <p>Course & Fees</p>
-                            </a>
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                          <div class="collRcp d-flex align-items-center">
-                            <div class="iconSe">
-                              <img src="/public/images/test.png" />
-                            </div>
-                            <a href="/collegeDetail/<%=d?.slag%>/placement">
-                              <p>Placement</p>
-                            </a>
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                          <div class="collRcp d-flex align-items-center">
-                            <div class="iconSe">
-                              <img src="/public/images/test.png" />
-                            </div>
-                            <a href="/collegeDetail/<%=d?.slag%>/reviews">
-                              <p>Reviews</p>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row pt-2">
-                      <div class="col-md-12">
-                        <div class="d-flex">
-                          <a
-                            href="/collegeDetail/<%=d?.slag%>/overView"
-                            class="applyBtn"
-                            >Get More Info</a
-                          >
-                          <a href="#" class="quesBtn mx-2">Ask a Question</a>
-                          <a href="#!" class="sampleBtn">Sample Papers</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-              <% }) %> <% }) %>
+                  <% }) %>
+                    <% }) %>
             </div>
 
             <!-- <div class="col-md-3">
@@ -151,18 +153,8 @@
             </p>
             <form class="form-card">
               <div class="d-flex">
-                <input
-                  type="text"
-                  id="fname"
-                  name="fname"
-                  placeholder="Email address"
-                />
-                <input
-                  type="text"
-                  id="mobile"
-                  name="mobile"
-                  placeholder="Mobile no"
-                />
+                <input type="text" id="fname" name="fname" placeholder="Email address" />
+                <input type="text" id="mobile" name="mobile" placeholder="Mobile no" />
                 <select class="form-select" aria-label="Choose your course">
                   <option selected>Choose your course</option>
                   <option value="1">Teacher</option>
@@ -183,47 +175,48 @@
 
     <%- include('../partials/footer')%>
 
-    <scr    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+      <scr <script type="text/javascript" src="assets/js/jquery.min.js">
+        </script>
         <script type="text/javascript" src="assets/js/main.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 
-    <script>
-      function getuserHistory(element) {
-        console.log(element);
-
-
-
-
-
-       
+        <script>
+          function getuserHistory(element) {
+            console.log(element);
 
 
 
 
 
 
-        var xhttp = new XMLHttpRequest();
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-          if (this.readyState == 4 && this.status == 200) {
-            // document.getElementById("demo").innerHTML =
-            // this.responseText;
-            //   console.log(this.responseText);
-            var data = JSON.parse(this.responseText);
-
-            var exam = data.examDetail;
-            var course = data.courseDetail;
-            var college = data.collegeDetail;
-       
 
 
-            if (exam) {
-              document.getElementById("allColleges").innerHTML = exam.map(
-                (exam) => {
-                  return exam.examDetail.map((d) => {
-                    return `
+
+
+
+
+            var xhttp = new XMLHttpRequest();
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (this.readyState == 4 && this.status == 200) {
+                // document.getElementById("demo").innerHTML =
+                // this.responseText;
+                //   console.log(this.responseText);
+                var data = JSON.parse(this.responseText);
+
+                var exam = data.examDetail;
+                var course = data.courseDetail;
+                var college = data.collegeDetail;
+
+
+
+                if (exam) {
+                  document.getElementById("allColleges").innerHTML = exam.map(
+                    (exam) => {
+                      return exam.examDetail.map((d) => {
+                        return `
        <ul class="examList">
                       <li
                         class="ex_rows"
@@ -300,18 +293,18 @@
             
 
                     `;
-                  });
+                      });
+                    }
+                  );
                 }
-              );
-            }
-          
-           if (course) {
-           
-         
-            document.getElementById("allColleges").innerHTML = course.map(
-              (course) => {
-                return course.courseDetail.map((d) => {
-                  return `
+
+                if (course) {
+
+
+                  document.getElementById("allColleges").innerHTML = course.map(
+                    (course) => {
+                      return course.courseDetail.map((d) => {
+                        return `
 
                   <div class="listing-content">
                                 <div class="schoolBlock" id="course_list_wrapper">
@@ -347,17 +340,17 @@
         </div>
         </div>
         </div>`;
-                });
-              }
-            );
-          }
-        
+                      });
+                    }
+                  );
+                }
 
-        if(college){
-            document.getElementById("allColleges").innerHTML = college.map(
-                (college) => {
-                  return college.collegeDetail.map((d) => {
-                    return `
+
+                if (college) {
+                  document.getElementById("allColleges").innerHTML = college.map(
+                    (college) => {
+                      return college.collegeDetail.map((d) => {
+                        return `
                     <div class="collegeCard">
             <div class="row">
                                 <div class="col-md-4">
@@ -440,47 +433,48 @@
                                 </div>
                             </div>
                         </div>`;
-                    });
-              }
-            );
+                      });
+                    }
+                  );
+                }
+              };
+
+
+
+            }
+            // on click add active class on li
+
+
+
+
+
+
+
+
+            xhttp.open("GET", `/getUserData?type=${element}`, true);
+            xhttp.send();
           }
-        };
-                
-                    
-                    
-    }
-// on click add active class on li
 
-   
-            
-
-             
-        
-      
-
-        xhttp.open("GET", `/getUserData?type=${element}`, true);
-        xhttp.send();
-        }
-
-    </script>
+        </script>
 
 
-<script>
+        <script>
 
 
 
 
-$(document).ready(function(){
-  $('.popularStateList li').click(function(){
-    $('.popularStateList li').removeClass('optionactive');
-    $(this).addClass('optionactive');
-});
-});
-
-  
+          $(document).ready(function () {
+            $('.popularStateList li').click(function () {
+              $('.popularStateList li').removeClass('optionactive');
+              $(this).addClass('optionactive');
+            });
+          });
 
 
-</script>
-   
-  </body>
+
+
+        </script>
+
+</body>
+
 </html>

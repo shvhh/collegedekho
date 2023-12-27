@@ -5,15 +5,14 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-    <title><%=data?.metaTitle%></title>
+    <title>
+        <%=data?.metaTitle%>
+    </title>
     <meta name="description" content="<%=data?.metaDescription%>">
     <meta name="keyword" content="<%=data?.metaKeyword%>">
     <link rel="canonical" href="<%=data?.canonical%>" />
-
-
-    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@100;200;300;400;500;600;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,25 +23,41 @@
 
 <body style="background-color: #f4f4f7;">
 
-    
+
     <%- include('../partials/navbar')%>
 
-        <div class="body careerPage"><!-- BODY CONTENT start -->
+        <div class="careerPage">
+            <section class="bannerSec">
+                <div class="container">
+                    <div class="bannerTitle">
+                        <!-- <img src="/public/images/banner_bg.svg"> -->
+                        <h3>Career Detail</h3>
+                    </div>
+                    <img src="/public/images/banner.png" class="w-100 mt-3">
+                </div>
+                <div class="anim-elements">
+                    <div class="anim-element"></div>
+                    <div class="anim-element"></div>
+                    <div class="anim-element"></div>
+                    <div class="anim-element"></div>
+                    <div class="anim-element"></div>
+                </div>
+            </section>
             <div class="bodyContent careerDetails">
                 <div class="container">
-                    <div class="block careerDetailsBlock">
+                    <div class="row">
                         <div class="col-md-3 ">
                             <div class="fixed-div">
                                 <div class="careerImage">
                                     <!-- <img src="https://media.collegedekho.com/media/img/careers/chartered-accoutantt.jpg"
                                         class="img-responsive lazy" alt="Career as Chartered Accountant" style=""> -->
-                                    </div>
+                                </div>
                                 <!-- <p class="details-by"><span class="updated"><span>Updated By <span class="by"><a href="">Sakunth Kumar</a></span></span> on <b> 28 Sep, 2021 11:20 A.M</b></span></p> -->
                                 <p class="details-by"><span class="updated"><span>Last Updated By <span class="by"><a
                                                     href="/author/anmol.arora@collegedekho.com/">Anmol
                                                     Arora</a></span></span> on <b> 11 Apr, 2023</b></span></p>
                                 <ul class="career-info" id="nav_role">
-                                    <li ><a href="#about" class="__mPS2id _mPS2id-h">About</a></li>
+                                    <li><a href="#about" class="__mPS2id _mPS2id-h">About</a></li>
                                     <li><a href="#eligibility" class="__mPS2id _mPS2id-h">Eligibility</a></li>
                                     <li><a href="#jobs" class="__mPS2id _mPS2id-h">Job Roles</a></li>
                                     <li><a href="#salary" class="__mPS2id _mPS2id-h">Salary</a></li>
@@ -52,98 +67,84 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-9 careerD">
                             <div class="block-content">
                                 <div class="follow"><button
                                         class="btn button django-form-submit gtm-lead-click apply_now_det_cd"
                                         data-position="3" data-button_id="34" id="btn-cta-34" data-cta_id="248"
                                         data-content_type="671" data-object_id="47" data-template="career_detail">
-                                        <!-- Follow -->
-                                    </button></div>
-                                <div class="title">
-                                    <!-- <h1>How to Become a Chartered Accountant</h1> -->
+                                    </button>
                                 </div>
-                              
-                                <div  id="about" data-title="About" class="cp_row_mPS2id-t">
-                                
+                                <div id="about" data-title="About" class="cp_row_mPS2id-t">
                                     <% data?.about?.forEach(function(about){ %>
-                                    <h2><%=about?.heading%></h2>
-                                    <p></p>
-                                    <p> <%-about?.description%></p>
-                                    <% }) %>
-                           
-                                   
-                                  
-                                  
+                                        <h2>
+                                            <%=about?.heading%>
+                                        </h2>
+                                        <p> <%-about?.description%></p>
+                                        <% }) %>
                                 </div>
-                          
                                 <div id="eligibility" data-title="Eligibility" class="cp_row_mPS2id-t">
-
                                     <% data?.eligibility?.forEach(function(eligibility){ %>
-                                        <h2><%=eligibility?.heading%></h2>
-                                        <p></p>
+                                        <h2>
+                                            <%=eligibility?.heading%>
+                                        </h2>
                                         <p> <%-eligibility?.description%></p>
                                         <% }) %>
-                             
                                 </div>
                                 <div id="jobs" data-title="Job Roles" class="cp_row_mPS2id-t">
-
-
                                     <% data?.jobRole?.forEach(function(jobRole){ %>
-                                        <h2><%=jobRole?.heading%></h2>
-                                        <p></p>
+                                        <h2>
+                                            <%=jobRole?.heading%>
+                                        </h2>
                                         <p> <%-jobRole?.description%></p>
                                         <% }) %>
                                 </div>
                                 <div id="salary" data-title="Salary" class="cp_row_mPS2id-t">
-
-
-                                 
                                     <% data?.salary?.forEach(function(salary){ %>
-                                        <h2><%=salary?.heading%></h2>
-                                        <p></p>
+                                        <h2>
+                                            <%=salary?.heading%>
+                                        </h2>
                                         <p> <%-salary?.description%></p>
                                         <% }) %>
                                 </div>
                                 <div id="books" data-title="Prep Books" class="cp_row_mPS2id-t">
                                     <% data?.preBooks?.forEach(function(preBooks){ %>
-                                        <h2><%=preBooks?.heading%></h2>
-                                        <p></p>
+                                        <h2>
+                                            <%=preBooks?.heading%>
+                                        </h2>
                                         <p> <%-preBooks?.description%></p>
                                         <% }) %>
-                                  
+
                                 </div>
                                 <div id="pros" data-title="Pros" class="cp_row_mPS2id-t">
                                     <% data?.pros?.forEach(function(pros){ %>
-                                        <h2><%=pros?.heading%></h2>
-                                        <p></p>
+                                        <h2>
+                                            <%=pros?.heading%>
+                                        </h2>
                                         <p> <%-pros?.description%></p>
                                         <% }) %>
                                 </div>
                                 <div id="cons" data-title="Cons" class="cp_row_mPS2id-t">
                                     <% data?.cons?.forEach(function(cons){ %>
-                                        <h2><%=cons?.heading%></h2>
-                                        <p></p>
+                                        <h2>
+                                            <%=cons?.heading%>
+                                        </h2>
                                         <p> <%-cons?.description%></p>
                                         <% }) %>
-                                 
                                 </div>
                                 <div class="block popularCollegeBlock">
                                     <h2>Top Colleges to pursue career as Chartered Accountant</h2>
-                                    <!-- <div clax -->
                                 </div>
                             </div>
                         </div>
-                        <div class="clear"></div>
                     </div>
                 </div>
-                <div class="clear"></div>
             </div>
             <div class="modal fade bs-example-modal-sm" id="log_modal" role="dialog">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content">
                         <div class="modal-header"><button type="button" class="close" data-dismiss="modal">×</button>
-                            <h4 class="modal-title success_message"> Submit your details to know more about Chartered
+                            <h4 class="modal-title success_message">Submit your details to know more about Chartered
                                 Accountant</h4>
                         </div>
                         <div class="modal-body subscribePopup">
@@ -153,36 +154,17 @@
                 </div>
             </div>
             <%- include('../partials/footer')%>
-            <script type="text/javascript" src="/public/js/jquery.min.js"></script>
-            <script type="text/javascript" src="/public/js/main.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-            <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
-
-
-
-            
+                <script type="text/javascript" src="/public/js/jquery.min.js"></script>
+                <script type="text/javascript" src="/public/js/main.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+                <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 </body>
-
-
 <script>
-
-
-// onclick on career-info li add class active
-
-
-$('.career-info li').click(function(){
-    $('.career-info li').removeClass('_mPS2id-h a');
-    $(this).addClass('_mPS2id-h a');
-})
-
-
-
-
-
-
-
-
-
+    $('.career-info li').click(function () {
+        $('.career-info li').removeClass('_mPS2id-h a');
+        $(this).addClass('_mPS2id-h a');
+    })
 </script>
+
 </html>
