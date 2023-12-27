@@ -50,12 +50,12 @@ routes.get("/", async (req, res) => {
             {
               $match: {
                 $expr: {
-                  $in: ["$$courseCategoryId", "$courseCategoryId"],  
+                  $in: ["$$courseCategoryId", "$courseCategoryId"],
                 },
               },
             },
 
-         
+
             {
               $lookup: {
                 from: "states",
@@ -72,7 +72,7 @@ routes.get("/", async (req, res) => {
 
 
 
-  // console.log(topCourseCategory);
+    // console.log(topCourseCategory);
 
     const state = await State.find().lean();
     const courseCategoryData = await courseCategory.find().lean();
@@ -142,6 +142,127 @@ routes.get("/", async (req, res) => {
   }
 });
 
+
+
+// schooll page render
+
+
+routes.get("/school", async (req, res) => {
+  try {
+    const slider = await Slider.find();
+    const studyGoalData = await studyGoal.find().lean();
+
+    const topCourseCategory = await courseCategory.aggregate([
+      {
+        $match: {
+          isTop: true,
+        },
+      },
+
+
+
+      {
+        $lookup: {
+          from: "colleges",
+          let: { courseCategoryId: "$_id" },
+          pipeline: [
+            {
+              $match: {
+                $expr: {
+                  $in: ["$$courseCategoryId", "$courseCategoryId"],
+                },
+              },
+            },
+
+
+            {
+              $lookup: {
+                from: "states",
+                localField: "stateId",
+                foreignField: "_id",
+                as: "stateDetail",
+              },
+            },
+          ],
+          as: "collegeDetail",
+        },
+      },
+    ]);
+
+
+
+    // console.log(topCourseCategory);
+
+    const state = await State.find().lean();
+    const courseCategoryData = await courseCategory.find().lean();
+
+    const id = courseCategoryData[0]?._id;
+    const courseCategoryId = new mongoose.Types.ObjectId(id);
+    const topCollege = await College.find({ isTop: true }).limit(2).lean();
+
+    topCollege.forEach((topCollege) => {
+      topCollege.from = moment(topCollege?.applicationDate?.from).format(
+        "DD MMM"
+      );
+      topCollege.to = moment(topCollege?.applicationDate?.to).format(
+        "DD MMM-YYYY"
+      );
+      topCollege.applicationDate = topCollege.from + " - " + topCollege.to;
+
+      // convert the date in dd/mm/yyyy format/
+    });
+
+    const collegeData = await courseCategory.aggregate([
+      {
+        $match: {
+          _id: courseCategoryId,
+        },
+      },
+
+      // find  the college  by courseCategoryId/ and state name belong to wg\hich state/
+
+      {
+        $lookup: {
+          from: "colleges",
+          let: { courseCategoryId: "$_id" },
+          pipeline: [
+            {
+              $match: {
+                $expr: {
+                  $in: ["$$courseCategoryId", "$courseCategoryId"],
+                },
+              },
+            },
+            {
+              $lookup: {
+                from: "states",
+                localField: "stateId",
+                foreignField: "_id",
+                as: "stateDetail",
+              },
+            },
+          ],
+          as: "collegeDetail",
+        },
+      },
+    ]);
+
+    res.view("pages/schools", {
+      slider,
+      topCourseCategory,
+      state,
+      courseCategoryData,
+      collegeData,
+      topCollege,
+      studyGoalData,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+
+
 // exam-detail page/
 routes.get("/exam-detail/:slag/:section", async (req, res) => {
   const examSection = req.params.section;
@@ -185,13 +306,18 @@ routes.get("/exam-detail/:slag/:section", async (req, res) => {
 });
 
 routes.get("/blog", async (req, res) => {
-  res.render("pages/blog");
+  res.view("pages/blog");
 });
 
-routes.get("/blog-details", async (req, res) => {
-  res.render("pages/blog-details");
+routes.get("/blog-detail", async (req, res) => {
+  res.view("pages/blog-detail");
 });
 
+
+
+routes.get("/career", async (req, res) => {
+  res.view("pages/career");
+});
 routes.get("/college-details", async (req, res) => {
   res.render("pages/college-details");
 });
@@ -205,7 +331,7 @@ routes.get("/collegeGetByCourseId/:slag", async (req, res) => {
     const courseData = await course.findOne({ slag: slag });
 
     const courseCategoryId = courseData.courseCategoryId;
-    
+
     const courseCategoryDetail = await courseCategory.aggregate([
       {
         $match: {
@@ -269,7 +395,7 @@ routes.get("/collegeGetByCourseId/:slag", async (req, res) => {
         },
       },
     ]);
-  
+
     const facility = [
       "A/C",
       "ATM",
@@ -2385,8 +2511,8 @@ routes.get("/sitemap.xml", async (req, res) => {
   <url>
   <loc>${item.url}</loc>
   <lastmod>${moment(new Date(item.lastmod)).format(
-    "YYYY-MM-DDTHH:mm:ss+00:00"
-  )}</lastmod>
+      "YYYY-MM-DDTHH:mm:ss+00:00"
+    )}</lastmod>
   <priority>${item.priority}</priority>
 </url>
   `;
@@ -2477,6 +2603,51 @@ routes.get("/getCourseByShorting", async (req, res) => {
 
       res.send(data);
     }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+
+// career page render//
+
+
+
+
+routes.get("/careerlistData", async (req, res) => {
+  try {
+    // const data = await Career.findOne({ slag: req.params.slag }).lean();
+
+    res.view("pages/carerlist");
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+
+
+
+
+
+// schoollist/
+
+
+routes.get("/schoollist",async(req,res)=>{
+  try{
+
+    res.view("pages/schoollist");
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+
+// school-detail page tender
+
+
+routes.get("/schoolDetail", async(req,res)=>{
+  try{
+  res.view("pages/school-detail");
   } catch (error) {
     console.log(error);
   }

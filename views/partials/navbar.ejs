@@ -1,787 +1,445 @@
-<header>
-  <div id="header20">
-    <div class="full offBg">
-      <div class="row">
-        <div class="col-md-3 headerLogo">
-          <div class="hamburger" id="hamburger-1">
-            <span class="line"> </span>
-            <span class="line"> </span>
-            <span class="line"> </span>
-          </div>
-          <a href="/">
-            <img alt="" src="/public//images/logo.png" />
-          </a>
-        </div>
-
-        <div class="col-md-9">
-          <div class="full menu20">
-            <div class="row" style="position: relative">
-              <ul>
-                <li class="l1">
-                  <a class="menuTitle a6dU7eb" href="#">Colleges</a>
-                  <div id="hosting_menu20Content" class="menu20Content">
-                    <div class="row flex-container noMargin noPadding oHide">
-                      <div class="menu_item_one westSide col-s-12 col-m-12">
-                        <div class="flex-wrapper side-hover">
-                          <ul class="full row l2">
-                            <% college?.forEach(function(college){ %>
-                            <li class="row">
-                              <div class="col-md-3 title noMargin a5etf">
-                                <a href="#"><%=college?.category%></a>
-                              </div>
-                              <div
-                                class="col-md-9 flex-wrapper content noMargin right-inner-hover"
-                              >
-                                <div class="row">
-                                  <div class="col-md-4 my-3">
-                                    <div class="a5efd s-hide m-show l-show">
-                                      <div class="contentTitle">
-                                        Colleges By Degrees
-                                      </div>
-                                    </div>
-                                    <ul class="l3">
-                                      <ul>
-                                        <li class="col-s-12 a5elt">
-                                          <%
-                                          college?.courseDetail?.forEach(function(d){
-                                          %>
-                                          <a
-                                            href="/collegeGetByCourseId/<%=d?.slag%>"
-                                            class="full block"
-                                            ><%=d.name%></a
-                                          >
-
-                                          <% }) %>
-                                          <a
-                                            href="/collegeGetByCourseId/<%=college?.courseDetail[0]?.slag%>"
-                                            class="viewAll"
-                                            >View All</a
-                                          >
-                                        </li>
-                                      </ul>
-                                    </ul>
-                                  </div>
-                                  <div class="col-md-4 my-3">
-                                    <div class="a5efd s-hide m-show l-show">
-                                      <div class="contentTitle">
-                                        Popular College
-                                      </div>
-                                    </div>
-                                    <ul class="l3">
-                                      <ul>
-                                        <li class="col-s-12 a5elt">
-                                          <%
-                                          college?.popularCollege?.forEach(function(d){
-                                          %>
-
-                                          <a
-                                            href="/collegeDetail/<%=d.slag%>/overView"
-                                            class="full block"
-                                            ><%=d.name%></a
-                                          >
-
-                                          <% }) %>
-
-                                          <!-- <a href="colleges.html" class="full block">M.Tech</a>
-                                                                <a href="colleges.html" class="full block">B.Arch</a>
-                                                                <a href="colleges.html" class="full block">B.Tech +
-                                                                   M.Tech</a>
-                                                                <a href="colleges.html" class="full block">Diploma</a> -->
-                                          <!-- <a href="colleges.html" class="viewAll">View
-                                                                   All</a> -->
-                                        </li>
-                                      </ul>
-                                    </ul>
-                                  </div>
-                                  <div class="col-md-4 my-3">
-                                    <div class="a5efd s-hide m-show l-show">
-                                      <div class="contentTitle">
-                                        Top College
-                                      </div>
-                                    </div>
-                                    <ul class="l3">
-                                      <ul>
-                                        <li class="col-s-12 a5elt">
-                                          <%
-                                          college?.topCollege?.forEach(function(d){
-                                          %>
-                                          <a
-                                            href="/collegeDetail/<%=d.slag%>/overView"
-                                            class="full block"
-                                            ><%=d.name%></a
-                                          >
-                                          <% }) %>
-                                          <!-- <a href="colleges.html" class="full block">M.Tech</a>
-                                                                <a href="colleges.html" class="full block">B.Arch</a>
-                                                                <a href="colleges.html" class="full block">B.Tech +
-                                                                   M.Tech</a>
-                                                                <a href="colleges.html" class="full block">Diploma</a> -->
-                                          <!-- <a href="colleges.html" class="viewAll">View
-                                                                   All</a> -->
-                                        </li>
-                                      </ul>
-                                    </ul>
-                                  </div>
-                                  <div class="col-md-4 my-3">
-                                    <div class="a5efd s-hide m-show l-show">
-                                      <div class="contentTitle">
-                                        Colleges By Location
-                                      </div>
-                                    </div>
-                                    <ul class="l3">
-                                      <ul>
-                                        <li class="col-s-12 a5elt">
-                                          <%
-                                          college?.stateDetail?.forEach(function(d){
-                                          %>
-                                          <a
-                                            href="/getCollegeByState/<%=d?.name%>/<%=college?.slag%>"
-                                            class="full block"
-                                            ><%=d.name%></a
-                                          >
-
-                                          <% }) %>
-
-                                          <a
-                                            href="/getCollegeByState/<%=college?.stateDetail[0]?.name%>/<%=college?.slag%>"
-                                            class="viewAll"
-                                            >View All</a
-                                          >
-                                        </li>
-                                      </ul>
-                                    </ul>
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-
-                            <% }) %>
-                          </ul>
-                        </div>
-                      </div>
+<div class="nav">
+  <div class="container">
+    <nav>
+      <div class="logoSection">
+        <a href="/" class="logoMain">
+          <img alt="" src="/public//images/logo.png" />
+        </a>
+        <ul class="menu menu-bar">
+          <li>
+            <a href="javascript:void(0);" class="menu-link menu-bar-link" aria-haspopup="true">Select Goal/ City</a>
+            <ul class="mega-menu mega-menu--flat">
+              <li>
+                <h3 class="m-0">Select Your Study Preference</h3>
+                <form action="" class="searchState w-100">
+                  <i class="fa-regular fa-magnifying-glass"></i>
+                  <input type="text" placeholder="Search and Select Your Course" value="" name="search">
+                  <button type="submit" class="submitBtn">Search</button>
+                </form>
+                <div class="selectGoal">
+                  <h4 class="m-0"><i class="fa-regular fa-user-helmet-safety"></i> Engineering</h4>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <a href="" class="rigStudyCol">
+                        BE/B.Tech
+                        <i class="fa-light fa-angle-right"></i>
+                      </a>
+                    </div>
+                    <div class="col-md-4">
+                      <a href="" class="rigStudyCol">
+                        Diploma in Engineering
+                        <i class="fa-light fa-angle-right"></i>
+                      </a>
+                    </div>
+                    <div class="col-md-4">
+                      <a href="" class="rigStudyCol">
+                        ME/M.Tech
+                        <i class="fa-light fa-angle-right"></i>
+                      </a>
                     </div>
                   </div>
-                </li>
-                <li class="l1">
-                  <a class="menuTitle a6dU7eb" href="#">Courses</a>
-                  <div id="cloud_menu20Content" class="menu20Content">
-                    <div
-                      class="row flex-container noMargin noPadding oHide pt-3 px-2"
-                    >
-                      <div class="westSide col-md-3">
-                        <div class="a5efd">
-                          <div class="contentTitle">Popular Courses</div>
-                        </div>
-                        <ul class="full row l2">
-                          <div class="col-md-12 oHide">
-                            <% courses?.forEach(function(courses){ %>
-                            <a
-                              href="/courseDetail/<%=courses?.slag%>/section"
-                              class="a5etf"
-                              ><%=courses?.name%></a
-                            >
-
-                            <% }) %>
-                            <!-- <a href="#!" class="a5etf">M.Tech</a> -->
-                          </div>
-                        </ul>
-                      </div>
-                      <!-- <div class="westSide col-md-3">
-                                     <div class="a5efd">
-                                        <div class="contentTitle">Popular Courses</div>
-                                     </div>
-                                     <ul class="full row l2">
-                                        <div class="col-md-12 oHide">
-                                           <a href="#!" class="a5etf">B.Tech</a>
-                                           <a href="#!" class="a5etf">M.Tech</a>
-                                        </div>
-                                     </ul>
-                                  </div>
-                                  <div class="westSide col-md-3">
-                                     <div class="a5efd">
-                                        <div class="contentTitle">Popular Courses</div>
-                                     </div>
-                                     <ul class="full row l2">
-                                        <div class="col-md-12 oHide">
-                                           <a href="#!" class="a5etf">B.Tech</a>
-                                           <a href="#!" class="a5etf">M.Tech</a>
-                                        </div>
-                                     </ul>
-                                  </div>
-                                  <div class="westSide col-md-3">
-                                     <div class="a5efd">
-                                        <div class="contentTitle">Popular Courses</div>
-                                     </div>
-                                     <ul class="full row l2">
-                                        <div class="col-md-12 oHide">
-                                           <a href="#!" class="a5etf">B.Tech</a>
-                                           <a href="#!" class="a5etf">M.Tech</a>
-                                        </div>
-                                     </ul>
-                                  </div>
-                                  <div class="westSide col-md-3">
-                                     <div class="a5efd">
-                                        <div class="contentTitle">Popular Courses</div>
-                                     </div>
-                                     <ul class="full row l2">
-                                        <div class="col-md-12 oHide">
-                                           <a href="#!" class="a5etf">B.Tech</a>
-                                           <a href="#!" class="a5etf">M.Tech</a>
-                                        </div>
-                                     </ul>
-                                  </div> -->
+                  <h4 class="m-0"><i class="fa-light fa-list-check"></i> Management</h4>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <a href="" class="rigStudyCol">
+                        MBA/PGDM
+                        <i class="fa-light fa-angle-right"></i>
+                      </a>
                     </div>
-                    <a href="/getAllCourse" class="viewAll mx-3 pb-3"
-                      >View All Courses</a
-                    >
-                  </div>
-                </li>
-                <li class="l1">
-                  <a class="menuTitle a6dU7eb" href="#">Exams</a>
-                  <div id="hosting_menu20Content" class="menu20Content">
-                    <div class="row flex-container noMargin noPadding oHide">
-                      <div class="menu_item_one westSide col-s-12 col-m-12">
-                        <div class="flex-wrapper side-hover">
-                          <ul class="full row l2">
-                            <% exam?.forEach(function(exam){ %>
-
-                            <li class="row">
-                              <div class="col-md-3 title noMargin a5etf">
-                                <a href="#"><%=exam.examCategory%></a>
-                              </div>
-                              <div
-                                class="col-md-9 flex-wrapper content noMargin right-inner-hover"
-                              >
-                                <div class="row">
-                                  <% exam?.examDetail?.forEach(function(d){ %>
-
-                                  <div class="col-md-4 my-3">
-                                    <div class="a5efd s-hide m-show l-show">
-                                      <div class="contentTitle">
-                                        <%=d.heading%>
-                                      </div>
-                                    </div>
-                                    <ul class="l3">
-                                      <ul>
-                                        <li class="col-s-12 a5elt">
-                                          <a
-                                            href="/exam-detail/<%=d.slag%>/eligibility"
-                                            class="full block"
-                                            >Eligibility</a
-                                          >
-                                          <a
-                                            href="/exam-detail/<%=d.slag%>/syllabus"
-                                            class="full block"
-                                            >Syllabus</a
-                                          >
-                                          <a
-                                            href="/exam-detail/<%=d.slag%>/examPattern"
-                                            class="full block"
-                                            >Exam Pattern</a
-                                          >
-                                          <a
-                                            href="/exam-detail/<%=d.slag%>/howToPrepare"
-                                            class="full block"
-                                            >How To Prepare</a
-                                          >
-                                          <a
-                                            href="/exam-detail/<%=d.slag%>/resilt"
-                                            class="full block"
-                                            >Result</a
-                                          >
-                                          <a
-                                            href="/exam/<%=exam?.slag%>"
-                                            class="viewAll"
-                                            >View All</a
-                                          >
-                                        </li>
-                                      </ul>
-                                    </ul>
-                                  </div>
-
-                                  <% }) %>
-                                </div>
-                              </div>
-                            </li>
-
-                            <% }) %>
-                          </ul>
-                        </div>
-                      </div>
+                    <div class="col-md-4">
+                      <a href="" class="rigStudyCol">
+                        BBA/BBM
+                        <i class="fa-light fa-angle-right"></i>
+                      </a>
+                    </div>
+                    <div class="col-md-4">
+                      <a href="" class="rigStudyCol">
+                        Executive MBA
+                        <i class="fa-light fa-angle-right"></i>
+                      </a>
                     </div>
                   </div>
-                </li>
-
-                <li class="l1">
-                  <a class="menuTitle a6dU7eb" href="#">Career</a>
-                  <div id="cloud_menu20Content" class="menu20Content">
-                    <div
-                      class="row flex-container noMargin noPadding oHide pt-3 px-2"
-                    >
-                      <div class="westSide col-md-3">
-                        <div class="a5efd">
-                          <div class="contentTitle">Popular Career</div>
-                        </div>
-                        <ul class="full row l2">
-                          <div class="col-md-12 oHide">
-                            <% careerDetail?.forEach(function(careerDetail){ %>
-                            <a
-                              href="/carrerDetail/<%=careerDetail?.slag%>"
-                              class="a5etf"
-                              ><%=careerDetail?.heading%></a
-                            >
-
-                            <% }) %>
-                            <!-- <a href="#!" class="a5etf">M.Tech</a> -->
-                          </div>
-                        </ul>
-                      </div>
-                      <!-- <div class="westSide col-md-3">
-                                     <div class="a5efd">
-                                        <div class="contentTitle">Popular Courses</div>
-                                     </div>
-                                     <ul class="full row l2">
-                                        <div class="col-md-12 oHide">
-                                           <a href="#!" class="a5etf">B.Tech</a>
-                                           <a href="#!" class="a5etf">M.Tech</a>
-                                        </div>
-                                     </ul>
-                                  </div>
-                                  <div class="westSide col-md-3">
-                                     <div class="a5efd">
-                                        <div class="contentTitle">Popular Courses</div>
-                                     </div>
-                                     <ul class="full row l2">
-                                        <div class="col-md-12 oHide">
-                                           <a href="#!" class="a5etf">B.Tech</a>
-                                           <a href="#!" class="a5etf">M.Tech</a>
-                                        </div>
-                                     </ul>
-                                  </div>
-                                  <div class="westSide col-md-3">
-                                     <div class="a5efd">
-                                        <div class="contentTitle">Popular Courses</div>
-                                     </div>
-                                     <ul class="full row l2">
-                                        <div class="col-md-12 oHide">
-                                           <a href="#!" class="a5etf">B.Tech</a>
-                                           <a href="#!" class="a5etf">M.Tech</a>
-                                        </div>
-                                     </ul>
-                                  </div>
-                                  <div class="westSide col-md-3">
-                                     <div class="a5efd">
-                                        <div class="contentTitle">Popular Courses</div>
-                                     </div>
-                                     <ul class="full row l2">
-                                        <div class="col-md-12 oHide">
-                                           <a href="#!" class="a5etf">B.Tech</a>
-                                           <a href="#!" class="a5etf">M.Tech</a>
-                                        </div>
-                                     </ul>
-                                  </div> -->
+                  <h4 class="m-0"><i class="fa-light fa-cart-shopping"></i> Commerce</h4>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <a href="" class="rigStudyCol">
+                        B.Com
+                        <i class="fa-light fa-angle-right"></i>
+                      </a>
                     </div>
-                    <!-- <a href="/getAllCourse" class="viewAll mx-3 pb-3"
-                      >View All Carrer</a
-                    > -->
+                    <div class="col-md-4">
+                      <a href="" class="rigStudyCol">
+                        M.Com
+                        <i class="fa-light fa-angle-right"></i>
+                      </a>
+                    </div>
                   </div>
-                </li>
-
-                <!-- <li class="l1">
-                            <div class="wishdropdown">
-                               <i onclick="myFunction()" class="fa-regular fa-circle-user wishdropbtn"></i>
-                               <div id="mywishDropdown" class="wishdropdown-content">
-                                  <a href="#!">My Wishlist</a>
-                                  <a href="#!">Log Out</a>
-                               </div>
-                            </div>
-                         </li> -->
-
-                <% if(userToken) { %>
-
-                <div class="dropdown">
-                  <button
-                    class="btn"
-                    type="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <img
-                      src="/public/images/login-image.png"
-                      alt=""
-                      class="login-image-1"
-                    />
-                  </button>
-                  <ul class="dropdown-menu drop-list">
-                    <li>
-                      <a class="dropdown-item" href="/myProfile">My Account</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="/getWishlistByUserId"
-                        >Wish List</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="/passwordChange"
-                        >Password Change</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="/logout">Log Out</a>
-                    </li>
-                  </ul>
                 </div>
-                <% } else { %>
-
-                <!-- login  -->
-                <li class="l1">
-                  <button
-                    type="button"
-                    class="registrationBtn"
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
-                  >
-                    Login
-                  </button>
-                  <div
-                    class="modal fade"
-                    id="exampleModal"
-                    tabindex="-1"
-                    aria-labelledby="exampleModalLabel"
-                    aria-hidden="true"
-                  >
-                    <div class="modal-dialog loginModal">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button
-                            type="button"
-                            class="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
-                          ></button>
-                        </div>
-                        <div class="modal-body">
-                          <div class="row">
-                            <div class="col-md-6">
-                              <img
-                                src="/public/images/login.png"
-                                class="w-100"
-                              />
-                            </div>
-                            <div class="col-md-6">
-                              <div class="text-center">
-                                <img
-                                  src="/public/images/logo.png"
-                                  class="w-50"
-                                />
-                                <h2 class="m-0 pt-3">Welcome Back!</h2>
-                                <h4>Sign in to continue</h4>
-                              </div>
-                              <form class="form-modal">
-                                <div
-                                  class="row justify-content-between text-left"
-                                >
-                                  <div class="form-group">
-                                    <label class="form-control-label"
-                                      >Mobile Number</label
-                                    >
-                                    <input
-                                      type="text"
-                                      placeholder="Enter your number"
-                                      id="loginPhoneNumber"
-                                    />
-                                    <p
-                                      class="allError"
-                                      id="loginPhoneNumberError"
-                                    ></p>
-                                  </div>
-                                  <div class="form-group">
-                                    <label class="form-control-label"
-                                      >Password</label
-                                    >
-                                    <input
-                                      type="password"
-                                      placeholder="Enter password"
-                                      id="loginPassword"
-                                    />
-                                    <p
-                                      class="allError"
-                                      id="loginPasswordError"
-                                    ></p>
-                                  </div>
-                                </div>
-                                <div class="text-center pt-3">
-                                  <div class="form-group text-center pb-2">
-                                    <a
-                                      onclick="loginUser(this)"
-                                      class="submitBtn"
-                                      >Login</a
-                                    >
-                                  </div>
-                                  <p style="color: #1d1d1d; line-height: 1.3">
-                                    New User?
-                                    <a
-                                      href="#!"
-                                      onclick="registerOpen()"
-                                      style="color: #eca500"
-                                      >Register Now</a
-                                    >
-                                  </p>
-                                </div>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-
-                <!-- register// -->
-                <li class="l1">
-                  <button
-                    type="button"
-                    class="registrationBtn"
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal2"
-                  >
-                    Registration
-                  </button>
-                  <div
-                    class="modal fade"
-                    id="exampleModal2"
-                    tabindex="-1"
-                    aria-labelledby="exampleModalLabel2"
-                    aria-hidden="true"
-                  >
-                    <div class="modal-dialog loginModal">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel2">
-                            Register Now
-                          </h5>
-                          <button
-                            type="button"
-                            class="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
-                          ></button>
-                        </div>
-                        <div class="modal-body">
-                          <div class="row">
-                            <div class="col-md-6">
-                              <div
-                                class="jsx-2114236980 media my-2 leadform-header"
-                              >
-                                <div
-                                  class="jsx-2114236980 rounded-circle p-3 lead-hdr-img"
-                                >
-                                  <img
-                                    data-src="https://images.collegedunia.com/public/asset/img/cd-static-nr/leadform_logo.png?h=50&amp;w=50&amp;mode=stretch"
-                                    src="https://images.collegedunia.com/public/asset/img/cd-static-nr/leadform_logo.png?h=50&amp;w=50&amp;mode=stretch"
-                                    alt=" logo"
-                                    height="50px"
-                                    class="jsx-2355921263 lazyloaded"
-                                  />
-                                </div>
-                                <div class="mx-2">
-                                  <h3>Register Now To Apply</h3>
-                                  <p class="font-weight-normal">
-                                    Get details and latest updates
-                                  </p>
-                                </div>
-                              </div>
-                              <div class="mt-5 text-center">
-                                <img
-                                  src="/public/images/login.png"
-                                  class="w-50"
-                                />
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <form class="form-modal">
-                                <div
-                                  class="row justify-content-between text-left"
-                                >
-                                  <div class="form-group">
-                                    <label class="form-control-label"
-                                      >Name</label
-                                    >
-                                    <input
-                                      type="text"
-                                      placeholder="Enter your name"
-                                      id="name"
-                                      name="name"
-                                      required
-                                    />
-                                    <p class="allError" id="nameError"></p>
-                                  </div>
-                                  <div class="form-group">
-                                    <label class="form-control-label"
-                                      >Email</label
-                                    >
-                                    <input
-                                      type="text"
-                                      placeholder="Enter your mail id"
-                                      id="email"
-                                      oninput="checkEmailExistornot(this)"
-                                      name="email"
-                                      required
-                                    />
-                                    <p class="allError" id="emailError"></p>
-                                  </div>
-                                  <div class="form-group">
-                                    <label class="form-control-label"
-                                      >Mobile Number</label
-                                    >
-                                    <input
-                                      type="text"
-                                      placeholder="Enter your number"
-                                      id="phone"
-                                      oninput="checkPhoneExistornot(this)"
-                                      name="phone"
-                                      required
-                                    />
-                                    <p class="allError" id="phoneError"></p>
-                                  </div>
-                                  <div class="form-group">
-                                    <label class="form-control-label"
-                                      >Gender</label
-                                    >
-                                    <select
-                                      class="form-select p-2"
-                                      aria-label="Gender"
-                                      id="gender"
-                                      name="gender"
-                                      required
-                                    >
-                                      <!-- <option selected="">
-                                          Select your gender
-                                        </option> -->
-                                      <option value="Male">Male</option>
-                                      <option value="Female">Female</option>
-                                      <option value="other">Other</option>
-                                    </select>
-                                    <p class="allError" id="genderError"></p>
-                                  </div>
-                                  <div class="form-group">
-                                    <label class="form-control-label"
-                                      >DOB</label
-                                    >
-                                    <input
-                                      type="text"
-                                      placeholder="DD/MM/YYYY"
-                                      id="dob"
-                                      name="dob"
-                                      required
-                                    />
-                                    <p class="allError" id="dobError"></p>
-                                  </div>
-                                  <div class="form-group">
-                                    <label class="form-control-label"
-                                      >Password</label
-                                    >
-                                    <input
-                                      type="password"
-                                      placeholder="Enter password"
-                                      id="password"
-                                      name="password"
-                                      required
-                                    />
-                                    <p class="allError" id="passwordError"></p>
-                                  </div>
-                                </div>
-                                <div class="text-center">
-                                  <div class="form-group text-center pb-2">
-                                    <!-- <button class="submitBtn"        onclick="userValidation(this)">
-                                        Sign Up
-                                      </button> -->
-
-                                    <a
-                                      type="submit"
-                                      onclick="userValidation(this)"
-                                      class="submitBtn"
-                                      >Sign Up</a
-                                    >
-                                  </div>
-                                  <p style="color: #1d1d1d; line-height: 1.3">
-                                    I'am User?
-                                    <a
-                                      href="#!"
-                                      onclick="loginOpen(this)"
-                                      style="color: #eca500"
-                                      >Login Now</a
-                                    >
-                                  </p>
-                                </div>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-
-                <li class="li">
-                  <!-- Button trigger modal -->
-                  <!-- <button type="button" class="banner-modal2" data-bs-toggle="modal" data-bs-target="#exampleModal3">
-                        Modal
-                    </button> -->
-
-                  <!-- Modal -->
-                  <div
-                    class="modal fade"
-                    id="exampleModal3"
-                    tabindex="-1"
-                    aria-labelledby="exampleModalLabel"
-                    aria-hidden="true"
-                  >
-                    <div class="modal-dialog modal-left">
-                      <div class="modal-content modal-success">
-                        <div class="modal-header modal-succ-head">
-                          <h1 class="modal-title fs-5" id="exampleModalLabel">
-                            <i class="fa-light fa-circle-check modal-icon"></i>
-                            <p class="success-icon">success</p>
-                          </h1>
-                          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close">
-                                    </button> -->
-                        </div>
-                        <div class="modal-body">
-                          <h3>
-                            Congratulations, your account has been successfully
-                            Created
-                          </h3>
-                        </div>
-                        <div class="modal-footer modal-butoon">
-                          <button
-                            type="button"
-                            class="btn"
-                            data-bs-dismiss="modal"
-                          >
-                            <p
-                              class="modal-butoon-succ"
-                              onclick="openLoginCloseSmile()"
-                            >
-                              continue
-                            </p>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-
-                <% } %>
-              </ul>
-            </div>
-          </div>
-        </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
-    </div>
+      <a href="javascript:void(0);" class="mobile-menu-trigger">
+        <i class="fa-light fa-bars"></i>
+      </a>
+      <ul class="menu menu-bar">
+        <li>
+          <a href="javascript:void(0);" class="menu-link menu-bar-link" aria-haspopup="true">Colleges</a>
+          <ul class="mega-menu mega-menu--multiLevel">
+            <% college?.forEach(function(college){ %>
+              <li>
+                <a href="javascript:void(0);" class="menuList" aria-haspopup="true">
+                  <%=college?.category%>
+                </a>
+                <ul class="menu menu-list pt-2">
+                  <li>
+                    <div class="row menuL">
+                      <div class="col-md-4">
+                        <h3 class="m-0">Colleges By Degrees</h3>
+                        <% college?.courseDetail?.forEach(function(d){ %>
+                          <a href="/collegeGetByCourseId/<%=d?.slag%>" class="menu-link menu-list-link">
+                            <%=d.name%>
+                          </a>
+                          <% }) %>
+                            <a href="/collegeGetByCourseId/<%=college?.courseDetail[0]?.slag%>" class="viewAll">View
+                              All</a>
+                      </div>
+                      <div class="col-md-4">
+                        <h3 class="m-0">Popular Colleges</h3>
+                        <% college?.popularCollege?.forEach(function(d){ %>
+                          <a href="/collegeDetail/<%=d.slag%>/overView" class="menu-link menu-list-link">
+                            <%=d.name%>
+                          </a>
+                          <% }) %>
+                      </div>
+                      <div class="col-md-4">
+                        <h3 class="m-0">Top Colleges</h3>
+                        <% college?.topCollege?.forEach(function(d){ %>
+                          <a href="/collegeDetail/<%=d.slag%>/overView" class="menu-link menu-list-link">
+                            <%=d.name%>
+                          </a>
+                          <% }) %>
+                      </div>
+                      <div class="col-md-4">
+                        <h3 class="m-0">Colleges By Location</h3>
+                        <% college?.stateDetail?.forEach(function(d){ %>
+                          <a href="/getCollegeByState/<%=d?.name%>/<%=college?.slag%>" class="menu-link menu-list-link">
+                            <%=d.name%>
+                          </a>
+                          <% }) %>
+                            <a href="/getCollegeByState/<%=college?.stateDetail[0]?.name%>/<%=college?.slag%>"
+                              class="viewAll">View All</a>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <% }) %>
+                <li class="mobile-menu-back-item">
+                  <a href="javascript:void(0);" class="menu-link mobile-menu-back-link">Back</a>
+                </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="javascript:void(0);" class="menu-link menu-bar-link" aria-haspopup="true">Courses</a>
+          <ul class="mega-menu mega-menu--flat">
+            <li>
+              <h3 class="m-0">Popular Courses</h3>
+              <ul class="menu menu-list pt-2">
+                <li>
+                  <div class="row menuL">
+                    <% courses?.forEach(function(courses){ %>
+                      <div class="col-md-3">
+                        <a href="/courseDetail/<%=courses?.slag%>/section" class="menu-link menu-list-link">
+                          <%=courses?.name%>
+                        </a>
+                      </div>
+                      <% }) %>
+                  </div>
+                  <a href="/getAllCourse" class="viewAll">View All Courses</a>
+                </li>
+              </ul>
+            </li>
+            <li class="mobile-menu-back-item">
+              <a href="javascript:void(0);" class="menu-link mobile-menu-back-link">Back</a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="javascript:void(0);" class="menu-link menu-bar-link" aria-haspopup="true">Exams</a>
+          <ul class="mega-menu mega-menu--multiLevel">
+            <% exam?.forEach(function(exam){ %>
+              <li>
+                <a href="javascript:void(0);" class="menuList" aria-haspopup="true">
+                  <%=exam.examCategory%>
+                </a>
+                <ul class="menu menu-list pt-2">
+                  <li>
+                    <div class="row menuL">
+                      <% exam?.examDetail?.forEach(function(d){ %>
+                        <div class="col-md-4">
+                          <h3 class="m-0">
+                            <%=d.heading%>
+                          </h3>
+                          <a href="/exam-detail/<%=d.slag%>/eligibility"
+                            class="menu-link menu-list-link">Eligibility</a>
+                          <a href="/exam-detail/<%=d.slag%>/syllabus" class="menu-link menu-list-link">Syllabus</a>
+                          <a href="/exam-detail/<%=d.slag%>/examPattern" class="menu-link menu-list-link">Exam
+                            Pattern</a>
+                          <a href="/exam-detail/<%=d.slag%>/howToPrepare" class="menu-link menu-list-link">How to
+                            Prepare</a>
+                          <a href="/exam-detail/<%=d.slag%>/resilt" class="menu-link menu-list-link">Result</a>
+                          <a href="#!" class="viewAll">View All</a>
+                        </div>
+                        <% }) %>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <% }) %>
+                <li class="mobile-menu-back-item">
+                  <a href="javascript:void(0);" class="menu-link mobile-menu-back-link">Back</a>
+                </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="javascript:void(0);" class="menu-link menu-bar-link" aria-haspopup="true">Careers</a>
+          <ul class="mega-menu mega-menu--flat">
+            <li>
+              <h3 class="m-0">Popular Careers</h3>
+              <ul class="menu menu-list pt-2">
+                <li>
+                  <div class="row menuL">
+                    <% careerDetail?.forEach(function(careerDetail){ %>
+                      <div class="col-md-3">
+                        <a href="/carrerDetail/<%=careerDetail?.slag%>" class="menu-link menu-list-link">
+                          <%=careerDetail?.heading%>
+                        </a>
+                      </div>
+                      <% }) %>
+                  </div>
+                  <a href="/career" class="viewAll">View All Careers</a>
+                </li>
+              </ul>
+            </li>
+            <li class="mobile-menu-back-item">
+              <a href="javascript:void(0);" class="menu-link mobile-menu-back-link">Back</a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="/school" class="menu-link menu-bar-link menu2">Schools</a>
+        </li>
+
+        <ul class="menu menu-bar">
+          <li>
+            <a href="javascript:void(0);" class="menu-link menu-bar-link searchB" aria-haspopup="true">
+              <i class="fa-regular fa-magnifying-glass"></i>
+            </a>
+            <ul class="mega-menu mega-menu--flat">
+              <li>
+                <h3 class="m-0">Search for best colleges, Courses, Exams and Education updates</h3>
+                <form action="" class="searchState w-100">
+                  <i class="fa-regular fa-magnifying-glass"></i>
+                  <input type="text" placeholder="Search Your Course" value="" name="search">
+                  <button type="submit" class="submitBtn">Search</button>
+                </form>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <% if(userToken) { %>
+          <div class="dropdown">
+            <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="/public/images/login-image.png" alt="" class="login-image-1" />
+            </button>
+            <ul class="dropdown-menu drop-list">
+              <li>
+                <a class="dropdown-item" href="/myProfile">My Account</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/getWishlistByUserId">Wish List</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/passwordChange">Password Change</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/logout">Log Out</a>
+              </li>
+            </ul>
+          </div>
+          <% } else { %>
+            <li class="l1">
+              <button type="button" class="registrationBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Login
+              </button>
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog loginModal">
+                  <div class="modal-content">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-body">
+                      <div class="row p-0">
+                        <div class="col-md-6 bg-light p-3">
+                          <img src="/public/images/login.png" />
+                        </div>
+                        <div class="col-md-6 py-5 px-5">
+                          <div class="text-center">
+                            <img src="/public/images/logo.png" class="w-50" />
+                            <h2 class="m-0">Welcome Back!</h2>
+                            <h4>Sign in to continue</h4>
+                          </div>
+                          <form class="form-modal">
+                            <div class="ustify-content-between text-left">
+                              <div class="form-group">
+                                <label class="form-control-label">Mobile Number</label>
+                                <input type="text" placeholder="Enter your number" id="loginPhoneNumber" />
+                                <p class="allError" id="loginPhoneNumberError"></p>
+                              </div>
+                              <div class="form-group">
+                                <label class="form-control-label">Password</label>
+                                <input type="password" placeholder="Enter password" id="loginPassword" />
+                                <p class="allError" id="loginPasswordError"></p>
+                              </div>
+                            </div>
+                            <div class="text-center pt-3">
+                              <div class="form-group text-center pb-2">
+                                <button onclick="loginUser(this)" class="submitBtn">Login</button>
+                              </div>
+                              <p style="color: #1d1d1d; line-height: 1.3;font-size: 12px;">
+                                New User?
+                                <a href="#!" onclick="registerOpen()" style="color: #eca500">Register Now</a>
+                              </p>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!-- register// -->
+            <li class="l1">
+              <!-- <button type="button" class="registrationBtn" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                Registration
+              </button> -->
+              <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2"
+                aria-hidden="true">
+                <div class="modal-dialog loginModal">
+                  <div class="modal-content">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-body">
+                      <div class="row justify-content-center py-3">
+                        <div class="col-md-12 px-5">
+                          <div class="text-center">
+                            <img src="/public/images/logo.png" class="w-50" />
+                            <h2 class="m-0">Student Registration</h2>
+                            <h4>Sign in to continue</h4>
+                          </div>
+                          <form class="form-modal">
+                            <div class="justify-content-between text-left">
+                              <div class="form-group">
+                                <label class="form-control-label">Name</label>
+                                <input type="text" placeholder="Enter your name" id="name" name="name" required />
+                                <p class="allError" id="nameError"></p>
+                              </div>
+                              <div class="form-group">
+                                <label class="form-control-label">Email</label>
+                                <input type="text" placeholder="Enter your mail id" id="email"
+                                  oninput="checkEmailExistornot(this)" name="email" required />
+                                <p class="allError" id="emailError"></p>
+                              </div>
+                              <div class="form-group">
+                                <label class="form-control-label">Mobile Number</label>
+                                <input type="text" placeholder="Enter your number" id="phone"
+                                  oninput="checkPhoneExistornot(this)" name="phone" required />
+                                <p class="allError" id="phoneError"></p>
+                              </div>
+                              <div class="form-group">
+                                <label class="form-control-label">Gender</label>
+                                <select class="form-select" aria-label="Gender" id="gender" name="gender" required>
+                                  <option value="Male">Male</option>
+                                  <option value="Female">Female</option>
+                                  <option value="other">Other</option>
+                                </select>
+                                <p class="allError" id="genderError"></p>
+                              </div>
+                              <div class="form-group">
+                                <label class="form-control-label">DOB</label>
+                                <input type="text" placeholder="DD/MM/YYYY" id="dob" name="dob" required />
+                                <p class="allError" id="dobError"></p>
+                              </div>
+                              <div class="form-group">
+                                <label class="form-control-label">Password</label>
+                                <input type="password" placeholder="Enter password" id="password" name="password"
+                                  required />
+                                <p class="allError" id="passwordError"></p>
+                              </div>
+                            </div>
+                            <div class="text-center">
+                              <div class="form-group text-center pb-2  pt-3">
+                                <button type="submit" onclick="userValidation(this)" class="submitBtn">Sign
+                                  Up</button>
+                              </div>
+                              <p style="color: #1d1d1d; line-height: 1.3;font-size: 12px;">
+                                I'am User?
+                                <a href="#!" onclick="loginOpen(this)" style="color: #eca500">Login Now</a>
+                              </p>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="li">
+              <!-- <button type="button" class="banner-modal2" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                Modal
+              </button> -->
+              <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-left pt-5">
+                  <div class="modal-content modal-success p-5">
+                    <div class="modal-header modal-succ-head">
+                      <div class="modal-title fs-5" id="exampleModalLabel">
+                        <i class="fa-light fa-circle-check modal-icon"></i>
+                        <p class="success-icon">success</p>
+                      </div>
+                    </div>
+                    <div class="modal-body">
+                      <h3>
+                        Congratulations, your account has been successfully
+                        Created.
+                      </h3>
+                    </div>
+                    <div class="modal-footer modal-butoon">
+                      <button type="button" class="btn" data-bs-dismiss="modal">
+                        <p class="modal-butoon-succ" onclick="openLoginCloseSmile()">
+                          continue
+                        </p>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <% } %>
+      </ul>
+    </nav>
   </div>
-</header>
+</div>
 
 <script>
   function registerOpen() {
@@ -980,7 +638,7 @@
 
             $("#exampleModal2").modal("hide");
             $("#exampleModal3").modal("show");
-          
+
 
             return false;
           }
@@ -1160,13 +818,4 @@
     $("#exampleModal3").modal("hide");
     $("#exampleModal").modal("show");
   }
-</script>
-
-<script>
-  // $('#submit').click(function(e){
-
-  // //call ajax
-
-  // e.preventDefault();
-  // })
 </script>

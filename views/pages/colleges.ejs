@@ -1,27 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Rigalma</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Arima:wght@100;200;300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link href="/public/css/style.css" rel="stylesheet" />
-    <link href="/public/css/responsive.css" rel="stylesheet" />
-  </head>
 
-  <body>
-    <%- include('../partials/navbar')%>
+<head>
+  <title>Rigalma</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/public/css/style.css" rel="stylesheet" />
+  <link href="/public/css/responsive.css" rel="stylesheet" />
+</head>
+
+<body>
+  <%- include('../partials/navbar')%>
 
     <div class="mainBg">
       <section class="bannerSec">
@@ -35,8 +29,15 @@
           </div>
           <img src="/public/images/banner.png" class="w-100 mt-3" />
         </div>
+        <div class="anim-elements">
+          <div class="anim-element"></div>
+          <div class="anim-element"></div>
+          <div class="anim-element"></div>
+          <div class="anim-element"></div>
+          <div class="anim-element"></div>
+        </div>
       </section>
-      <section class="collegesPage">
+      <section class="collegesPage py-0">
         <div class="container">
           <div class="row justify-content-between">
             <div class="col-md-5">
@@ -44,19 +45,14 @@
                 <!-- filter by state// -->
                 <form class="form-modal w-100">
                   <div class="form-group">
-                    <select
-                      class="form-select p-2"
-                      aria-label="Select State"
-                      id="state"
-                      onchange="getByState(`stateId`,this)"
-                    >
+                    <select class="form-select p-2" aria-label="Select State" id="state"
+                      onchange="getByState(`stateId`,this)">
                       <option selected="">Select State</option>
-                      <%
-                      courseCategoryDetail[0]?.stateDetail?.forEach(function(d){
-                      %>
-
-                      <option value="<%=d?._id%>"><%=d?.name%></option>
-                      <% }) %>
+                      <% courseCategoryDetail[0]?.stateDetail?.forEach(function(d){ %>
+                        <option value="<%=d?._id%>">
+                          <%=d?.name%>
+                        </option>
+                        <% }) %>
                     </select>
                   </div>
                 </form>
@@ -64,19 +60,14 @@
                 <!-- filter by district// -->
                 <form class="form-modal w-100 mx-2">
                   <div class="form-group">
-                    <select
-                      class="form-select p-2"
-                      aria-label="Select city"
-                      id="district"
-                      onchange="getByState(`districtId`,this)"
-                    >
+                    <select class="form-select p-2" aria-label="Select city" id="district"
+                      onchange="getByState(`districtId`,this)">
                       <option selected="">Select City</option>
-                      <%
-                      courseCategoryDetail[0]?.districtDetail?.forEach(function(d){
-                      %>
-
-                      <option value="<%=d?._id%>"><%=d?.name%></option>
-                      <% }) %>
+                      <% courseCategoryDetail[0]?.districtDetail?.forEach(function(d){ %>
+                        <option value="<%=d?._id%>">
+                          <%=d?.name%>
+                        </option>
+                        <% }) %>
                     </select>
                   </div>
                 </form>
@@ -87,17 +78,11 @@
             <div class="col-md-3">
               <form class="form-modal">
                 <div class="form-group">
-                  <select
-                    class="form-select p-2"
-                    aria-label="Sort By"
-                    onchange="getCollegeWithShorting(this)"
-                  >
+                  <select class="form-select p-2" aria-label="Sort By" onchange="getCollegeWithShorting(this)">
                     <option selected="">Relevance </option>
                     <option value="A to Z">A to Z</option>
                     <option value="Z to A">Z to A</option>
                     <option value="Popularity">Popularity</option>
-
-
                   </select>
                 </div>
               </form>
@@ -143,33 +128,21 @@
 
                 <form class="searchState">
                   <i class="fa-regular fa-magnifying-glass"></i>
-                  <input
-                    type="text"
-                    placeholder="Search course"
-                    value=""
-                    oninput="filterBySearch(`course`,this)"
-                    name="search"
-                  />
+                  <input type="text" placeholder="Search course" value="" oninput="filterBySearch(`course`,this)"
+                    name="search" />
                 </form>
 
                 <div class="Course-sslider">
                   <span id="courseData">
-                    <% courseCategoryDetail[0]?.courseDetail?.forEach(function(d){
-                    %>
-                    <div class="form-check" id="course-checkbox-<%= d.name %>" >
-                      <input
-                        class="form-check-input"
-                        onclick="getCollege(this)"
-                        type="checkbox"
-                        class="checkedBoxDataGet"
-                        value="<%=d?._id%>"
-                        id="flexCheckDefault"
-                      />
-                      <label class="form-check-label" for="flexCheckDefault">
-                        <%=d?.name%>
-                      </label>
-                    </div>
-                    <% }) %>
+                    <% courseCategoryDetail[0]?.courseDetail?.forEach(function(d){ %>
+                      <div class="form-check" id="course-checkbox-<%= d.name %>">
+                        <input class="form-check-input" onclick="getCollege(this)" type="checkbox"
+                          class="checkedBoxDataGet" value="<%=d?._id%>" id="flexCheckDefault" />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          <%=d?.name%>
+                        </label>
+                      </div>
+                      <% }) %>
                   </span>
                 </div>
               </div>
@@ -179,35 +152,22 @@
                 <h3>Specialization</h3>
                 <form class="searchState">
                   <i class="fa-regular fa-magnifying-glass"></i>
-                  <input
-                    type="text"
-                    placeholder="Program Type"
-                    value=""
-                    oninput="filterBySearch(`subCourse`,this)"
-                    name="search"
-                  />
+                  <input type="text" placeholder="Program Type" value="" oninput="filterBySearch(`subCourse`,this)"
+                    name="search" />
                 </form>
 
                 <div class="Course-sslider">
-                <span id="alldata">
-                  <%
-                  courseCategoryDetail[0]?.subCoursesDetail?.forEach(function(d){
-                  %>
-                  <div class="form-check" id="subCourse-checkbox-<%= d.subCourseName %>" >
-                    <input
-                      class="form-check-input"
-                      onclick="getByState(`subCourseId`,this)"
-                      class="getDataBySubcourse"
-                      type="checkbox"
-                      value="<%=d?._id%>"
-                      id="flexCheckDefault"
-                    />
-                    <label class="form-check-label" for="flexCheckDefault">
-                      <%=d?.subCourseName%>
-                    </label>
-                  </div>
-                  <% }) %>
-                </span>
+                  <span id="alldata">
+                    <% courseCategoryDetail[0]?.subCoursesDetail?.forEach(function(d){ %>
+                      <div class="form-check" id="subCourse-checkbox-<%= d.subCourseName %>">
+                        <input class="form-check-input" onclick="getByState(`subCourseId`,this)"
+                          class="getDataBySubcourse" type="checkbox" value="<%=d?._id%>" id="flexCheckDefault" />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          <%=d?.subCourseName%>
+                        </label>
+                      </div>
+                      <% }) %>
+                  </span>
                 </div>
               </div>
 
@@ -216,73 +176,47 @@
                 <h3>Exam</h3>
                 <form class="searchState">
                   <i class="fa-regular fa-magnifying-glass"></i>
-                  <input
-                    type="text"
-                    placeholder="Program Type"
-                    value=""
-                    oninput="filterBySearch(`exam`,this)"
-                    name="search"
-                  />
+                  <input type="text" placeholder="Program Type" value="" oninput="filterBySearch(`exam`,this)"
+                    name="search" />
                 </form>
 
                 <div class="Course-sslider">
-                <span id="examData">
-                  <% courseCategoryDetail[0]?.examDetail?.forEach(function(d){
-                  %>
-                  <div class="form-check" id="exam-checkbox-<%= d.heading %>" >
-                    <input
-                      class="form-check-input"
-                      onclick="getByState(`examId`,this)"
-                      type="checkbox"
-                      value="<%=d?._id%>"
-                      id="flexCheckDefault"
-                    />
-                    <label class="form-check-label" for="flexCheckDefault">
-                      <%=d?.heading%>
-                    </label>
-                  </div>
+                  <span id="examData">
+                    <% courseCategoryDetail[0]?.examDetail?.forEach(function(d){ %>
+                      <div class="form-check" id="exam-checkbox-<%= d.heading %>">
+                        <input class="form-check-input" onclick="getByState(`examId`,this)" type="checkbox"
+                          value="<%=d?._id%>" id="flexCheckDefault" />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          <%=d?.heading%>
+                        </label>
+                      </div>
 
-                  <% }) %>
-                </span>
+                      <% }) %>
+                  </span>
                 </div>
               </div>
 
               <!-- instituteType -->
               <div class="filterSec">
                 <h3>Institute Type</h3>
-              
+
                 <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    onclick="getColllegeByStaticData(`instituteType`,this)"
-                    type="checkbox"
-                    value="Private"
-                    id="flexCheckDefault"
-                  />
+                  <input class="form-check-input" onclick="getColllegeByStaticData(`instituteType`,this)"
+                    type="checkbox" value="Private" id="flexCheckDefault" />
                   <label class="form-check-label" for="flexCheckDefault">
                     Private
                   </label>
                 </div>
                 <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    onclick="getColllegeByStaticData(`instituteType`,this)"
-                    type="checkbox"
-                    value="Government"
-                    id="flexCheckChecked"
-                  />
+                  <input class="form-check-input" onclick="getColllegeByStaticData(`instituteType`,this)"
+                    type="checkbox" value="Government" id="flexCheckChecked" />
                   <label class="form-check-label" for="flexCheckChecked">
                     Government
                   </label>
                 </div>
                 <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    onclick="getColllegeByStaticData(`instituteType`,this)"
-                    type="checkbox"
-                    value="Semi Government"
-                    id="flexCheckDefault"
-                  />
+                  <input class="form-check-input" onclick="getColllegeByStaticData(`instituteType`,this)"
+                    type="checkbox" value="Semi Government" id="flexCheckDefault" />
                   <label class="form-check-label" for="flexCheckDefault">
                     Semi Government
                   </label>
@@ -292,70 +226,45 @@
               <!-- study mode/// -->
               <div class="filterSec">
                 <h3>Study Mode</h3>
-              
+
                 <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    onclick="getColllegeByStaticData(`studyMode`,this)"
-                    type="checkbox"
-                    value="Distance"
-                    id="flexCheckDefault"
-                  />
+                  <input class="form-check-input" onclick="getColllegeByStaticData(`studyMode`,this)" type="checkbox"
+                    value="Distance" id="flexCheckDefault" />
                   <label class="form-check-label" for="flexCheckDefault">
                     Distance
                   </label>
                 </div>
                 <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    onclick="getColllegeByStaticData(`studyMode`,this)"
-                    type="checkbox"
-                    value="Part Time"
-                    id="flexCheckChecked"
-                  />
+                  <input class="form-check-input" onclick="getColllegeByStaticData(`studyMode`,this)" type="checkbox"
+                    value="Part Time" id="flexCheckChecked" />
                   <label class="form-check-label" for="flexCheckChecked">
                     Part Time
                   </label>
                 </div>
                 <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    onclick="getColllegeByStaticData(`studyMode`,this)"
-                    type="checkbox"
-                    value="Regular"
-                    id="flexCheckDefault"
-                  />
+                  <input class="form-check-input" onclick="getColllegeByStaticData(`studyMode`,this)" type="checkbox"
+                    value="Regular" id="flexCheckDefault" />
                   <label class="form-check-label" for="flexCheckDefault">
                     Regular
                   </label>
                 </div>
-               
+
               </div>
 
               <!-- hostel//// -->
               <div class="filterSec">
                 <h3>Hostel</h3>
-              
+
                 <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    onclick="getColllegeByStaticData(`hostel`,this)"
-                    type="checkbox"
-                    value="Boys"
-                    id="flexCheckDefault"
-                  />
+                  <input class="form-check-input" onclick="getColllegeByStaticData(`hostel`,this)" type="checkbox"
+                    value="Boys" id="flexCheckDefault" />
                   <label class="form-check-label" for="flexCheckDefault">
                     Boys
                   </label>
                 </div>
                 <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    onclick="getColllegeByStaticData(`hostel`,this)"
-                    type="checkbox"
-                    value="Girls"
-                    id="flexCheckChecked"
-                  />
+                  <input class="form-check-input" onclick="getColllegeByStaticData(`hostel`,this)" type="checkbox"
+                    value="Girls" id="flexCheckChecked" />
                   <label class="form-check-label" for="flexCheckChecked">
                     Girls
                   </label>
@@ -371,82 +280,50 @@
                   <input type="text" placeholder="Program Type" />
                 </form>
                 <div class="Course-sslider">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    onclick="getColllegeByStaticData(`feesRange`,this)"
-                    type="checkbox"
-                    value="less Than 1 Lakh"
-                    id="flexCheckDefault"
-                  />
+                  <div class="form-check">
+                    <input class="form-check-input" onclick="getColllegeByStaticData(`feesRange`,this)" type="checkbox"
+                      value="less Than 1 Lakh" id="flexCheckDefault" />
+                    <label class="form-check-label" for="flexCheckDefault">
+                      less Than 1 Lakh
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" onclick="getColllegeByStaticData(`feesRange`,this)" type="checkbox"
+                      value="1 To 2 Lakh" id="flexCheckChecked" />
+                    <label class="form-check-label" for="flexCheckChecked">
+                      1 To 2 Lakh
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" onclick="getColllegeByStaticData(`feesRange`,this)" type="checkbox"
+                      value="2 To 3 Lakh" id="flexCheckDefault" />
+                    <label class="form-check-label" for="flexCheckDefault">
+                      2 To 3 Lakh
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" onclick="getColllegeByStaticData(`feesRange`,this)" type="checkbox"
+                      value="3 To 4 Lakh" id="flexCheckDefault" />
+                    <label class="form-check-label" for="flexCheckDefault">
+                      3 To 4 Lakh
+                    </label>
+                  </div>
 
+                  <div class="form-check">
+                    <input class="form-check-input" onclick="getColllegeByStaticData(`feesRange`,this)" type="checkbox"
+                      value="4 To 5 Lakh" id="flexCheckDefault" />
+                    <label class="form-check-label" for="flexCheckDefault">
+                      4 To 5 Lakh
+                    </label>
+                  </div>
 
-                  <label class="form-check-label" for="flexCheckDefault">
-                    less Than 1 Lakh
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    onclick="getColllegeByStaticData(`feesRange`,this)"
-                    type="checkbox"
-                    value="1 To 2 Lakh"
-                    id="flexCheckChecked"
-                  />
-                  <label class="form-check-label" for="flexCheckChecked">
-                    1 To 2 Lakh
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    onclick="getColllegeByStaticData(`feesRange`,this)"
-                    type="checkbox"
-                    value="2 To 3 Lakh"
-                    id="flexCheckDefault"
-                  />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    2 To 3 Lakh
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    onclick="getColllegeByStaticData(`feesRange`,this)"
-                    type="checkbox"
-                    value="3 To 4 Lakh"
-                    id="flexCheckDefault"
-                  />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    3 To 4 Lakh
-                  </label>
-                </div>
-
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    onclick="getColllegeByStaticData(`feesRange`,this)"
-                    type="checkbox"
-                    value="4 To 5 Lakh"
-                    id="flexCheckDefault"
-                  />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    4 To 5 Lakh
-                  </label>
-                </div>
-
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    onclick="getColllegeByStaticData(`feesRange`,this)"
-                    type="checkbox"
-                    value="Greater Than 5 Lakh"
-                    id="flexCheckDefault"
-                  />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Greater Than 5 Lakh
-                  </label>
-                </div>
+                  <div class="form-check">
+                    <input class="form-check-input" onclick="getColllegeByStaticData(`feesRange`,this)" type="checkbox"
+                      value="Greater Than 5 Lakh" id="flexCheckDefault" />
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Greater Than 5 Lakh
+                    </label>
+                  </div>
                 </div>
               </div>
 
@@ -455,235 +332,196 @@
                 <h3>Facilities</h3>
 
                 <form class="searchState">
-                    <i class="fa-regular fa-magnifying-glass"></i>
-                    <input
-                      type="text"
-                      placeholder="Program Type"
-                      value=""
-                      oninput="filterBySearch(`facility`,this)"
-                      name="search"
-                    />
-                  </form>
+                  <i class="fa-regular fa-magnifying-glass"></i>
+                  <input type="text" placeholder="Program Type" value="" oninput="filterBySearch(`facility`,this)"
+                    name="search" />
+                </form>
 
-                  <div class="Course-sslider">
-                <span id="facilityData">
-                <% facility?.forEach(function(facility){ %>
-                <div class="form-check" id="exam-checkbox-<%=facility%>">
-                  <input
-                    class="form-check-input"
-                    onclick="getColllegeByStaticData(`facility`,this)"
-                    type="checkbox"
-                    value="<%=facility%>"
-                    id="flexCheckDefault"
-                  />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    <%=facility%>
-                  </label>
+                <div class="Course-sslider">
+                  <span id="facilityData">
+                    <% facility?.forEach(function(facility){ %>
+                      <div class="form-check" id="exam-checkbox-<%=facility%>">
+                        <input class="form-check-input" onclick="getColllegeByStaticData(`facility`,this)"
+                          type="checkbox" value="<%=facility%>" id="flexCheckDefault" />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          <%=facility%>
+                        </label>
+                      </div>
+                      <% }) %>
+                  </span>
                 </div>
-                <% }) %>
-            </span>
-            </div>
               </div>
             </div>
             <div class="col-md-9" id="allColleges">
               <% data?.forEach(function(data){ %>
-              <div class="collegeCard">
-                <div class="row">
-                  <div class="col-md-4">
-                    <!-- <a href="/collegeDetail/<%=data?.slag%>/overView"> -->
+                <div class="collegeCard">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <!-- <a href="/collegeDetail/<%=data?.slag%>/overView"> -->
                       <div class="collImage">
-
-                        <% if(data?.isWishlisted == true){%>
-
-                                    
-                                        
-                          <i class="fas fa-star checkedData  star-back"  onclick="addWishlist(this,'<%=data?._id%>')"></i>
-                                                    <%} else { %>
-                            <i class="fas fa-star star-back"  onclick="addWishlist(this,'<%=data?._id%>')"></i>                       
-                              <% } %>
-
-
-
-                        <!-- <i class="fa-regular fa-heart wish-list-heart" onclick="addWishlist('<%=data?._id%>')"></i> -->
-            
-                        <img src="<%=data?.image%>" alt="<%=data?.altForImage%>" />
+                        <% if(data?.isWishlisted==true){%>
+                          <i class="fas fa-star checkedData  star-back"
+                            onclick="addWishlist(this,'<%=data?._id%>')"></i>
+                          <%} else { %>
+                            <i class="fas fa-star star-back" onclick="addWishlist(this,'<%=data?._id%>')"></i>
+                            <% } %>
+                              <!-- <i class="fa-regular fa-heart wish-list-heart" onclick="addWishlist('<%=data?._id%>')"></i> -->
+                              <img src="<%=data?.image%>" alt="<%=data?.altForImage%>" />
                       </div>
-                    <!-- </a> -->
-                  </div>
-                  <div class="col-md-8">
-                    <div class="collDetail">
-                      <div class="collTit">
-                        <div class="collLogo">
-                          <img src="<%=data?.icon%>" alt="<%=data?.altForIcon%>"/>
+                      <!-- </a> -->
+                    </div>
+                    <div class="col-md-8">
+                      <div class="collDetail">
+                        <div class="collTit">
+                          <div class="collLogo">
+                            <img src="<%=data?.icon%>" alt="<%=data?.altForIcon%>" />
+                          </div>
+                          <div class="mx-2">
+                            <a href="/collegeDetail/<%=data?.slag%>/overView">
+                              <h3>
+                                <%=data.name%>
+                              </h3>
+                            </a>
+                            <p>Approved by:<%=data?.approvedField%>
+                            </p>
+                          </div>
                         </div>
-                        <div class="mx-2">
-                          <a href="/collegeDetail/<%=data?.slag%>/overView">
-                            <h3><%=data.name%></h3>
-                          </a>
-                          <p>Approved by:<%=data?.approvedField%></p>
+                        <div class="row pt-2">
+                          <div class="col-md-4">
+                            <div class="collFeee d-flex">
+                              <p>Fees</p><span class="px-2">₹ <%=data?.feesRange%></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <div class="collRcp d-flex align-items-center">
+                              <div class="iconSe">
+                                <img src="/public/images/test.png" />
+                              </div>
+                              <a href="/collegeDetail/<%=data?.slag%>/courses">
+                                <p>Course & Fees</p>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="collRcp d-flex align-items-center">
+                              <div class="iconSe">
+                                <img src="/public/images/test.png" />
+                              </div>
+                              <a href="/collegeDetail/<%=data?.slag%>/placement">
+                                <p>Placement</p>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="collRcp d-flex align-items-center">
+                              <div class="iconSe">
+                                <img src="/public/images/test.png" />
+                              </div>
+                              <a href="/collegeDetail/<%=data?.slag%>/reviews">
+                                <p>Reviews</p>
+                              </a>
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <div class="row pt-2">
-                        <div class="col-md-4">
-                          <div class="collFeee">
-                            <span>₹ <%=data?.feesRange%></span>
-                            <p>Fees</p>
+                        <div class="col-md-12">
+                          <div class="d-flex">
+                            <a href="/collegeDetail/<%=data?.slag%>/overView" class="applyBtn">Get More Info</a>
+                            <a href="#" class="quesBtn mx-2">Ask a Question</a>
+                            <a href="#!" class="sampleBtn">Sample Papers</a>
                           </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-4">
-                          <div class="collRcp d-flex align-items-center">
-                            <div class="iconSe">
-                              <img src="/public/images/test.png" />
-                            </div>
-                            <a href="/collegeDetail/<%=data?.slag%>/courses">
-                              <p>Course & Fees</p>
-                            </a>
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                          <div class="collRcp d-flex align-items-center">
-                            <div class="iconSe">
-                              <img src="/public/images/test.png" />
-                            </div>
-                            <a href="/collegeDetail/<%=data?.slag%>/placement">
-                              <p>Placement</p>
-                            </a>
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                          <div class="collRcp d-flex align-items-center">
-                            <div class="iconSe">
-                              <img src="/public/images/test.png" />
-                            </div>
-                            <a href="/collegeDetail/<%=data?.slag%>/reviews">
-                              <p>Reviews</p>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row pt-2">
-                      <div class="col-md-12">
-                        <div class="d-flex">
-                          <a
-                            href="/collegeDetail/<%=data?.slag%>/overView"
-                            class="applyBtn"
-                            >Get More Info</a
-                          >
-                          <a href="#" class="quesBtn mx-2">Ask a Question</a>
-                          <a href="#!" class="sampleBtn">Sample Papers</a>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <% }) %>
-
-            
+                <% }) %>
             </div>
           </div>
         </div>
       </section>
     </div>
 
-    <p id="getIdForFilter" hidden><%=courseCategoryDetail[0]?._id%></p>
-    <p id="userDetail" hidden><%=userToken%></p>
+    <p id="getIdForFilter" hidden>
+      <%=courseCategoryDetail[0]?._id%>
+    </p>
+    <p id="userDetail" hidden>
+      <%=userToken%>
+    </p>
 
     <%- include('../partials/footer')%>
+      <script type="text/javascript" src="/public/js/jquery.min.js"></script>
+      <script type="text/javascript" src="/public/js/main.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+</body>
 
-    <script type="text/javascript" src="/public/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/public/js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script
-      src="https://code.jquery.com/jquery-2.2.0.min.js"
-      type="text/javascript"
-    ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
-  </body>
+<!-- all filter change by course change// -->
+<script>
+  function getCollege(element) {
+    const category = document.getElementById("getIdForFilter").innerHTML;
+    element.classList.toggle("checked");
+    var checkedBoxDataGet = document.getElementsByClassName("checked");
+    var data = [];
+    for (var i = 0; i < checkedBoxDataGet.length; i++) {
+      data.push(checkedBoxDataGet[i].value);
+    }
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        var data = JSON.parse(this.responseText);
+        const state = data[0].stateDetail;
+        const district = data[0].districtDetail;
+        const exam = data[0].examDetail;
+        const subCourse = data[0].subCoursesDetail;
+        const college = data[0].collegeDetail;
+        document.getElementById("state").innerHTML = state
+          .map((state) => {
+            return `<option value="${state._id}">${state.name}</option>`;
+          })
+          .join("");
 
-  <!-- all filter change by course change// -->
-  <script>
-    function getCollege(element) {
-      const category = document.getElementById("getIdForFilter").innerHTML;
-      // onclick element add checked class and get all checkedclass value//
+        document.getElementById("district").innerHTML = district.map(
+          (district) => {
+            return `<option value="${district._id}">${district.name}</option>`;
+          }
+        );
 
-      element.classList.toggle("checked");
-      var checkedBoxDataGet = document.getElementsByClassName("checked");
-      var data = [];
-      for (var i = 0; i < checkedBoxDataGet.length; i++) {
-        data.push(checkedBoxDataGet[i].value);
-      }
-
-   
-
-      console.log(data);
-
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-          // document.getElementById("demo").innerHTML =
-          // this.responseText;
-          console.log(this.responseText);
-          var data = JSON.parse(this.responseText);
-
-          console.log(data.length);
-          const state = data[0].stateDetail;
-          const district = data[0].districtDetail;
-          const exam = data[0].examDetail;
-          const subCourse = data[0].subCoursesDetail;
-          const college = data[0].collegeDetail;
-
-          //  const subCourseId ="subCourseId"
-
-          // put all data in html page//
-
-          document.getElementById("state").innerHTML = state
-            .map((state) => {
-              return `<option value="${state._id}">${state.name}</option>`;
-            })
-            .join("");
-
-          document.getElementById("district").innerHTML = district.map(
-            (district) => {
-              return `<option value="${district._id}">${district.name}</option>`;
-            }
-          );
-
-          document.getElementById("alldata").innerHTML = subCourse
-            .map((subCourse) => {
-              return `<div class="form-check">
+        document.getElementById("alldata").innerHTML = subCourse
+          .map((subCourse) => {
+            return `<div class="form-check">
     <input class="form-check-input"onclick="getByState('subCourseId',this)"   type="checkbox" value="${subCourse._id}" id="flexCheckDefault">
     <label class="form-check-label" for="flexCheckDefault">
     ${subCourse.subCourseName}
     </label>
 </div>`;
-            })
-            .join("");
+          })
+          .join("");
 
-          document.getElementById("examData").innerHTML = exam
-            .map((exam) => {
-              return ` <div class="form-check">
+        document.getElementById("examData").innerHTML = exam
+          .map((exam) => {
+            return ` <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
                                 <label class="form-check-label" for="flexCheckDefault">
                                  ${exam.heading}
                                 </label>
                             </div>`;
-            })
-            .join("");
+          })
+          .join("");
 
-          document.getElementById("allColleges").innerHTML = college
-            .map((college) => {
-              return `<div class="collegeCard">
+        document.getElementById("allColleges").innerHTML = college
+          .map((college) => {
+            return `<div class="collegeCard">
             <div class="row">
                                 <div class="col-md-4">
                                  
                                     <div class="collImage">
 
-                                      ${college.isWishlisted== true ?`   <i class="fas fa-star checkedData  star-back" id="wishlist" onclick="addWishlist(this,'${college._id}')"></i> ` : `  <i class="fas fa-star star-back" id="wishlist" onclick="addWishlist(this,'${college._id}')"></i>`}
+                                      ${college.isWishlisted == true ? `   <i class="fas fa-star checkedData  star-back" id="wishlist" onclick="addWishlist(this,'${college._id}')"></i> ` : `  <i class="fas fa-star star-back" id="wishlist" onclick="addWishlist(this,'${college._id}')"></i>`}
 
 
           
@@ -764,60 +602,51 @@
                                 </div>
                             </div>
                         </div>`;
-            })
-            .join("");
-        }
-      };
-      xhttp.open(
-        "GET",
-        `/collegesGetBytheFilters?courseId=${data}&category=${category}`,
-        true
-      );
-      xhttp.send();
+          })
+          .join("");
+      }
+    };
+    xhttp.open(
+      "GET",
+      `/collegesGetBytheFilters?courseId=${data}&category=${category}`,
+      true
+    );
+    xhttp.send();
+  }
+</script>
+
+<!-- filter change by state and exam and subCourse/// -->
+
+<script>
+  function getByState(element, element2) {
+    const key = element;
+    const idn = element2.value;
+    if (key == "subCourseId" || key == "examId" || key == "instituteType") {
+      element2.classList.toggle("checked");
+      var checkedBoxDataGet = document.getElementsByClassName("checked");
+      var id = [];
+      for (var i = 0; i < checkedBoxDataGet.length; i++) {
+        id.push(checkedBoxDataGet[i].value);
+      }
     }
-  </script>
+    if (key == "stateId" || key == "districtId") {
+      console.log("gfytdsrtryeewaqe", key);
+      var id = [];
+      id.push(idn);
+    }
 
-  <!-- filter change by state and exam and subCourse/// -->
-
-  <script>
-    function getByState(element, element2) {
-      const key = element;
-
-      const idn = element2.value;
-   
-
-      if (key == "subCourseId" || key == "examId" || key == "instituteType") {
-        element2.classList.toggle("checked");
-        var checkedBoxDataGet = document.getElementsByClassName("checked");
-        var id = [];
-        for (var i = 0; i < checkedBoxDataGet.length; i++) {
-          id.push(checkedBoxDataGet[i].value);
-        }
-      }
-      if (key == "stateId" || key == "districtId") {
-        console.log("gfytdsrtryeewaqe", key);
-        var id = [];
-
-        id.push(idn);
-      }
-console.log(id)
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-          // document.getElementById("demo").innerHTML =
-          // this.responseText;
-          console.log(this.responseText);
-          var data = JSON.parse(this.responseText);
-          console.log(data.length);
-
-          document.getElementById("allColleges").innerHTML = data
-            .map((data) => {
-              return `<div class="collegeCard">
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        var data = JSON.parse(this.responseText);
+        document.getElementById("allColleges").innerHTML = data
+          .map((data) => {
+            return `<div class="collegeCard">
             <div class="row">
                                 <div class="col-md-4">
                                   
                                     <div class="collImage">
-                                      ${data.isWishlisted== true ?`   <i class="fas fa-star checkedData  star-back" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i> ` : `  <i class="fas fa-star star-back" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i>`}
+                                      ${data.isWishlisted == true ? `   <i class="fas fa-star checkedData  star-back" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i> ` : `  <i class="fas fa-star star-back" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i>`}
 
                                         <img src="${data.image}">
                                     </div>
@@ -895,60 +724,54 @@ console.log(id)
                                 </div>
                             </div>
                         </div>`;
-            })
-            .join("");
-        }
-      };
-
-      xhttp.open(
-        "GET",
-        `/getcollegeByMultipleFilter?field=${key}&filterBy=${id}`,
-        true
-      );
-      xhttp.send();
-    }
-  </script>
-
-  <script>
-    function getColllegeByStaticData(element, element2) {
-      const key = element;
-      const idn = element2.value;
-      const category = document.getElementById("getIdForFilter").innerHTML;
-
-      if (
-        key == "instituteType" ||
-        key == "studyMode" ||
-        key == "hostel" ||
-        key == "feesRange" ||
-        key == "feesRange" ||
-        key == "facility"
-      ) {
-        element2.classList.toggle("checked");
-        var checkedBoxDataGet = document.getElementsByClassName("checked");
-        var id = [];
-        for (var i = 0; i < checkedBoxDataGet.length; i++) {
-          id.push(checkedBoxDataGet[i].value);
-        }
+          })
+          .join("");
       }
+    };
 
-      var xhttp = new XMLHttpRequest();
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-          // document.getElementById("demo").innerHTML =
-          // this.responseText;
-          console.log(this.responseText);
-          var data = JSON.parse(this.responseText);
+    xhttp.open(
+      "GET",
+      `/getcollegeByMultipleFilter?field=${key}&filterBy=${id}`,
+      true
+    );
+    xhttp.send();
+  }
+</script>
 
-          console.log(data.length);
+<script>
+  function getColllegeByStaticData(element, element2) {
+    const key = element;
+    const idn = element2.value;
+    const category = document.getElementById("getIdForFilter").innerHTML;
 
-          document.getElementById("allColleges").innerHTML = data?.map((data) => {
-              return `<div class="collegeCard">
+    if (
+      key == "instituteType" ||
+      key == "studyMode" ||
+      key == "hostel" ||
+      key == "feesRange" ||
+      key == "feesRange" ||
+      key == "facility"
+    ) {
+      element2.classList.toggle("checked");
+      var checkedBoxDataGet = document.getElementsByClassName("checked");
+      var id = [];
+      for (var i = 0; i < checkedBoxDataGet.length; i++) {
+        id.push(checkedBoxDataGet[i].value);
+      }
+    }
+
+    var xhttp = new XMLHttpRequest();
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        var data = JSON.parse(this.responseText);
+        document.getElementById("allColleges").innerHTML = data?.map((data) => {
+          return `<div class="collegeCard">
             <div class="row">
                                 <div class="col-md-4">
                                 
                                     <div class="collImage">
-                                      ${data?.isWishlisted== true ?`   <i class="fas fa-star checkedData  star-back" id="wishlist" onclick="addWishlist(this,'${data?._id}')"></i> ` : `  <i class="fas fa-star star-back" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i>`}
+                                      ${data?.isWishlisted == true ? `   <i class="fas fa-star checkedData  star-back" id="wishlist" onclick="addWishlist(this,'${data?._id}')"></i> ` : `  <i class="fas fa-star star-back" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i>`}
 
                                         <img src="${data?.image}">
                                     </div>
@@ -1026,146 +849,101 @@ console.log(id)
                                 </div>
                             </div>
                         </div>`;
-            })
-            .join("");
+        })
+          .join("");
+      }
+    };
+    xhttp.open(
+      "GET",
+      `/getCollegeByStatic?field=${key}&filterBy=${id}&category=${category}`,
+      true
+    );
+    xhttp.send();
+  }
+</script>
+
+<script>
+  function filterBySearch(type, element2) {
+    if (type == 'course') {
+      document.getElementById("courseData").childNodes.forEach(element => {
+        if (element.id) {
+          const idArray = element.id.split("-");
+          idArray.shift();
+          idArray.shift();
+          const courseName = idArray.join("-");
+          if (!courseName.toLowerCase().toLowerCase().includes(element2.value)) {
+            element.style.display = "none";
+          } else {
+            element.style.display = "block";
+          }
         }
-      };
-      xhttp.open(
-        "GET",
-        `/getCollegeByStatic?field=${key}&filterBy=${id}&category=${category}`,
-        true
-      );
-      xhttp.send();
+      })
     }
-  </script>
 
-  <!-- search by course// -->
-
-  <script>
-    function filterBySearch(type, element2) {
-
-
-        // filter data by search in course///
-
-        if(type=='course'){
-            document.getElementById("courseData").childNodes.forEach(element=>{
-
-if(element.id){
-    const idArray = element.id.split("-");
-                idArray.shift();
-                idArray.shift();
-                const courseName = idArray.join("-");
-                if(!courseName.toLowerCase().toLowerCase().includes(element2.value)){
-                    element.style.display = "none";
-                }else{
-                    element.style.display = "block";
-                }
-                
-}
-
-            })
-
-
+    if (type == 'subCourse') {
+      document.getElementById("alldata").childNodes.forEach(element => {
+        if (element.id) {
+          const idArray = element.id.split("-");
+          idArray.shift();
+          idArray.shift();
+          const courseName = idArray.join("-");
+          if (!courseName.toLowerCase().toLowerCase().includes(element2.value)) {
+            element.style.display = "none";
+          } else {
+            element.style.display = "block";
+          }
         }
-
-
-        // filter data by search in Subcourse///
-
-        if(type=='subCourse'){
-            document.getElementById("alldata").childNodes.forEach(element=>{
-
-if(element.id){
-    const idArray = element.id.split("-");
-                idArray.shift();
-                idArray.shift();
-                const courseName = idArray.join("-");
-                if(!courseName.toLowerCase().toLowerCase().includes(element2.value)){
-                    element.style.display = "none";
-                }else{
-                    element.style.display = "block";
-                }
-                
-}
-
-            })
-
-
-        }
-
-        // filter data by search in exam///
-
-        if(type=='exam'){
-            document.getElementById("examData").childNodes.forEach(element=>{
-
-if(element.id){
-    const idArray = element.id.split("-");
-                idArray.shift();
-                idArray.shift();
-                const courseName = idArray.join("-");
-                if(!courseName.toLowerCase().toLowerCase().includes(element2.value)){
-                    element.style.display = "none";
-                }else{
-                    element.style.display = "block";
-                }
-                
-}
-
-            })
-
-
-        }
-
-        // filter data by search in facility/
-
-        if(type=='facility'){
-            document.getElementById("facilityData").childNodes.forEach(element=>{
-
-if(element.id){
-    const idArray = element.id.split("-");
-                idArray.shift();
-                idArray.shift();
-                const courseName = idArray.join("-");
-                if(!courseName.toLowerCase().toLowerCase().includes(element2.value)){
-                    element.style.display = "none";
-                }else{
-                    element.style.display = "block";
-                }
-                
-}
-
-            })
-
-
-        }
-
-
+      })
     }
-  </script>
 
-  <!-- find course  when course search course-->
+    if (type == 'exam') {
+      document.getElementById("examData").childNodes.forEach(element => {
+        if (element.id) {
+          const idArray = element.id.split("-");
+          idArray.shift();
+          idArray.shift();
+          const courseName = idArray.join("-");
+          if (!courseName.toLowerCase().toLowerCase().includes(element2.value)) {
+            element.style.display = "none";
+          } else {
+            element.style.display = "block";
+          }
+        }
+      })
+    }
 
-  <script>
-    // get all the college by shorting with name
+    if (type == 'facility') {
+      document.getElementById("facilityData").childNodes.forEach(element => {
+        if (element.id) {
+          const idArray = element.id.split("-");
+          idArray.shift();
+          idArray.shift();
+          const courseName = idArray.join("-");
+          if (!courseName.toLowerCase().toLowerCase().includes(element2.value)) {
+            element.style.display = "none";
+          } else {
+            element.style.display = "block";
+          }
+        }
+      })
+    }
+  }
+</script>
 
-    function getCollegeWithShorting(element) {
-      const short = element.value;
-      console.log(short);
-
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-          // document.getElementById("demo").innerHTML =
-          // this.responseText;
-          console.log(this.responseText);
-          var data = JSON.parse(this.responseText);
-
-          document.getElementById("allColleges").innerHTML = data?.map((data) => {
-              return `<div class="collegeCard">
+<script>
+  function getCollegeWithShorting(element) {
+    const short = element.value;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        var data = JSON.parse(this.responseText);
+        document.getElementById("allColleges").innerHTML = data?.map((data) => {
+          return `<div class="collegeCard">
             <div class="row">
                                 <div class="col-md-4">
                                
                                     <div class="collImage">
-                                      ${data?.isWishlisted== true ?`   <i class="fas fa-star checkedData  star-back" id="wishlist" onclick="addWishlist(this,'${data?._id}')"></i> ` : `  <i class="fas fa-star star-back" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i>`}
+                                      ${data?.isWishlisted == true ? `   <i class="fas fa-star checkedData  star-back" id="wishlist" onclick="addWishlist(this,'${data?._id}')"></i> ` : `  <i class="fas fa-star star-back" id="wishlist" onclick="addWishlist(this,'${data._id}')"></i>`}
 
                                         <img src="${data?.image}">
                                     </div>
@@ -1243,76 +1021,38 @@ if(element.id){
                                 </div>
                             </div>
                         </div>`;
-            })
-            .join("");
-        }
-      };
-      xhttp.open("GET", `/collegeShorting?short=${short}`, true);
-      xhttp.send();
-    }
-  </script>
-
+        })
+          .join("");
+      }
+    };
+    xhttp.open("GET", `/collegeShorting?short=${short}`, true);
+    xhttp.send();
+  }
+</script>
 
 <script>
-
-// onclick if user is logged in then add college in wishlist and if not open login modal
-
-
-function addWishlist(element,id){
-  const userDetail = document.getElementById("userDetail").innerHTML;
-  console.log(element)
-  const model = element.value
-  console.log(model)
-
-  if(userDetail){
-    var xhttp = new XMLHttpRequest();
+  function addWishlist(element, id) {
+    const userDetail = document.getElementById("userDetail").innerHTML;
+    const model = element.value
+    if (userDetail) {
+      var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-          // document.getElementById("demo").innerHTML =
-          // this.responseText;
-          console.log(this.responseText);
           var data = JSON.parse(this.responseText);
-
-        const addWishlist =  data.message
-          if(addWishlist ==  "add"){
-       
-
-            // this.item par checked class add karna hai//
-
+          const addWishlist = data.message
+          if (addWishlist == "add") {
             element.classList.toggle("checkedData");
-
-
-
-        
-
-  
-          
-
-
-
-      
-
-
-
-
-          
-            
-          }else{
-          // remove cheked class
-          element.classList.remove("checkedData");
+          } else {
+            element.classList.remove("checkedData");
           }
         }
       };
       xhttp.open("GET", `/addWishlist?collegeId=${id}`, true);
       xhttp.send();
-  }else{
-    $("#exampleModal").modal("show");
+    } else {
+      $("#exampleModal").modal("show");
+    }
   }
-}
-
- 
-
 </script>
-
 
 </html>
