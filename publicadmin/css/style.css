@@ -3429,6 +3429,7 @@ ul.examlinks li a {
   border: 1px solid #e9e9e9;
   text-align: center;
   padding: 10px;
+  background-color: #fff;
 }
 
 .cityLogo {
@@ -3457,4 +3458,19 @@ ul.examlinks li a {
   height: 100%;
   width: 100%;
   object-fit: contain;
+}
+
+.bannerSlid {
+  padding: 0px !important;
+  margin: -85px 0 0 0;
+}
+
+.bannerSlid .slick-slide {
+  padding: 5px;
+}
+
+.bannerSlid .Partners2Slider .slick-list {
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
 }
