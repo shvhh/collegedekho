@@ -69,76 +69,6 @@
       </div>
     </section>
 
-    <section class="studyGoal">
-      <div class="container">
-        <div class="studyGoalTitle">
-          <h3>Select Your Study Goal</h3>
-        </div>
-        <div class="PartnersSlider slider">
-          <% studyGoalData?.forEach(function(studyGoalData){ %>
-            <div class="slide1">
-              <div class="px-4">
-                <h4>
-                  <%=studyGoalData?.heading%>
-                </h4>
-                <h5>
-                  <%=studyGoalData.title%>
-                </h5>
-                <% studyGoalData?.subParts?.forEach(function(d){ %>
-                  <p class="goalP">
-                    <%=d?.subTitle%>
-                  </p>
-                  <% }) %>
-              </div>
-            </div>
-            <% }) %>
-        </div>
-      </div>
-    </section>
-
-    <section class="topCollections">
-      <div class="container">
-        <div class="collections d-flex align-items-center justify-content-between">
-          <h3>
-            Top Schools
-            <!-- for <%=topCourseCategory[0]?.category%> -->
-          </h3>
-          <div>
-            <a href="/schoollist" class="viewAllBtn"><i
-                class="fa-light fa-arrow-right"></i>
-            </a>
-            <span class="px-2" style="color: #1d1d1d;">View All</span>
-          </div>
-        </div>
-        <div class="row mt-3">
-          <% topCourseCategory[0]?.collegeDetail?.forEach(function(d){ %>
-
-            <a href="/collegeDetail/<%=d?.slag%>/overView" class="col-md-3 my-3">
-              <div class="collectionCard">
-                <div class="collectionImg">
-                  <img src="<%=d?.image%>" alt="<%=d?.altForImage%>" />
-                </div>
-                <div class="collectionText">
-                  <div class="d-flex align-items-center justify-content-between">
-                    <h5>
-                      <%=d?.name%>
-                    </h5>
-                    <p>+8 More</p>
-                  </div>
-                  <% d?.stateDetail?.forEach(function(state){ %>
-                    <h4>
-                      <%=state?.name%>
-                    </h4>
-                    <% }) %>
-                </div>
-              </div>
-            </a>
-
-            <% }) %>
-        </div>
-      </div>
-    </section>
-
     <section class="border-top">
       <div class="container">
         <div class="manePageBanner">
@@ -159,7 +89,7 @@
       </div>
     </section>
 
-    <!-- <section class="explorePrograms border-top">
+    <section class="explorePrograms border-top">
       <div class="container">
         <div class="programs">
           <h3>Explore Programs</h3>
@@ -228,82 +158,6 @@
           </div>
         </div>
       </div>
-    </section> -->
-
-    <section class="topColleges border-top">
-      <div class="container">
-        <div class="colleges">
-          <h3>Top 10 Schools</h3>
-        </div>
-        <div class="d-flex align-items-center justify-content-end">
-          <form class="searchState">
-            <i class="fa-regular fa-magnifying-glass"></i>
-            <input type="text" placeholder="Search for states" oninput="collegeFilter(this)" name="search" />
-            <a href="#!" class="submitBtn">Search</a>
-          </form>
-        </div>
-        <div class="row stateList pt-3">
-          <div class="col-md-3">
-            <h4>Popular States</h4>
-            <ul class="popularStateList -list-prop">
-              <% state?.forEach(function(state){ %>
-                <li onclick="getCollegeByState('<%= state?._id%>')">
-                  <%=state?.name%>
-                </li>
-                <% }) %>
-            </ul>
-          </div>
-          <div class="col-md-9">
-            <div class="collegeTable">
-              <table class="table table-striped table-responsive">
-                <thead>
-                  <tr>
-                    <th>Rank</th>
-                    <th>School</th>
-                    <th>Ranking</th>
-                    <th>Cutoff</th>
-                    <th style="width: 150px">Application Deadline</th>
-                    <th>Fees</th>
-                  </tr>
-                </thead>
-                <tbody id="collegeList">
-                  <%topCollege?.forEach(function(topCollege, i){ %>
-                    <tr class="data" id="collegeGetBySearch-data-<%=topCollege?.name%>">
-                      <td>
-                        <%=i+1%>
-                      </td>
-                      <td>
-                        <%=topCollege?.name%>
-                      </td>
-                      <td>
-                        <%=topCollege?.ranking%>
-                      </td>
-                      <td>
-                        <%=topCollege?.cutOff%>
-                      </td>
-                      <td>
-                        <%=topCollege?.applicationDate%>
-                      </td>
-                      <td style="position: relative">
-                        <%=topCollege?.feesRange%>
-                          <div class="wishdropdown">
-                            <!-- <i
-                          onclick="myFunction()"
-                          class="fa-solid fa-ellipsis-vertical wishdropbtn"
-                        ></i> -->
-                            <!-- <div id="mywishDropdown" class="wishdropdown-content">
-                          <a href="#!">Add to Wishlist</a>
-                        </div> -->
-                          </div>
-                      </td>
-                    </tr>
-                    <% }) %>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <section class="freeConsultation">
@@ -318,72 +172,95 @@
       </div>
     </section>
 
-    <section class="exploreCareers">
+    <section class="exploreCareers home2">
       <div class="container">
         <div class="explore">
-          <h3>Explore Careers</h3>
+          <h3>Top City</h3>
           <p class="pt-3">
-            Explore your preferred streams to learn about the relevant colleges,
-            exams and more!
+            Explore your preferred streams to learn about the relevant schools..
           </p>
         </div>
-        <div class="wrapper">
-          <div class="icon">
-            <i id="left" class="fa-solid fa-angle-left"></i>
-          </div>
-          <ul class="tabs-box">
-            <% courseCategoryData.forEach(function(courseCategoryData){ %>
-              <li class="tab" onclick="getcollege('<%=courseCategoryData?._id%>')">
-                <%=courseCategoryData.category%>
-              </li>
-              <% }) %>
-          </ul>
-          <div class="icon">
-            <i id="right" class="fa-solid fa-angle-right"></i>
-          </div>
-        </div>
-        <div class="Partners2Slider slider" id="getCollegeByCourseCategory">
-          <% collegeData[0]?.collegeDetail?.forEach(function(d){ %>
-            <div class="col-md-3 my-3">
-              <div class="collectionCard">
-                <div class="collectionImg rigCollegeCol">
-                  <img src="<%=d?.image%>" alt="<%=d?.altForImage%>" />
-                  <div class="collegeDecription">
-                    <h3>SRM Institute of Science and Technology-[SRMIT]</h3>
-                    <p>Chennai, Tamil Nadu | UGC</p>
-                  </div>
-                </div>
-                <div class="collectionText">
-                  <div class="row rigExploreCareer">
-                    <div class="col-md-7">
-                      <div class="border-bottom">
-                        <h5>
-                          Bachelor of Technology
-                        </h5>
-                        <h4>
-                          <span>50 k-1.5L</span> INR
-                        </h4>
-                      </div>
-                    </div>
-                    <div class="col-md-5 text-end revieRig">
-                      <p><i class="fa-solid fa-star"></i> 7.8/10</p>
-                      <span>727 reviews</span>
-                    </div>
-                  </div>
-                  <p class="mt-2 descrRig">BTech or Bachelor of Technology is a professional four-year undergraduate
-                    course that
-                    covers all
-                    the fields of...</p>
-                  <div class="avrgSection">
-                    <p>Average Duration - <span>4 Year</span></p>
-                  </div>
-                  <div class="my-2">
-                    <a href="#!" class="btn">View More</a>
-                  </div>
-                </div>
+        <div class="Partners2Slider slider">
+          <div class="col-md-3 my-3">
+            <div class="cityCard">
+              <div class="cityLogo">
+                <img src="/public/images/NCR.svg" />
               </div>
+              <p>Delhi</p>
             </div>
-            <% }) %>
+          </div>
+          <div class="col-md-3 my-3">
+            <div class="cityCard">
+              <div class="cityLogo">
+                <img src="/public/images/Bangalore.svg" />
+              </div>
+              <p>Bangalore</p>
+            </div>
+          </div>
+          <div class="col-md-3 my-3">
+            <div class="cityCard">
+              <div class="cityLogo">
+                <img src="/public/images/NCR.svg" />
+              </div>
+              <p>Faridabad</p>
+            </div>
+          </div>
+          <div class="col-md-3 my-3">
+            <div class="cityCard">
+              <div class="cityLogo">
+                <img src="/public/images/Bangalore.svg" />
+              </div>
+              <p>Noida</p>
+            </div>
+          </div>
+          <div class="col-md-3 my-3">
+            <div class="cityCard">
+              <div class="cityLogo">
+                <img src="/public/images/NCR.svg" />
+              </div>
+              <p>Ghaziabad</p>
+            </div>
+          </div>
+          <div class="col-md-3 my-3">
+            <div class="cityCard">
+              <div class="cityLogo">
+                <img src="/public/images/Bangalore.svg" />
+              </div>
+              <p>Hyderabad</p>
+            </div>
+          </div>
+          <div class="col-md-3 my-3">
+            <div class="cityCard">
+              <div class="cityLogo">
+                <img src="/public/images/NCR.svg" />
+              </div>
+              <p>Pune</p>
+            </div>
+          </div>
+          <div class="col-md-3 my-3">
+            <div class="cityCard">
+              <div class="cityLogo">
+                <img src="/public/images/Bangalore.svg" />
+              </div>
+              <p>Mumbai</p>
+            </div>
+          </div>
+          <div class="col-md-3 my-3">
+            <div class="cityCard">
+              <div class="cityLogo">
+                <img src="/public/images/NCR.svg" />
+              </div>
+              <p>Chennai</p>
+            </div>
+          </div>
+          <div class="col-md-3 my-3">
+            <div class="cityCard">
+              <div class="cityLogo">
+                <img src="/public/images/Bangalore.svg" />
+              </div>
+              <p>Kolkata</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -425,141 +302,11 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 </body>
 
-
-
-<script>
-  function getCollegeByState(id) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        var data = JSON.parse(this.responseText);
-        document.getElementById("collegeList").innerHTML = data
-          .map((data, i) => {
-            return `
-   <tr  class="data" id="collegeGetBySearch-data-${data?.name}" >
-   
-      <td>${i + 1}</td>
-      <td>${data?.name}</td>
-      <td>${data?.ranking}</td>
-      <td>${data?.cutOff}</td>
-      <td>${data?.applicationDate}</td>
-      <td style="position: relative;">
-         ₹${data?.feesRange} Fees
-       
-      </td>
-   </tr>
-   `;
-          })
-          .join("");
-      }
-    };
-    xhttp.open("GET", `/getCollegeByStateId?stateId=${id}`, true);
-    xhttp.send();
-  }
-</script>
-
-<!-- college with slider in explore career section -->
-<script>
-  // onclick on getcollege get college by course id and put in slider
-
-  function getcollege(id) {
-    console.log(id);
-
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        // document.getElementById("demo").innerHTML =
-        // this.responseText;
-        console.log(this.responseText);
-        var data = JSON.parse(this.responseText);
-
-        console.log(data);
-
-        // paste data in getCollegeByCourseCategory div with slider class PartnersSlider slider
-        $(".Partners2Slider").slick("unslick");
-        document.getElementById("getCollegeByCourseCategory").innerHTML =
-          data[0]?.collegeDetail
-            .map((data, i) => {
-              return `
-              <div class="col-md-3 my-3">
-                <div class="collectionCard">
-              <div class="collectionImg">
-
-                <img src="${data?.image}" alt="${data?.altForImage}" />
-              </div>
-              <div class = "collectionText">
-                <div class="d-flex align-items-center justify-content-between">
-                  <h5>${data?.name}</h5>
-                  <p>+8 More</p>
-                </div>
-                ${data?.stateDetail.map((state) => {
-                return `
-                  <h4>${state?.name}</h4>
-                  `;
-              })}
-              </div>
-            </div>
-          </div>
-              `;
-            })
-            .join("");
-
-
-        $('.Partners2Slider').slick({
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          autoplay: true,
-          autoplaySpeed: 2000,
-          arrows: true,
-          dots: false,
-          prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
-          nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
-          pauseOnHover: false,
-          responsive: [{
-            breakpoint: 768,
-            settings: {
-              slidesToShow: 1
-            }
-          }, {
-            breakpoint: 520,
-            settings: {
-              slidesToShow: 1
-            }
-          }]
-        });
-      }
-    };
-    xhttp.open("GET", `/getCollegeByCourseId?courseCategoryId=${id}`, true);
-    xhttp.send();
-  }
-</script>
-
-<!-- Search college by name in top college section -->
-<script>
-  function collegeFilter(element) {
-    const value = element.value;
-
-    document.getElementById("collegeList").childNodes.forEach((element) => {
-      if (element.id) {
-        const idArray = element.id.split("-");
-        idArray.shift();
-        idArray.shift();
-        const courseName = idArray.join("-");
-        if (courseName.toLowerCase().includes(value.toLowerCase())) {
-          element.style.display = "table-row";
-        } else {
-          element.style.display = "none";
-        }
-      }
-    });
-  }
-</script>
-
 <script>
 
   $(document).ready(function () {
     $('.Partners2Slider').slick({
-      slidesToShow: 4,
+      slidesToShow: 8,
       slidesToScroll: 1,
       autoplay: true,
       autoplaySpeed: 2000,
@@ -577,30 +324,6 @@
         breakpoint: 520,
         settings: {
           slidesToShow: 1
-        }
-      }]
-    });
-  });
-  $(document).ready(function () {
-    $('.PartnersSlider').slick({
-      slidesToShow: 5,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 2000,
-      arrows: true,
-      dots: false,
-      prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
-      nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
-      pauseOnHover: false,
-      responsive: [{
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2
-        }
-      }, {
-        breakpoint: 520,
-        settings: {
-          slidesToShow: 2
         }
       }]
     });
