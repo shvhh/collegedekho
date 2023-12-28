@@ -3448,3 +3448,13 @@ ul.examlinks li a {
   margin: 0 auto;
   overflow: hidden;
 }
+
+.aboutIm {
+  height: 300px;
+}
+
+.aboutIm img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
