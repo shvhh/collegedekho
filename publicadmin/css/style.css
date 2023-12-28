@@ -1350,6 +1350,11 @@ input {
   object-fit: contain;
 }
 
+.programCard:hover img {
+  transition: 2s;
+  transform: rotateY(360deg);
+}
+
 .programCard h4 {
   color: #1d1d1d;
   padding: 20px 0 0 0;
@@ -1825,7 +1830,7 @@ input {
 .submitBtn {
   background-color: #e45330;
   border-radius: 10px;
-  color: #fff;
+  color: #fff !important;
   border: 1px solid #e45330;
   padding: 4px 30px;
   transition: all 0.5s;
@@ -1834,7 +1839,7 @@ input {
 
 .submitBtn:hover {
   background-color: transparent;
-  color: #e45330;
+  color: #e45330 !important;
 }
 
 /* ---------------------------Footer--------------------------------- */
@@ -1877,14 +1882,21 @@ input {
   width: 30px;
   height: 30px;
   display: flex;
+  font-size: 14px;
   align-items: center;
   justify-content: center;
   transform: rotateZ(-45deg);
+  transition: all .5s;
 }
 
 .socialLink a:hover {
   background-color: #fff;
   color: #1d1d1d;
+}
+
+.socialLink a:hover i {
+  font-size: 20px;
+  transition: all .5s;
 }
 
 .copyRight {
