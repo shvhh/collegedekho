@@ -3474,3 +3474,38 @@ ul.examlinks li a {
   margin: 0 auto;
   overflow: hidden;
 }
+
+.home2 {
+  /* background-color: #f4f4f4; */
+  background: url(../../public/images/banner1.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.home2 .cityCard {
+  border-radius: 12px;
+  box-shadow: 0 0 6px 0 rgb(0 0 0 / 16%);
+  display: flex;
+  align-items: center;
+}
+
+.home2 .cityLogo {
+  margin: 0 10px 0 0;
+}
+
+.countList {
+  text-align: start;
+}
+
+.countList h5 {
+  color: #fba324;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0px;
+  padding: 10px 0 0 0;
+}
+
+.countList p {
+  color: #111 !important;
+}
