@@ -1363,8 +1363,10 @@ input {
 }
 
 .programCard p {
-  font-size: 12px;
+  font-size: 10px;
   color: #707070;
+  line-height: 1.7;
+  padding: 0 0 10px 0;
 }
 
 .programCard a {
