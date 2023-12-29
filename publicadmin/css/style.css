@@ -3434,6 +3434,11 @@ ul.examlinks li a {
   background-color: #fff;
 }
 
+.cityCard:hover {
+  margin: -10px 0 0 0;
+  background-color: #f4f4f4;
+}
+
 .cityLogo {
   width: 64px;
   height: 64px;
