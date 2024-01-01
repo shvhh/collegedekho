@@ -3521,3 +3521,50 @@ ul.examlinks li a {
 .countList p {
   color: #111 !important;
 }
+.schoolDe h4 i{
+  color: #e45330;
+  margin: 0 5px 0 0;
+}
+.schoolSh{
+  background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 4px 0 rgba(90,86,149,.1);
+    padding: 28px;
+    position: relative;
+}
+.schoolSh h2 {
+  color: #111;
+  font-size: 25px;
+  font-stretch: normal;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.schoolSh:before {
+  background-color: #e45330;
+  border-top-right-radius: 9px;
+  content: "";
+  height: 36px;
+  left: 15px;
+  margin: 0 24px 0 0;
+  position: absolute;
+  width: 4px;
+}
+.tmTabs{
+  border-bottom: 1px solid #dee2e6;
+}
+.tmBtn{
+  background-color: #fba324;
+  border: 1px solid #fba324;
+  color: #111;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 25px;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+.schoolSh h4{
+  color: #111;
+  font-size: 20px;
+  font-stretch: normal;
+  font-weight: 700;
+}
