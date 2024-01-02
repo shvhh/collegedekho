@@ -3591,3 +3591,20 @@ ul.examlinks li a {
   width: 100%;
   object-fit: cover;
 }
+.bgCom{
+  background: url(../../public/images/college.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.ovl{
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  padding: 15px 10px;
+}
+.ovl strong,
+.ovl p{
+  color: #fff;
+}

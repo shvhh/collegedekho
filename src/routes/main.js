@@ -2653,4 +2653,11 @@ routes.get("/schoolDetail", async(req,res)=>{
   }
 });
 
+// school-compare page tender
+
+
+routes.get("/schoolCompare", async (req, res) => {
+  res.view("pages/schoolCompare");
+});
+
 module.exports = routes;
