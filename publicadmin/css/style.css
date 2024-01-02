@@ -3591,6 +3591,7 @@ ul.examlinks li a {
   width: 100%;
   object-fit: cover;
 }
+
 .bgCom{
   background: url(../../public/images/college.jpg);
   background-position: center;
@@ -3598,13 +3599,31 @@ ul.examlinks li a {
   background-size: cover;
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
 }
+
 .ovl{
   background-color: rgba(0, 0, 0, 0.5);
   height: 100%;
   padding: 15px 10px;
 }
+
 .ovl strong,
 .ovl p{
+  color: #fff;
+}
+
+.bgCom button{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  background: transparent;
+  outline: 0;
+  box-shadow: none;
+  border: none;
+}
+
+.bgCom i{
   color: #fff;
 }
