@@ -3568,3 +3568,26 @@ ul.examlinks li a {
   font-stretch: normal;
   font-weight: 700;
 }
+.schoolSh .cityCard:hover{
+  margin: 0px;
+}
+.contWithUs li i{
+  color: #eca500;
+  font-size: 20px;
+  margin: 0 5px 0 0;
+  width: 30px;
+  text-align: center;
+}
+
+.gallerySchool{
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  height: 110px;
+  padding: 10px;
+}
+
+.gallerySchool img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
