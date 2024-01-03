@@ -1918,7 +1918,6 @@ input {
 
 /* ---------------------------Exam Page------------------------------ */
 .bannerSec {
-  /* margin: 60px 0 0 0; */
   position: relative;
   background-image: url(../images/banner/banner.svg);
   background-position: center top;
@@ -2481,18 +2480,6 @@ input {
   position: relative;
   padding: 50px 0 100px 0;
 }
-
-/* .blogExploreTopics:after {
-  content: "";
-  position: absolute;
-  bottom: -60px;
-  left: 0px;
-  border-left: 700px solid transparent;
-  border-right: 700px solid transparent;
-  border-top: 60px solid #111111;
-  transform: rotate(0deg);
-  width: 100%;
-} */
 
 .blogExploreTopics .explore h3 {
   color: #fff;
