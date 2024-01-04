@@ -2069,7 +2069,7 @@ input {
 .mockTestCta .innerBox img {
   position: absolute;
   right: 20px;
-  top: 33px;
+  /* top: 33px; */
   width: 160px;
   height: 125px;
 }
