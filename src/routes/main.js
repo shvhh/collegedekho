@@ -2660,4 +2660,16 @@ routes.get("/schoolCompare", async (req, res) => {
   res.view("pages/schoolCompare");
 });
 
+routes.get("/contact", async (req, res) => {
+  res.view("pages/contact");
+});
+
+routes.get("/privacy", async (req, res) => {
+  res.view("pages/privacy");
+});
+
+routes.get("/termsConditions", async (req, res) => {
+  res.view("pages/termsConditions");
+});
+
 module.exports = routes;
