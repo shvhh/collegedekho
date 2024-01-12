@@ -2672,4 +2672,8 @@ routes.get("/termsConditions", async (req, res) => {
   res.view("pages/termsConditions");
 });
 
+routes.get("/error", async (req, res) => {
+  res.view("pages/error");
+});
+
 module.exports = routes;
