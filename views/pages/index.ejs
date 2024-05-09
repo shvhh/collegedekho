@@ -43,13 +43,13 @@
                     </g>
                   </svg>
                 </div>
-                <!-- <h1>
+                <h1>
                   <span>From </span>
                   College Admissions <span> to </span>
                   <br>Being Job Ready
                 </h1>
-                <p class="collegeRig">We’ve got you covered!</p> -->
-                <a class="collegeRigBtn">
+                <!-- <p class="collegeRig">We’ve got you covered!</p> -->
+                <!-- <a class="collegeRigBtn">
                   <button class="collegeRigBtns">
                     Start Your Journey Today
                   </button>
@@ -58,7 +58,7 @@
                   <button class="collegeRigBtnst">
                     Get Assured Placements
                   </button>
-                </a>
+                </a> -->
               </div>
             </div>
             <div class="rigColleges mt-5">
@@ -94,21 +94,23 @@
         <div class="studyGoalTitle">
           <h3>Select Your Study Goal</h3>
         </div>
-        <div class="PartnersSlider slider">
+        <div class="PartnersSlider slider mt-4">
           <% studyGoalData?.forEach(function(studyGoalData){ %>
             <div class="slide1">
-              <div class="px-4">
+              <div class="px-4 goalS">
                 <h4>
                   <%=studyGoalData?.heading%>
                 </h4>
-                <h5>
-                  <%=studyGoalData.title%>
-                </h5>
-                <% studyGoalData?.subParts?.forEach(function(d){ %>
-                  <p class="goalP">
-                    <%=d?.subTitle%>
-                  </p>
-                  <% }) %>
+                <div class="goalSec">
+                  <h5>
+                    <%=studyGoalData.title%>
+                  </h5>
+                  <% studyGoalData?.subParts?.forEach(function(d){ %>
+                    <p class="goalP">
+                      <%=d?.subTitle%>
+                    </p>
+                    <% }) %>
+                </div>
               </div>
             </div>
             <% }) %>
