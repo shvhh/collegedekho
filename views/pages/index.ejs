@@ -97,7 +97,7 @@
         <div class="PartnersSlider slider mt-4">
           <% studyGoalData?.forEach(function(studyGoalData){ %>
             <div class="slide1">
-              <div class="px-4 goalS">
+              <div class="goalS">
                 <h4>
                   <%=studyGoalData?.heading%>
                 </h4>
@@ -105,11 +105,13 @@
                   <h5>
                     <%=studyGoalData.title%>
                   </h5>
-                  <% studyGoalData?.subParts?.forEach(function(d){ %>
-                    <p class="goalP">
-                      <%=d?.subTitle%>
-                    </p>
-                    <% }) %>
+                  <ul>
+                    <% studyGoalData?.subParts?.forEach(function(d){ %>
+                      <li class="goalP">
+                        <%=d?.subTitle%>
+                      </li>
+                      <% }) %>
+                  </ul>
                 </div>
               </div>
             </div>

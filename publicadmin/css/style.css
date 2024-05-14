@@ -192,13 +192,19 @@ nav li {
 }
 
 .menuList:hover {
-  background-color: #f4f4f4;
+  background-color: #595959;
+  color: #fff;
+  border-radius: 10px;
 }
 
 .menuL a {
   display: block;
   color: #707070;
   font-size: 12px;
+}
+
+.menuL a:hover{
+  color: #eca500 !important;
 }
 
 .l1 {
@@ -212,7 +218,7 @@ nav li {
 }
 
 .mega-menu h3 {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 @media all and (min-width: 951px) {
@@ -264,15 +270,22 @@ nav li {
   .mega-menu--multiLevel>li {
     width: 20%;
     cursor: pointer;
+    margin: 2px 0;
   }
 
   .mega-menu--multiLevel>li:hover {
-    background-color: #f4f4f4;
+    background-color: #595959;
+    border-radius: 10px;
+  }
+
+  .mega-menu--multiLevel>li:hover .menuList{
+    color: #fff;
   }
 
   .mega-menu--multiLevel>li>[aria-haspopup="true"]~ul {
     left: 20%;
     width: 80%;
+    padding: 0 0 0 10px;
   }
 
   .mega-menu--multiLevel>li>[aria-haspopup="true"]~ul ul {
@@ -1154,35 +1167,21 @@ input {
   background-color: #ddd;
 } */
 
-.goalSec{
-  /* border: 1px solid #ddd; */
-  min-height: 120px;
-  padding: 10px;
-  margin: 20px 0 0 0;
+.goalS{
+  min-height: 150px;
+  margin: 10px;
   border-radius: 10px;
   background-color: #fff;
 }
 
 .goalS h4{
-  position: relative;
-  width:100%;
-  background: #e45330;
-  text-align:center;
-  color:#fff;
-  padding: 5px;
-  border-radius: 5px;
+  margin: 0 0 5px 0;
+  padding: 5px 10px;
+  border-bottom: 2px solid #eca500;
 }
 
-.goalS h4:after{
-  position: absolute;
-  bottom: -9px;
-  left: 50%;
-  margin-left: -10px;
-  content:"";
-  display:block;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 10px solid #e45330; 
+.goalSec{
+  padding: 0px 10px 5px 10px;
 }
 
 .slick-initialized .slick-slide {
@@ -1192,7 +1191,7 @@ input {
 
 .PartnersSlider h5 {
   color: #1d1d1d;
-  font-size: 14px;
+  font-size: 12px;
   margin: 0 0 5px 0;
   font-weight: 400;
 }
@@ -1257,6 +1256,9 @@ input {
 }
 
 .goalP {
+  padding: 0px;
+  list-style-type: circle;
+  margin: 0 0 0 20px;
   font-size: 12px;
   color: #1d1d1d;
   line-height: 1.5;
