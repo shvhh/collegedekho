@@ -41,7 +41,289 @@
       <section class="collegesPage py-0">
         <div class="container">
           <div class="row justify-content-between">
-            <div class="col-md-5">
+            <div class="col-md-3">
+              <div class="filters">
+                <div class="filterB">
+                  <button aria-label="Open Mobile Menu" class="open-mobile-menu">
+                    Filter By 
+                  </button>
+                  <div class="top-menu-wrapper">
+                    <ul class="top-menu">
+                      <li class="mob-block">
+                        <h1 class="filH" alt="sidebar">Filter</h1>
+                        <button aria-label="Close Mobile Menu" class="close-mobile-menu">
+                          Close
+                        </button>
+                      </li>
+                      <li class="listF">
+                        <!-- <div class="filterSec">
+                            <h3>Stream</h3>
+                            <form class="searchState">
+                                <i class="fa-regular fa-magnifying-glass"></i>
+                                <input type="text" placeholder="Search stream">
+                            </form>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Management
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    Science
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Engineering
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Arts
+                                </label>
+                            </div>
+                        </div> -->
+
+                        <!-- course filter/// -->
+                        <div class="filterSec">
+                          <h3>Course</h3>
+
+                          <form class="searchState">
+                            <i class="fa-regular fa-magnifying-glass"></i>
+                            <input type="text" placeholder="Search course" value="" oninput="filterBySearch(`course`,this)"
+                              name="search" />
+                          </form>
+
+                          <div class="Course-sslider">
+                            <span id="courseData">
+                              <% courseCategoryDetail[0]?.courseDetail?.forEach(function(d){ %>
+                                <div class="form-check" id="course-checkbox-<%= d.name %>">
+                                  <input class="form-check-input" onclick="getCollege(this)" type="checkbox"
+                                    class="checkedBoxDataGet" value="<%=d?._id%>" id="flexCheckDefault" />
+                                  <label class="form-check-label" for="flexCheckDefault">
+                                    <%=d?.name%>
+                                  </label>
+                                </div>
+                                <% }) %>
+                            </span>
+                          </div>
+                        </div>
+
+                        <!-- specilization// -->
+                        <div class="filterSec">
+                          <h3>Specialization</h3>
+                          <form class="searchState">
+                            <i class="fa-regular fa-magnifying-glass"></i>
+                            <input type="text" placeholder="Program Type" value="" oninput="filterBySearch(`subCourse`,this)"
+                              name="search" />
+                          </form>
+
+                          <div class="Course-sslider">
+                            <span id="alldata">
+                              <% courseCategoryDetail[0]?.subCoursesDetail?.forEach(function(d){ %>
+                                <div class="form-check" id="subCourse-checkbox-<%= d.subCourseName %>">
+                                  <input class="form-check-input" onclick="getByState(`subCourseId`,this)"
+                                    class="getDataBySubcourse" type="checkbox" value="<%=d?._id%>" id="flexCheckDefault" />
+                                  <label class="form-check-label" for="flexCheckDefault">
+                                    <%=d?.subCourseName%>
+                                  </label>
+                                </div>
+                                <% }) %>
+                            </span>
+                          </div>
+                        </div>
+
+                        <!-- exam filter// -->
+                        <div class="filterSec">
+                          <h3>Exam</h3>
+                          <form class="searchState">
+                            <i class="fa-regular fa-magnifying-glass"></i>
+                            <input type="text" placeholder="Program Type" value="" oninput="filterBySearch(`exam`,this)"
+                              name="search" />
+                          </form>
+
+                          <div class="Course-sslider">
+                            <span id="examData">
+                              <% courseCategoryDetail[0]?.examDetail?.forEach(function(d){ %>
+                                <div class="form-check" id="exam-checkbox-<%= d.heading %>">
+                                  <input class="form-check-input" onclick="getByState(`examId`,this)" type="checkbox"
+                                    value="<%=d?._id%>" id="flexCheckDefault" />
+                                  <label class="form-check-label" for="flexCheckDefault">
+                                    <%=d?.heading%>
+                                  </label>
+                                </div>
+
+                                <% }) %>
+                            </span>
+                          </div>
+                        </div>
+
+                        <!-- instituteType -->
+                        <div class="filterSec">
+                          <h3>Institute Type</h3>
+
+                          <div class="form-check">
+                            <input class="form-check-input" onclick="getColllegeByStaticData(`instituteType`,this)"
+                              type="checkbox" value="Private" id="flexCheckDefault" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Private
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" onclick="getColllegeByStaticData(`instituteType`,this)"
+                              type="checkbox" value="Government" id="flexCheckChecked" />
+                            <label class="form-check-label" for="flexCheckChecked">
+                              Government
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" onclick="getColllegeByStaticData(`instituteType`,this)"
+                              type="checkbox" value="Semi Government" id="flexCheckDefault" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Semi Government
+                            </label>
+                          </div>
+                        </div>
+
+                        <!-- study mode/// -->
+                        <div class="filterSec">
+                          <h3>Study Mode</h3>
+
+                          <div class="form-check">
+                            <input class="form-check-input" onclick="getColllegeByStaticData(`studyMode`,this)" type="checkbox"
+                              value="Distance" id="flexCheckDefault" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Distance
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" onclick="getColllegeByStaticData(`studyMode`,this)" type="checkbox"
+                              value="Part Time" id="flexCheckChecked" />
+                            <label class="form-check-label" for="flexCheckChecked">
+                              Part Time
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" onclick="getColllegeByStaticData(`studyMode`,this)" type="checkbox"
+                              value="Regular" id="flexCheckDefault" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Regular
+                            </label>
+                          </div>
+
+                        </div>
+
+                        <!-- hostel//// -->
+                        <div class="filterSec">
+                          <h3>Hostel</h3>
+
+                          <div class="form-check">
+                            <input class="form-check-input" onclick="getColllegeByStaticData(`hostel`,this)" type="checkbox"
+                              value="Boys" id="flexCheckDefault" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Boys
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" onclick="getColllegeByStaticData(`hostel`,this)" type="checkbox"
+                              value="Girls" id="flexCheckChecked" />
+                            <label class="form-check-label" for="flexCheckChecked">
+                              Girls
+                            </label>
+                          </div>
+                        </div>
+
+                        <!-- fess Range// -->
+
+                        <div class="filterSec">
+                          <h3>Fees Range</h3>
+                          <form class="searchState">
+                            <i class="fa-regular fa-magnifying-glass"></i>
+                            <input type="text" placeholder="Program Type" />
+                          </form>
+                          <div class="Course-sslider">
+                            <div class="form-check">
+                              <input class="form-check-input" onclick="getColllegeByStaticData(`feesRange`,this)" type="checkbox"
+                                value="less Than 1 Lakh" id="flexCheckDefault" />
+                              <label class="form-check-label" for="flexCheckDefault">
+                                less Than 1 Lakh
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" onclick="getColllegeByStaticData(`feesRange`,this)" type="checkbox"
+                                value="1 To 2 Lakh" id="flexCheckChecked" />
+                              <label class="form-check-label" for="flexCheckChecked">
+                                1 To 2 Lakh
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" onclick="getColllegeByStaticData(`feesRange`,this)" type="checkbox"
+                                value="2 To 3 Lakh" id="flexCheckDefault" />
+                              <label class="form-check-label" for="flexCheckDefault">
+                                2 To 3 Lakh
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" onclick="getColllegeByStaticData(`feesRange`,this)" type="checkbox"
+                                value="3 To 4 Lakh" id="flexCheckDefault" />
+                              <label class="form-check-label" for="flexCheckDefault">
+                                3 To 4 Lakh
+                              </label>
+                            </div>
+
+                            <div class="form-check">
+                              <input class="form-check-input" onclick="getColllegeByStaticData(`feesRange`,this)" type="checkbox"
+                                value="4 To 5 Lakh" id="flexCheckDefault" />
+                              <label class="form-check-label" for="flexCheckDefault">
+                                4 To 5 Lakh
+                              </label>
+                            </div>
+
+                            <div class="form-check">
+                              <input class="form-check-input" onclick="getColllegeByStaticData(`feesRange`,this)" type="checkbox"
+                                value="Greater Than 5 Lakh" id="flexCheckDefault" />
+                              <label class="form-check-label" for="flexCheckDefault">
+                                Greater Than 5 Lakh
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- facility provide/ -->
+                        <div class="filterSec">
+                          <h3>Facilities</h3>
+
+                          <form class="searchState">
+                            <i class="fa-regular fa-magnifying-glass"></i>
+                            <input type="text" placeholder="Program Type" value="" oninput="filterBySearch(`facility`,this)"
+                              name="search" />
+                          </form>
+
+                          <div class="Course-sslider">
+                            <span id="facilityData">
+                              <% facility?.forEach(function(facility){ %>
+                                <div class="form-check" id="exam-checkbox-<%=facility%>">
+                                  <input class="form-check-input" onclick="getColllegeByStaticData(`facility`,this)"
+                                    type="checkbox" value="<%=facility%>" id="flexCheckDefault" />
+                                  <label class="form-check-label" for="flexCheckDefault">
+                                    <%=facility%>
+                                  </label>
+                                </div>
+                                <% }) %>
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
               <div class="d-flex align-items-center justify-content-between">
                 <!-- filter by state// -->
                 <form class="form-modal w-100">
@@ -90,270 +372,7 @@
             </div>
           </div>
           <div class="row pt-3">
-            <div class="col-md-3">
-              <!-- <div class="filterSec">
-                            <h3>Stream</h3>
-                            <form class="searchState">
-                                <i class="fa-regular fa-magnifying-glass"></i>
-                                <input type="text" placeholder="Search stream">
-                            </form>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Management
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                <label class="form-check-label" for="flexCheckChecked">
-                                    Science
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Engineering
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Arts
-                                </label>
-                            </div>
-                        </div> -->
-
-              <!-- course filter/// -->
-              <div class="filterSec">
-                <h3>Course</h3>
-
-                <form class="searchState">
-                  <i class="fa-regular fa-magnifying-glass"></i>
-                  <input type="text" placeholder="Search course" value="" oninput="filterBySearch(`course`,this)"
-                    name="search" />
-                </form>
-
-                <div class="Course-sslider">
-                  <span id="courseData">
-                    <% courseCategoryDetail[0]?.courseDetail?.forEach(function(d){ %>
-                      <div class="form-check" id="course-checkbox-<%= d.name %>">
-                        <input class="form-check-input" onclick="getCollege(this)" type="checkbox"
-                          class="checkedBoxDataGet" value="<%=d?._id%>" id="flexCheckDefault" />
-                        <label class="form-check-label" for="flexCheckDefault">
-                          <%=d?.name%>
-                        </label>
-                      </div>
-                      <% }) %>
-                  </span>
-                </div>
-              </div>
-
-              <!-- specilization// -->
-              <div class="filterSec">
-                <h3>Specialization</h3>
-                <form class="searchState">
-                  <i class="fa-regular fa-magnifying-glass"></i>
-                  <input type="text" placeholder="Program Type" value="" oninput="filterBySearch(`subCourse`,this)"
-                    name="search" />
-                </form>
-
-                <div class="Course-sslider">
-                  <span id="alldata">
-                    <% courseCategoryDetail[0]?.subCoursesDetail?.forEach(function(d){ %>
-                      <div class="form-check" id="subCourse-checkbox-<%= d.subCourseName %>">
-                        <input class="form-check-input" onclick="getByState(`subCourseId`,this)"
-                          class="getDataBySubcourse" type="checkbox" value="<%=d?._id%>" id="flexCheckDefault" />
-                        <label class="form-check-label" for="flexCheckDefault">
-                          <%=d?.subCourseName%>
-                        </label>
-                      </div>
-                      <% }) %>
-                  </span>
-                </div>
-              </div>
-
-              <!-- exam filter// -->
-              <div class="filterSec">
-                <h3>Exam</h3>
-                <form class="searchState">
-                  <i class="fa-regular fa-magnifying-glass"></i>
-                  <input type="text" placeholder="Program Type" value="" oninput="filterBySearch(`exam`,this)"
-                    name="search" />
-                </form>
-
-                <div class="Course-sslider">
-                  <span id="examData">
-                    <% courseCategoryDetail[0]?.examDetail?.forEach(function(d){ %>
-                      <div class="form-check" id="exam-checkbox-<%= d.heading %>">
-                        <input class="form-check-input" onclick="getByState(`examId`,this)" type="checkbox"
-                          value="<%=d?._id%>" id="flexCheckDefault" />
-                        <label class="form-check-label" for="flexCheckDefault">
-                          <%=d?.heading%>
-                        </label>
-                      </div>
-
-                      <% }) %>
-                  </span>
-                </div>
-              </div>
-
-              <!-- instituteType -->
-              <div class="filterSec">
-                <h3>Institute Type</h3>
-
-                <div class="form-check">
-                  <input class="form-check-input" onclick="getColllegeByStaticData(`instituteType`,this)"
-                    type="checkbox" value="Private" id="flexCheckDefault" />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Private
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" onclick="getColllegeByStaticData(`instituteType`,this)"
-                    type="checkbox" value="Government" id="flexCheckChecked" />
-                  <label class="form-check-label" for="flexCheckChecked">
-                    Government
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" onclick="getColllegeByStaticData(`instituteType`,this)"
-                    type="checkbox" value="Semi Government" id="flexCheckDefault" />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Semi Government
-                  </label>
-                </div>
-              </div>
-
-              <!-- study mode/// -->
-              <div class="filterSec">
-                <h3>Study Mode</h3>
-
-                <div class="form-check">
-                  <input class="form-check-input" onclick="getColllegeByStaticData(`studyMode`,this)" type="checkbox"
-                    value="Distance" id="flexCheckDefault" />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Distance
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" onclick="getColllegeByStaticData(`studyMode`,this)" type="checkbox"
-                    value="Part Time" id="flexCheckChecked" />
-                  <label class="form-check-label" for="flexCheckChecked">
-                    Part Time
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" onclick="getColllegeByStaticData(`studyMode`,this)" type="checkbox"
-                    value="Regular" id="flexCheckDefault" />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Regular
-                  </label>
-                </div>
-
-              </div>
-
-              <!-- hostel//// -->
-              <div class="filterSec">
-                <h3>Hostel</h3>
-
-                <div class="form-check">
-                  <input class="form-check-input" onclick="getColllegeByStaticData(`hostel`,this)" type="checkbox"
-                    value="Boys" id="flexCheckDefault" />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Boys
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" onclick="getColllegeByStaticData(`hostel`,this)" type="checkbox"
-                    value="Girls" id="flexCheckChecked" />
-                  <label class="form-check-label" for="flexCheckChecked">
-                    Girls
-                  </label>
-                </div>
-              </div>
-
-              <!-- fess Range// -->
-
-              <div class="filterSec">
-                <h3>Fees Range</h3>
-                <form class="searchState">
-                  <i class="fa-regular fa-magnifying-glass"></i>
-                  <input type="text" placeholder="Program Type" />
-                </form>
-                <div class="Course-sslider">
-                  <div class="form-check">
-                    <input class="form-check-input" onclick="getColllegeByStaticData(`feesRange`,this)" type="checkbox"
-                      value="less Than 1 Lakh" id="flexCheckDefault" />
-                    <label class="form-check-label" for="flexCheckDefault">
-                      less Than 1 Lakh
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" onclick="getColllegeByStaticData(`feesRange`,this)" type="checkbox"
-                      value="1 To 2 Lakh" id="flexCheckChecked" />
-                    <label class="form-check-label" for="flexCheckChecked">
-                      1 To 2 Lakh
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" onclick="getColllegeByStaticData(`feesRange`,this)" type="checkbox"
-                      value="2 To 3 Lakh" id="flexCheckDefault" />
-                    <label class="form-check-label" for="flexCheckDefault">
-                      2 To 3 Lakh
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" onclick="getColllegeByStaticData(`feesRange`,this)" type="checkbox"
-                      value="3 To 4 Lakh" id="flexCheckDefault" />
-                    <label class="form-check-label" for="flexCheckDefault">
-                      3 To 4 Lakh
-                    </label>
-                  </div>
-
-                  <div class="form-check">
-                    <input class="form-check-input" onclick="getColllegeByStaticData(`feesRange`,this)" type="checkbox"
-                      value="4 To 5 Lakh" id="flexCheckDefault" />
-                    <label class="form-check-label" for="flexCheckDefault">
-                      4 To 5 Lakh
-                    </label>
-                  </div>
-
-                  <div class="form-check">
-                    <input class="form-check-input" onclick="getColllegeByStaticData(`feesRange`,this)" type="checkbox"
-                      value="Greater Than 5 Lakh" id="flexCheckDefault" />
-                    <label class="form-check-label" for="flexCheckDefault">
-                      Greater Than 5 Lakh
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-              <!-- facility provide/ -->
-              <div class="filterSec">
-                <h3>Facilities</h3>
-
-                <form class="searchState">
-                  <i class="fa-regular fa-magnifying-glass"></i>
-                  <input type="text" placeholder="Program Type" value="" oninput="filterBySearch(`facility`,this)"
-                    name="search" />
-                </form>
-
-                <div class="Course-sslider">
-                  <span id="facilityData">
-                    <% facility?.forEach(function(facility){ %>
-                      <div class="form-check" id="exam-checkbox-<%=facility%>">
-                        <input class="form-check-input" onclick="getColllegeByStaticData(`facility`,this)"
-                          type="checkbox" value="<%=facility%>" id="flexCheckDefault" />
-                        <label class="form-check-label" for="flexCheckDefault">
-                          <%=facility%>
-                        </label>
-                      </div>
-                      <% }) %>
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-9" id="allColleges">
+            <div class="col-md-12" id="allColleges">
               <% data?.forEach(function(data){ %>
                 <div class="collegeCard">
                   <div class="row">
@@ -1054,6 +1073,43 @@
       $("#exampleModal").modal("show");
     }
   }
+</script>
+
+<script>
+  const pageHeader = document.querySelector(".header");
+  const openMobMenu = document.querySelector(".open-mobile-menu");
+  const closeMobMenu = document.querySelector(".close-mobile-menu");
+  const topMenuWrapper = document.querySelector(".top-menu-wrapper");
+  const isVisible = "is-visible";
+  const showOffCanvas = "show-offcanvas";
+  const noTransition = "no-transition";
+  let resize;
+
+  // Opening Mobile Menu
+  openMobMenu.addEventListener("click", () => {
+    topMenuWrapper.classList.add(showOffCanvas);
+  });
+
+  // Closing Mobile Menu
+  closeMobMenu.addEventListener("click", () => {
+    topMenuWrapper.classList.remove(showOffCanvas);
+  });
+
+  // Resizing Screen
+  window.addEventListener("resize", () => {
+    pageHeader.querySelectorAll("*").forEach(function (el) {
+      el.classList.add(noTransition);
+    });
+    clearTimeout(resize);
+    resize = setTimeout(resizingComplete, 500);
+  });
+
+  function resizingComplete() {
+    pageHeader.querySelectorAll("*").forEach(function (el) {
+      el.classList.remove(noTransition);
+    });
+  }
+
 </script>
 
 </html>
