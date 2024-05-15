@@ -201,6 +201,7 @@ nav li {
   display: block;
   color: #707070;
   font-size: 12px;
+  transition: all .5s;
 }
 
 .menuL a:hover{
@@ -285,7 +286,7 @@ nav li {
   .mega-menu--multiLevel>li>[aria-haspopup="true"]~ul {
     left: 20%;
     width: 80%;
-    padding: 0 0 0 10px;
+    padding: 0 10px 0 20px;
   }
 
   .mega-menu--multiLevel>li>[aria-haspopup="true"]~ul ul {
@@ -3989,6 +3990,6 @@ padding-left: 0;
 .filters .filterB .top-menu .mob-block .filH {
   font-size: 1.7rem;
   font-weight: 700;
-  text-transform: uppercase;
   color: #d93622;
+  letter-spacing: 1.2px;
 }
