@@ -3866,7 +3866,7 @@ padding-left: 0;
 .filters {
     position: relative;
     padding: 8px 10px;
-    background: #ffffff;
+    background: #e45330;
     border: var(--bs-border-width) solid var(--bs-border-color);
     border-radius: var(--bs-border-radius);
     margin: 4px 0;
@@ -3878,7 +3878,7 @@ padding-left: 0;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.5;
-  color: var(--bs-body-color);
+  color: #fff;
   background: transparent;
   border: none;
   outline: 0;
