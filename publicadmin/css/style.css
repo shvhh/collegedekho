@@ -213,6 +213,7 @@ nav li {
   display: block;
   border-radius: 10px;
   padding: 0 10px;
+  transition: all .7s;
 }
 
 .menuList:hover {
@@ -311,6 +312,16 @@ nav li {
     width: 20%;
     cursor: pointer;
     margin: 2px 0;
+    transition: all .5s;
+  }
+
+  .mega-menu--multiLevel>li:hover{
+    background-color: #fff;
+    border-radius: 0px 25px 25px 0px;
+  }
+
+  .mega-menu--multiLevel>li:hover .menuList{
+    color: #595959;
   }
 
   .mega-menu--multiLevel>li>[aria-haspopup="true"]~ul {
