@@ -183,7 +183,7 @@ nav li {
 }
 
 .menuList {
-  color: #1d1d1d;
+  color: #e45330;
   font-size: 13px;
   font-weight: 500;
   display: block;
@@ -262,6 +262,17 @@ nav li {
     overflow-y: scroll;
     overflow-x: hidden;
     box-shadow: 0 2px 5px rgb(16 16 16 / 8%);
+  }
+
+  .mega-menu:before {
+    content: "";
+    background-color: #fff;
+    height: 100%;
+    position: absolute;
+    width: 21%;
+    left: 0;
+    top: 0;
+    z-index: -1;
   }
 
   .mega-menu:hover {
