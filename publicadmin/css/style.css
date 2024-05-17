@@ -183,7 +183,7 @@ nav li {
 }
 
 .menuList {
-  color: #e45330;
+  color: #fff;
   font-size: 13px;
   font-weight: 500;
   display: block;
@@ -192,8 +192,8 @@ nav li {
 }
 
 .menuList:hover {
-  background-color: #595959;
-  color: #fff;
+  background-color: #fff;
+  color: #e45330;
   border-radius: 10px;
 }
 
@@ -266,7 +266,7 @@ nav li {
 
   .mega-menu:before {
     content: "";
-    background-color: #fff;
+    background-color: #595959;
     height: 100%;
     position: absolute;
     width: 21%;
@@ -286,12 +286,12 @@ nav li {
   }
 
   .mega-menu--multiLevel>li:hover {
-    background-color: #595959;
-    border-radius: 10px;
+    background-color: #fff;
+    border-radius: 5px;
   }
 
   .mega-menu--multiLevel>li:hover .menuList{
-    color: #fff;
+    color: #595959;
   }
 
   .mega-menu--multiLevel>li>[aria-haspopup="true"]~ul {
