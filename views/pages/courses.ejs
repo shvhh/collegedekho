@@ -37,103 +37,107 @@
             </section>
             <section class="collegesPage p-0">
                 <div class="container">
+                    <!-- <h2>Total <span id="course_count">
+                        <%=data?.length%>
+                    </span> Courses</h2> -->
+                    <ul class="collegeInfo coursFilter">
+                        <a href="#!">
+                            <li class="collegeInfoTab">All</li>
+                        </a>
+                        <a href="#!">
+                            <li class="collegeInfoTab">BCA</li>
+                        </a>
+                        <a href="#!">
+                            <li class="collegeInfoTab">MCA</li>
+                        </a>
+                        <a href="#!">
+                            <li class="collegeInfoTab">B.Tech</li>
+                        </a>
+                        <a href="#!">
+                            <li class="collegeInfoTab">M.Tech</li>
+                        </a>
+                        <a href="#!">
+                            <li class="collegeInfoTab">MBA</li>
+                        </a>
+                        <a href="#!">
+                            <li class="collegeInfoTab">BSC</li>
+                        </a>
+                        <a href="#!">
+                            <li class="collegeInfoTab">B.Pharma</li>
+                        </a>
+                        <a href="#!">
+                            <li class="collegeInfoTab">Diploma</li>
+                        </a>
+                        <a href="#!">
+                            <li class="collegeInfoTab">M.Com</li>
+                        </a>
+                        <a href="#!">
+                            <li class="collegeInfoTab">LLB</li>
+                        </a>
+                        <a href="#!">
+                            <li class="collegeInfoTab">Web Development</li>
+                        </a>
+                        <a href="#!">
+                            <li class="collegeInfoTab">Graphic Designer</li>
+                        </a>
+                        <a href="#!">
+                            <li class="collegeInfoTab">Management Course</li>
+                        </a>
+                        <a href="#!">
+                            <li class="collegeInfoTab">Law Management</li>
+                        </a>
+                        <a href="#!">
+                            <li class="collegeInfoTab">App Development</li>
+                        </a>
+                    </ul>
                     <div class="row pt-3">
-                        <div class="col-md-3 coursF">
-                            <div class="filterSec">
-                                <h3>Duration</h3>
-                                <form class="searchState w-100">
-                                    <i class="fa-regular fa-magnifying-glass"></i>
-                                    <input type="text" placeholder="Search Duration" value=""
-                                        oninput="filterBySearch(`duration`,this)" name="search" />
-                                </form>
-                                <div class="stream-scroll">
-                                    <span id="durationData">
-                                        <% duration?.forEach(function(duration){ %>
-                                            <div class="form-check" id="mode-checkboxe-<%= duration %>">
-                                                <input class="form-check-input" type="checkbox" value="<%=duration%>"
-                                                    id="flexCheckDefault" onclick="getCourseByDuration(this)">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                    <%=duration%>
-                                                </label>
-                                            </div>
-                                            <% }) %>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="filterSec">
-                                <h3>Mode</h3>
-                                <form class="searchState w-100">
-                                    <i class="fa-regular fa-magnifying-glass"></i>
-                                    <input type="text" placeholder="Search Mode" value=""
-                                        oninput="filterBySearch(`mode`,this)" name="search" />
-                                </form>
-                                <div class="stream-scroll">
-                                    <span id="modeData">
-                                        <% mode?.forEach(function(mode){ %>
-                                            <div class="form-check" id="courseId-checkboxe-<%= mode %>">
-                                                <input class="form-check-input" type="checkbox" value="<%=mode%>"
-                                                    id="flexCheckDefault" onclick="getCourseByMode(this)">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                    <%=mode%>
-                                                </label>
-                                            </div>
-                                            <% }) %>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="listing-content rightside">
-                            <div class="schoolBlock" id="course_list_wrapper">
-                                <h2>Total <span id="course_count">
-                                        <%=data?.length%>
-                                    </span> Courses</h2>
-                                <span id="coursesData">
-                                    <% data?.forEach(function(data){ %>
-                                        <div class="box course_list" data-mode="Regular" data-duration="4 Years">
-                                            <!-- <div class="coursebtn">
-                                                <a href="javascript:void(0)" class="course_follow"
-                                                    data-course_id="2">Follow</a>
-                                            </div> -->
-                                            <div class="row content">
-                                                <div class="col-md-3">
-                                                    <div class="coursePic">
-                                                        <a href="/courseDetail/<%=data?.slag%>/section"
-                                                            title="B.Tech - Biochemical Engineering">
-                                                            <img src="<%=data?.image%> " alt="<%=data?.imageAlt%>"
-                                                                alt="B.Tech - Biochemical Engineering">
-                                                        </a>
+                        <% data?.forEach(function(data){ %>
+                            <div class="col-md-3">
+                                <div class="schoolBlock" id="course_list_wrapper">
+                                    <span id="coursesData">
+                                            <div class="box course_list" data-mode="Regular" data-duration="4 Years">
+                                                <!-- <div class="coursebtn">
+                                                    <a href="javascript:void(0)" class="course_follow"
+                                                        data-course_id="2">Follow</a>
+                                                </div> -->
+                                                <div class="row content">
+                                                    <div class="col-md-12">
+                                                        <div class="coursePic">
+                                                            <a href="/courseDetail/<%=data?.slag%>/section"
+                                                                title="B.Tech - Biochemical Engineering">
+                                                                <img src="<%=data?.image%> " alt="<%=data?.imageAlt%>"
+                                                                    alt="B.Tech - Biochemical Engineering">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 courseDec">
+                                                        <h2 class="m-0">
+                                                            <a href="/courseDetail/<%=data?.slag%>/section"
+                                                                title="B.Tech - Biochemical Engineering">
+                                                                <%=data?.name%>
+                                                            </a>
+                                                        </h2>
+                                                        <ul class="attr_box">
+                                                            <li>Average Duration <span>
+                                                                    <%=data?.averageDuration%>
+                                                                </span>
+                                                            </li>
+                                                            <li>Average Fees<span>
+                                                                    <%=data?.fees%>
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="text-center">
+                                                            <a href="/courseDetail/<%=data?.slag%>/section" class="readbtn">
+                                                                View Details</a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-9 courseDec">
-                                                    <h2 class="m-0">
-                                                        <a href="/courseDetail/<%=data?.slag%>/section"
-                                                            title="B.Tech - Biochemical Engineering">
-                                                            <%=data?.name%>
-                                                        </a>
-                                                    </h2>
-                                                    <ul class="attr_box">
-                                                        <li>Average Duration <span>
-                                                                <%=data?.averageDuration%>
-                                                            </span>
-                                                        </li>
-                                                        <li>Average Fees<span>
-                                                                <%=data?.fees%>
-                                                            </span>
-                                                        </li>
-                                                    </ul>
-                                                    <p>
-                                                        <%=data?.shortDescription%>
-                                                    </p>
-                                                    <a href="/courseDetail/<%=data?.slag%>/section" class="readbtn">
-                                                        View Details</a>
-                                                </div>
                                             </div>
-                                        </div>
-                                        <% }) %>
-                                </span>
+                                    </span>
+                                </div>
                             </div>
-                        </div>
+                        <% }) %>
                     </div>
                 </div>
             </section>

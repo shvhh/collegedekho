@@ -41,11 +41,11 @@
       <section class="collegesPage py-0">
         <div class="container">
           <div class="row justify-content-between">
-            <div class="col-md-3">
+            <div class="col-md-1">
               <div class="filters">
                 <div class="filterB">
                   <button aria-label="Open Mobile Menu" class="open-mobile-menu">
-                    Filter By 
+                    <i class="fa-solid fa-filter"></i> Filter
                   </button>
                   <div class="top-menu-wrapper">
                     <ul class="top-menu">
@@ -323,7 +323,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
               <div class="d-flex align-items-center justify-content-between">
                 <!-- filter by state// -->
                 <form class="form-modal w-100">
@@ -354,21 +354,18 @@
                     </select>
                   </div>
                 </form>
-              </div>
-            </div>
 
-            <!-- short by name/ -->
-            <div class="col-md-3">
-              <form class="form-modal">
-                <div class="form-group">
-                  <select class="form-select p-2" aria-label="Sort By" onchange="getCollegeWithShorting(this)">
-                    <option selected="">Relevance </option>
-                    <option value="A to Z">A to Z</option>
-                    <option value="Z to A">Z to A</option>
-                    <option value="Popularity">Popularity</option>
-                  </select>
-                </div>
-              </form>
+                <form class="form-modal w-100 ">
+                  <div class="form-group">
+                    <select class="form-select p-2" aria-label="Sort By" onchange="getCollegeWithShorting(this)">
+                      <option selected="">Relevance </option>
+                      <option value="A to Z">A to Z</option>
+                      <option value="Z to A">Z to A</option>
+                      <option value="Popularity">Popularity</option>
+                    </select>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
           <div class="row pt-3">

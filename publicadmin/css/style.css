@@ -97,6 +97,30 @@ body {
   color: #eca500;
 }
 
+.cityC{
+  border: 1px solid #dedede;
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px;
+}
+
+.cityIoc{
+  height: 50px;
+  width: 50px;
+  margin: 0 auto;
+}
+
+.cityIoc img{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.cityC p{
+  color: #1d1d1d;
+  font-size: 12px;
+}
+
 .nav {
   border-bottom: 1px solid #1d1d1d;
 }
@@ -188,13 +212,13 @@ nav li {
   font-weight: 500;
   display: block;
   border-radius: 10px;
-  padding: 0 5px;
+  padding: 0 10px;
 }
 
 .menuList:hover {
   background-color: #fff;
-  color: #e45330;
-  border-radius: 10px;
+  color: #595959;
+  border-radius: 0px 25px 25px 0px;
 }
 
 .menuL a {
@@ -257,19 +281,23 @@ nav li {
     left: 0;
     width: 100%;
     height: 350px;
-    border-radius: 0px 0px 25px 25px;
+    border-radius: 0px 0px 10px 10px;
     padding: 10px;
     overflow-y: scroll;
     overflow-x: hidden;
     box-shadow: 0 2px 5px rgb(16 16 16 / 8%);
   }
 
-  .mega-menu:before {
+  .collegess .mega-menu{
+    padding: 7px 0 0 0;
+  }
+
+  .collegess .mega-menu:before {
     content: "";
     background-color: #595959;
     height: 100%;
     position: absolute;
-    width: 21%;
+    width: 20%;
     left: 0;
     top: 0;
     z-index: -1;
@@ -283,15 +311,6 @@ nav li {
     width: 20%;
     cursor: pointer;
     margin: 2px 0;
-  }
-
-  .mega-menu--multiLevel>li:hover {
-    background-color: #fff;
-    border-radius: 5px;
-  }
-
-  .mega-menu--multiLevel>li:hover .menuList{
-    color: #595959;
   }
 
   .mega-menu--multiLevel>li>[aria-haspopup="true"]~ul {
@@ -1122,17 +1141,17 @@ input {
   color: #1d1d1d;
   position: relative;
   width: fit-content;
-  margin: 0 auto 10px auto;
+  /* margin: 0 auto 10px auto; */
   font-weight: 500;
 }
 
 .studyGoalTitle h3::before {
   content: "";
   position: absolute;
-  right: -5%;
-  bottom: 0px;
+  left: 0px;
+  bottom: -8px;
   background-color: #e45330;
-  width: 80px;
+  width: 120px;
   height: 5px;
 }
 
@@ -1142,7 +1161,18 @@ input {
 }
 
 .PartnersSlider .slick-list {
-  width: 95%;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.TopCollegesSlider {
+  overflow: hidden;
+  position: relative;
+}
+
+.TopCollegesSlider .slick-list {
+  width: 100%;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -1229,6 +1259,33 @@ input {
 }
 
 .PartnersSlider .slick-next {
+  right: 0px;
+  top: 40%;
+  position: absolute;
+}
+
+/*  */
+.TopCollegesSlider .slick-arrow {
+  background-color: #eca500;
+  border: 1px solid #eca500;
+  outline: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  z-index: 9;
+}
+
+.TopCollegesSlider .slick-arrow i {
+  color: #fff;
+}
+
+.TopCollegesSlider .slick-prev {
+  left: 0px;
+  top: 40%;
+  position: absolute;
+}
+
+.TopCollegesSlider .slick-next {
   right: 0px;
   top: 40%;
   position: absolute;
@@ -1328,6 +1385,7 @@ input {
   overflow: hidden;
   transition: all 0.5s;
   border: 1px solid #ddd;
+  margin: 10px;
 }
 
 /* .collectionCard:hover {
@@ -2330,6 +2388,7 @@ input {
   display: flex;
   align-items: center;
   margin: 0 0 15px 0;
+  overflow: scroll;
 }
 
 .collegeInfo .collegeInfoTab {
@@ -3358,6 +3417,14 @@ ul.examlinks li a {
   border-radius: 10px;
 }
 
+.coursFilter{
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 10px 5px;
+  border-radius: 5px;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 5%);
+}
+
 .schoolBlock .box .content {
   margin: 10px 0 10px 0;
 }
@@ -3366,10 +3433,16 @@ ul.examlinks li a {
   color: #8c8c8c;
   font-size: 10px;
   line-height: 1.7;
-  margin: 0 5px;
-  padding: 5px 10px;
+  padding: 5px 12px;
   display: inline-grid;
-  box-shadow: 0 0 4px rgb(0 0 0 / 15%);
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.attr_box{
+  margin: 5px 0 15px 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 .schoolBlock .readbtn {
@@ -3506,6 +3579,10 @@ ul.examlinks li a {
   width: 11px;
   height: 11px;
   background: url(../images/exam-listing-icons.2d8ba624a813.png) no-repeat -95px -14px;
+}
+
+.courseDec h2{
+  padding: 5px 0 0 0;
 }
 
 .courseDec p {
@@ -3884,15 +3961,20 @@ padding-left: 0;
 }
 
 .open-mobile-menu{
-  width: 100%;
-  text-align: left;
+  text-align: center;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.5;
-  color: #fff;
   background: transparent;
   border: none;
   outline: 0;
+  width: 100%;
+  color: #fff;
+}
+
+.open-mobile-menu i{
+  color: #fff !important;
+  margin: 0 5px 0 0;
 }
 
 .close-mobile-menu{
@@ -4004,3 +4086,5 @@ padding-left: 0;
   color: #d93622;
   letter-spacing: 1.2px;
 }
+
+/* ------------------------------------------- */
