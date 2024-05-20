@@ -2666,6 +2666,88 @@ input {
   font-size: 10px;
 }
 
+.collegeDetailContainer table td, .collegeDetailContainer table th {
+  padding: 8px 12px;
+  border: 1px solid #d9d9e5;
+}
+
+.collegeDetailContainer p{
+  text-align: justify;
+}
+
+.collCoursesDetail {
+  margin: 10px 0;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #d9d9e5;
+  background: #fff;
+}
+
+.collCoursesDetail p{
+  text-align: justify;
+}
+
+.collegeDetai ul{
+  padding: 0 0 0 10px;
+}
+
+.collegeDetai ul li {
+  padding-left: 15px;
+  position: relative;
+}
+
+.collegeDetai ul li:before {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: #111;
+  left: 0;
+  top: 15px;
+  border-radius: 50%;
+}
+
+.collegeDetail_contentBox {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #e9ecff;
+  padding: 12px 20px;
+  border-radius: 10px;
+}
+
+.collegeDetail_contentBox li {
+  position: relative;
+  width: 50%;
+  padding: 4px 0 4px 20px;
+}
+
+.collegeDetail_contentBox li:before {
+  position: absolute;
+  content: "";
+  width: 6px;
+  height: 6px;
+  background-color: #050038;
+  border-radius: 50%;
+  left: 0;
+  top: 15px;
+}
+
+.collegeDetail_overview ul li {
+  padding-left: 20px;
+  position: relative;
+}
+
+.collegeDetail_overview ul li:before {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: #111;
+  left: 0;
+  top: 15px;
+  border-radius: 50%;
+}
+
 /* -----------------------Blog Page------------------------------ */
 
 .blogCard {

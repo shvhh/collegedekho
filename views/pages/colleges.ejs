@@ -418,10 +418,10 @@
                             <a href="/collegeDetail/<%=data?.slag%>/overView" class="applyBtn">View Details</a>
                           </div>
                           <div class="col-md-6">
-                            <button type="button" class="quesBtn mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                            <button type="button" class="quesBtn mx-2" data-bs-toggle="modal" data-bs-target="#applyModal">
                               Apply Now
                             </button>
-                            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2"
+                            <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModal"
                             aria-hidden="true">
                             <div class="modal-dialog loginModal">
                               <div class="modal-content">
@@ -435,81 +435,97 @@
                                         <h4>Sign in to continue</h4>
                                       </div>
                                       <form class="form-modal">
-                                        <div class="justify-content-between text-left">
-                                          <div class="form-group">
-                                            <label class="form-control-label">Name</label>
-                                            <input type="text" placeholder="Enter your name" id="name" name="name" required />
-                                            <p class="allError" id="nameError"></p>
+                                        <div class="row justify-content-between text-left">
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="form-control-label">Name</label>
+                                              <input type="text" placeholder="Enter your name" id="name" name="name" required />
+                                              <p class="allError" id="nameError"></p>
+                                            </div>
                                           </div>
-                                          <div class="form-group">
-                                            <label class="form-control-label">Email *</label>
-                                            <input type="text" placeholder="Enter your mail id" id="email"
-                                              oninput="checkEmailExistornot(this)" name="email" required />
-                                            <p class="allError" id="emailError"></p>
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="form-control-label">Email *</label>
+                                              <input type="text" placeholder="Enter your mail id" id="email"
+                                                oninput="checkEmailExistornot(this)" name="email" required />
+                                              <p class="allError" id="emailError"></p>
+                                            </div>
                                           </div>
-                                          <div class="form-group">
-                                            <label class="form-control-label">Mobile Number *</label>
-                                            <input type="text" placeholder="Enter your number" id="phone"
-                                              oninput="checkPhoneExistornot(this)" name="phone" required />
-                                            <p class="allError" id="phoneError"></p>
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="form-control-label">Mobile Number *</label>
+                                              <input type="text" placeholder="Enter your number" id="phone"
+                                                oninput="checkPhoneExistornot(this)" name="phone" required />
+                                              <p class="allError" id="phoneError"></p>
+                                            </div>
                                           </div>
-                                          <div class="form-group">
-                                            <label class="form-control-label">Password *</label>
-                                            <input type="password" placeholder="Enter password" id="password" name="password"
-                                              required />
-                                            <p class="allError" id="passwordError"></p>
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="form-control-label">Password *</label>
+                                              <input type="password" placeholder="Enter password" id="password" name="password"
+                                                required />
+                                              <p class="allError" id="passwordError"></p>
+                                            </div>
                                           </div>
-                                          <div class="form-group">
-                                            <label class="form-control-label">Gender</label>
-                                            <select class="form-select" aria-label="Gender" id="gender" name="gender" required>
-                                              <option value="Male">Male</option>
-                                              <option value="Female">Female</option>
-                                              <option value="other">Other</option>
-                                            </select>
-                                            <p class="allError" id="genderError"></p>
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="form-control-label">Gender</label>
+                                              <select class="form-select" aria-label="Gender" id="gender" name="gender" required>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                                <option value="other">Other</option>
+                                              </select>
+                                              <p class="allError" id="genderError"></p>
+                                            </div>
                                           </div>
-                                          <div class="form-group">
-                                            <label class="form-control-label">Select Stream</label>
-                                            <select class="form-select" aria-label="Select Stream" id="" name="" required>
-                                              <option value="">Commerce and Banking</option>
-                                              <option value="">Design</option>
-                                              <option value="">Engineering</option>
-                                              <option value="">Management</option>
-                                              <option value="">Hotel Management</option>
-                                              <option value="">Information Technology</option>
-                                              <option value="">Media and Mass Communication</option>
-                                              <option value="">Medical</option>
-                                              <option value="">Retail</option>
-                                              <option value="">Arts and Humanities</option>
-                                              <option value="">Law</option>
-                                              <option value="">Science</option>
-                                              <option value="">Vocational</option>
-                                              <option value="">Others</option>
-                                              <option value="">Physical Education</option>
-                                              <option value="">Education</option>
-                                              <option value="">Paramedical</option>
-                                              <option value="">Agriculture</option>
-                                              <option value="">Nursing</option>
-                                              <option value="">Pharmacy</option>
-                                              <option value="">Dental</option>
-                                              <option value="">Performing Arts</option>
-                                            </select>
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="form-control-label">Select Stream</label>
+                                              <select class="form-select" aria-label="Select Stream" id="" name="" required>
+                                                <option value="">Commerce and Banking</option>
+                                                <option value="">Design</option>
+                                                <option value="">Engineering</option>
+                                                <option value="">Management</option>
+                                                <option value="">Hotel Management</option>
+                                                <option value="">Information Technology</option>
+                                                <option value="">Media and Mass Communication</option>
+                                                <option value="">Medical</option>
+                                                <option value="">Retail</option>
+                                                <option value="">Arts and Humanities</option>
+                                                <option value="">Law</option>
+                                                <option value="">Science</option>
+                                                <option value="">Vocational</option>
+                                                <option value="">Others</option>
+                                                <option value="">Physical Education</option>
+                                                <option value="">Education</option>
+                                                <option value="">Paramedical</option>
+                                                <option value="">Agriculture</option>
+                                                <option value="">Nursing</option>
+                                                <option value="">Pharmacy</option>
+                                                <option value="">Dental</option>
+                                                <option value="">Performing Arts</option>
+                                              </select>
+                                            </div>
                                           </div>
-                                          <div class="form-group">
-                                            <label class="form-control-label">Select Level</label>
-                                            <select class="form-select" aria-label="Select Level" id="" name="" required>
-                                              <option value="">UG</option>
-                                              <option value="">PG</option>
-                                              <option value="">Diploma</option>
-                                              <option value="">Ph.D</option>
-                                              <option value="">Certificate</option>
-                                            </select>
-                                            <p class="allError" id="genderError"></p>
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="form-control-label">Select Level</label>
+                                              <select class="form-select" aria-label="Select Level" id="" name="" required>
+                                                <option value="">UG</option>
+                                                <option value="">PG</option>
+                                                <option value="">Diploma</option>
+                                                <option value="">Ph.D</option>
+                                                <option value="">Certificate</option>
+                                              </select>
+                                              <p class="allError" id="genderError"></p>
+                                            </div>
                                           </div>
-                                          <div class="form-group">
-                                            <label class="form-control-label">DOB</label>
-                                            <input type="text" placeholder="DD/MM/YYYY" id="dob" name="dob" required />
-                                            <p class="allError" id="dobError"></p>
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="form-control-label">DOB</label>
+                                              <input type="text" placeholder="DD/MM/YYYY" id="dob" name="dob" required />
+                                              <p class="allError" id="dobError"></p>
+                                            </div>
                                           </div>
                                         </div>
                                         <div class="text-center">

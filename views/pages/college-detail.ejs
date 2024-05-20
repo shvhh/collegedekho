@@ -1,247 +1,542 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-
-    <title>
-        <%=data?.metaTitle%>
-    </title>
-    <meta name="description" content="<%=data?.metaDescription%>">
-    <meta name="keyword" content="<%=data?.metaKeyword%>">
-    <link rel="canonical" href="<%=data?.canonical%>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="/public/images/favicon.png" type="image/x-icon" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/public/css/style.css" rel="stylesheet">
-    <link href="/public/css/responsive.css" rel="stylesheet">
-</head>
-
-<body>
-
-    <%- include('../partials/navbar')%>
-
-
-        <p hidden id="collegeSection">
-            <%=collegeSection%>
-        </p>
-        <p hidden id="collegeSlag">
-            <%=data?.slag%>
-        </p>
-
-        <div class="bannerSecBg" style="background-color: #8abcc5;">
-            <div class="bannerOverlay">
-                <div class="container">
-                    <div class="bannerDetailTitle">
-                        <h3>
-                            <%=data?.name%> - Admission, Fees, Courses Placement
-                        </h3>
-                        <h4 class="m-0">Chennai, Tamil Nadu AICTE Approved</h4>
-                        <div class="d-flex align-items-center pt-3">
-                            <div class="d-flex align-items-center">
-                                <span class="starCount">10</span>
-                                <div class="reviewsCo">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <p>4 User reviews</p>
-                                </div>
-                            </div>
-                            <a href="#!" class="consultationBtn">Get Contact Details</a>
+   <head>
+      <meta charset="utf-8">
+      <title>
+         <%=data?.metaTitle%>
+      </title>
+      <meta name="description" content="<%=data?.metaDescription%>">
+      <meta name="keyword" content="<%=data?.metaKeyword%>">
+      <link rel="canonical" href="<%=data?.canonical%>" />
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="shortcut icon" href="/public/images/favicon.png" type="image/x-icon" />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap"
+         rel="stylesheet">
+      <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link href="/public/css/style.css" rel="stylesheet">
+      <link href="/public/css/responsive.css" rel="stylesheet">
+   </head>
+   <body>
+      <%- include('../partials/navbar')%>
+      <p hidden id="collegeSection">
+         <%=collegeSection%>
+      </p>
+      <p hidden id="collegeSlag">
+         <%=data?.slag%>
+      </p>
+      <div class="bannerSecBg" style="background-color: #8abcc5;">
+         <div class="bannerOverlay">
+            <div class="container">
+               <div class="bannerDetailTitle">
+                  <h3>
+                     <%=data?.name%> - Admission, Fees, Courses Placement
+                  </h3>
+                  <h4 class="m-0">Chennai, Tamil Nadu AICTE Approved</h4>
+                  <div class="d-flex align-items-center pt-3">
+                     <div class="d-flex align-items-center">
+                        <span class="starCount">10</span>
+                        <div class="reviewsCo">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <p>4 User reviews</p>
+                        </div>
+                     </div>
+                     <a href="#!" class="consultationBtn">Get Contact Details</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <section class="college_detail_page">
+         <div class="container">
+            <ul class="collegeInfo">
+               <li class="collegeInfoTab">
+                  <a href="/collegeDetail/<%=data?.slag%>/overView">
+                  OverView
+                  </a>
+               </li>
+               <li class="collegeInfoTab">
+                  <a href="/collegeDetail/<%=data?.slag%>/courses">
+                  Courses
+                  </a>
+               </li>
+               <li class="collegeInfoTab">
+                  <a href="/collegeDetail/<%=data?.slag%>/admission">
+                  Admission
+                  </a>
+               </li>
+               <li class="collegeInfoTab">
+                  <a href="/collegeDetail/<%=data?.slag%>/placement">
+                  Placement
+                  </a>
+               </li>
+               <li class="collegeInfoTab">
+                  <a href="/collegeDetail/<%=data?.slag%>/scholarShip">
+                  Scholarship
+                  </a>
+               </li>
+               <li class="collegeInfoTab">
+                  <a href="/collegeDetail/<%=data?.slag%>/campus">
+                  Campus
+                  </a>
+               </li>
+               <!-- <a href="/collegeDetail/<%=data?.slag%>/gallery">    <li class="collegeInfoTab">Gallery</li></a>// -->
+               <li class="collegeInfoTab">
+                  <a href="/collegeDetail/<%=data?.slag%>/reviews">
+                  Reviews
+                  </a>
+               </li>
+            </ul>
+            <div class="row">
+               <div class="col-md-9">
+                  <!-- <form class="searchState w-75">
+                     <i class="fa-regular fa-magnifying-glass"></i>
+                     <input type="text" placeholder="Search for states" style="box-shadow: 0px 10px 25px #0000000f;">
+                     <a href="" class="submitBtn">Search</a>
+                     </form>
+                     <div class="filterCollege">
+                     <h4>Filter By:</h4>
+                     <ul class="collegeDetailFilter">
+                         <li class="collegeDetailFilterTab">Info</li>
+                         <li class="collegeDetailFilterTab active">Courses & Fees</li>
+                         <li class="collegeDetailFilterTab">Reviews</li>
+                         <li class="collegeDetailFilterTab">Placement</li>
+                         <li class="collegeDetailFilterTab">Scholarship</li>
+                         <li class="collegeDetailFilterTab">Q&A</li>
+                     </ul>
+                     <div class="border-top d-flex pt-2">
+                         <div class="form-check mx-2">
+                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                             <label class="form-check-label" for="flexCheckDefault">
+                                 B.Sc
+                             </label>
+                         </div>
+                         <div class="form-check mx-2">
+                             <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                             <label class="form-check-label" for="flexCheckChecked">
+                                 Certificate
+                             </label>
+                         </div>
+                         <div class="form-check mx-2">
+                             <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                             <label class="form-check-label" for="flexCheckChecked">
+                                 Diploma
+                             </label>
+                         </div>
+                     </div>
+                     </div> -->
+                  <!-- <div class="overall-1">
+                     <% sectionData?.forEach(function(sectionData){ %>
+                         <div class="collegeDetailFilter2">
+                             <h3>
+                                 <%=sectionData?.heading%>
+                             </h3>
+                             <div class="collegefilter2">
+                                 <div class="border-top college-comment">
+                                     <h5 class="pt-2"><%-sectionData?.description%></h5>
+                                 </div>
+                             </div>
+                         </div>
+                     <% }) %>
+                     </div> -->
+                  <div class="collegeDetailContainer">
+                     <div class="sectionHeadingSpace">
+                        <h2>About HansRaj College</h2>
+                     </div>
+                     <div class="aboutCollege">
+                        <p>HansRaj College accepts JEE Main score for admission to Btech course. NTA has announced the JEE Main 2024 session 1 result. JEE Main 2024 session 2 registration is ongoing and students need to fill out the application by March 02, 2024.&nbsp;</p>
+                        <p>Birla Institute of Technology was established in the year 1955 by the Visionary Industrialist Mr. BM Birla. HansRaj College was formed with a clear purpose of providing a platform for its young minds to let their imaginations soar and their ideas come to life. The institute has been nurturing brains with a strong tradition of academic excellence for almost six decades, establishing learning frameworks that are well ahead of their time. Birla Institute of Technology Mesra has been ranked 20th in the architecture and planning category, 28th in the pharmacy category, 53rd in the engineering category, 71st in the university category, and 77th in the management category in the NIRF Ranking List 2023. in 2022, it was placed 25th under the architecture category, 35th under the pharmacy category, 53rd under the engineering category, 78th under the management category, and 99th under the university category.</p>
+                        <p>Section 3 of the UGC Act designated it as a deemed university. In 1964, BIT became India's first institute to establish a department of space engineering and rocketry.</p>
+                        <p>Every year, students are admitted to various courses based on merit&nbsp;as determined by the All India Rank (AIR) in JEE-Main-CSAB, BITSAT, GATE, etc.&nbsp;</p>
+                        <p>HansRaj College offers Undergraduate in B.Tech, B.Pharm, B.Arch, etc., Postgraduate in M.Tech, M.Pharm, M.Sc., MBA, MCA,etc. and PhD programs in Engineering, Technology, Science, Architecture, Management, etc.&nbsp;</p>
+                        <p>Allahabad, Jaipur, Kolkata, Noida, Patna, Deoghar, and Lalpur are among the cities where BIT has established extension centres.</p>
+                        <p>Birla Institute of Technology, Mesra offers 58 courses across 10 streams such as arts, science, computer applications, management, education, social work, business administration, Commerce, Hospitality and tourism, etc. They also offer diploma courses, certificate courses, and lateral entry courses.&nbsp;</p>
+                        <p><strong>Popular Universities:</strong></p>
+                        <div class="scrollTable">
+                            <table class="w-100">
+                                <tbody>
+                                <tr>
+                                    <td><a href="!#">DDU Gorakhpur</a></td>
+                                    <td><a href="!#">JNU Delhi</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="!#">GGSIPU</a></td>
+                                    <td><a href="!#">University of Calicut</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="collCoursesDetail">
+                    <h2>HansRaj College Courses and Fees 2024</h2>
+                    <div class="">
+                        <p>HansRaj College fees structure ranges between Rs 77,700 - Rs 5,85,000 per annum, based on the course of your choice. The institute offers a total of 12 degree programmes in various specialisations in the fields of engineering, management, computer applications, architecture, pharmacy, hotel management, and sciences. Some of the popular HansRaj College courses are BTech, MBA, MTech, BArch, MCA, BPharm, M.Sc and many others. Courses like BTech,&nbsp;MTech, MSc, and others are available in various specialisations. Some of the BTech specialisations available at <a href="!#" rel="noopener noreferrer" target="_blank">HansRaj College</a> are Computer Science &amp; Engineering, Artificial Intelligence &amp; Machine Learning, Electronics and Communication Engineering, and many others. The institute accepts various entrance exams like JEE Main, NATA, NEET UG, GATE, GPAT, and others for admission to its various courses.&nbsp;</p>
+                        <h3>HansRaj College Fee Structure</h3>
+                        <div class="scrollTable">
+                            <table class="table table-striped table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Course Name</strong></td>
+                                        <td><strong>Duration</strong></td>
+                                        <td><strong>Tuition Fees</strong></td>
+                                        <td><strong>Eligibility</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>BTech</td>
+                                        <td>4 Years</td>
+                                        <td>Rs 2,85,000</td>
+                                        <td>Class 12 with 50%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>MBA</td>
+                                        <td>2 Years</td>
+                                        <td>Rs 2,96,000</td>
+                                        <td>Graduation with 50%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>MCA</td>
+                                        <td>2 Years</td>
+                                        <td>Rs 2,63,000</td>
+                                        <td>Graduation with 50%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BArch</td>
+                                        <td>5 Years</td>
+                                        <td>Rs 3,23,800</td>
+                                        <td>Class 12 with 50%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>MTech</td>
+                                        <td>2 Years</td>
+                                        <td>Rs 2,13,500 - Rs 4,26,999</td>
+                                        <td>Graduation with 55%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BPharm</td>
+                                        <td>4 Years</td>
+                                        <td>Rs 3,23,800</td>
+                                        <td>Class 12 with 50%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BHMCT</td>
+                                        <td>4 Years</td>
+                                        <td>Rs 3,23,800</td>
+                                        <td>Class 12 with 50%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>MUP</td>
+                                        <td>2 Years</td>
+                                        <td>Rs 4,27,000</td>
+                                        <td>Graduation with 55%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>MPharm</td>
+                                        <td>2 Years</td>
+                                        <td>Rs 1,17,000</td>
+                                        <td>Graduation with 60%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BSc+MSc</td>
+                                        <td>5 Years</td>
+                                        <td>Rs 5,85,000</td>
+                                        <td>Class 12 with 60%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>MSc</td>
+                                        <td>2 Years</td>
+                                        <td>Rs 1,55,500 - Rs 3,23,800</td>
+                                        <td>Graduation with 55%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PhD</td>
+                                        <td>3 Years - 6 Years</td>
+                                        <td>Rs 77,700 - Rs 97,700</td>
+                                        <td>Post-Graduation with 55%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <section class="college_detail_page">
-            <div class="container">
-                <ul class="collegeInfo">
-                    <li class="collegeInfoTab">
-                        <a href="/collegeDetail/<%=data?.slag%>/overView">
-                            OverView
-                        </a>
-                    </li>
-                    <li class="collegeInfoTab">
-                        <a href="/collegeDetail/<%=data?.slag%>/courses">
-                            Courses
-                        </a>
-                    </li>
-                    <li class="collegeInfoTab">
-                        <a href="/collegeDetail/<%=data?.slag%>/admission">
-                            Admission
-                        </a>
-                    </li>
-                    <li class="collegeInfoTab">
-                        <a href="/collegeDetail/<%=data?.slag%>/placement">
-                            Placement
-                        </a>
-                    </li>
-                    <li class="collegeInfoTab">
-                        <a href="/collegeDetail/<%=data?.slag%>/scholarShip">
-                            Scholarship
-                        </a>
-                    </li>
-                    <li class="collegeInfoTab">
-                        <a href="/collegeDetail/<%=data?.slag%>/campus">
-                            Campus
-                        </a>
-                    </li>
-                    <!-- <a href="/collegeDetail/<%=data?.slag%>/gallery">    <li class="collegeInfoTab">Gallery</li></a>// -->
-                    <li class="collegeInfoTab">
-                        <a href="/collegeDetail/<%=data?.slag%>/reviews">
-                            Reviews
-                        </a>
-                    </li>
-                </ul>
-                <div class="row">
-                    <div class="col-md-9">
-                        <!-- <form class="searchState w-75">
-                        <i class="fa-regular fa-magnifying-glass"></i>
-                        <input type="text" placeholder="Search for states" style="box-shadow: 0px 10px 25px #0000000f;">
-                        <a href="" class="submitBtn">Search</a>
-                    </form>
-                    <div class="filterCollege">
-                        <h4>Filter By:</h4>
-                        <ul class="collegeDetailFilter">
-                            <li class="collegeDetailFilterTab">Info</li>
-                            <li class="collegeDetailFilterTab active">Courses & Fees</li>
-                            <li class="collegeDetailFilterTab">Reviews</li>
-                            <li class="collegeDetailFilterTab">Placement</li>
-                            <li class="collegeDetailFilterTab">Scholarship</li>
-                            <li class="collegeDetailFilterTab">Q&A</li>
+                 </div>
+                 <div class="collCoursesDetail">
+                    <h2>HansRaj College Admission 2024</h2>
+                    <div class="collegeDetai">
+                       <span class="">
+                          <p>HansRaj College admission 2024 is currently underway. Registration for session 2 of JEE Main 2024 commenced on February 02, 2024, and will conclude on March 02, 2024. Session 2 of JEE Main 2024 exam will be conducted from&nbsp; April 4 to April 15, 2024. Candidates interested in the M.Tech programme at <a href="!#" rel="noopener noreferrer" target="_blank">HansRaj College</a> must have a valid GATE scorecard. The answer key for GATE 2024 will be released on February 21, 2024. GATE 2024 results will be released on March 16, 2024.</p>
+                          <p>Birla Institute of Technology Mesra&nbsp;provides&nbsp;a variety of undergraduate courses in a variety of fields. At the undergraduate level, the university also offers an Integrated programme. For admission to UG courses offered at BIT's various campuses, students must meet the minimal qualifying requirements.</p>
+                          <p>In 1964, HansRaj College became India's first institute to establish a department of space engineering and rocketry. For admission to the university's various programmes, the university accepts the scores of several state/national level examinations. The following are the exams whose results are approved by the university:</p>
+                          <ul>
+                             <li>The JEE Main and NATA scores are used to determine admission to B.Tech and B.Arch programmes, respectively.</li>
+                             <li>B.Pharm admission is also dependent on the JEE Main score, which is followed by counselling.</li>
+                             <li>Admission to M.Tech and M.E programmes is based on the GATE score.</li>
+                             <li>In addition, MBA admission is granted based on a legitimate CAT/MAT/XAT/CMAT result, followed by a GD/PI.</li>
+                          </ul>
+                          <p>Candidates who have passed the UGC-NET/ CSIR-UGC NET or any other national level examination would be exempted from taking the entrance exam for Ph.D. admission. Birla Institute of Technology, Mesra offers a variety of postgraduate courses in a variety of specialisations. M.Tech, M.E, MBA, M.Pharm, MCA, M.Sc, and MUP are among the courses available.</p>
+                          <p>Students can fill out the <strong>BIT application form 2023</strong> online to apply for admission to Birla Institute of Technology, Mesra. For each course, the application form will be accessible on different days. Keep checking the official website for admission notifications.</p>
+                          <p>HansRaj College awards fellowships, scholarships, and prizes to students based on their merit. GP Birla BIT Scholarship worth nearly 2.25 crores are available</p>
+                          <p>for meritorious student of HansRaj College.&nbsp;</p>
+                          <p>Read on to know more about how a student can take admission into HansRaj College.</p>
+                          <p>Like any other University, even Birla Institute of Technology Mesra has a set of specific selection criteria that students need to meet in order to be eligible for admissions. Here are the main pointers that candidates must fulfil to get a seat in this institution:</p>
+                          <ul>
+                             <li>12th Marks:&nbsp;</li>
+                          </ul>
+                          <p>Candidates who have passed the class 12th exam from recognised boards qualify for the courses offered at Birla Institute of Technology Mesra along with National Entrance Exam. Candidates need to fill out an application form and pay the application fees. For several courses, passing the 12th exams with good score alone becomes a qualifying criterion.</p>
+                          <ul>
+                             <li>Graduation Marks:&nbsp;</li>
+                          </ul>
+                          <p>Candidates who have passed graduation with relevant streams will be eligible for the PG courses at Birla Institute of Technology Mesra. They need to fill out an application form and pay the application fees. For many courses, having a UG degree is the main qualifying criterion.</p>
+                          <ul>
+                             <li>Other Methods:</li>
+                          </ul>
+                          <p>The candidates taking admission in B.Tech programs must get good rank in JEE MAINS. NATA scores will be taken for the admission of students to B.Arch. course. For B.Pharm., NEET score is taken into account in HansRaj College.&nbsp;&nbsp;</p>
+                          <h3>Official Admission Portal of Birla Institute of Technology Mesra</h3>
+                          <p>The <strong>admission portal of HansRaj College</strong> is intended to make the application process as simple as possible. On the official website, students must fill out an application form. Candidates are advised&nbsp;to read&nbsp;all <strong>HansRaj College admission guidelines</strong> before applying for any course. The portal will request a variety of information, including basic information, personal information, educational information, and so on. Applicants must also submit scanned copies of the needed papers, as well as give payment information and pay the application cost.</p>
+                          <h3>Birla Institute of Technology Mesra Application Process for Admission 2023</h3>
+                          <p><strong>Birla Institute of Technology Mesra admission process</strong> varies from course to course. For some courses, the university conducts entrance exams in the campus, while in many courses, admission is granted based on merit (marks in the last qualifying exams). In some courses, JEE MAINS, NATA and NEET scores are considered.&nbsp;</p>
+                          <p>To take admission in entrance test-based <strong>HansRaj College courses</strong>, candidates must apply online on the admission portal of HansRaj College for the entrance test. After that, the eligible students are invited for the entrance exam, which the university conducts. The students who qualify for the entrance exam are given admission to HansRaj College according to their marks and seat availability in the merit list.&nbsp;</p>
+                          <p><strong>Admission to&nbsp;HansRaj College courses</strong> like BSc, BCA, MSc are merit based:</p>
+                          <ul>
+                             <li>Candidates must apply for <strong>HansRaj College admission 2023</strong> online on the HansRaj College official website.</li>
+                             <li>Candidates only have to fill out the HansRaj College admission application form carefully for the desired course and upload the required scanned documents like photograph and signature.</li>
+                             <li>Admission is confirmed after the payment of the course fee of 2500 INR rupees for general candidates and 1500 INR for SC/ST candidates.&nbsp;</li>
+                          </ul>
+                          <h3>How to Get Admission to Birla Institute of Technology Mesra&nbsp;Mesra&nbsp;for Various Courses in 2023</h3>
+                          <p>B.Tech in Mechanical Engineering, Computer Science and Engineering, Information Technology, Biotechnology, Electronics &amp; Communication Engineering, Production Engineering, Civil Engineering, and B.E in Chemical Engineering, Chemical Engineering (Plastic and Polymer), and Electrical &amp; Electronics Engineering are among the specialisations offered by HansRaj College.</p>
+                          <p>Admission to the courses is based on the JEE Main cutoff and marks earned in 10th and 12th grades. The Joint Seat Distribution Authority (JoSAA) and the Central Seat Allocation Board (CSAB) set the rules for seat allocation.</p>
+                          <h3>B.E/ BTech/ B.Arch Selection Criteria at HansRaj College</h3>
+                          <p>At HansRaj College, candidates are selected exclusively on the basis of their JEE Main cutoff scores and their grades in 10th and 12th grades. The seats are allocated according to the JoSAA/CSAB guidelines.</p>
+                          <h3>B.E/ BTech/ B.Arch Application Process at HansRaj College</h3>
+                          <ul>
+                             <li>To apply for the programme, go to HansRaj College's official website.</li>
+                             <li>Under the relevant course, click "Click Here To Apply Online."</li>
+                             <li>Log in with your username and password after registering with your email address.</li>
+                             <li>Fill in the required information, such as personal and academic information.</li>
+                             <li>Please enter your JEE Main score.</li>
+                             <li>Submit the form after paying the application cost.</li>
+                          </ul>
+                          <h3>Eligibility Criteria for HansRaj College Hotel Management (BHMCT)</h3>
+                          <p>Candidate must have completed class 12th or equivalent with English as a mandatory subject and a minimum grade point average of 50%.</p>
+                          <p>This course is also open to students who are taking their 12th grade exams. They must bring their class 12th grade mark sheet to the entrance exam and interview, and they must have received the required percentage.</p>
+                          <ul>
+                             <li>Only individuals born on or after October 1, 1996 are eligible to apply.</li>
+                             <li>B.Pharm Mesra BIT The JEE Main or NEET-UG scores of candidates are used to make selections for the HansRaj College B.Pharm programme.</li>
+                             <li>JEE (Main) / National Eligibility Cumulative Entrance Test (NEET-UG) scores are given 60% weightage.</li>
+                             <li>Marks in Class 12 / comparable qualifying exams have a 40% weighting.</li>
+                             <li>Candidates must be at least 18 years old and complete certain academic standards.</li>
+                          </ul>
+                          <h3>B.Pharm Application Process at HansRaj College</h3>
+                          <p>To apply for the programme, go to HansRaj College's official website.</p>
+                          <p>Choose a course by clicking "Click Here To Apply Online."</p>
+                          <ul>
+                             <li>To log in, enter your email address and create a password.</li>
+                             <li>Fill in the blanks with your personal and academic information.</li>
+                             <li>Pay INR&nbsp;1500 for General/OBC/EWS candidates and INR 1000 for SC/ST candidates as a non-refundable application fee.</li>
+                             <li>Fill out the application form and send it in.</li>
+                          </ul>
+                          <h3>M.E/M.Tech Application Process at HansRaj College</h3>
+                          <ul>
+                             <li>To apply for the programme, go to HansRaj College's official website.</li>
+                             <li>Choose a course by clicking "Click Here To Apply Online."</li>
+                             <li>To log in, enter your email address and create a password.</li>
+                             <li>Fill in the blanks with your personal and academic information.</li>
+                             <li>Fill up the blanks with your GATE scores.</li>
+                             <li>Pay INR 2500 for General/OBC/EWS candidates and INR 1500 for SC/ST candidates as a non-refundable application fee.</li>
+                             <li>Fill out the application form.&nbsp;</li>
+                          </ul>
+                          <p>Use a separate application form for each course if you're applying to two or more programmes, such as M.Tech. (EE), M.Tech. (ECE), M.Tech. (CSE), and so on.</p>
+                          <h3>MBA Application Process at HansRaj College</h3>
+                          <p>By the last week of January 2023, the <strong>HansRaj College Application Form 2023</strong> will be available. Students can apply for the MBA programme online by completing an application form. The following are the procedures that candidates can take to easily fill out the registration form:</p>
+                          <ul>
+                             <li>Step 1: Go to the official HansRaj College website and select the "Admission" page.</li>
+                             <li>Step 2: Select "MBA Notification" from the drop-down menu.</li>
+                             <li>Step 3: You'll be taken to the registration page. Candidates must first register at this location.</li>
+                             <li>Step 4: After registering, fill out the application form with the relevant information, such as your name and entrance score, and submit your papers.</li>
+                             <li>Step 5: Pay the Rs. 2500 application fee. (Rs. 1500 for reserved categories) in favour of 'Birla Institute of Technology' via State Bank of India (SBI) debit/credit card or Net Banking.</li>
+                             <li>Step 6: Once you've paid the cost, fill out the application form and print it out.</li>
+                          </ul>
+                          <p>Note: Candidates must keep the printout safe because they will be required to provide the printout of the duly completed application to the GD/PI.</p>
+                          <h3>Birla Institute of Technology Mesra Latest Updates and Notifications</h3>
+                          <ul>
+                             <li>Applications are invited from the candidates for admission to the 2-year (4-semester) full-time MCA (Master of Computer Applications ) program for the Academic Year 2023-24.</li>
+                             <li>Applications are invited from eligible candidates for admission to full-time / part- time Ph.D. Program of the Institute for the Session Monsoon 2023.</li>
+                             <li>Applications are invited from the Non-Resident Indian (NRI), Overseas Citizen of India (OCI) and Foreign National (FN) categories to following full-time Undergraduate, Postgraduate and Integrated programs offered by the Institute at Mesra.&nbsp; All session will commence in July 2023.</li>
+                             <li>Applications are invited from the candidates for admission to the 4 Years (8 Semesters) full-time Bachelor of Hotel Management &amp; Catering Technology Program for the Academic Session 2023-24.&nbsp;</li>
+                             <li>Applications are invited from the prospective candidates for admission to the 2-year (4-semester) full-time Master of Business Administration (MBA) Program, for the Academic Session 2023-24.&nbsp;</li>
+                          </ul>
+                          <h3>Birla Institute of Technology Mesra Admissions 2023 Highlights</h3>
+                          <p>Information regarding fees of Birla Institute of Technology Mesra is given below, along with a list of the exams accepted for admission into the course.</p>
+                          <div class="scrollTable">
+                             <table class="table table-striped table-hover">
+                                <tbody>
+                                   <tr>
+                                      <td><strong>Course</strong></td>
+                                      <td><strong>Fees</strong></td>
+                                      <td><strong>Exams Accepted</strong></td>
+                                   </tr>
+                                   <tr>
+                                      <td>B.Tech.</td>
+                                      <td>2.93 Lacs (first year fee)</td>
+                                      <td rowspan="1">10+2 with 75% plus JEE MAINS</td>
+                                   </tr>
+                                   <tr>
+                                      <td>B.Arch.</td>
+                                      <td>3.05 Lacs (first year fee)</td>
+                                      <td>10+2 plus NATA score</td>
+                                   </tr>
+                                   <tr>
+                                      <td>B.Pharm.&nbsp;</td>
+                                      <td>2.73 Lacs (first year fee)</td>
+                                      <td>10+2 plus NEET score</td>
+                                   </tr>
+                                   <tr>
+                                      <td>BHMCT</td>
+                                      <td>1.88 Lacs (first-year fees)</td>
+                                      <td>10+2 plus BIT entrance test</td>
+                                   </tr>
+                                   <tr>
+                                      <td>MBA&nbsp;</td>
+                                      <td>2.93 Lacs (first-year fees)</td>
+                                      <td>Graduation with 50% CAT/XAT/CMAT</td>
+                                   </tr>
+                                   <tr>
+                                      <td>MCA&nbsp;</td>
+                                      <td>10,400 INR (first-year fees)</td>
+                                      <td>BCA marks + BIT entrance test</td>
+                                   </tr>
+                                   <tr>
+                                      <td>M.Pharm.&nbsp;</td>
+                                      <td>2.65 Lakhs (first-year fees)</td>
+                                      <td>Marks obtained in B.Pharm.&nbsp;&nbsp;</td>
+                                   </tr>
+                                   <tr>
+                                      <td>M.Tech.</td>
+                                      <td>2.8 Lakhs (first-year fees)</td>
+                                      <td>GATE score</td>
+                                   </tr>
+                                   <tr>
+                                      <td>PhD</td>
+                                      <td>NA</td>
+                                      <td>CSIR-NET, UGC-NET, GATE, DBT.&nbsp;<br>&nbsp;</td>
+                                   </tr>
+                                </tbody>
+                             </table>
+                          </div>
+                          <h3>Birla Institute of Technology Mesra Counselling Process 2023</h3>
+                          <p>The <strong>Birla Institute of Technology Mesra counselling process</strong> follows the following steps. Students must go through the HansRaj College counselling process, which takes place in the HansRaj College Campus.</p>
+                          <p>After being shortlisted for a particular course, students are asked&nbsp;to choose which streams they want to enroll in. Then, based on the availability of seats and candidates' performance in the previous qualifying test, the Birla Institute of Technology, Mesra entrance exam (in case of entrance exam based courses like MBA, MCA, B.Tech, M.Tech, and Ph.D.), and a personal interview, they are admitted to HansRaj College.</p>
+                          <h3>Birla Institute of Technology Mesra Exams Accepted 2023</h3>
+                          <p>Passing the required exam is critical if one wants to get admitted to the Birla Institute of Technology Mesra (Ranchi) course of desired course. The following are some of the exam requirements that a student must meet in order to be admitted.</p>
+                          <ul>
+                             <li>B.Tech.: JEE MAINS</li>
+                             <li>M.Tech.: GATE</li>
+                             <li>MCA: BIT MCA</li>
+                             <li>MBA: CAT, MAT, XAT</li>
+                          </ul>
+                       </span>
+                    </div>
+                 </div>
+                 <div class="collCoursesDetail">
+                    <h2>HansRaj College Placements 2023</h2>
+                    <div class="">
+                        <p>HansRaj College placement report 2023 has been released by the institute. As per the report, a total of 982 offers were made by 192 recruiters during placements 2023. The highest package offered at HansRaj College placements 2023 was Rs 51 LPA. On the other hand, the average package received by students at <a href="!#" rel="noopener noreferrer" target="_blank">HansRaj College</a> was Rs 11.57 LPA in 2023. In addition, a total of 700 students were placed successfully with a median package of approximately Rs 8 LPA.</p>
+                        <p>During HansRaj College placements 2022, a total of 235 visited the campus to recruit its students. Students received approximately 940 offers during the entire placement season 2022. HansRaj College highest package for 2022 was Rs 58.33 LPA, while the average package offered was Rs 10.10 LPA. in 2022, the institute was successful in placing 800+ students in various top organisations. Some of its top recruiters include Sapient, ICICI Securities, Mahindra Finance, DE Shaw &amp; Co., etc.</p>
+                    </div>
+                    <h2>Table of Contents</h2>
+                    <ul class="collegeDetail_contentBox">
+                        <li><a href="!#"><span>HansRaj College Placements 2023</span></a></li>
+                        <li><a href="!#"><span>HansRaj College Placement Comparison 2023 vs 2022</span></a></li>
+                        <li><a href="!#"><span>HansRaj College Placement Statistics</span></a></li>
+                        <li><a href="!#"><span>HansRaj College Highest Package</span></a></li>
+                        <li><a href="!#"><span>HansRaj College Average Package</span></a></li>
+                        <li><a href="!#"><span>HansRaj College Top Recruiters</span></a></li>
+                        <li><a href="!#"><span>FAQs about HansRaj College Placements</span></a></li>
+                    </ul>
+                    <h2>HansRaj College Placement Comparison 2023 vs 2022</h2>
+                    <div class="collegeDetail_overview">
+                        <ul>
+                            <li>The highest package offered at the institute dropped by 12.5% in 2023 compared to 2022. It was Rs 58.33 LPA in 2023 and became Rs 51 LPA in 2022.</li>
+                            <li>The average package offered went from Rs 10.10 LPA in 2022 to Rs 11.57 LPA in 2023. There was a year-on-year increase of Rs 14.5%.</li>
+                            <li>The median package received by the students stood almost the same at Rs 8 LPA (approx) in 2022 and 2023.</li>
+                            <li>The total number of recruiters visited for HansRaj College placement drives went down by 43 in 2023 compared to 2022.</li>
+                            <li>The total number of offers made during placement rounds went up by 42 in 2023 compared to the previous year.</li>
                         </ul>
-                        <div class="border-top d-flex pt-2">
-                            <div class="form-check mx-2">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    B.Sc
-                                </label>
-                            </div>
-                            <div class="form-check mx-2">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                <label class="form-check-label" for="flexCheckChecked">
-                                    Certificate
-                                </label>
-                            </div>
-                            <div class="form-check mx-2">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                <label class="form-check-label" for="flexCheckChecked">
-                                    Diploma
-                                </label>
-                            </div>
-                        </div>
-                    </div> -->
-
-                        <div class="overall-1">
-                            <% sectionData?.forEach(function(sectionData){ %>
-                                <div class="collegeDetailFilter2">
-                                    <h3>
-                                        <%=sectionData?.heading%>
-                                    </h3>
-                                    <div class="collegefilter2">
-                                        <div class="border-top college-comment">
-                                            <h5 class="pt-2"><%-sectionData?.description%></h5>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <% }) %>
-                        </div>
                     </div>
-                    <div class="col-md-3 pt-3">
-                        <a href="#!" class="applyBtn">Apply Now</a>
-                        <% if(data?.brochureUrl){ %>
-
-                            <a href="<%=data?.brochureUrl%>" class="quesBtn my-3">Download Brochure</a>
-
-                            <% } else{ %>
-
-
-                                <% } %>
-
-
-                                    <div class="parantCollegeGroup">
-                                        <h4>Top College</h4>
-
-                                        <%topCollege?.forEach(function(topCollege){ %>
-                                            <a href="/collegeDetail/<%=topCollege?.slag%>/overView">
-                                                <div class="border-top topCou pt-2 d-flex">
-                                                    <div class="w-75">
-                                                        <h5>
-                                                            <%=topCollege?.name%>
-                                                        </h5>
-                                                        <p>AVG FEE - <%=topCollege?.feesRange%>
-                                                        </p>
-                                                    </div>
-                                                    <div class="w-25 text-end">
-                                                        <p>3 Years</p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <% }) %>
-                                    </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="subscribeSec">
-            <div class="container">
-                <div class="collegeDetail">
-                    <form class="form-card">
-                        <h3 class="mb-4">Comment</h3>
-                        <!-- <label for="exampleFormControlTextarea1" class="form-label mt-3">Example textarea</label> -->
-                        <textarea class="form-control" placeholder="Enter text here" rows="5"></textarea>
-                        <div class="text-center mx-2 mt-3">
-                            <a href="#!" type="submit" class="submitBtn">Submit</a>
+                 </div>
+               </div>
+               <div class="col-md-3 pt-3">
+                  <a href="#!" class="applyBtn">Apply Now</a>
+                  <% if(data?.brochureUrl){ %>
+                  <a href="<%=data?.brochureUrl%>" class="quesBtn my-3">Download Brochure</a>
+                  <% } else{ %>
+                  <% } %>
+                  <div class="parantCollegeGroup">
+                     <h4>Top College</h4>
+                     <%topCollege?.forEach(function(topCollege){ %>
+                     <a href="/collegeDetail/<%=topCollege?.slag%>/overView">
+                        <div class="border-top topCou pt-2 d-flex">
+                           <div class="w-75">
+                              <h5>
+                                 <%=topCollege?.name%>
+                              </h5>
+                              <p>AVG FEE - <%=topCollege?.feesRange%>
+                              </p>
+                           </div>
+                           <div class="w-25 text-end">
+                              <p>3 Years</p>
+                           </div>
                         </div>
-                    </form>
-                </div>
+                     </a>
+                     <% }) %>
+                  </div>
+               </div>
             </div>
-        </section>
-
-
-        <%- include('../partials/footer')%>
-
-
-            <script type="text/javascript" src="/public/js/jquery.min.js"></script>
-            <script type="text/javascript" src="/public/js/main.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-            <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
-</body>
-
-
-
-<script>
-    $(document).ready(function () {
-        var collegeSection = document.getElementById("collegeSection").innerHTML;
-        var collegeSlag = document.getElementById("collegeSlag").innerHTML;
-
-
-
-        $(".collegeInfo a").each(function () {
-            console.log($(this).attr("href"));
-            console.log("/collegeDetail/" + collegeSlag + "/" + collegeSection);
-
-            if (
-                $(this).attr("href") == "/collegeDetail/" + collegeSlag + "/" + collegeSection
-            ) {
-                // add active class on his li child//
-                console.log($(this).attr("href"));
-
-                $(this).children("li").addClass("optionactive");
-            }
-        });
-    });
-</script>
-
-</script>
-
+         </div>
+      </section>
+      <section class="subscribeSec">
+         <div class="container">
+            <div class="collegeDetail">
+               <form class="form-card">
+                  <h3 class="mb-4">Comment</h3>
+                  <!-- <label for="exampleFormControlTextarea1" class="form-label mt-3">Example textarea</label> -->
+                  <textarea class="form-control" placeholder="Enter text here" rows="5"></textarea>
+                  <div class="text-center mx-2 mt-3">
+                     <a href="#!" type="submit" class="submitBtn">Submit</a>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </section>
+      <%- include('../partials/footer')%>
+      <script type="text/javascript" src="/public/js/jquery.min.js"></script>
+      <script type="text/javascript" src="/public/js/main.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+   </body>
+   <script>
+      $(document).ready(function () {
+          var collegeSection = document.getElementById("collegeSection").innerHTML;
+          var collegeSlag = document.getElementById("collegeSlag").innerHTML;
+      
+      
+      
+          $(".collegeInfo a").each(function () {
+              console.log($(this).attr("href"));
+              console.log("/collegeDetail/" + collegeSlag + "/" + collegeSection);
+      
+              if (
+                  $(this).attr("href") == "/collegeDetail/" + collegeSlag + "/" + collegeSection
+              ) {
+                  // add active class on his li child//
+                  console.log($(this).attr("href"));
+      
+                  $(this).children("li").addClass("optionactive");
+              }
+          });
+      });
+   </script>
+   </script>
 </html>
