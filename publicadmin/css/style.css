@@ -219,7 +219,6 @@ nav li {
 .menuList:hover {
   background-color: #fff;
   color: #595959;
-  border-radius: 0px 25px 25px 0px;
 }
 
 .menuL a {
@@ -298,10 +297,11 @@ nav li {
     background-color: #595959;
     height: 100%;
     position: absolute;
-    width: 20%;
+    width: 25%;
     left: 0;
     top: 0;
     z-index: -1;
+    opacity: 0.5;
   }
 
   .mega-menu:hover {
@@ -309,7 +309,7 @@ nav li {
   }
 
   .mega-menu--multiLevel>li {
-    width: 20%;
+    width: 25%;
     cursor: pointer;
     margin: 2px 0;
     transition: all .5s;
@@ -317,7 +317,6 @@ nav li {
 
   .mega-menu--multiLevel>li:hover{
     background-color: #fff;
-    border-radius: 0px 25px 25px 0px;
   }
 
   .mega-menu--multiLevel>li:hover .menuList{
@@ -325,9 +324,9 @@ nav li {
   }
 
   .mega-menu--multiLevel>li>[aria-haspopup="true"]~ul {
-    left: 20%;
-    width: 80%;
-    padding: 0 10px 0 20px;
+    left: 25%;
+    width: 75%;
+    padding: 0 10px 0 10px;
   }
 
   .mega-menu--multiLevel>li>[aria-haspopup="true"]~ul ul {
@@ -1222,28 +1221,73 @@ input {
 } */
 
 .goalS{
-  min-height: 160px;
+  min-height: 180px;
   margin: 10px;
   border-radius: 10px;
   background-color: #fff;
-  padding: 10px;
   border: 1px solid #e9e9e9;
+  overflow: hidden;
+  cursor: pointer;
 }
 
-.goalS h4{
-  margin: 5px 0;
-  padding: 0 0 3px 0;
-  border-bottom: 1px solid #e9e9e9;
+.headerGoal{
+  padding: 10px;
+  background-color: #595959;
+  display: flex;
+  align-items: center;
+}
+
+.headerGoal h4{
+  margin: 0px 0 0 10px;
+  color: #fff;
 }
 
 .box-img{
-  width: 50px;
-  height: 50px;
-  border: 1px solid #dedede;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
-  margin: -35px 0 0 0;
   background-color: #fff;
 }
+
+.goalSec{
+  padding: 10px;
+}
+
+/* ----------------------- */
+
+.goalHover .goalS {
+	position: relative;
+}
+.goalHover .goalS::before {
+	position: absolute;
+	top: 0;
+	left: -75%;
+	z-index: 2;
+	display: block;
+	content: '';
+	width: 50%;
+	height: 100%;
+	background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+	background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+	-webkit-transform: skewX(-25deg);
+	transform: skewX(-25deg);
+}
+.goalHover .goalS:hover::before {
+	-webkit-animation: shine .75s;
+	animation: shine .75s;
+}
+@-webkit-keyframes shine {
+	100% {
+		left: 125%;
+	}
+}
+@keyframes shine {
+	100% {
+		left: 125%;
+	}
+}
+
+/* ---------------------------- */
 
 .slick-initialized .slick-slide {
   display: block;
@@ -1348,6 +1392,7 @@ input {
   list-style-type: circle;
   margin: 0 0 0 20px;
   font-size: 12px;
+  font-weight: 500;
   color: #1d1d1d;
   line-height: 1.5;
 }
@@ -2138,10 +2183,10 @@ input {
   color: #fff;
   border-radius: 5px;
   text-align: center;
-  font-size: 14px;
+  font-size: 12px;
   display: block;
   width: 100%;
-  padding: 5px 0;
+  padding: 3px 0;
   line-height: 18px;
 }
 
@@ -2151,10 +2196,10 @@ input {
   color: #e45330;
   border-radius: 5px;
   text-align: center;
-  font-size: 14px;
+  font-size: 12px;
   display: block;
   width: 100%;
-  padding: 5px 0;
+  padding: 3px 0;
   line-height: 18px;
 }
 
@@ -2164,10 +2209,10 @@ input {
   color: #e45330;
   border-radius: 5px;
   text-align: center;
-  font-size: 14px;
+  font-size: 12px;
   display: block;
   width: 100%;
-  padding: 5px 0;
+  padding: 3px 0;
   line-height: 18px;
 }
 
@@ -2274,13 +2319,90 @@ input {
 .collImage {
   border-radius: 15px;
   overflow: hidden;
-  height: 180px;
+  height: 130px;
   position: relative;
+  cursor: pointer;
 }
 
 .collImage img {
   width: 100%;
   height: 100%;
+}
+
+.collImage::before {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 2;
+	display: block;
+	content: '';
+	width: 0;
+	height: 0;
+	background: rgba(255,255,255,.2);
+	border-radius: 100%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	opacity: 0;
+}
+.collImage:hover::before {
+	-webkit-animation: circle .75s;
+	animation: circle .75s;
+}
+@-webkit-keyframes circle {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		width: 200%;
+		height: 200%;
+		opacity: 0;
+	}
+}
+@keyframes circle {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		width: 200%;
+		height: 200%;
+		opacity: 0;
+	}
+}
+
+.colreview{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.Review_rating{
+  background-color: #4aba8e;
+  color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 5px;
+  gap: 3px;
+  height: 18px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  font-size: 10px;
+}
+
+.Review_rating i{
+  font-size: 10px;
+}
+
+.reviewCount a{
+  color: #eca500;
+  font-size: 10px;
 }
 
 .collTit {
@@ -3434,6 +3556,52 @@ ul.examlinks li a {
   height: 150px;
   overflow: hidden;
   border-radius: 10px;
+	position: relative;
+}
+.schoolBlock .box .content .coursePic::before {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 2;
+	display: block;
+	content: '';
+	width: 0;
+	height: 0;
+	background: rgba(255,255,255,.2);
+	border-radius: 100%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	opacity: 0;
+}
+.schoolBlock .box .content .coursePic:hover::before {
+	-webkit-animation: circle .75s;
+	animation: circle .75s;
+}
+@-webkit-keyframes circle {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		width: 200%;
+		height: 200%;
+		opacity: 0;
+	}
+}
+@keyframes circle {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		width: 200%;
+		height: 200%;
+		opacity: 0;
+	}
 }
 
 .coursFilter{
@@ -3473,6 +3641,36 @@ ul.examlinks li a {
   background: #e45330;
   border: 1px solid #e45330;
   border-radius: 5px;
+  transition: all .5s;
+	position: relative;
+}
+.schoolBlock .readbtn::before {
+	position: absolute;
+	top: 0;
+	left: -75%;
+	z-index: 2;
+	display: block;
+	content: '';
+	width: 50%;
+	height: 100%;
+	background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+	background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+	-webkit-transform: skewX(-25deg);
+	transform: skewX(-25deg);
+}
+.schoolBlock .readbtn:hover::before {
+	-webkit-animation: shine .75s;
+	animation: shine .75s;
+}
+@-webkit-keyframes shine {
+	100% {
+		left: 125%;
+	}
+}
+@keyframes shine {
+	100% {
+		left: 125%;
+	}
 }
 
 .examListingPage .modal {

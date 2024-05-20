@@ -369,8 +369,8 @@
             </div>
           </div>
           <div class="row pt-3">
-            <div class="col-md-12" id="allColleges">
-              <% data?.forEach(function(data){ %>
+            <% data?.forEach(function(data){ %>
+              <div class="col-md-6" id="allColleges">
                 <div class="collegeCard">
                   <div class="row">
                     <div class="col-md-4">
@@ -399,64 +399,34 @@
                                 <%=data.name%>
                               </h3>
                             </a>
-                            <p>Approved by:<%=data?.approvedField%>
-                            </p>
+                            <div class="colreview">
+                              <div class="Review_rating">
+                                <span>3.8</span>
+                                <i class="fa-solid fa-star"></i>
+                              </div>
+                              <div class="reviewCount">
+                                <a href="/collegeDetail/DAV college/reviews">(16 Reviews)</a>
+                              </div>
+                            </div>
                           </div>
+                        </div>
+                        <div class="collFeee d-flex pt-2">
+                          <p>Fees</p><span class="px-2">₹ <%=data?.feesRange%></span>
                         </div>
                         <div class="row pt-2">
-                          <div class="col-md-4">
-                            <div class="collFeee d-flex">
-                              <p>Fees</p><span class="px-2">₹ <%=data?.feesRange%></span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-4">
-                            <div class="collRcp d-flex align-items-center">
-                              <div class="iconSe">
-                                <img src="/public/images/test.png" />
-                              </div>
-                              <a href="/collegeDetail/<%=data?.slag%>/courses">
-                                <p>Course & Fees</p>
-                              </a>
-                            </div>
-                          </div>
-                          <div class="col-md-4">
-                            <div class="collRcp d-flex align-items-center">
-                              <div class="iconSe">
-                                <img src="/public/images/test.png" />
-                              </div>
-                              <a href="/collegeDetail/<%=data?.slag%>/placement">
-                                <p>Placement</p>
-                              </a>
-                            </div>
-                          </div>
-                          <div class="col-md-4">
-                            <div class="collRcp d-flex align-items-center">
-                              <div class="iconSe">
-                                <img src="/public/images/test.png" />
-                              </div>
-                              <a href="/collegeDetail/<%=data?.slag%>/reviews">
-                                <p>Reviews</p>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row pt-2">
-                        <div class="col-md-12">
-                          <div class="d-flex">
+                          <div class="col-md-6">
                             <a href="/collegeDetail/<%=data?.slag%>/overView" class="applyBtn">Get More Info</a>
-                            <a href="#" class="quesBtn mx-2">Ask a Question</a>
-                            <a href="#!" class="sampleBtn">Sample Papers</a>
+                          </div>
+                          <div class="col-md-6">
+                            <a href="#" class="quesBtn mx-2">Addmission</a>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <% }) %>
-            </div>
+              </div>
+            <% }) %>
           </div>
         </div>
       </section>
