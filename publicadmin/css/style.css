@@ -1129,7 +1129,7 @@ input {
 
 /* -------------------------Study Goal---------------------------------------- */
 .studyGoal {
-  background-color: #F5F5F5;
+  background-color: rgb(242, 242, 242);
   position: relative;
 }
 
@@ -1175,6 +1175,7 @@ input {
   width: 100%;
   margin: 0 auto;
   overflow: hidden;
+  padding: 20px 0 0 0;
 }
 
 .TopCollegesSlider {
@@ -1221,20 +1222,27 @@ input {
 } */
 
 .goalS{
-  min-height: 150px;
+  min-height: 160px;
   margin: 10px;
   border-radius: 10px;
   background-color: #fff;
+  padding: 10px;
+  border: 1px solid #e9e9e9;
 }
 
 .goalS h4{
-  margin: 0 0 5px 0;
-  padding: 5px 10px;
-  border-bottom: 1px solid #eca500;
+  margin: 5px 0;
+  padding: 0 0 3px 0;
+  border-bottom: 1px solid #e9e9e9;
 }
 
-.goalSec{
-  padding: 0px 10px 5px 10px;
+.box-img{
+  width: 50px;
+  height: 50px;
+  border: 1px solid #dedede;
+  border-radius: 50%;
+  margin: -35px 0 0 0;
+  background-color: #fff;
 }
 
 .slick-initialized .slick-slide {
@@ -1346,7 +1354,7 @@ input {
 
 /* ----------------------banner sec------------------------------------ */
 .manePageBanner {
-  background: #f4f4f4;
+  background: rgb(242, 242, 242);
   border-radius: 10px;
   padding: 5px;
 }
@@ -1918,7 +1926,7 @@ input {
 
 /* ------------------------------Subscribe--------------------------- */
 .subscribeSec {
-  background-color: #f4f4f4;
+  background-color: rgb(242, 242, 242);
 }
 
 .subscribe {
