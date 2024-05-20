@@ -220,7 +220,38 @@
           </ul>
         </li>
 
-        <li>
+        <li class="collegess">
+          <a href="javascript:void(0);" class="menu-link menu-bar-link" aria-haspopup="true">Courses</a>
+          <ul class="mega-menu mega-menu--multiLevel">
+            <% college?.forEach(function(college){ %>
+              <li>
+                <a href="javascript:void(0);" class="menuList" aria-haspopup="true">
+                  <%=college?.category%>
+                </a>
+                <ul class="menu menu-list pt-2">
+                  <li>
+                    <h3 class="m-0">Colleges By Degrees</h3>
+                    <div class="row menuL">
+                      <% college?.courseDetail?.forEach(function(d){ %>
+                        <div class="col-md-4">
+                          <a href="/collegeGetByCourseId/<%=d?.slag%>" class="menu-link menu-list-link">
+                            <%=d.name%>
+                          </a>
+                        </div>
+                      <% }) %>
+                    </div>
+                    <a href="/getAllCourse" class="viewAll">View All Courses</a>
+                  </li>
+                </ul>
+              </li>
+              <% }) %>
+                <li class="mobile-menu-back-item">
+                  <a href="javascript:void(0);" class="menu-link mobile-menu-back-link">Back</a>
+                </li>
+          </ul>
+        </li>
+
+        <!-- <li>
           <a href="javascript:void(0);" class="menu-link menu-bar-link" aria-haspopup="true">Courses</a>
           <ul class="mega-menu mega-menu--flat">
             <li>
@@ -244,7 +275,7 @@
               <a href="javascript:void(0);" class="menu-link mobile-menu-back-link">Back</a>
             </li>
           </ul>
-        </li>
+        </li> -->
 
         <li class="collegess">
           <a href="javascript:void(0);" class="menu-link menu-bar-link" aria-haspopup="true">Exams</a>
