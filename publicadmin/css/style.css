@@ -1480,7 +1480,7 @@ input {
 }
 
 .collectionText {
-  margin: 5px;
+  padding: 10px 10px 5px 10px;
 }
 
 .collectionText h5 {
