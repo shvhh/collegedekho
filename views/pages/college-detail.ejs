@@ -51,31 +51,21 @@
       </div>
       <section class="college_detail_page">
          <div class="container">
-            <ul class="collegeInfo">
-               <li class="collegeInfoTab">
-                  <a href="/collegeDetail/<%=data?.slag%>/overView">
+            <ul class="collegeInfo" id='navList'>
+               <li class="collegeInfoTab active" onclick="$('#Courses,#Admission,#Placement,#Scholarship,#Reviews').hide(); $('#OverView').show();">
                   OverView
-                  </a>
                </li>
-               <li class="collegeInfoTab">
-                  <a href="/collegeDetail/<%=data?.slag%>/courses">
+               <li class="collegeInfoTab" onclick="$('#OverView,#Admission,#Placement,#Scholarship,#Reviews').hide(); $('#Courses').show();">
                   Courses
-                  </a>
                </li>
-               <li class="collegeInfoTab">
-                  <a href="/collegeDetail/<%=data?.slag%>/admission">
+               <li class="collegeInfoTab" onclick="$('#OverView,#Courses,#Placement,#Scholarship,#Reviews').hide(); $('#Admission').show();">
                   Admission
-                  </a>
                </li>
-               <li class="collegeInfoTab">
-                  <a href="/collegeDetail/<%=data?.slag%>/placement">
+               <li class="collegeInfoTab" onclick="$('#OverView,#Courses,#Admission,#Scholarship,#Reviews').hide(); $('#Placement').show();">
                   Placement
-                  </a>
                </li>
-               <li class="collegeInfoTab">
-                  <a href="/collegeDetail/<%=data?.slag%>/scholarShip">
+               <li class="collegeInfoTab" onclick="$('#OverView,#Courses,#Admission,#Placement,#Reviews').hide(); $('#Scholarship').show();">
                   Scholarship
-                  </a>
                </li>
                <!-- <li class="collegeInfoTab">
                   <a href="/collegeDetail/<%=data?.slag%>/campus">
@@ -83,10 +73,8 @@
                   </a>
                </li> -->
                <!-- <a href="/collegeDetail/<%=data?.slag%>/gallery">    <li class="collegeInfoTab">Gallery</li></a>// -->
-               <li class="collegeInfoTab">
-                  <a href="/collegeDetail/<%=data?.slag%>/reviews">
+               <li class="collegeInfoTab" onclick="$('#OverView,#Courses,#Admission,#Placement,#Scholarship').hide(); $('#Reviews').show();">
                   Reviews
-                  </a>
                </li>
             </ul>
             <div class="row">
@@ -141,7 +129,7 @@
                          </div>
                      <% }) %>
                      </div> -->
-                  <div class="collegeDetailContainer">
+                  <div id="OverView" class="collegeDetailContainer">
                      <div class="sectionHeadingSpace">
                         <h2>About HansRaj College</h2>
                      </div>
@@ -170,7 +158,7 @@
                         </div>
                      </div>
                   </div>
-                  <div class="collCoursesDetail">
+                  <div id="Courses" class="collCoursesDetail" style="display:none;">
                     <h2>HansRaj College Courses and Fees 2024</h2>
                     <div class="">
                         <p>HansRaj College fees structure ranges between Rs 77,700 - Rs 5,85,000 per annum, based on the course of your choice. The institute offers a total of 12 degree programmes in various specialisations in the fields of engineering, management, computer applications, architecture, pharmacy, hotel management, and sciences. Some of the popular HansRaj College courses are BTech, MBA, MTech, BArch, MCA, BPharm, M.Sc and many others. Courses like BTech,&nbsp;MTech, MSc, and others are available in various specialisations. Some of the BTech specialisations available at <a href="!#" rel="noopener noreferrer" target="_blank">HansRaj College</a> are Computer Science &amp; Engineering, Artificial Intelligence &amp; Machine Learning, Electronics and Communication Engineering, and many others. The institute accepts various entrance exams like JEE Main, NATA, NEET UG, GATE, GPAT, and others for admission to its various courses.&nbsp;</p>
@@ -260,8 +248,8 @@
                             </table>
                         </div>
                     </div>
-                 </div>
-                 <div class="collCoursesDetail">
+                  </div>
+                  <div id="Admission" class="collCoursesDetail" style="display:none;">
                     <h2>HansRaj College Admission 2024</h2>
                     <div class="collegeDetai">
                        <span class="">
@@ -437,8 +425,8 @@
                           </ul>
                        </span>
                     </div>
-                 </div>
-                  <div class="collCoursesDetail">
+                  </div>
+                  <div id="Placement" class="collCoursesDetail" style="display:none;">
                     <h2>HansRaj College Placements 2023</h2>
                     <div class="">
                         <p>HansRaj College placement report 2023 has been released by the institute. As per the report, a total of 982 offers were made by 192 recruiters during placements 2023. The highest package offered at HansRaj College placements 2023 was Rs 51 LPA. On the other hand, the average package received by students at <a href="!#" rel="noopener noreferrer" target="_blank">HansRaj College</a> was Rs 11.57 LPA in 2023. In addition, a total of 700 students were placed successfully with a median package of approximately Rs 8 LPA.</p>
@@ -465,7 +453,7 @@
                         </ul>
                     </div>
                   </div>
-                  <div class="collCoursesDetail">
+                  <div id="Scholarship" class="collCoursesDetail" style="display:none;">
                      <h2>Scholarship</h2>
                      <div class="">
                         <div class="scrollTable">
@@ -513,7 +501,7 @@
                         </div>
                      </div>
                   </div>
-                  <div class="collCoursesDetail">
+                  <div id="Reviews" class="collCoursesDetail" style="display:none;">
                      <h2>HansRaj College Overall Rating</h2>
                      <div class="Review_flexSpace">
                         <div class="Review_RateSubBox">
@@ -601,6 +589,14 @@
          </div>
       </section>
       <%- include('../partials/footer')%>
+      <script type="text/javascript">
+         function myFunction(e) {
+           if (document.querySelector('#navList li.active') !== null) {
+             document.querySelector('#navList li.active').classList.remove('active');
+           }
+           e.target.className = "active";
+         }
+     </script>
       <script type="text/javascript" src="/public/js/jquery.min.js"></script>
       <script type="text/javascript" src="/public/js/main.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
@@ -628,6 +624,5 @@
               }
           });
       });
-   </script>
    </script>
 </html>
