@@ -1231,15 +1231,24 @@ input {
 }
 
 .headerGoal{
+  background-image: url(../images/detailBanner.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bgOverlay{
   padding: 10px;
-  background-color: #595959;
   display: flex;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .headerGoal h4{
   margin: 0px 0 0 10px;
   color: #fff;
+  letter-spacing: 0.5px;
+  font-size: 16px;
 }
 
 .box-img{
@@ -1389,12 +1398,20 @@ input {
 
 .goalP {
   padding: 0px;
-  list-style-type: circle;
-  margin: 0 0 0 20px;
+  /* list-style-type: circle; */
+  margin: 3px 0px 3px 0px;
   font-size: 12px;
   font-weight: 500;
   color: #1d1d1d;
   line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+
+.goalP:before {
+  content: '✓';
+  margin: 0 5px 0 0px;
+  font-size: 13px;
+  color: #539816;
 }
 
 /* ----------------------banner sec------------------------------------ */
@@ -1833,6 +1850,8 @@ input {
   border-radius: 5px;
   border: 1px solid #787878;
   color: #787878;
+  display: flex;
+  align-items: center;
 }
 
 .tabs-box .tab:hover {
