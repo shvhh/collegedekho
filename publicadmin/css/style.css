@@ -2685,6 +2685,7 @@ input {
 
 .collCoursesDetail p{
   text-align: justify;
+  line-height: 1.3;
 }
 
 .collegeDetai ul{
@@ -2747,6 +2748,93 @@ input {
   top: 15px;
   border-radius: 50%;
 }
+
+.Review_flexSpace{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Review_RateSubBox {
+  width: 33%;
+  text-align: center;
+  padding: 10px 5%;
+}
+
+.Review_overAllRatingComtentBox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.Review_overAllRatingBox {
+  width: 68px;
+  background-color: #eca500;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 4%;
+  margin-left: 5px;
+  padding: 1px 5px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.Review_reviewHeading{
+  font-weight: 600;
+}
+
+.Review_starRatingsSpriteRating, .Review_starRatingsSprite {
+  background: url(https://nj1-static.collegedekho.com/_next/static/media/icStarsSprite.16aa2f58.svg) repeat-x;
+}
+
+.Review_starRatingsSprite {
+  font-size: 0;
+  height: 20px;
+  line-height: 0;
+  overflow: hidden;
+  width: 101px;
+  display: inline-flex;
+  margin-right: 5px;
+}
+
+.Review_starRatingsSpriteRating{
+  background-position: 0 100%;
+  float: left;
+  height: 17px;
+  display: block;
+}
+
+.Review_fontColor, .Review_overAllNumberStudent {
+  color: #717171;
+}
+
+.Review_subBoxRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Review_ratingOutline{
+  height: 4px;
+  width: 100%;
+  background-color: #c5c3e5;
+  margin-bottom: 10px;
+}
+
+.Review_ratingInline{
+  height: 4px;
+  background-color: #3f53d9;
+}
+
+.Review_rateReviewBox{
+  width: 33%;
+  text-align: center;
+  padding: 0 5%;
+  border-left: 1px solid #ddd;
+}
+
+
 
 /* -----------------------Blog Page------------------------------ */
 
