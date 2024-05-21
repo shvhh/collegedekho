@@ -288,8 +288,8 @@
               </form>
             </div>
           </div>
-          <div class="row pt-3">
-            <div class="col-md-12" id="allColleges">
+          <!-- <div class="row pt-3">
+            <div class="col-md-6" id="allColleges">
               <div class="collegeCard">
                 <div class="row">
                   <div class="col-md-4">
@@ -309,7 +309,7 @@
                           <a href="/schoolDetail">
                             <h3>SAI RNS Academy, Adarshapur Path</h3>
                           </a>
-                          <p>Private Unaided/Independent</p>
+                          
                         </div>
                       </div>
                       <div class="row pt-2">
@@ -354,6 +354,10 @@
                   </div>
                 </div>
               </div>
+            </div>
+          </div> -->
+          <div class="row pt-3">
+            <div class="col-md-6" id="allColleges">
               <div class="collegeCard">
                 <div class="row">
                   <div class="col-md-4">
@@ -367,51 +371,331 @@
                     <div class="collDetail">
                       <div class="collTit">
                         <div class="collLogo">
-                          <img src="/public/images/banner.png" alt="" />
+                          <img src="/public/images/banner.png" alt="logo" />
                         </div>
                         <div class="mx-2">
-                          <a href="/schoolDetail">
+                          <a href="/collegeDetail">
                             <h3>SAI RNS Academy, Adarshapur Path</h3>
                           </a>
                           <p>Private Unaided/Independent</p>
+                          <div class="colreview">
+                            <div class="Review_rating">
+                              <span>3.8</span>
+                              <i class="fa-solid fa-star"></i>
+                            </div>
+                            <div class="reviewCount">
+                              <a href="#!">(16 Reviews)</a>
+                            </div>
+                          </div>
                         </div>
+                      </div>
+                      <div class="collFeee d-flex pt-2">
+                        <p>Annual Fees</p><span class="px-2">₹ 2500000 (CBSE-Class10)</span>
                       </div>
                       <div class="row pt-2">
-                        <div class="col-md-12">
-                          <div class="collFeee d-flex">
-                            <p>Annual Fees</p><span class="px-2">₹ 2500000 (CBSE-Class10)</span>
+                        <div class="col-md-6">
+                          <a href="/schoolDetail" class="applyBtn">View Details</a>
+                        </div>
+                        <div class="col-md-6">
+                          <button type="button" class="quesBtn mx-2" data-bs-toggle="modal" data-bs-target="#applyModal">
+                            Apply Now
+                          </button>
+                          <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModal"
+                          aria-hidden="true">
+                          <div class="modal-dialog loginModal">
+                            <div class="modal-content">
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              <div class="modal-body">
+                                <div class="row justify-content-center py-3">
+                                  <div class="col-md-12 px-5">
+                                    <div class="text-center">
+                                      <img src="/public/images/logo.png" class="w-50" />
+                                      <h2 class="m-0">Student Registration</h2>
+                                      <h4>Sign in to continue</h4>
+                                    </div>
+                                    <form class="form-modal">
+                                      <div class="row justify-content-between text-left">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="form-control-label">Name</label>
+                                            <input type="text" placeholder="Enter your name" id="name" name="name" required />
+                                            <p class="allError" id="nameError"></p>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="form-control-label">Email *</label>
+                                            <input type="text" placeholder="Enter your mail id" id="email"
+                                              oninput="checkEmailExistornot(this)" name="email" required />
+                                            <p class="allError" id="emailError"></p>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="form-control-label">Mobile Number *</label>
+                                            <input type="text" placeholder="Enter your number" id="phone"
+                                              oninput="checkPhoneExistornot(this)" name="phone" required />
+                                            <p class="allError" id="phoneError"></p>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="form-control-label">Password *</label>
+                                            <input type="password" placeholder="Enter password" id="password" name="password"
+                                              required />
+                                            <p class="allError" id="passwordError"></p>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="form-control-label">Gender</label>
+                                            <select class="form-select" aria-label="Gender" id="gender" name="gender" required>
+                                              <option value="Male">Male</option>
+                                              <option value="Female">Female</option>
+                                              <option value="other">Other</option>
+                                            </select>
+                                            <p class="allError" id="genderError"></p>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="form-control-label">Select Stream</label>
+                                            <select class="form-select" aria-label="Select Stream" id="" name="" required>
+                                              <option value="">Commerce and Banking</option>
+                                              <option value="">Design</option>
+                                              <option value="">Engineering</option>
+                                              <option value="">Management</option>
+                                              <option value="">Hotel Management</option>
+                                              <option value="">Information Technology</option>
+                                              <option value="">Media and Mass Communication</option>
+                                              <option value="">Medical</option>
+                                              <option value="">Retail</option>
+                                              <option value="">Arts and Humanities</option>
+                                              <option value="">Law</option>
+                                              <option value="">Science</option>
+                                              <option value="">Vocational</option>
+                                              <option value="">Others</option>
+                                              <option value="">Physical Education</option>
+                                              <option value="">Education</option>
+                                              <option value="">Paramedical</option>
+                                              <option value="">Agriculture</option>
+                                              <option value="">Nursing</option>
+                                              <option value="">Pharmacy</option>
+                                              <option value="">Dental</option>
+                                              <option value="">Performing Arts</option>
+                                            </select>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="form-control-label">Select Level</label>
+                                            <select class="form-select" aria-label="Select Level" id="" name="" required>
+                                              <option value="">UG</option>
+                                              <option value="">PG</option>
+                                              <option value="">Diploma</option>
+                                              <option value="">Ph.D</option>
+                                              <option value="">Certificate</option>
+                                            </select>
+                                            <p class="allError" id="genderError"></p>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="form-control-label">DOB</label>
+                                            <input type="text" placeholder="DD/MM/YYYY" id="dob" name="dob" required />
+                                            <p class="allError" id="dobError"></p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="text-center">
+                                        <div class="form-group text-center pb-2  pt-3">
+                                          <button type="submit" onclick="userValidation(this)" class="submitBtn">Apply Now</button>
+                                        </div>
+                                        <!-- <p style="color: #1d1d1d; line-height: 1.3;font-size: 12px;">
+                                          I'am User?
+                                          <a href="#!" onclick="loginOpen(this)" style="color: #eca500">Login Now</a>
+                                        </p> -->
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div class="collRcp d-flex align-items-center">
-                            <div class="iconSe">
-                              <i class="fa-solid fa-location-crosshairs"></i>
-                            </div>
-                            <a href="/schoolDetail">
-                              <p>Guwahati, Assam</p>
-                            </a>
-                          </div>
-                        </div>
-                        <div class="col-md-12">
-                          <div class="collRcp d-flex align-items-center">
-                            <div class="iconSe">
-                              <i class="fa-regular fa-user-graduate"></i>
-                            </div>
-                            <a href="/schoolDetail">
-                              <p>Sr. Secondary/Higher Secondary School | CBSE</p>
-                            </a>
-                          </div>
                         </div>
                       </div>
                     </div>
-                    <div class="row pt-2">
-                      <div class="col-md-12">
-                        <div class="d-flex">
-                          <a href="/schoolDetail" class="applyBtn">Enquire</a>
-                          <a href="#" class="quesBtn mx-2">Ask a Question</a>
-                          <a href="#!" class="sampleBtn">Brochure</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6" id="allColleges">
+              <div class="collegeCard">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="collImage">
+                      <i class="fas fa-star checkedData  star-back"></i>
+                      <i class="fas fa-star star-back" onclick="addWishlist(this,)"></i>
+                      <img src="/public/images/banner.png" alt="" />
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="collDetail">
+                      <div class="collTit">
+                        <div class="collLogo">
+                          <img src="/public/images/banner.png" alt="logo" />
+                        </div>
+                        <div class="mx-2">
+                          <a href="/collegeDetail">
+                            <h3>SAI RNS Academy, Adarshapur Path</h3>
+                          </a>
+                          <p>Private Unaided/Independent</p>
+                          <div class="colreview">
+                            <div class="Review_rating">
+                              <span>3.8</span>
+                              <i class="fa-solid fa-star"></i>
+                            </div>
+                            <div class="reviewCount">
+                              <a href="#!">(16 Reviews)</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="collFeee d-flex pt-2">
+                        <p>Annual Fees</p><span class="px-2">₹ 2500000 (CBSE-Class10)</span>
+                      </div>
+                      <div class="row pt-2">
+                        <div class="col-md-6">
+                          <a href="/schoolDetail" class="applyBtn">View Details</a>
+                        </div>
+                        <div class="col-md-6">
+                          <button type="button" class="quesBtn mx-2" data-bs-toggle="modal" data-bs-target="#applyModal">
+                            Apply Now
+                          </button>
+                          <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModal"
+                          aria-hidden="true">
+                          <div class="modal-dialog loginModal">
+                            <div class="modal-content">
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              <div class="modal-body">
+                                <div class="row justify-content-center py-3">
+                                  <div class="col-md-12 px-5">
+                                    <div class="text-center">
+                                      <img src="/public/images/logo.png" class="w-50" />
+                                      <h2 class="m-0">Student Registration</h2>
+                                      <h4>Sign in to continue</h4>
+                                    </div>
+                                    <form class="form-modal">
+                                      <div class="row justify-content-between text-left">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="form-control-label">Name</label>
+                                            <input type="text" placeholder="Enter your name" id="name" name="name" required />
+                                            <p class="allError" id="nameError"></p>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="form-control-label">Email *</label>
+                                            <input type="text" placeholder="Enter your mail id" id="email"
+                                              oninput="checkEmailExistornot(this)" name="email" required />
+                                            <p class="allError" id="emailError"></p>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="form-control-label">Mobile Number *</label>
+                                            <input type="text" placeholder="Enter your number" id="phone"
+                                              oninput="checkPhoneExistornot(this)" name="phone" required />
+                                            <p class="allError" id="phoneError"></p>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="form-control-label">Password *</label>
+                                            <input type="password" placeholder="Enter password" id="password" name="password"
+                                              required />
+                                            <p class="allError" id="passwordError"></p>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="form-control-label">Gender</label>
+                                            <select class="form-select" aria-label="Gender" id="gender" name="gender" required>
+                                              <option value="Male">Male</option>
+                                              <option value="Female">Female</option>
+                                              <option value="other">Other</option>
+                                            </select>
+                                            <p class="allError" id="genderError"></p>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="form-control-label">Select Stream</label>
+                                            <select class="form-select" aria-label="Select Stream" id="" name="" required>
+                                              <option value="">Commerce and Banking</option>
+                                              <option value="">Design</option>
+                                              <option value="">Engineering</option>
+                                              <option value="">Management</option>
+                                              <option value="">Hotel Management</option>
+                                              <option value="">Information Technology</option>
+                                              <option value="">Media and Mass Communication</option>
+                                              <option value="">Medical</option>
+                                              <option value="">Retail</option>
+                                              <option value="">Arts and Humanities</option>
+                                              <option value="">Law</option>
+                                              <option value="">Science</option>
+                                              <option value="">Vocational</option>
+                                              <option value="">Others</option>
+                                              <option value="">Physical Education</option>
+                                              <option value="">Education</option>
+                                              <option value="">Paramedical</option>
+                                              <option value="">Agriculture</option>
+                                              <option value="">Nursing</option>
+                                              <option value="">Pharmacy</option>
+                                              <option value="">Dental</option>
+                                              <option value="">Performing Arts</option>
+                                            </select>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="form-control-label">Select Level</label>
+                                            <select class="form-select" aria-label="Select Level" id="" name="" required>
+                                              <option value="">UG</option>
+                                              <option value="">PG</option>
+                                              <option value="">Diploma</option>
+                                              <option value="">Ph.D</option>
+                                              <option value="">Certificate</option>
+                                            </select>
+                                            <p class="allError" id="genderError"></p>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="form-control-label">DOB</label>
+                                            <input type="text" placeholder="DD/MM/YYYY" id="dob" name="dob" required />
+                                            <p class="allError" id="dobError"></p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="text-center">
+                                        <div class="form-group text-center pb-2  pt-3">
+                                          <button type="submit" onclick="userValidation(this)" class="submitBtn">Apply Now</button>
+                                        </div>
+                                        <!-- <p style="color: #1d1d1d; line-height: 1.3;font-size: 12px;">
+                                          I'am User?
+                                          <a href="#!" onclick="loginOpen(this)" style="color: #eca500">Login Now</a>
+                                        </p> -->
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                         </div>
                       </div>
                     </div>
