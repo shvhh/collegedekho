@@ -1791,7 +1791,6 @@ input {
   position: relative;
   overflow-x: hidden;
   margin: 20px auto 0 auto;
-  width: 90%;
 }
 
 .wrapper .icon {
@@ -1834,7 +1833,7 @@ input {
   display: flex;
   gap: 12px;
   list-style: none;
-  overflow-x: hidden;
+  overflow: auto;
   scroll-behavior: smooth;
 }
 
