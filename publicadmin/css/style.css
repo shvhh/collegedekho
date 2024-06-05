@@ -1241,7 +1241,7 @@ input {
   padding: 10px;
   display: flex;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .headerGoal h4{
