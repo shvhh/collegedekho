@@ -211,7 +211,7 @@ nav li {
   font-size: 13px;
   font-weight: 500;
   display: block;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 0 10px;
   transition: all .7s;
 }
@@ -648,7 +648,7 @@ nav li {
   max-width: 50%;
   box-shadow: rgb(0 0 0 / 30%) 0 0 7px 0;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 5px;
   top: 35px;
 }
 
@@ -1223,7 +1223,7 @@ input {
 .goalS{
   min-height: 180px;
   margin: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #fff;
   border: 1px solid #e9e9e9;
   overflow: hidden;
@@ -1417,7 +1417,7 @@ input {
 /* ----------------------banner sec------------------------------------ */
 .manePageBanner {
   background: rgb(242, 242, 242);
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 5px;
 }
 
@@ -1652,7 +1652,7 @@ input {
 }
 
 .careerDetails ul.career-info li a:hover {
-  background-color: #e45330;
+  background-color: #20bdff;
   color: #fff;
 }
 
@@ -1677,7 +1677,7 @@ input {
 }
 
 .popularStateList li:hover {
-  background-color: #e45330;
+  background-color: #20bdff;
   color: #fff;
 }
 
@@ -1704,7 +1704,7 @@ input {
   display: none;
   position: absolute;
   background-color: rgb(237, 249, 255);
-  border-radius: 10px;
+  border-radius: 5px;
   border-top: 3px solid #e45330;
   min-width: 160px;
   overflow: auto;
@@ -1740,7 +1740,7 @@ input {
 .consultation {
   background-color: #222222;
   padding: 30px 50px;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .consultation h3 {
@@ -2034,16 +2034,16 @@ input {
 }
 
 .submitBtn {
-  border-radius: 10px;
-  color: #eca500 !important;
-  border: 1px solid #eca500;
+  border-radius: 5px;
+  color: #ff44a0 !important;
+  border: 1px solid #ff44a0;
   padding: 4px 30px;
   transition: all 0.5s;
   font-size: 14px;
 }
 
 .submitBtn:hover {
-  background-color: #eca500;
+  background-color: #ff44a0;
   color: #fff !important;
 }
 
@@ -2160,7 +2160,7 @@ input {
 .boxe {
   background-color: #f1f1f1;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   margin: 0 0 10px 0;
 }
 
@@ -2208,11 +2208,11 @@ input {
 }
 
 .applyBtn {
-  border: 1px solid #e45330;
-  color: #e45330;
+  border: 1px solid #20bdff;
+  color: #20bdff;
   border-radius: 5px;
   text-align: center;
-  font-size: 14px;
+  font-size: 13px;
   display: block;
   width: 100%;
   padding: 5px 0;
@@ -2221,7 +2221,7 @@ input {
 }
 
 .applyBtn:hover{
-  background-color: #e45330;
+  background-color: #20bdff;
   color: #fff;
 }
 
@@ -2262,7 +2262,7 @@ input {
   color: #8abcc5;
   border-radius: 5px;
   text-align: center;
-  font-size: 14px;
+  font-size: 13px;
   display: block;
   width: 100%;
   padding: 5px 0;
@@ -2272,7 +2272,7 @@ input {
 
 .sampleBtn:hover{
   background-color: #8abcc5;
-  color: #8abcc5;
+  color: #fff;
 }
 
 .blocksec {
@@ -2290,7 +2290,7 @@ input {
   border: 4px solid #ff7900;
   padding: 15px;
   position: relative;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .mockTestCta .innerBox img {
@@ -2338,7 +2338,7 @@ input {
 .filterSec {
   background-color: #fff;
   padding: 0px 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   width: 50%;
 }
 .coursF .filterSec{
@@ -2358,7 +2358,7 @@ input {
 .collegeCard {
   background-color: #fff;
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 5px;
   margin: 0 0 15px 0;
 }
 
@@ -2604,13 +2604,13 @@ input {
 
 .collegeInfo .collegeInfoTab.active {
   color: #fff;
-  background: #e45330;
+  background: #ff44a0;
   border-color: transparent;
 }
 
 .filterCollege {
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 10px;
 }
 
@@ -2678,7 +2678,7 @@ input {
 
 .parantCollegeGroup {
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 10px;
 }
 
@@ -2759,7 +2759,7 @@ input {
   flex-wrap: wrap;
   background-color: #e9ecff;
   padding: 12px 20px;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .collegeDetail_contentBox li {
@@ -2887,7 +2887,7 @@ input {
 .blogCard {
   padding: 5px;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 5px;
   overflow: hidden;
   transition: all 0.5s;
   border: 1px solid #ddd;
@@ -2900,7 +2900,7 @@ input {
 
 .blogCardImg {
   height: 180px;
-  border-radius: 10px;
+  border-radius: 5px;
   overflow: hidden;
 }
 
@@ -2964,7 +2964,7 @@ input {
 
 .trendingBox{
   border: 1px solid #e5e5e5;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #fff;
 }
 
@@ -3179,7 +3179,7 @@ input {
 }
 
 .careerDetails ul.career-info li a:active {
-  background-color: #ff0000;
+  background-color: #20bdff;
   color: #fff;
 }
 
@@ -3221,7 +3221,7 @@ input {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: red;
+  background-color: #20bdff;
   transform: scaleX(0);
   transform-origin: 50%;
   transition-property: transform;
@@ -3348,7 +3348,7 @@ span.GalleryModal_close__Q_uDq {
   content: "";
   position: absolute;
   width: 2px;
-  background-color: #717171;
+  background-color:#20bdff;
   height: 15px;
   transform: rotate(45deg);
   right: 29px;
@@ -3473,14 +3473,14 @@ span.GalleryModal_close__Q_uDq {
 }
 
 .modal-butoon-succ {
-  background-color: #e45330;
+  background-color: #20bdff;
   padding: 4px 18px;
   border-radius: 25px;
   color: #fff;
 }
 
 .modal-butoon-succ:hover {
-  background-color: #e45330;
+  background-color: #20bdff;
   color: #fff;
 }
 
@@ -3564,13 +3564,13 @@ span.GalleryModal_close__Q_uDq {
 }
 
 ._mPS2id-h a {
-  background-color: #e45330;
+  background-color: #20bdff;
   color: #fff !important;
 }
 
 .overall-1 {
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .delete-icon {
@@ -3771,7 +3771,7 @@ ul.examlinks li a {
 .schoolBlock .box .content .coursePic {
   height: 150px;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 5px;
 	position: relative;
 }
 .schoolBlock .box .content .coursePic::before {
@@ -4001,7 +4001,7 @@ ul.examlinks li a {
   margin: 0 0 15px 0;
   position: relative;
   box-shadow: 0 1px 4px rgb(0 0 0 / 10%);
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #fff;
 }
 
@@ -4031,7 +4031,7 @@ ul.examlinks li a {
 /* ---------------------------------Schools CSS---------------------------- */
 .cityCard {
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 5px;
   overflow: hidden;
   transition: all 0.5s;
   border: 1px solid #e9e9e9;
@@ -4182,7 +4182,7 @@ ul.examlinks li a {
 
 .gallerySchool{
   border: 1px solid #ddd;
-  border-radius: 10px;
+  border-radius: 5px;
   height: 110px;
   padding: 10px;
 }
@@ -4198,7 +4198,7 @@ ul.examlinks li a {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 10px;
+  border-radius: 5px;
   overflow: hidden;
   position: relative;
 }
