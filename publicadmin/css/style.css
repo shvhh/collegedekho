@@ -21,21 +21,21 @@ body {
 
 ::-webkit-scrollbar-thumb {
   cursor: pointer;
-  background: #e45330;
+  background: #ff44a0;
 }
 
 ::selection {
-  background-color: #622dfa;
+  background-color: #ff44a0;
   color: #fff;
 }
 
 -webkit-::selection {
-  background-color: #622dfa;
+  background-color: #ff44a0;
   color: #fff;
 }
 
 ::-moz-selection {
-  background-color: #622dfa;
+  background-color: #ff44a0;
   color: #fff;
 }
 
@@ -4387,7 +4387,7 @@ padding-left: 0;
 .filters {
     position: relative;
     padding: 8px 10px;
-    background: #e45330;
+    background: #ff44a0;
     border: var(--bs-border-width) solid var(--bs-border-color);
     border-radius: var(--bs-border-radius);
     margin: 4px 0;
@@ -4414,8 +4414,8 @@ padding-left: 0;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.5;
-  background-color: #e45330;
-  border: 1px solid #e45330;
+  background-color: #ff44a0;
+  border: 1px solid #ff44a0;
   color: #fff;
   border-radius: 5px;
   padding: 5px 20px;
@@ -4433,7 +4433,7 @@ padding-left: 0;
   font-size: 1.7rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: #d93622;
+  color: #ff44a0;
 }
 .filters .filterB .top-menu-wrapper {
   color: #221f1f;
@@ -4516,7 +4516,7 @@ padding-left: 0;
 .filters .filterB .top-menu .mob-block .filH {
   font-size: 1.7rem;
   font-weight: 700;
-  color: #d93622;
+  color: #ff44a0;
   letter-spacing: 1.2px;
 }
 
