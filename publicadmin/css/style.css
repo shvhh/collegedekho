@@ -2115,6 +2115,14 @@ input {
   color: #fff;
 }
 
+.applyBt{
+  position: fixed;
+  z-index: 9;
+  bottom: 50px;
+  right: 100px;
+}
+
+
 /* ---------------------------Exam Page------------------------------ */
 .bannerSec {
   position: relative;
@@ -2201,10 +2209,10 @@ input {
   color: #fff;
   border-radius: 5px;
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   display: block;
   width: 100%;
-  padding: 3px 0;
+  padding: 5px 0;
   line-height: 18px;
 }
 
@@ -2222,15 +2230,15 @@ input {
 }
 
 .quesBtn {
-  background-color: #f1f1f1;
-  border: 1px solid #f1f1f1;
-  color: #e45330;
+  background-color: #e45330;
+  border: 1px solid #e45330;
+  color: #fff;
   border-radius: 5px;
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   display: block;
   width: 100%;
-  padding: 3px 0;
+  padding: 10px 10px;
   line-height: 18px;
 }
 
