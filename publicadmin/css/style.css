@@ -21,7 +21,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
   cursor: pointer;
-  background: #e45330;
+  background: #0C3e5f;
 }
 
 ::selection {
@@ -59,12 +59,12 @@ body {
   height: 30px;
   right: -20px;
   top: 5px;
-  background-color: #1d1d1d;
+  background-color: #0C3e5f;
 }
 
 .logoSection .menu-link[aria-haspopup="true"] {
   border: none;
-  color: #e45330;
+  color: #0C3e5f;
 }
 
 .logoSection .mega-menu {
@@ -92,9 +92,9 @@ body {
 }
 
 .rigStudyCol:hover {
-  border: 1px solid #eca500;
+  border: 1px solid #0C3e5f;
   padding: 0 5px;
-  color: #eca500;
+  color: #0C3e5f;
 }
 
 .cityC{
@@ -117,12 +117,12 @@ body {
 }
 
 .cityC p{
-  color: #1d1d1d;
+  color: #0C3e5f;
   font-size: 12px;
 }
 
 .nav {
-  border-bottom: 1px solid #1d1d1d;
+  border-bottom: 1px solid #0C3e5f;
 }
 
 nav {
@@ -147,7 +147,7 @@ nav li {
 }
 
 .menu-link {
-  color: #1d1d1d;
+  color: #0C3e5f;
   position: relative;
   font-size: 13px;
   font-weight: 500;
@@ -156,13 +156,13 @@ nav li {
 .menu2 {
   padding-right: 20px;
   margin: 0 15px 0 0;
-  border-right: 1px solid #1d1d1d;
+  border-right: 1px solid #0C3e5f;
 }
 
 .menu-link[aria-haspopup="true"] {
   padding-right: 30px;
   margin: 0 15px 0 0;
-  border-right: 1px solid #1d1d1d;
+  border-right: 1px solid #0C3e5f;
 }
 
 .menu-link[aria-haspopup="true"]:after {
@@ -187,7 +187,7 @@ nav li {
 }
 
 .homeIcon a i{
-  color: #e45330;
+  color: #0C3e5f;
   font-size: 14px;
 }
 
@@ -229,7 +229,7 @@ nav li {
 }
 
 .menuL a:hover{
-  color: #eca500 !important;
+  color: #0C3e5f !important;
 }
 
 .l1 {
@@ -237,7 +237,7 @@ nav li {
 }
 
 .viewAll {
-  color: #eca500 !important;
+  color: #0C3e5f !important;
   font-size: 12px !important;
   font-weight: 500;
 }
@@ -582,7 +582,7 @@ nav li {
 }
 
 .searchB i {
-  color: #1d1d1d;
+  color: #0C3e5f;
   font-size: 14px;
   font-weight: 600;
 }
@@ -590,18 +590,18 @@ nav li {
 /* ---------------Modal----------------------------------- */
 .registrationBtn {
   background-color: transparent;
-  color: #1d1d1d;
+  color: #0C3e5f;
   font-size: 13px;
   padding: 0em 15px;
-  border: 1px solid #1d1d1d;
+  border: 1px solid #0C3e5f;
   border-radius: 25px;
   font-weight: 500;
   transition: all .5s;
 }
 
 .registrationBtn:hover {
-  border: 1px solid #eca500;
-  background-color: #eca500;
+  border: 1px solid #0C3e5f;
+  background-color: #0C3e5f;
   color: #000;
 }
 
@@ -726,7 +726,7 @@ h5,
 h6 {
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
-  color: #1d1d1d;
+  color: #0C3e5f;
 }
 
 h1 {
@@ -755,7 +755,7 @@ h2 {
 h3,
 h4 {
   margin: 0 0 10px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.7;
   letter-spacing: -0.5px;
 }
@@ -803,8 +803,8 @@ input {
 
 .consullingBtn {
   color: #ffffff;
-  border: 1px solid #e45330;
-  background-color: #e45330;
+  border: 1px solid #0C3e5f;
+  background-color: #0C3e5f;
   padding: 10px 20px;
   font-size: 18px;
   position: relative;
@@ -816,7 +816,7 @@ input {
   position: absolute;
   left: -8px;
   bottom: 0;
-  background-color: #eca500;
+  background-color: #0C3e5f;
   width: 3px;
   height: 100%;
 }
@@ -899,7 +899,7 @@ input {
   font-size: 14px;
   font-weight: 500;
   box-shadow: 0 8px 20px #f5a04133;
-  border: 2px solid #eca500;
+  border: 2px solid #0C3e5f;
   color: #050038;
   position: relative;
   overflow: hidden;
@@ -907,7 +907,7 @@ input {
 }
 
 .collegeRigBtns {
-  background: #eca500;
+  background: #0C3e5f;
 }
 
 .mainBannerSection .rigCollegesDe .collegeRigBtnst {
@@ -1137,7 +1137,7 @@ input {
   position: absolute;
   left: 30%;
   top: -4px;
-  background-color: #eca500;
+  background-color: #0C3e5f;
   width: 40%;
   height: 8px;
 }
@@ -1148,11 +1148,9 @@ input {
 
 .studyGoalTitle h3 {
   font-size: 30px;
-  color: #1d1d1d;
+  color: #0C3e5f;
   position: relative;
   width: fit-content;
-  /* margin: 0 auto 10px auto; */
-  font-weight: 500;
 }
 
 .studyGoalTitle h3::before {
@@ -1160,7 +1158,7 @@ input {
   position: absolute;
   left: 0px;
   bottom: -8px;
-  background-color: #e45330;
+  background-color: #0C3e5f;
   width: 120px;
   height: 5px;
 }
@@ -1241,7 +1239,7 @@ input {
   padding: 10px;
   display: flex;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .headerGoal h4{
@@ -1304,15 +1302,15 @@ input {
 
 
 .PartnersSlider h5 {
-  color: #1d1d1d;
+  color: #0C3e5f;
   font-size: 13px;
   margin: 0 0 5px 0;
   font-weight: 400;
 }
 
 .PartnersSlider .slick-arrow {
-  background-color: #eca500;
-  border: 1px solid #eca500;
+  background-color: #0C3e5f;
+  border: 1px solid #0C3e5f;
   outline: 0;
   width: 30px;
   height: 30px;
@@ -1338,8 +1336,8 @@ input {
 
 /*  */
 .TopCollegesSlider .slick-arrow {
-  background-color: #eca500;
-  border: 1px solid #eca500;
+  background-color: #0C3e5f;
+  border: 1px solid #0C3e5f;
   outline: 0;
   width: 30px;
   height: 30px;
@@ -1364,15 +1362,15 @@ input {
 }
 
 .Partners2Slider h5 {
-  color: #1d1d1d;
+  color: #0C3e5f;
   font-size: 14px;
   margin: 0px;
   font-weight: 400;
 }
 
 .Partners2Slider .slick-arrow {
-  background-color: #eca500;
-  border: 1px solid #eca500;
+  background-color: #0C3e5f;
+  border: 1px solid #0C3e5f;
   outline: 0;
   width: 30px;
   height: 30px;
@@ -1402,7 +1400,7 @@ input {
   margin: 3px 0px 3px 0px;
   font-size: 12px;
   font-weight: 500;
-  color: #1d1d1d;
+  color: #0C3e5f;
   line-height: 1.5;
   letter-spacing: 0.5px;
 }
@@ -1423,6 +1421,7 @@ input {
 
 .manePageBanner h2 {
   font-size: 25px;
+  font-weight: 600;
 }
 
 /* ------------------------------Explore Programs--------------------------- */
@@ -1436,14 +1435,14 @@ input {
   position: absolute;
   left: 0px;
   bottom: -8px;
-  background-color: #e45330;
+  background-color: #0C3e5f;
   width: 120px;
   height: 5px;
 }
 
 .viewAllBtn {
-  color: #1d1d1d;
-  border: 1px solid #1d1d1d;
+  color: #0C3e5f;
+  border: 1px solid #0C3e5f;
   padding: 8px 10px;
   font-size: 14px;
   position: relative;
@@ -1455,7 +1454,7 @@ input {
   position: absolute;
   left: -8px;
   bottom: 0;
-  background-color: #e45330;
+  background-color: #0C3e5f;
   width: 3px;
   height: 100%;
 }
@@ -1474,7 +1473,7 @@ input {
 } */
 
 .collectionCard h5 {
-  color: #1d1d1d;
+  color: #0C3e5f;
 }
 
 .collectionImg {
@@ -1520,7 +1519,7 @@ input {
   position: absolute;
   left: 0px;
   bottom: -8px;
-  background-color: #e45330;
+  background-color: #0C3e5f;
   width: 120px;
   height: 5px;
 }
@@ -1554,7 +1553,7 @@ input {
 }
 
 .programCard h4 {
-  color: #1d1d1d;
+  color: #0C3e5f;
   padding: 20px 0 0 0;
   margin: 0;
   font-size: 14px;
@@ -1568,25 +1567,31 @@ input {
 }
 
 .programCard a {
-  color: #1d1d1d;
+  color: #0C3e5f;
   font-size: 12px;
   font-weight: 500;
 }
 
 .programCard a:hover {
-  color: #e45330;
+  color: #fff;
 }
 
 .programCard a i {
-  border-left: 3px solid #E45330;
+  border-left: 3px solid #0C3e5f;
   padding: 0 0 0 5px;
 }
 
 .compareClgBtn {
-  background-color: #eca500;
-  color: #fff !important;
+  color: #0C3e5f;
   padding: 5px 10px;
   border-radius: 5px;
+  border: 1px solid #0C3e5f;
+  transition: all .5s;
+}
+
+.compareClgBtn:hover{
+  background-color: #0C3e5f;
+  color: #fff;
 }
 
 .compareClgBtn i {
@@ -1604,7 +1609,7 @@ input {
   position: absolute;
   left: 0px;
   bottom: -8px;
-  background-color: #e45330;
+  background-color: #0C3e5f;
   width: 120px;
   height: 5px;
 }
@@ -1646,7 +1651,7 @@ input {
 }
 
 .careerDetails ul.career-info li a:hover {
-  background-color: #e45330;
+  background-color: #0C3e5f;
   color: #fff;
 }
 
@@ -1671,7 +1676,7 @@ input {
 }
 
 .popularStateList li:hover {
-  background-color: #e45330;
+  background-color: #0C3e5f;
   color: #fff;
 }
 
@@ -1690,7 +1695,7 @@ input {
   position: absolute;
   right: 5px;
   top: 40%;
-  color: #1d1d1d;
+  color: #0C3e5f;
   cursor: pointer;
 }
 
@@ -1699,7 +1704,7 @@ input {
   position: absolute;
   background-color: rgb(237, 249, 255);
   border-radius: 10px;
-  border-top: 3px solid #e45330;
+  border-top: 3px solid #0C3e5f;
   min-width: 160px;
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -1708,7 +1713,7 @@ input {
 }
 
 .wishdropdown-content a {
-  color: #1d1d1d;
+  color: #0C3e5f;
   padding: 6px 16px;
   text-decoration: none;
   display: block;
@@ -1744,7 +1749,7 @@ input {
 }
 
 .consultation h3 p {
-  color: #e45330;
+  color: #fff;
 }
 
 .consultationBtn {
@@ -1761,7 +1766,7 @@ input {
   position: absolute;
   left: -8px;
   bottom: 0;
-  background-color: #e45330;
+  background-color: #0C3e5f;
   width: 3px;
   height: 100%;
 }
@@ -1777,13 +1782,13 @@ input {
   position: absolute;
   left: 0px;
   bottom: -8px;
-  background-color: #e45330;
+  background-color: #0C3e5f;
   width: 120px;
   height: 5px;
 }
 
 .explore p {
-  color: #1d1d1d;
+  color: #0C3e5f;
   font-size: 14px;
 }
 
@@ -1817,7 +1822,7 @@ input {
   cursor: pointer;
   border-radius: 50%;
   color: #fff;
-  background-color: #eca500;
+  background-color: #0C3e5f;
   transition: all 0.5s;
   display: flex;
   align-items: center;
@@ -1854,7 +1859,7 @@ input {
 }
 
 .tabs-box .tab:hover {
-  background: #e45330;
+  background: #0C3e5f;
   color: #fff;
 }
 
@@ -1865,36 +1870,36 @@ input {
 
 .tabs-box .tab.active {
   color: #fff;
-  background: #e45330;
+  background: #0C3e5f;
   border-color: transparent;
 }
 
 .rigExploreCareer h5 {
-  color: #ED7133;
+  color: #0C3e5f;
   font-weight: 500;
   font-size: 12px;
 }
 
 .rigExploreCareer h4 {
   font-size: 12px;
-  color: #1d1d1d;
+  color: #0C3e5f;
   font-weight: 500;
   margin: 3px 0;
 }
 
 .rigExploreCareer h4 span {
-  color: #eca500;
+  color: #0C3e5f;
 }
 
 .revieRig p {
-  color: #1d1d1d;
+  color: #0C3e5f;
   font-weight: 500;
   font-size: 12px;
   line-height: 1;
 }
 
 .revieRig p i {
-  color: #eca500;
+  color: #0C3e5f;
 }
 
 .revieRig span {
@@ -1922,20 +1927,19 @@ input {
 }
 
 .avrgSection p span {
-  color: #eca500;
+  color: #0C3e5f;
 }
 
 .btn {
-  background-color: #ED7133;
-  border: 1px solid #ED7133 !important;
+  border: 1px solid #0C3e5f !important;
   font-size: 10px;
   padding: 3px 30px;
-  color: #fff;
+  color: #0C3e5f;
 }
 
 .btn:hover {
-  background-color: transparent;
-  color: #ED7133;
+  background-color: #0C3e5f;
+  color: #fff;
 }
 
 .exploreCareers .collectionText {
@@ -1949,7 +1953,7 @@ input {
   position: absolute;
   left: 0px;
   top: 9px;
-  background-color: #eca500;
+  background-color: #0C3e5f;
   width: 4px;
   height: 140px;
 }
@@ -2009,7 +2013,7 @@ input {
   position: absolute;
   left: 40%;
   bottom: -8px;
-  background-color: #e45330;
+  background-color: #0C3e5f;
   width: Career 200px;
   height: 5px;
 }
@@ -2029,18 +2033,17 @@ input {
 }
 
 .submitBtn {
-  background-color: #eca500;
   border-radius: 10px;
-  color: #fff !important;
-  border: 1px solid #eca500;
+  color: #0C3e5f !important;
+  border: 1px solid #0C3e5f;
   padding: 4px 30px;
   transition: all 0.5s;
   font-size: 14px;
 }
 
 .submitBtn:hover {
-  background-color: transparent;
-  color: #eca500 !important;
+  background-color: #0C3e5f;
+  color: #fff !important;
 }
 
 /* ---------------------------Footer--------------------------------- */
@@ -2092,7 +2095,7 @@ input {
 
 .socialLink a:hover {
   background-color: #fff;
-  color: #1d1d1d;
+  color: #0C3e5f;
 }
 
 .socialLink a:hover i {
@@ -2163,7 +2166,7 @@ input {
 .boxe h3 {
   font-size: 18px;
   margin: 0px;
-  color: #1d1d1d;
+  color: #0C3e5f;
   position: relative;
 }
 
@@ -2172,7 +2175,7 @@ input {
   position: absolute;
   left: -9px;
   top: -2px;
-  background-color: #e45330;
+  background-color: #0C3e5f;
   width: 3px;
   height: 100%;
 }
@@ -2180,7 +2183,7 @@ input {
 .boxe h4 {
   font-size: 14px;
   margin: 0px;
-  color: #1d1d1d;
+  color: #0C3e5f;
 }
 
 .listUpdates {
@@ -2189,24 +2192,23 @@ input {
 
 .listUpdates li {
   list-style-type: disc;
-  color: #eca500;
+  color: #0C3e5f;
 }
 
 .listUpdates li a {
-  color: #eca500;
+  color: #0C3e5f;
 }
 
 .para {
-  color: #1d1d1d;
+  color: #0C3e5f;
   line-height: 1.4;
   text-align: justify;
   margin: 5px 0;
 }
 
 .applyBtn {
-  background-color: #e45330;
-  border: 1px solid #e45330;
-  color: #fff;
+  border: 1px solid #0C3e5f;
+  color: #0C3e5f;
   border-radius: 5px;
   text-align: center;
   font-size: 14px;
@@ -2214,12 +2216,18 @@ input {
   width: 100%;
   padding: 5px 0;
   line-height: 18px;
+  transition: all .5s;
+}
+
+.applyBtn:hover{
+  background-color: #0C3e5f;
+  color: #fff;
 }
 
 .checkBtn {
   background-color: transparent;
-  border: 1px solid #e45330;
-  color: #e45330;
+  border: 1px solid #0C3e5f;
+  color: #0C3e5f;
   border-radius: 5px;
   text-align: center;
   font-size: 12px;
@@ -2230,8 +2238,8 @@ input {
 }
 
 .quesBtn {
-  background-color: #e45330;
-  border: 1px solid #e45330;
+  background-color: #0C3e5f;
+  border: 1px solid #0C3e5f;
   color: #fff;
   border-radius: 5px;
   text-align: center;
@@ -2240,12 +2248,17 @@ input {
   width: 100%;
   padding: 10px 10px;
   line-height: 18px;
+  transition: all .5s;
+}
+
+.quesBtn:hover {
+  transform: scale(1.2);
+  transition-timing-function: cubic-bezier(0.47,2.02,.31,-.36);
 }
 
 .sampleBtn {
-  background-color: #8abcc5;
   border: 1px solid #8abcc5;
-  color: #fff;
+  color: #8abcc5;
   border-radius: 5px;
   text-align: center;
   font-size: 14px;
@@ -2253,6 +2266,12 @@ input {
   width: 100%;
   padding: 5px 0;
   line-height: 18px;
+  transition: all .5s;
+}
+
+.sampleBtn:hover{
+  background-color: #8abcc5;
+  color: #8abcc5;
 }
 
 .blocksec {
@@ -2267,7 +2286,7 @@ input {
 }
 
 .mockTestCta .innerBox {
-  border: 4px solid #ff7900;
+  border: 4px solid #0C3e5f;
   padding: 15px;
   position: relative;
   border-radius: 10px;
@@ -2304,7 +2323,7 @@ input {
 .bannerTitle2 h4 {
   font-size: 25px;
   font-weight: 800;
-  color: #1d1d1d;
+  color: #0C3e5f;
 }
 
 .bannerTitle2 img {
@@ -2427,7 +2446,7 @@ input {
 }
 
 .reviewCount a{
-  color: #eca500;
+  color: #0C3e5f;
   font-size: 10px;
 }
 
@@ -2456,7 +2475,7 @@ input {
 }
 
 .collFeee span {
-  color: #eca500;
+  color: #0C3e5f;
 }
 
 .collFeee p {
@@ -2486,7 +2505,7 @@ input {
   object-fit: contain;
 }
 .iconSe i{
-  color: #eca500;
+  color: #0C3e5f;
 }
 /* ---------------College Detail-------------------------------- */
 .bannerSecBg {
@@ -2519,7 +2538,7 @@ input {
 }
 
 .reviewsCo i {
-  color: #eca500;
+  color: #0C3e5f;
 }
 
 .reviewsCo p {
@@ -2546,7 +2565,7 @@ input {
   position: absolute;
   left: 0%;
   bottom: -8px;
-  background-color: #e45330;
+  background-color: #0C3e5f;
   width: 100px;
   height: 5px;
 }
@@ -2584,7 +2603,7 @@ input {
 
 .collegeInfo .collegeInfoTab.active {
   color: #fff;
-  background: #e45330;
+  background: #0C3e5f;
   border-color: transparent;
 }
 
@@ -2612,9 +2631,9 @@ input {
 }
 
 .collegeDetailFilter .collegeDetailFilterTab.active {
-  color: #e45330;
+  color: #0C3e5f;
   background: transparent;
-  border-color: #e45330;
+  border-color: #0C3e5f;
 }
 
 .collegefilter2 .iconSe {
@@ -2631,7 +2650,7 @@ input {
 
 .totalFee h2 {
   font-size: 20px;
-  color: #eca500;
+  color: #0C3e5f;
   margin: 0px;
   line-height: 1.3;
 }
@@ -2642,7 +2661,7 @@ input {
 }
 
 .totalFee a {
-  color: #e45330;
+  color: #0C3e5f;
   text-decoration: underline;
 }
 
@@ -2687,7 +2706,7 @@ input {
 }
 
 .topCou p {
-  color: #eca500;
+  color: #0C3e5f;
   padding: 5px 0;
   font-size: 10px;
 }
@@ -2796,7 +2815,7 @@ input {
 
 .Review_overAllRatingBox {
   width: 68px;
-  background-color: #eca500;
+  background-color: #0C3e5f;
   color: #fff;
   text-align: center;
   margin-bottom: 4%;
@@ -2921,7 +2940,7 @@ input {
 }
 
 .blogCard h3 {
-  border-left: 3px solid #E45330;
+  border-left: 3px solid #0C3e5f;
   padding: 0 0 0px 5px;
   margin: 5px 0 5px 0 !important;
   font-size: 14px;
@@ -2963,7 +2982,7 @@ input {
 }
 
 .trendingBox a{
-  color: #1d1d1d;
+  color: #0C3e5f;
 }
 
 .list-items {
@@ -3016,7 +3035,7 @@ input {
   position: absolute;
   left: 0px;
   top: 0;
-  background-color: #eca500;
+  background-color: #0C3e5f;
   width: 4px;
   height: 100%;
 }
@@ -3086,11 +3105,11 @@ input {
 }
 
 .collRcp a {
-  color: #1d1d1d;
+  color: #0C3e5f;
 }
 
 .popularStateList a {
-  color: #1d1d1d;
+  color: #0C3e5f;
 }
 
 .dropdown .dropdown-menu {
@@ -3119,7 +3138,7 @@ input {
 }
 
 .drop-list li a {
-  color: #1d1d1d;
+  color: #0C3e5f;
   font-size: 12px;
   font-weight: 500;
   padding: 0 15px;
@@ -3138,7 +3157,7 @@ input {
 }
 
 .optionactive {
-  background-color: #e45330;
+  background-color: #0C3e5f;
   color: #fff;
 }
 
@@ -3378,7 +3397,7 @@ span.GalleryModal_close__Q_uDq {
 .open-modal {
   width: 69%;
   color: #fff;
-  background-color: #1d1d1d;
+  background-color: #0C3e5f;
   padding: 5px 10px;
   text-decoration: none;
   text-align: center;
@@ -3421,14 +3440,14 @@ span.GalleryModal_close__Q_uDq {
 
 .banner-modal2 {
   background-color: transparent;
-  color: #1d1d1d;
+  color: #0C3e5f;
   font-weight: bold;
   font-size: 14px;
   border: none;
 }
 
 .banner-modal2:hover {
-  color: #e45330;
+  color: #0C3e5f;
 }
 
 .banner-modal2 {
@@ -3453,14 +3472,14 @@ span.GalleryModal_close__Q_uDq {
 }
 
 .modal-butoon-succ {
-  background-color: #e45330;
+  background-color: #0C3e5f;
   padding: 4px 18px;
   border-radius: 25px;
   color: #fff;
 }
 
 .modal-butoon-succ:hover {
-  background-color: #e45330;
+  background-color: #0C3e5f;
   color: #fff;
 }
 
@@ -3505,7 +3524,7 @@ span.GalleryModal_close__Q_uDq {
 }
 
 .checkedData {
-  color: #eca500;
+  color: #0C3e5f;
 }
 
 .modal-body {
@@ -3544,7 +3563,7 @@ span.GalleryModal_close__Q_uDq {
 }
 
 ._mPS2id-h a {
-  background-color: #e45330;
+  background-color: #0C3e5f;
   color: #fff !important;
 }
 
@@ -3566,7 +3585,7 @@ span.GalleryModal_close__Q_uDq {
 }
 
 .delete-icon i {
-  color: #e45330;
+  color: #0C3e5f;
 }
 
 /* ---------------------------Career Page------------------ */
@@ -3579,7 +3598,7 @@ span.GalleryModal_close__Q_uDq {
 }
 
 .careerH h3 span {
-  color: #e45330;
+  color: #0C3e5f;
 }
 
 .careerTabs {
@@ -3601,8 +3620,8 @@ span.GalleryModal_close__Q_uDq {
 }
 
 .careerTabs li.active a {
-  color: #e45330;
-  border-bottom: 3px solid #e45330;
+  color: #0C3e5f;
+  border-bottom: 3px solid #0C3e5f;
   padding: 0 0 10px 0;
 }
 
@@ -3634,7 +3653,7 @@ ul.examList>li {
 }
 
 ul.examList .examDetailInfo p {
-  color: #1D1D1D;
+  color: #0C3e5f;
   font-size: 12px;
   font-weight: 500;
 }
@@ -3677,7 +3696,7 @@ ul.examList h2 {
 }
 
 ul.examList h2 a {
-  color: #1D1D1D;
+  color: #0C3e5f;
 }
 
 ul.examList li>.button {
@@ -3709,8 +3728,8 @@ ul.examlinks li {
 }
 
 ul.examlinks li a:hover {
-  color: #e45330;
-  border: 1px solid #e45330;
+  color: #0C3e5f;
+  border: 1px solid #0C3e5f;
 }
 
 ul.examlinks li a {
@@ -3736,7 +3755,7 @@ ul.examlinks li a {
 }
 
 .schoolBlock h2 a {
-  color: #1d1d1d;
+  color: #0C3e5f;
 }
 
 .schoolBlock .coursebtn {
@@ -3834,8 +3853,8 @@ ul.examlinks li a {
   text-align: center;
   font-weight: 300;
   font-size: 12px;
-  background: #e45330;
-  border: 1px solid #e45330;
+  background: #0C3e5f;
+  border: 1px solid #0C3e5f;
   border-radius: 5px;
   transition: all .5s;
 	position: relative;
@@ -4103,7 +4122,7 @@ ul.examlinks li a {
   color: #111 !important;
 }
 .schoolDe h4 i{
-  color: #e45330;
+  color: #0C3e5f;
   margin: 0 5px 0 0;
 }
 .schoolSh{
@@ -4121,7 +4140,7 @@ ul.examlinks li a {
   margin-bottom: 15px;
 }
 .schoolSh:before {
-  background-color: #e45330;
+  background-color: #0C3e5f;
   border-top-right-radius: 9px;
   content: "";
   height: 36px;
@@ -4153,7 +4172,7 @@ ul.examlinks li a {
   margin: 0px;
 }
 .contWithUs li i{
-  color: #eca500;
+  color: #0C3e5f;
   font-size: 20px;
   margin: 0 5px 0 0;
   width: 30px;
@@ -4350,7 +4369,7 @@ padding-left: 0;
   padding: 8px 24px;
   font-size: 16px;
   cursor: pointer;
-  background: #eca500;
+  background: #0C3e5f;
   color: #fff;
   border: none;
   box-shadow: 0 4px 8px 0 #ccc;
@@ -4367,7 +4386,7 @@ padding-left: 0;
 .filters {
     position: relative;
     padding: 8px 10px;
-    background: #e45330;
+    background: #0C3e5f;
     border: var(--bs-border-width) solid var(--bs-border-color);
     border-radius: var(--bs-border-radius);
     margin: 4px 0;
@@ -4394,8 +4413,8 @@ padding-left: 0;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.5;
-  background-color: #e45330;
-  border: 1px solid #e45330;
+  background-color: #0C3e5f;
+  border: 1px solid #0C3e5f;
   color: #fff;
   border-radius: 5px;
   padding: 5px 20px;
