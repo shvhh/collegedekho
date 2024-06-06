@@ -10,6 +10,14 @@
         margin: 0 0 5px 0;
     }
 
+    .menu2{
+        border: none;
+    }
+
+    .l1 {
+        margin: 0 0 0 0px;
+    }
+
     .filters .filterB .top-menu{
         width: 85%;
         padding: 10px;
@@ -316,10 +324,23 @@
     .menu li {
         width: 100%;
     }
+    
+    .menu-bar>li>[aria-haspopup="true"]~ul{
+        height: 100vh;
+    }
+
+    .menu-bar>li>[aria-haspopup="true"]~ul [aria-haspopup="true"]:hover~ul {
+        padding: 10px;
+    }
+
+    .menu-bar>li>[aria-haspopup="true"]~ul [aria-haspopup="true"]~ul:hover {
+        max-height: 100%;
+    }
 
     .menu-bar {
         background-color: #fff;
         z-index: 99;
+        padding: 10px;
     }
 
     .menu-bar>li>[aria-haspopup="true"]:hover~ul {
