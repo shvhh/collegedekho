@@ -318,8 +318,254 @@ routes.get("/blog-detail", async (req, res) => {
 routes.get("/career", async (req, res) => {
   res.view("pages/career");
 });
+
 routes.get("/college-details", async (req, res) => {
   res.render("pages/college-details");
+});
+
+routes.get("/collegeDetail/:slag/courses", async (req, res) => {
+  console.log('courses')
+  try {
+    const collegeSection = req.params.section;
+    const token = req.cookies.userToken;
+
+    const data = await College.findOne({ slag: req.params.slag }).lean();
+    const increase = data.viewCount + 1;
+    const viewCount = await College.findOneAndUpdate(
+      { slag: req.params.slag },
+      { viewCount: increase }
+    );
+
+    const topCollege = await College.find({ isTop: true })
+      .sort({ createdAt: -1 })
+      .limit(4)
+      .lean();
+
+    const sectionData = data[collegeSection];
+
+    if (token) {
+      const user = jwt.verify(token, "collegeDekhoSecretKet");
+      const userId = user.userid;
+
+      const collegeHistory = {
+        userId: userId,
+        collegeId: data._id,
+      };
+
+      // create collegeHistory using upsert
+
+      const collegeHistoryData = await userCollegeHistory.findOneAndUpdate(
+        { userId: userId, collegeId: data._id },
+        collegeHistory,
+        { upsert: true }
+      );
+    }
+
+    res.view("pages/college-detailsCourses", {
+      data,
+      sectionData,
+      collegeSection,
+      topCollege,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+routes.get("/collegeDetail/:slag/admission", async (req, res) => {
+  console.log('courses')
+  try {
+    const collegeSection = req.params.section;
+    const token = req.cookies.userToken;
+
+    const data = await College.findOne({ slag: req.params.slag }).lean();
+    const increase = data.viewCount + 1;
+    const viewCount = await College.findOneAndUpdate(
+      { slag: req.params.slag },
+      { viewCount: increase }
+    );
+
+    const topCollege = await College.find({ isTop: true })
+      .sort({ createdAt: -1 })
+      .limit(4)
+      .lean();
+
+    const sectionData = data[collegeSection];
+
+    if (token) {
+      const user = jwt.verify(token, "collegeDekhoSecretKet");
+      const userId = user.userid;
+
+      const collegeHistory = {
+        userId: userId,
+        collegeId: data._id,
+      };
+
+      // create collegeHistory using upsert
+
+      const collegeHistoryData = await userCollegeHistory.findOneAndUpdate(
+        { userId: userId, collegeId: data._id },
+        collegeHistory,
+        { upsert: true }
+      );
+    }
+
+    res.view("pages/college-detailsAdmission", {
+      data,
+      sectionData,
+      collegeSection,
+      topCollege,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+routes.get("/collegeDetail/:slag/placement", async (req, res) => {
+  console.log('courses')
+  try {
+    const collegeSection = req.params.section;
+    const token = req.cookies.userToken;
+
+    const data = await College.findOne({ slag: req.params.slag }).lean();
+    const increase = data.viewCount + 1;
+    const viewCount = await College.findOneAndUpdate(
+      { slag: req.params.slag },
+      { viewCount: increase }
+    );
+
+    const topCollege = await College.find({ isTop: true })
+      .sort({ createdAt: -1 })
+      .limit(4)
+      .lean();
+
+    const sectionData = data[collegeSection];
+
+    if (token) {
+      const user = jwt.verify(token, "collegeDekhoSecretKet");
+      const userId = user.userid;
+
+      const collegeHistory = {
+        userId: userId,
+        collegeId: data._id,
+      };
+
+      // create collegeHistory using upsert
+
+      const collegeHistoryData = await userCollegeHistory.findOneAndUpdate(
+        { userId: userId, collegeId: data._id },
+        collegeHistory,
+        { upsert: true }
+      );
+    }
+
+    res.view("pages/college-detailsPlacement", {
+      data,
+      sectionData,
+      collegeSection,
+      topCollege,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+routes.get("/collegeDetail/:slag/scholarship", async (req, res) => {
+  console.log('courses')
+  try {
+    const collegeSection = req.params.section;
+    const token = req.cookies.userToken;
+
+    const data = await College.findOne({ slag: req.params.slag }).lean();
+    const increase = data.viewCount + 1;
+    const viewCount = await College.findOneAndUpdate(
+      { slag: req.params.slag },
+      { viewCount: increase }
+    );
+
+    const topCollege = await College.find({ isTop: true })
+      .sort({ createdAt: -1 })
+      .limit(4)
+      .lean();
+
+    const sectionData = data[collegeSection];
+
+    if (token) {
+      const user = jwt.verify(token, "collegeDekhoSecretKet");
+      const userId = user.userid;
+
+      const collegeHistory = {
+        userId: userId,
+        collegeId: data._id,
+      };
+
+      // create collegeHistory using upsert
+
+      const collegeHistoryData = await userCollegeHistory.findOneAndUpdate(
+        { userId: userId, collegeId: data._id },
+        collegeHistory,
+        { upsert: true }
+      );
+    }
+
+    res.view("pages/college-detailsScholarship", {
+      data,
+      sectionData,
+      collegeSection,
+      topCollege,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+routes.get("/collegeDetail/:slag/reviews", async (req, res) => {
+  console.log('courses')
+  try {
+    const collegeSection = req.params.section;
+    const token = req.cookies.userToken;
+
+    const data = await College.findOne({ slag: req.params.slag }).lean();
+    const increase = data.viewCount + 1;
+    const viewCount = await College.findOneAndUpdate(
+      { slag: req.params.slag },
+      { viewCount: increase }
+    );
+
+    const topCollege = await College.find({ isTop: true })
+      .sort({ createdAt: -1 })
+      .limit(4)
+      .lean();
+
+    const sectionData = data[collegeSection];
+
+    if (token) {
+      const user = jwt.verify(token, "collegeDekhoSecretKet");
+      const userId = user.userid;
+
+      const collegeHistory = {
+        userId: userId,
+        collegeId: data._id,
+      };
+
+      // create collegeHistory using upsert
+
+      const collegeHistoryData = await userCollegeHistory.findOneAndUpdate(
+        { userId: userId, collegeId: data._id },
+        collegeHistory,
+        { upsert: true }
+      );
+    }
+
+    res.view("pages/college-detailsReviews", {
+      data,
+      sectionData,
+      collegeSection,
+      topCollege,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 // get college by course id/
@@ -660,7 +906,8 @@ routes.get("/getCollegeByState/:stateName/:category", async (req, res) => {
 
 // get college by slag/
 
-routes.get("/collegeDetail/:slag/:section", async (req, res) => {
+routes.get("/collegeDetail/:slag/overView", async (req, res) => {
+  console.log('overView')
   try {
     const collegeSection = req.params.section;
     const token = req.cookies.userToken;

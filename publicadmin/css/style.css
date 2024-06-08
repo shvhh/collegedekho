@@ -2601,6 +2601,10 @@ input {
   color: #6a8695;
 }
 
+.collegeInfo .active a{
+  color: #fff;
+} 
+
 .collegeInfo .collegeInfoTab.active {
   color: #fff;
   background: #20bdff;
