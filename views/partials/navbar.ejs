@@ -1,3 +1,18 @@
+<style>
+@media all and (max-width: 950px) {
+  .mobile-menu-back-item a {
+    background: #fff;
+    color: #000;
+    max-height: calc(1.4em + 40px);
+    margin-top: calc(0px - (1.4em + 30px));
+    pointer-events: none;
+  }
+  .menu-bar > li > [aria-haspopup="true"] ~ ul {
+    margin-top: 58px;
+  }
+}
+</style>
+
 <div class="nav">
   <div class="container">
     <nav>
@@ -177,7 +192,13 @@
       <a href="javascript:void(0);" class="mobile-menu-trigger">
         <i class="fa-light fa-bars"></i>
       </a>
-      <ul class="menu menu-bar">
+      <ul class="menu menu-bar" id="myDIV">
+        <div class="closeMenu">
+          <strong>Menu</strong>
+          <div class="mobile-menu-trigger">
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+        </div>
         <li class="homeIcon">
           <a href="/" class="menu-link menu-bar-link" aria-haspopup="true">
             <i class="fa-solid fa-house-chimney-window"></i>

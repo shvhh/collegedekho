@@ -173,7 +173,7 @@ nav li {
   height: 14px;
   font-size: 12px;
   position: absolute;
-  right: 10px;
+  right: 0px;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -244,6 +244,16 @@ nav li {
 
 .mega-menu h3 {
   font-size: 13px;
+}
+
+.closeMenu{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  margin: 0 0 10px 0;
+  padding: 0 0 5px 0;
 }
 
 @media all and (min-width: 951px) {
@@ -429,10 +439,6 @@ nav li {
     font-size: 10px;
   }
 
-  .menu-bar>li>[aria-haspopup="true"]~ul>li>[aria-haspopup="true"]~ul a {
-    padding-left: 40px;
-  }
-
   .menu-bar>li>[aria-haspopup="true"]~ul>li>[aria-haspopup="true"]~ul>li>[aria-haspopup="true"]~ul a {
     padding-left: 80px;
   }
@@ -503,12 +509,12 @@ nav li {
 }
 
 .menu-bar>li>[aria-haspopup="true"]~ul [aria-haspopup="true"]:focus~ul {
-  max-height: 500px;
+  max-height: 100% !important;
   animation: dropdown 0.3s forwards;
 }
 
 .menu-bar>li>[aria-haspopup="true"]~ul li:focus-within>[aria-haspopup="true"]~ul {
-  max-height: 500px;
+  max-height: 100%;
   transform: scaleY(1);
 }
 
@@ -530,12 +536,12 @@ nav li {
   }
 
   .menu-bar>li>[aria-haspopup="true"]~ul [aria-haspopup="true"]:hover~ul {
-    max-height: 500px;
+    max-height: 100%;
     animation: dropdown 0.3s forwards;
   }
 
   .menu-bar>li>[aria-haspopup="true"]~ul [aria-haspopup="true"]~ul:hover {
-    max-height: 500px;
+    max-height: 100%;
     transform: scaleY(1);
   }
 

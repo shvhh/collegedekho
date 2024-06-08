@@ -15,7 +15,7 @@
     }
 
     .l1 {
-        margin: 0 0 0 0px;
+        margin: 10px 0 0 0px;
     }
 
     .filters .filterB .top-menu{
@@ -490,7 +490,7 @@
 
     .leftFixed,
     .fixed-div {
-        width: 178px;
+        width: 100%;
         left: 17px;
     }
 
