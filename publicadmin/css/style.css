@@ -173,7 +173,7 @@ nav li {
   height: 14px;
   font-size: 12px;
   position: absolute;
-  right: 0px;
+  right: 5px;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -247,15 +247,8 @@ nav li {
 }
 
 .closeMenu{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  border-bottom: 1px solid #ddd;
-  margin: 0 0 10px 0;
-  padding: 0 0 5px 0;
+  display: none;
 }
-
 @media all and (min-width: 951px) {
   .menu [aria-haspopup="true"]~ul {
     display: none;
