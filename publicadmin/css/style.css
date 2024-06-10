@@ -2356,9 +2356,15 @@ input {
 
 .collegeCard {
   background-color: #fff;
+  border: 1px solid #ddd;
   padding: 15px;
-  border-radius: 5px;
+  border-radius: 10px;
   margin: 0 0 15px 0;
+  transition: all .5s;
+}
+
+.collegeCard:hover{
+  box-shadow: 0 2px 5px rgba(16, 16, 16, .1);
 }
 
 .collImage {
@@ -2476,6 +2482,7 @@ input {
 
 .collFeee span {
   color: #eca500;
+  font-size: 11px;
 }
 
 .collFeee p {
@@ -4389,28 +4396,31 @@ padding-left: 0;
 
 .filters {
     position: relative;
-    padding: 8px 10px;
-    background: #ff44a0;
-    border: var(--bs-border-width) solid var(--bs-border-color);
-    border-radius: var(--bs-border-radius);
     margin: 4px 0;
 }
 
 .open-mobile-menu{
-  text-align: center;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.5;
   background: transparent;
-  border: none;
+  color: #ff44a0;
+  border: 1px solid #ff44a0;
   outline: 0;
-  width: 100%;
+  padding: 3px 8px;
+  border-radius: 5px;
+  transition: all .5s;
+}
+
+.open-mobile-menu:hover{
+  background-color: #ff44a0;
   color: #fff;
 }
 
 .open-mobile-menu i{
-  color: #fff !important;
+  color: #ff44a0 !important;
   margin: 0 5px 0 0;
+}
+
+.open-mobile-menu:hover i{
+  color: #fff !important;
 }
 
 .close-mobile-menu{

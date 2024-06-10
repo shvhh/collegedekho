@@ -18,7 +18,7 @@
 <body>
   <%- include('../partials/navbar')%>
 
-    <div class="mainBg">
+    <div>
       <section class="bannerSec">
         <div class="container">
           <div class="bannerTitle2">
@@ -45,7 +45,7 @@
               <div class="filters">
                 <div class="filterB">
                   <button aria-label="Open Mobile Menu" class="open-mobile-menu">
-                    <i class="fa-solid fa-filter"></i> Filter
+                    <i class="fa-solid fa-filter px-1"></i> Filter
                   </button>
                   <div class="top-menu-wrapper">
                     <ul class="top-menu">
@@ -414,8 +414,8 @@
                           <p>Fees</p><span class="px-2">₹ <%=data?.feesRange%></span>
                         </div>
                         <div class="row pt-2">
-                          <div class="col-md-6">
-                            <a href="/collegeDetail/<%=data?.slag%>/overView" class="applyBtn">View Details</a>
+                          <div class="col-md-5">
+                            <a href="/collegeDetail/<%=data?.slag%>/overView" class="applyBtn"><i class="fa-regular fa-eye px-1"></i> View Details</a>
                           </div>
                         </div>
                       </div>
